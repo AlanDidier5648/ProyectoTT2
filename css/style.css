@@ -1,0 +1,127 @@
+/* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    background: #007BFF;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    text-align: center;
+    background: linear-gradient(135deg, #007BFF 25%, #66B2FF 25%, #66B2FF 50%, #99CCFF 50%, #99CCFF 75%, #007BFF 75%);
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+}
+
+header {
+    color: white;
+}
+
+header h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+}
+
+header h2 {
+    font-size: 2.5em;
+    margin: 10px 0;
+}
+
+header p {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+footer {
+    background-color: #004494;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/* Botón que contrasta con el fondo */
+.btn {
+    display: inline-block;
+    background-color: #0056b3; /* Azul oscuro para que contraste con el fondo */
+    color: white; /* Texto blanco para destacar */
+    padding: 12px 25px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #66B2FF; /* Azul más claro al hacer hover */
+    transform: translateY(-3px); /* Movimiento leve hacia arriba al hacer hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+
+/* Zoom y desplazamiento lateral */
+@keyframes zoomInSlide {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateX(-50px); /* Los elementos comienzan más pequeños y desplazados */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateX(0); /* Los elementos llegan a su tamaño original y posición final */
+    }
+}
+
+/* Aplicación de la animación */
+.zoom-slide {
+    opacity: 0; /* Comienzan invisibles */
+    animation: zoomInSlide 1s ease-out forwards; /* Aparece con la animación */
+}
+
+.zoom-slide-delay {
+    opacity: 0;
+    animation: zoomInSlide 1.5s ease-out forwards; /* Aparece con un ligero retraso */
+}
+
+
+
+/* Animación de zoom-in con desplazamiento desde abajo */
+@keyframes zoomInSlideUp {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(50px); /* Aparece desde abajo y pequeño */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0); /* Crece y llega a su posición original */
+    }
+}
+
+/* Aplicación de la animación */
+.zoom-slide-up {
+    opacity: 0;
+    animation: zoomInSlideUp 1s ease-out forwards;
+}
+
+.zoom-slide-up-delay {
+    opacity: 0;
+    animation: zoomInSlideUp 1.5s ease-out forwards; /* Con retraso para efecto secuencial */
+}

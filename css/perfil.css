@@ -1,0 +1,207 @@
+/* perfil.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    background-color: #f4f4f4;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(135deg, #007BFF 25%, #66B2FF 25%, #66B2FF 50%, #99CCFF 50%, #99CCFF 75%, #007BFF 75%);
+    background-size: 300% 300%; /* Aumentamos el tamaño del fondo para que tenga más espacio para moverse */
+    animation: moveBackground 10s linear infinite; /* Animación del fondo */
+}
+
+/* Keyframes para mover el fondo */
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 0%; /* Posición inicial del fondo */
+    }
+    100% {
+        background-position: 100% 100%; /* Posición final del fondo */
+    }
+}
+
+/* Sidebar */
+.sidebar {
+    width: 25%;
+    background-color: #004494;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Información del usuario */
+.user-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.menu {
+    width: 100%;
+}
+
+.menu h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu ul li {
+    margin-bottom: 10px;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.menu ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Contenido principal */
+.main-content {
+    width: 75%;
+    padding: 40px;
+    color: #333;
+    text-align: center;
+}
+
+.main-content h1 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.main-content p {
+    margin: 10px 0 30px;
+    color: #555;
+    font-size: 1.2em;
+}
+
+.algorithms {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.algorithm-card {
+    background-color: #FDBA50;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.algorithm-card:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: #004494;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.sidebar.hidden {
+    width: 0;
+    padding: 0;
+    overflow: hidden; /* Oculta el contenido cuando el ancho es 0 */
+}
+
+/* Posición fija del botón para mostrar/ocultar la barra lateral */
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px;
+    font-size: 1.5em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000; /* Asegura que el botón esté siempre visible sobre el contenido */
+}
+
+.toggle-btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* perfil.css */
+
+/* Transición suave para la barra lateral */
+.sidebar {
+    width: 25%;
+    background-color: #004494;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transition: opacity 0.5s ease, width 1s ease, padding 1s ease; /* La barra lateral tarda más en ocultarse */
+}
+
+.sidebar.hidden {
+    opacity: 0;
+    width: 0;
+    padding: 0;
+    overflow: hidden; /* Oculta el contenido */
+}
+
+/* Transición del contenido principal */
+.main-content {
+    width: calc(100% - 25%);
+    padding: 40px;
+    color: #333;
+    text-align: center;
+    transition: width 1s ease; /* Solo el ancho cambiará suavemente */
+}
+
+/* Aseguramos que los algoritmos no se vuelvan transparentes */
+.algorithms {
+    opacity: 1; /* Se mantiene completamente visible */
+}
+
+
+
+
+
+
+

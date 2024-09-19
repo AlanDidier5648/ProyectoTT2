@@ -1,0 +1,118 @@
+/* formulario.css */
+
+/* Estilos para el cuerpo y el contenedor */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Estilos para el formulario */
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: left; /* Alinea todo el texto hacia la izquierda */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #333;
+    text-align: left; /* Alinea las etiquetas a la izquierda */
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el título */
+header h1 {
+    color: #007BFF;
+    text-align: center; /* El título sigue centrado */
+    margin-bottom: 20px;
+}
+
+/* Asegurando que el formulario y contenido estén perfectamente centrados */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+/* Animación de fade-in con desplazamiento lateral */
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px); /* Comienza desplazado hacia la izquierda */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Llega a su posición original */
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px); /* Aparece desde abajo */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Llega a su posición original */
+    }
+}
+
+/* Aplicación de las animaciones a los elementos del formulario */
+.slide-left {
+    opacity: 0;
+    animation: slideInLeft 1s ease-out forwards;
+}
+
+.slide-up {
+    opacity: 0;
+    animation: slideInUp 1s ease-out forwards;
+}
+
+.slide-up-delay {
+    opacity: 0;
+    animation: slideInUp 1.5s ease-out forwards;
+}

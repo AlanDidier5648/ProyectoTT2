@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/registro.css">
+    <script>
+        function redirigirAlPerfil() {
+            // Redirige al perfil después de enviar el formulario
+            window.location.href = 'perfil.html'; // Enlace al perfil del usuario
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <!-- Título con animación -->
+            <h1 class="slide-up">Formulario de Registro</h1>
+        </header>
+        <main>
+            <!-- Formulario con animaciones para los campos -->
+            <form onsubmit="redirigirAlPerfil(); return false;">
+                <label for="nombre" class="slide-left">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" class="slide-left" >
+
+                <label for="apellido" class="slide-left">Apellido</label>
+                <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" class="slide-left" >
+
+                <label for="email" class="slide-left">Correo Electrónico</label>
+                <input type="email" id="email" name="email" placeholder="Tu correo electrónico" class="slide-left" >
+
+                <label for="telefono" class="slide-left">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Tu número de teléfono" class="slide-left" >
+
+                <label for="password" class="slide-left">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Tu contraseña" class="slide-left" >
+
+                <label for="confirm-password" class="slide-left">Confirmar Contraseña</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirma tu contraseña" class="slide-left" >
+
+                <!-- Botón con animación de desplazamiento hacia arriba -->
+                <input type="submit" value="Registrarse" class="slide-up-delay">
+            </form>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; ESCUELA SUPERIOR DE CÓMPUTO</p>
+    </footer>
+</body>
+</html>
