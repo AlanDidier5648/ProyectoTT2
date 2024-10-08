@@ -1,0 +1,184 @@
+/* Normalize styles */
+html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  /* Fondo animado con tonos de azul */
+  body {
+    background: linear-gradient(270deg, #1e3a8a, #2563eb, #3b82f6, #60a5fa, #93c5fd);
+    background-size: 800% 800%;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    animation: backgroundAnimation 8s ease infinite; /* Animación más rápida */
+    margin: 0; /* Eliminar margen por defecto */
+    height: 100vh; /* Asegurar que el body ocupe toda la altura de la ventana */
+  }
+  
+  /* Animación del fondo */
+  @keyframes backgroundAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Animación para todas las letras */
+  h1, h2, h3, p, a, div, span {
+    opacity: 0;
+    animation: fadeInSlide 1.5s forwards; /* Animación más rápida */
+  }
+  
+  @keyframes fadeInSlide {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Efecto hover con animación */
+  .container {
+    background: rgba(255, 255, 255, 0.2); /* Efecto glassmorphism */
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde translúcido */
+    width: 80vw; /* Ocupar el 80% del ancho de la ventana */
+    height: 80vh; /* Ocupar el 80% de la altura de la ventana */
+    margin: auto; /* Centrarse horizontal y verticalmente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .container:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al pasar el mouse */
+  }
+  
+  /* Ajuste para que el contenido interno esté bien alineado */
+  .container p, .container h1, .container h2 {
+    margin: 20px;
+  }
+  
+  /* Layout de las columnas */
+  .content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .column {
+    width: 48%; /* Cada columna ocupa el 48% del espacio para dejar margen */
+  }
+  
+  /* Inputs para los números */
+  input[type="number"] {
+    text-align: center;
+    font-size: 16px;
+    width: 50px;
+    padding: 5px;
+    margin: 10px 0;
+    -moz-appearance: textfield;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Botones de acción */
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+  }
+  
+  /* Inputs en la sección de números */
+  #numero-inputs input {
+    width: 50px;
+    margin: 5px;
+  }
+  
+  /* Área de animación */
+  #animacion-area {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Cajas numéricas */
+  .number-box {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: #4CAF50;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+    margin: 5px;
+    font-size: 20px;
+    border-radius: 4px;
+    transition: background-color 0.5s ease, transform 0.5s ease;
+  }
+  
+  /* Estados de las cajas numéricas */
+  .number-box.comparing {
+    background-color: #FFD700; /* Amarillo para elementos en comparación */
+    transform: scale(1.2); /* Aumentar tamaño para destacar */
+  }
+  
+  .number-box.merged {
+    background-color: #32CD32; /* Verde claro para elementos ya ordenados */
+  }
+  
+  .number-box.sorted {
+    background-color: #2E8B57; /* Verde más oscuro para elementos completamente ordenados */
+  }
+  
+  /* Responsive design para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .column {
+      width: 90%;
+    }
+    
+    .container {
+      width: 95vw;
+      height: auto;
+    }
+  }
+  
