@@ -18,6 +18,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   
+    // Generar los inputs manuales para los números
+    function crearInputsManuales(cantidad) {
+      numeroInputsDiv.innerHTML = '';
+      for (let i = 0; i < cantidad; i++) {
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.min = '1';
+        input.max = '100';
+        input.value = Math.floor(Math.random() * 100) + 1;
+        numeroInputsDiv.appendChild(input);
+      }
+      mostrarNumerosEnAnimacion();
+    }
+  
+    // Mostrar los números en el área de animación
+    function mostrarNumerosEnAnimacion() {
+      animacionArea.innerHTML = ''; // Limpiar el área de animación
+      const inputs = numeroInputsDiv.querySelectorAll('input');
+      inputs.forEach(input => {
+        const numberBox = document.createElement('div');
+        numberBox.className = 'number-box';
+        numberBox.textContent = input.value;
+        animacionArea.appendChild(numberBox);
+      });
+    }
     // Actualizar los inputs manuales cada vez que se cambie la cantidad
     cantidadInput.addEventListener('input', () => {
       crearInputsManuales(cantidadInput.value);
@@ -94,23 +119,15 @@ document.addEventListener('DOMContentLoaded', () => {
       ejecutarBurbuja();
     }
   
-    // Iniciar la animación del algoritmo de burbuja
-    iniciarBurbujaBtn.addEventListener('click', () => {
-      animacionArea.innerHTML = '';
-      const inputs = numeroInputsDiv.querySelectorAll('input');
-      let numeros = [];
-      inputs.forEach(input => numeros.push(parseInt(input.value)));
-  
-      // Mostrar los números en el área de animación
-      numeros.forEach(numero => {
-        const numberBox = document.createElement('div');
-        numberBox.className = 'number-box';
-        numberBox.textContent = numero;
-        animacionArea.appendChild(numberBox);
-      });
-  
-      // Ejecutar el algoritmo de burbuja con animación
-      burbujaAnimada(numeros);
-    });
+   // Iniciar la animación del algoritmo de burbuja
+iniciarBurbujaBtn.addEventListener('click', () => {
+  const inputs = numeroInputsDiv.querySelectorAll('input');
+  let numeros = [];
+  inputs.forEach(input => numeros.push(parseInt(input.value)));
+
+  // Evitar que se vuelvan a crear los números, solo iniciar la animación
+  burbujaAnimada(numeros);
+});
+
   });
   
