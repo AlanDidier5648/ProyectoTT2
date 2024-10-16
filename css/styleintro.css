@@ -1,0 +1,82 @@
+:root {
+    --primary-color: #0056b3;  /* Azul oscuro */
+    --primary-hover: #66B2FF;  /* Azul claro para hover */
+    --background-color: #004494; /* Color de fondo del footer y header */
+    --text-color: white;  /* Color blanco para el texto */
+}
+
+html{
+    font-family: "Raleway", sans-serif;
+    color: var(--text-color);
+}
+
+
+
+.container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  /* Asegura que siempre ocupa la pantalla completa */
+    text-align: center;
+ 
+}
+
+
+
+/* Botón que contrasta con el fondo */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);  /* Uso de variables para mantener consistencia */
+    color: var(--text-color);
+    padding: 12px 25px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);  /* Azul más claro al hacer hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+@keyframes slideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Inicia desde abajo */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Termina en su posición original */
+    }
+}
+
+/* Aplicación de la animación al logo, h1 y p */
+.logo, header h1, header p ,a{
+    opacity: 0; /* Empiezan invisibles */
+    animation: slideUpFade 1s ease-out forwards; /* Todos aparecerán con la misma animación */
+}
+
+/* Retraso para el párrafo, opcional si quieres que aparezca después */
+header p {
+    animation-delay: 0.5s; /* El párrafo aparecerá medio segundo después, puedes ajustar este valor o eliminarlo */
+}
+/* Footer optimizado con flexbox para estar siempre en la parte inferior */
+footer {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    margin-top: auto;
+    position: relative;
+}
+
+
