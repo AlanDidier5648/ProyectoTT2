@@ -199,9 +199,58 @@ footer {
     opacity: 1; /* Se mantiene completamente visible */
 }
 
+/* Estilo para la tarjeta con Flexbox */
+.algorithm-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente el contenido */
+    align-items: center;     /* Centra horizontalmente el contenido */
+    background-color: #FDBA50;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    height: 300px; /* Aumenta un poco la altura de la tarjeta para dar más espacio */
+    position: relative; /* Necesario para la animación */
+}
 
+/* Estilo ajustado para el texto "Burbuja" */
+#texto-burbuja {
+    font-size: 1.2em; /* Reduce el tamaño del texto */
+    margin-bottom: 10px; /* Añade espacio inferior al texto */
+    transition: transform 0.5s ease; /* Transición suave para el movimiento */
+}
 
+/* Cuando el cursor esté sobre la tarjeta, desplaza el texto hacia abajo */
+.algorithm-card:hover #texto-burbuja {
+    transform: translateY(30px); /* Mueve el texto 30px hacia abajo */
+}
 
+/* Estilo ajustado para el GIF */
+#gif {
+    display: none; /* Oculto inicialmente */
+    max-width: 150px; /* Ajusta el tamaño máximo del GIF para que quepa en el recuadro */
+    transition: all 0.5s ease; /* Transición suave para la aparición */
+}
 
+/* Mostrar el GIF con animación al hacer hover en la tarjeta */
+.algorithm-card:hover #gif {
+    display: block; /* El GIF aparece suavemente */
+    animation: scaleUp 0.6s ease forwards; /* Aplica la animación de escalado */
+}
 
-
+/* Definimos la animación de escalado */
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.5); /* Empieza desde la mitad de su tamaño */
+        opacity: 0; /* Inicia con opacidad baja */
+    }
+    100% {
+        transform: scale(1); /* Termina con el tamaño normal */
+        opacity: 1; /* Aparece completamente */
+    }
+}

@@ -1,5 +1,8 @@
 // scripts.js
 
+
+
+
 function toggleSidebar() {
     // Obtiene la barra lateral
     var sidebar = document.querySelector('.sidebar');
