@@ -4,49 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="../css/perfil.css">
+    <link rel="stylesheet" href="../css/edatos.css">
 </head>
 <body>
-
-    <!-- Botón para mostrar/ocultar la barra lateral, con una flecha inicial -->
-    <button onclick="toggleSidebar()" class="toggle-btn">&#9664;</button> <!-- Flecha izquierda inicialmente -->
+        <!-- Barra de navegación -->
+<nav class="navbar">
+    <div class="logo">
+        <img src="../img/user.png" alt="Foto de perfil" class="profile-pic">
+        <h2>Valeria Ortiz</h2>
+    </div>
+        <ul class="nav-links">
+            <li><a href="perfil.html">Inicio</a></li>
+            <li><a href="ordenamiento.html">Ordenamiento</a></li>
+            <li><a href="busqueda.html">Búsqueda en lista</a></li>
+            <li><a href="busquedaGraf.html">Búsqueda en gráfico</a></li>
+        
+            <li><a href="edatos.html">Estructuras de datos</a></li>
+        </ul>
+</nav>
+    
 
      
-    <div class="container">
-        <!-- Sidebar para la imagen y el menú de usuario -->
-        <aside class="sidebar">
-            <div class="user-info">
-                <img src="../img/user.png" alt="Foto de perfil" class="profile-pic">
-                <h2>Valeria Ortiz</h2>
-            </div>
-            <nav class="menu">
-                <a href="perfil.html">Inicio</a>
-                <h3>Algoritmos</h3>
-                <ul>
-                    <li><a href="ordenamiento.html">Ordenamiento</a></li>
-                    <li><a href="busqueda.html">Búsqueda en lista</a></li>
-                    <li><a href="busquedaGraf.html">Búsqueda en gráfico</a></li>
-                    <li><a href="matematicos.html">Matemáticos</a></li>
-                    <li><a href="edatos.html">Estructuras de datos</a></li>
-                    <li><a href="recur.html">Recursión</a></li>
-                </ul>
-            </nav>
-        </aside>
+
 
         <!-- Contenido principal de la página -->
         <main class="main-content">
-            <h1 id="titulo-principal">Algoritmos de ordenamiento</h1>
+            <h1 id="titulo-principal">Estructura de Datos</h1>
             <p id="descripcion-principal">Seleccione una opción del menú para comenzar</p>
             <div class="algorithms">
-                <div class="algorithm-card">Burbuja</div>
-                <div class="algorithm-card">Inserción</div>
-                <div class="algorithm-card">Montículos</div>
-                <div class="algorithm-card">Rápido</div>
-                <div class="algorithm-card">Selección</div>
-                <div class="algorithm-card">Unión</div>
+
+                <a href="#" class="algorithm-card">
+                    
+                    <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
+                    <span id="texto">Listas</span>
+                </a>
+
+                <a href="#" class="algorithm-card">
+                    <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
+                    <span id="texto">Formaciones</span>
+                </a>
+
+                <a href="#" class="algorithm-card">
+                    <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
+                    <span id="texto">Pilas</span>
+                </a>
+
+                <a href="" class="algorithm-card">
+                    <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
+                    <span id="texto">Colas</span>
+                </a>
+
+                <a href="#" class="algorithm-card">
+                    <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
+                    <span id="texto">Tablas hash</span>
+                </a>
+
+                <a href="#" class="algorithm-card">
+                    <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
+                    <span id="texto">Montones</span>
+                </a>
+
+                <a href="#" class="algorithm-card">
+                    <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
+                    <span id="texto">Montones</span>
+                </a>
+
             </div>
         </main>
-    </div>
+  
 
     <footer>
         <p>&copy; ESCUELA SUPERIOR DE CÓMPUTO</p>
