@@ -4,45 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="../css/perfil.css">
+    <link rel="stylesheet" href="../css/busqueda.css">
 </head>
 <body>
 
-    <!-- Botón para mostrar/ocultar la barra lateral, con una flecha inicial -->
-    <button onclick="toggleSidebar()" class="toggle-btn">&#9664;</button> <!-- Flecha izquierda inicialmente -->
-
-     
-    <div class="container">
-        <!-- Sidebar para la imagen y el menú de usuario -->
-        <aside class="sidebar">
-            <div class="user-info">
-                <img src="../img/user.png" alt="Foto de perfil" class="profile-pic">
-                <h2>Valeria Ortiz</h2>
-            </div>
-            <nav class="menu">
-                <a href="perfil.html">Inicio</a>
-                <h3>Algoritmos</h3>
-                <ul>
-                    <li><a href="ordenamiento.html">Ordenamiento</a></li>
-                    <li><a href="busqueda.html">Búsqueda en lista</a></li>
-                    <li><a href="busquedaGraf.html">Búsqueda en gráfico</a></li>
-                  
-                    <li><a href="edatos.html">Estructuras de datos</a></li>
-               
-                </ul>
-            </nav>
-        </aside>
+  <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../img/user.png" alt="Foto de perfil" class="profile-pic">
+            <h2>Valeria Ortiz</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="perfil.html">Inicio</a></li>
+            <li><a href="ordenamiento.html">Ordenamiento</a></li>
+            <li><a href="busqueda.html">Búsqueda en lista</a></li>
+            <li><a href="busquedaGraf.html">Búsqueda en gráfico</a></li>
+        
+            <li><a href="edatos.html">Estructuras de datos</a></li>
+        </ul>
+    </nav>
 
         <!-- Contenido principal de la página -->
         <main class="main-content">
             <h1 id="titulo-principal">Busqueda en lista</h1>
             <p id="descripcion-principal">Seleccione una opción del menú para comenzar</p>
             <div class="algorithms">
-                <a href="../PrototipoDeAnimacion-busqueda/lineal/lineal.html" class="algorithm-card">Busqueda Lineal</a>
-                <a href="../PrototipoDeAnimacion-busqueda/binaria/binaria.html" class="algorithm-card">Busqueda Binaria</a>
+                
+                <a href="../PrototipoDeAnimacion-busqueda/lineal/lineal.html" class="algorithm-card">
+                    
+                    <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
+                    <span id="texto">Busqueda Lineal</span>
+                </a>
+                
+                <a href="../PrototipoDeAnimacion-busqueda/binaria/binaria.html" class="algorithm-card">
+                    <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
+                    <span id="texto">Busqueda Binaria</span>
+                </a>
             </div>
         </main>
-    </div>
+   
 
     <footer>
         <p>&copy; ESCUELA SUPERIOR DE CÓMPUTO</p>
