@@ -1,256 +1,174 @@
-/* perfil.css */
-
-body, html {
+/* Estilo general del cuerpo */
+body {
+    font-family: "Raleway", sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    height: 100%;
-    background-color: #f4f4f4;
-}
-
-/* Contenedor principal */
-.container {
-    display: flex;
     height: 100vh;
     background: linear-gradient(135deg, #007BFF 25%, #66B2FF 25%, #66B2FF 50%, #99CCFF 50%, #99CCFF 75%, #007BFF 75%);
-    background-size: 300% 300%; /* Aumentamos el tamaño del fondo para que tenga más espacio para moverse */
-    animation: moveBackground 10s linear infinite; /* Animación del fondo */
+    background-size: 300% 300%;
+    animation: gradient 30s linear infinite;
+    display: flex;
+    flex-direction: column; /* Para organizar el contenido verticalmente */
+    height: 100vh; /* Ocupa toda la pantalla */
 }
 
-/* Keyframes para mover el fondo */
-@keyframes moveBackground {
-    0% {
-        background-position: 0% 0%; /* Posición inicial del fondo */
-    }
-    100% {
-        background-position: 100% 100%; /* Posición final del fondo */
-    }
+/* Animación del fondo */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
 }
 
-/* Sidebar */
-.sidebar {
-    width: 25%;
+
+/* Estilos para la barra de navegación */
+.navbar {
+    padding: 20px;
     background-color: #004494;
     color: white;
-    padding: 20px;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box; /* Asegura que padding se calcule correctamente */
+}
+
+.navbar .logo {
+    display: flex;
     align-items: center;
 }
 
-/* Información del usuario */
-.user-info {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.profile-pic {
-    width: 80px;
-    height: 80px;
+.navbar .profile-pic {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
-h2 {
+.navbar h2 {
     margin: 0;
     font-size: 1.5em;
 }
 
-.menu {
-    width: 100%;
-}
-
-.menu h3 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.menu ul {
+.nav-links {
     list-style: none;
-    padding: 0;
+    display: flex;
+    gap: 30px; /* Aumenta el espacio entre los elementos */
 }
 
-.menu ul li {
-    margin-bottom: 10px;
+.nav-links li {
+    margin: 0;
 }
 
-.menu ul li a {
+.nav-links a {
     color: white;
     text-decoration: none;
     font-size: 1em;
+    transition: background-color 0.4s ease, color 0.4s ease; /* Transición suave */
 }
 
-.menu ul li a:hover {
-    text-decoration: underline;
+.nav-links a:hover {
+    background-color: #99CCFF; /* Un azul claro y suave */
+    color: #003366; /* Azul oscuro para el texto, manteniendo el contraste suave */
+    border-radius: 5px; /* Redondea las esquinas suavemente */
 }
-
-/* Contenido principal */
 .main-content {
-    width: 75%;
-    padding: 40px;
-    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinea los elementos desde el principio */
+    align-items: center; /* Centra los elementos horizontalmente */
     text-align: center;
+    padding: 20px;
+    height: auto; /* Deja que el contenedor tome el tamaño necesario */
+    margin-bottom: 50px; /* Añade margen inferior para separarlo del footer */
 }
 
+/* Título principal */
 .main-content h1 {
     font-size: 2.5em;
     color: #333;
+    margin-top: 20px; /* Añade margen superior */
+    margin-bottom: 30px;
 }
 
+/* Descripción principal */
 .main-content p {
-    margin: 10px 0 30px;
+    margin-bottom: 40px; /* Añade espacio debajo del párrafo */
     color: #555;
     font-size: 1.2em;
 }
 
+/* Contenedor de las tarjetas de algoritmos con Grid */
 .algorithms {
+   
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr); /* Siempre 3 columnas en pantallas grandes */
+    grid-template-rows: repeat(2, 1fr); /* Siempre 2 filas */
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding: 20px; /* Espaciado alrededor del contenedor */
+    justify-items: center; /* Centra las tarjetas horizontalmente */
+    align-items: center; /* Centra las tarjetas verticalmente */
+   
+    margin: 20px; /* Distancia de los lados y del footer */
+    box-sizing: border-box; /* Para que padding y margin se calculen correctamente */
+    overflow: hidden; /* Evita que aparezca scroll */
+
+    margin-top: 40px; /* Aumenta el margen superior para separar del párrafo */
+    width: 100%; /* Asegura que las tarjetas tomen todo el ancho */
 }
 
 .algorithm-card {
+    margin: 20px; /* Añade margen alrededor de cada tarjeta */
     background-color: #FDBA50;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
     color: #333;
-    font-size: 1.5em;
+    font-size: 1.2em;
     cursor: pointer;
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* Aumenta la altura de las tarjetas */
+    width: 90%; /* Asegura que las tarjetas ocupen todo el ancho disponible */
 }
 
+
+/* Efecto hover en la tarjeta */
 .algorithm-card:hover {
     transform: scale(1.05);
+    background-color: #FFA500;
 }
 
-/* Footer */
+
+
 footer {
+    padding-top: 20px; /* Añade un padding superior para separar el footer del contenido */
     background-color: #004494;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    position: absolute;
+    padding: 10px;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
 
-.sidebar.hidden {
-    width: 0;
-    padding: 0;
-    overflow: hidden; /* Oculta el contenido cuando el ancho es 0 */
-}
 
-/* Posición fija del botón para mostrar/ocultar la barra lateral */
-.toggle-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    padding: 10px;
-    font-size: 1.5em;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 1000; /* Asegura que el botón esté siempre visible sobre el contenido */
-}
-
-.toggle-btn:hover {
-    background-color: #0056b3;
-}
-
-
-/* perfil.css */
-
-/* Transición suave para la barra lateral */
-.sidebar {
-    width: 25%;
-    background-color: #004494;
-    color: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    transition: opacity 0.5s ease, width 1s ease, padding 1s ease; /* La barra lateral tarda más en ocultarse */
-}
-
-.sidebar.hidden {
-    opacity: 0;
-    width: 0;
-    padding: 0;
-    overflow: hidden; /* Oculta el contenido */
-}
-
-/* Transición del contenido principal */
-.main-content {
-    width: calc(100% - 25%);
-    padding: 40px;
-    color: #333;
-    text-align: center;
-    transition: width 1s ease; /* Solo el ancho cambiará suavemente */
-}
-
-/* Aseguramos que los algoritmos no se vuelvan transparentes */
-.algorithms {
-    opacity: 1; /* Se mantiene completamente visible */
-}
-
-/* Estilo para la tarjeta con Flexbox */
-.algorithm-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra verticalmente el contenido */
-    align-items: center;     /* Centra horizontalmente el contenido */
-    background-color: #FDBA50;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: bold;
-    color: #333;
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    height: 300px; /* Aumenta un poco la altura de la tarjeta para dar más espacio */
-    position: relative; /* Necesario para la animación */
-}
-
-/* Estilo ajustado para el texto "Burbuja" */
-#texto-burbuja {
-    font-size: 1.2em; /* Reduce el tamaño del texto */
-    margin-bottom: 10px; /* Añade espacio inferior al texto */
-    transition: transform 0.5s ease; /* Transición suave para el movimiento */
-}
-
-/* Cuando el cursor esté sobre la tarjeta, desplaza el texto hacia abajo */
-.algorithm-card:hover #texto-burbuja {
-    transform: translateY(30px); /* Mueve el texto 30px hacia abajo */
-}
-
-/* Estilo ajustado para el GIF */
-#gif {
-    display: none; /* Oculto inicialmente */
-    max-width: 150px; /* Ajusta el tamaño máximo del GIF para que quepa en el recuadro */
-    transition: all 0.5s ease; /* Transición suave para la aparición */
-}
-
-/* Mostrar el GIF con animación al hacer hover en la tarjeta */
-.algorithm-card:hover #gif {
-    display: block; /* El GIF aparece suavemente */
-    animation: scaleUp 0.6s ease forwards; /* Aplica la animación de escalado */
-}
-
-/* Definimos la animación de escalado */
-@keyframes scaleUp {
-    0% {
-        transform: scale(0.5); /* Empieza desde la mitad de su tamaño */
-        opacity: 0; /* Inicia con opacidad baja */
+/* Responsive design: Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .algorithms {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas más pequeñas */
+        grid-template-rows: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta las filas automáticamente */
+        height: auto; /* Permite que el contenido se ajuste a la altura disponible */
+        margin: 10px; /* Reduce el margen en pantallas pequeñas */
     }
-    100% {
-        transform: scale(1); /* Termina con el tamaño normal */
-        opacity: 1; /* Aparece completamente */
+
+    .algorithm-card {
+        font-size: 1em; /* Ajusta el tamaño del texto en pantallas pequeñas */
+    }
+
+    .navbar, footer {
+        padding: 10px; /* Reduce el padding en pantallas pequeñas */
     }
 }
