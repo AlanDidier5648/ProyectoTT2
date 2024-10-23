@@ -50,7 +50,7 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 30px; /* Aumenta el espacio entre los elementos */
 }
 
 .nav-links li {
@@ -61,10 +61,13 @@ body {
     color: white;
     text-decoration: none;
     font-size: 1em;
+    transition: background-color 0.4s ease, color 0.4s ease; /* Transición suave */
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
+    background-color: #99CCFF; /* Un azul claro y suave */
+    color: #003366; /* Azul oscuro para el texto, manteniendo el contraste suave */
+    border-radius: 5px; /* Redondea las esquinas suavemente */
 }
 .main-content {
     display: flex;
