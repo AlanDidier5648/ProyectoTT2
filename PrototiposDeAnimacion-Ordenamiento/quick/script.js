@@ -1,9 +1,7 @@
-
-
 // Inicializa Chart.js
 const ctx = document.getElementById('bubbleChart').getContext('2d');
 let data = []; // Inicializamos el array vacío
-let steps = []; // Almacena los pasos del algoritmo
+let quickSteps = []; // Almacena los pasos del algoritmo Quick Sort
 let currentStep = 0; // Controla el paso actual
 
 const bubbleChart = new Chart(ctx, {
@@ -125,27 +123,107 @@ function generateRandomNumbers() {
     bubbleChart.update(); // Refrescar el gráfico para mostrar los cambios
 }
 
+// Función para ordenar por Quick Sort paso a paso y registrar los índices comparados
+function quickSortStepByStep(arr) {
+    let steps = [];
 
-// Función para iniciar el algoritmo de ordenamiento
-function startSorting() {
-    bubbleSortStepByStep(data); // Llamar al Bubble Sort paso a paso
-    currentStep = 0; // Iniciar desde el primer paso
-    showStep(currentStep); // Mostrar el primer paso
+    function partition(arr, low, high) {
+        let pivot = arr[high]; // Seleccionar el último elemento como pivote
+        let i = low - 1;
+
+        for (let j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                [arr[i], arr[j]] = [arr[j], arr[i]]; // Intercambiar
+                steps.push({ array: [...arr], compared: [i, j] });
+            }
+        }
+        [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]]; // Colocar el pivote en su lugar
+        steps.push({ array: [...arr], compared: [i + 1, high] });
+
+        return i + 1; // Retornar el índice del pivote
+    }
+
+    function quickSort(arr, low, high) {
+        if (low < high) {
+            let pi = partition(arr, low, high); // Particionar el array
+            quickSort(arr, low, pi - 1); // Ordenar la parte izquierda
+            quickSort(arr, pi + 1, high); // Ordenar la parte derecha
+        }
+    }
+
+    quickSort(arr, 0, arr.length - 1);
+    return steps;
 }
 
-// Aquí colocas el código que mencionas
-document.getElementById('generateRandom').addEventListener('click', function() {
-    generateRandomNumbers(); // Genera los números aleatorios
-    startSorting(); // Inicia el algoritmo paso a paso con los números generados
-});
+// Función para mostrar el paso actual y cambiar el color de las barras comparadas
+function showStep(stepIndex) {
+    const step = quickSteps[stepIndex]; // Obtener el paso actual
+    const comparedIndexes = step.compared; // Índices de los números comparados
 
-// Función que registra los pasos del algoritmo
-function bubbleSortStepByStep(arr) {
-    // Aquí va tu lógica de Bubble Sort...
+    // Creamos una copia del array de colores donde todas las barras serán de color estándar
+    let barColors = new Array(step.array.length).fill('rgba(75, 192, 192, 0.8)'); // Color estándar (turquesa)
+
+    // Cambiamos el color de los números que se están comparando a escarlata brillante
+    comparedIndexes.forEach(index => {
+        barColors[index] = 'rgba(255, 36, 0, 0.8)'; // Escarlata brillante para los números comparados
+    });
+
+    // Actualizamos los datos y los colores en el gráfico
+    bubbleChart.data.datasets[0].data = step.array; // Actualiza los datos
+    bubbleChart.data.datasets[0].backgroundColor = barColors; // Actualiza los colores de las barras
+    bubbleChart.update(); // Refresca el gráfico
+
+    const narration = document.getElementById('narration');
+    const compared = comparedIndexes.map(i => step.array[i]).join(', ');
+    narration.innerHTML = `Paso ${stepIndex + 1}: Comparando elementos: ${compared}`;
+
+    // Agregar el paso a la lista con animación
+    const stepList = document.getElementById('stepList');
+    const listItem = document.createElement('li');
+    listItem.innerText = `Paso ${stepIndex + 1}: Comparando ${compared}`;
+    stepList.appendChild(listItem);
+
+    // Añadir la clase `.show` después de un pequeño retraso para activar la animación
+    setTimeout(() => {
+        listItem.classList.add('show');
+    }, 100); // Retraso para que se note la animación
 }
 
-// Funciones de control de pasos como nextStep y prevStep
+// Funciones de control de pasos
+document.getElementById('prevButton').addEventListener('click', prevStep);
 
+document.getElementById('nextButton').addEventListener('click', nextStep);
+
+// Función que se ejecuta al presionar "Paso siguiente"
+function nextStep() {
+    // Asegurarse de que los datos se tomen directamente desde los inputs
+    const inputs = document.querySelectorAll('#dynamicInputs input');
+    inputs.forEach((input, index) => {
+        let value = parseInt(input.value) || 0;
+        data[index] = value;  // Actualizar el array `data` con los valores actuales de los inputs
+    });
+
+    // Verificar si los pasos del algoritmo ya fueron generados
+    if (quickSteps.length === 0) {
+        // Si no hay pasos generados, ejecutamos el algoritmo con los datos actuales
+        quickSteps = quickSortStepByStep(data);
+        currentStep = 0; // Reiniciamos los pasos
+    }
+
+    if (currentStep < quickSteps.length - 1) {
+        currentStep++;
+        showStep(currentStep); // Mostrar el siguiente paso
+    }
+}
+
+// Retroceder al paso anterior
+function prevStep() {
+    if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+    }
+}
 
 // Función para limpiar todos los inputs generados y poner los valores de las barras en cero
 function clearInputs() {
@@ -162,95 +240,20 @@ function clearInputs() {
     bubbleChart.update(); // Refrescar el gráfico para mostrar los cambios
 }
 
-
-
-function bubbleSortStepByStep(arr) {
-    steps = []; // Reinicia los pasos
-    let n = arr.length;
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < n - i - 1; j++) {
-            steps.push({ array: [...arr], compared: [j, j + 1], swap: false });
-            if (arr[j] > arr[j + 1]) {
-                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-                steps.push({ array: [...arr], compared: [j, j + 1], swap: true });
-            }
-        }
-    }
-    console.log("Steps generated:", steps); // Verifica los pasos generados
-}
-
-
-function showStep(stepIndex) {
-    const step = steps[stepIndex]; // Obtiene el paso actual
-    const comparedIndexes = step.compared; // Índices de los números comparados
-
-    // Creamos una copia del array de colores donde todas las barras serán de color estándar
-    let barColors = new Array(step.array.length).fill('rgba(75, 192, 192, 0.8)'); // Color estándar (turquesa)
-
-    // Cambiamos el color de los números que se están comparando a escarlata brillante
-    barColors[comparedIndexes[0]] = 'rgba(255, 36, 0, 0.8)'; // Escarlata brillante para el primer número
-    barColors[comparedIndexes[1]] = 'rgba(255, 36, 0, 0.8)'; // Escarlata brillante para el segundo número
-
-    // Actualizamos los datos y los colores en el gráfico
-    bubbleChart.data.datasets[0].data = step.array; // Actualiza los datos
-    bubbleChart.data.datasets[0].backgroundColor = barColors; // Actualiza los colores de las barras
-    bubbleChart.update(); // Refresca el gráfico
-
-    const narration = document.getElementById('narration');
-    const num1 = step.array[step.compared[0]];
-    const num2 = step.array[step.compared[1]];
-
-    // Verificar si hubo intercambio y mostrar el mensaje adecuado
-    let stepMessage;
-    if (step.swap) {
-        stepMessage = `Se compararon ${num1} y ${num2}. Se intercambiaron.`;
-    } else {
-        stepMessage = `Se compararon ${num1} y ${num2}.`;
-    }
-    narration.innerHTML = stepMessage;
-
-    // Actualizar las etiquetas debajo de las barras
-    bubbleChart.data.labels = step.array.map(String); 
-    bubbleChart.update();
-
-    // Agregar el paso a la lista con animación
-    const stepList = document.getElementById('stepList');
-    const listItem = document.createElement('li');
-    listItem.innerText = `Paso ${stepIndex + 1}: ${stepMessage}`;
-    stepList.appendChild(listItem);
-
-    // Añadir la clase `.show` después de un pequeño retraso para activar la animación
-    setTimeout(() => {
-        listItem.classList.add('show');
-    }, 100); // Retraso para que se note la animación
-}
-
-
-
-// Funcionalidad paso a paso
-document.getElementById('nextButton').addEventListener('click', nextStep);
-document.getElementById('prevButton').addEventListener('click', prevStep);
-
-// Avanzar al siguiente paso
-function nextStep() {
-    if (currentStep < steps.length - 1) {
-        currentStep++;
-        showStep(currentStep);
-    }
-}
-
-// Retroceder al paso anterior
-function prevStep() {
-    if (currentStep > 0) {
-        currentStep--;
-        showStep(currentStep);
-    }
-}
-
-
-// Iniciar el ordenamiento
+// Función para iniciar el algoritmo de ordenamiento por Quick Sort
 function startSorting() {
-    bubbleSortStepByStep(data);
-    currentStep = 0;
-    showStep(currentStep);
+    quickSteps = quickSortStepByStep(data); // Genera los pasos del algoritmo de Quick Sort
+    currentStep = 0; // Reiniciar el contador de pasos
+    showStep(currentStep); // Mostrar el primer paso
 }
+
+// Iniciar el algoritmo cuando se generen los números aleatorios
+document.getElementById('generateRandom').addEventListener('click', function() {
+    generateRandomNumbers(); // Genera los números aleatorios
+    startSorting(); // Inicia el algoritmo de Quick Sort paso a paso
+});
+
+// Inicializar el algoritmo al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    startSorting(); // Inicia el algoritmo de Quick Sort
+});

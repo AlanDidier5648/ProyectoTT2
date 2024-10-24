@@ -1,9 +1,7 @@
-
-
 // Inicializa Chart.js
 const ctx = document.getElementById('bubbleChart').getContext('2d');
 let data = []; // Inicializamos el array vacío
-let steps = []; // Almacena los pasos del algoritmo
+let selectionSteps = []; // Almacena los pasos del algoritmo de selección
 let currentStep = 0; // Controla el paso actual
 
 const bubbleChart = new Chart(ctx, {
@@ -125,63 +123,30 @@ function generateRandomNumbers() {
     bubbleChart.update(); // Refrescar el gráfico para mostrar los cambios
 }
 
-
-// Función para iniciar el algoritmo de ordenamiento
-function startSorting() {
-    bubbleSortStepByStep(data); // Llamar al Bubble Sort paso a paso
-    currentStep = 0; // Iniciar desde el primer paso
-    showStep(currentStep); // Mostrar el primer paso
-}
-
-// Aquí colocas el código que mencionas
-document.getElementById('generateRandom').addEventListener('click', function() {
-    generateRandomNumbers(); // Genera los números aleatorios
-    startSorting(); // Inicia el algoritmo paso a paso con los números generados
-});
-
-// Función que registra los pasos del algoritmo
-function bubbleSortStepByStep(arr) {
-    // Aquí va tu lógica de Bubble Sort...
-}
-
-// Funciones de control de pasos como nextStep y prevStep
-
-
-// Función para limpiar todos los inputs generados y poner los valores de las barras en cero
-function clearInputs() {
-    const inputs = document.querySelectorAll('#dynamicInputs input');
-    inputs.forEach((input, index) => {
-        input.value = ''; // Limpia el valor del input
-        data[index] = 0; // Restablece el valor de los datos a 0 para las barras
-    });
-
-    // Actualizar los datos de las barras a 0
-    bubbleChart.data.datasets[0].data = data.map(() => 0); // Todos los valores a 0
-    bubbleChart.data.labels = data.map(() => '0'); // Actualizar las etiquetas a '0'
-
-    bubbleChart.update(); // Refrescar el gráfico para mostrar los cambios
-}
-
-
-
-function bubbleSortStepByStep(arr) {
-    steps = []; // Reinicia los pasos
+// Función para ordenar por selección paso a paso y registrar los índices comparados
+function selectionSortStepByStep(arr) {
+    let steps = [];
     let n = arr.length;
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < n - i - 1; j++) {
-            steps.push({ array: [...arr], compared: [j, j + 1], swap: false });
-            if (arr[j] > arr[j + 1]) {
-                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-                steps.push({ array: [...arr], compared: [j, j + 1], swap: true });
+    
+    for (let i = 0; i < n - 1; i++) {
+        let minIndex = i;
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
             }
         }
+        if (minIndex !== i) {
+            [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+        }
+        // Almacenamos el estado del array y los índices que se comparan en este paso
+        steps.push({ array: [...arr], compared: [i, minIndex] });
     }
-    console.log("Steps generated:", steps); // Verifica los pasos generados
+    return steps;
 }
 
-
+// Función para mostrar el paso actual y cambiar el color de las barras comparadas
 function showStep(stepIndex) {
-    const step = steps[stepIndex]; // Obtiene el paso actual
+    const step = selectionSteps[stepIndex]; // Obtener el paso actual
     const comparedIndexes = step.compared; // Índices de los números comparados
 
     // Creamos una copia del array de colores donde todas las barras serán de color estándar
@@ -225,17 +190,30 @@ function showStep(stepIndex) {
     }, 100); // Retraso para que se note la animación
 }
 
-
-
-// Funcionalidad paso a paso
-document.getElementById('nextButton').addEventListener('click', nextStep);
+// Funciones de control de pasos
 document.getElementById('prevButton').addEventListener('click', prevStep);
 
-// Avanzar al siguiente paso
+document.getElementById('nextButton').addEventListener('click', nextStep);
+
+// Función que se ejecuta al presionar "Paso siguiente"
 function nextStep() {
-    if (currentStep < steps.length - 1) {
+    // Asegurarse de que los datos se tomen directamente desde los inputs
+    const inputs = document.querySelectorAll('#dynamicInputs input');
+    inputs.forEach((input, index) => {
+        let value = parseInt(input.value) || 0;
+        data[index] = value;  // Actualizar el array `data` con los valores actuales de los inputs
+    });
+
+    // Verificar si los pasos del algoritmo ya fueron generados
+    if (selectionSteps.length === 0) {
+        // Si no hay pasos generados, ejecutamos el algoritmo con los datos actuales
+        selectionSteps = selectionSortStepByStep(data);
+        currentStep = 0; // Reiniciamos los pasos
+    }
+
+    if (currentStep < selectionSteps.length - 1) {
         currentStep++;
-        showStep(currentStep);
+        showStep(currentStep); // Mostrar el siguiente paso
     }
 }
 
@@ -247,10 +225,35 @@ function prevStep() {
     }
 }
 
+// Función para limpiar todos los inputs generados y poner los valores de las barras en cero
+function clearInputs() {
+    const inputs = document.querySelectorAll('#dynamicInputs input');
+    inputs.forEach((input, index) => {
+        input.value = ''; // Limpia el valor del input
+        data[index] = 0; // Restablece el valor de los datos a 0 para las barras
+    });
 
-// Iniciar el ordenamiento
-function startSorting() {
-    bubbleSortStepByStep(data);
-    currentStep = 0;
-    showStep(currentStep);
+    // Actualizar los datos de las barras a 0
+    bubbleChart.data.datasets[0].data = data.map(() => 0); // Todos los valores a 0
+    bubbleChart.data.labels = data.map(() => '0'); // Actualizar las etiquetas a '0'
+
+    bubbleChart.update(); // Refrescar el gráfico para mostrar los cambios
 }
+
+// Función para iniciar el algoritmo de ordenamiento por selección
+function startSorting() {
+    selectionSteps = selectionSortStepByStep(data); // Genera los pasos del algoritmo de selección
+    currentStep = 0; // Reiniciar el contador de pasos
+    showStep(currentStep); // Mostrar el primer paso
+}
+
+// Iniciar el algoritmo cuando se generen los números aleatorios
+document.getElementById('generateRandom').addEventListener('click', function() {
+    generateRandomNumbers(); // Genera los números aleatorios
+    startSorting(); // Inicia el algoritmo de selección paso a paso
+});
+
+// Inicializar el algoritmo al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    startSorting(); // Inicia el algoritmo de selección
+});
