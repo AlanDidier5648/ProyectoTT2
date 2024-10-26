@@ -1,22 +1,48 @@
-/* formulario.css */
-
-/* Estilos para el cuerpo y el contenedor */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+:root {
+    --primary-color: #0056b3;  /* Azul oscuro */
+    --primary-hover: #66B2FF;  /* Azul claro para hover */
+    --background-color: #004494; /* Color de fondo del footer y header */
+    --text-color: white;  /* Color blanco para el texto */
 }
 
+html, body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Elimina el scroll */
+}
+
+/* Fondo animado en el contenedor principal */
 .container {
+    height: 100vh;
+    background: linear-gradient(135deg, #007BFF 25%, #66B2FF 25%, #66B2FF 50%, #99CCFF 50%, #99CCFF 75%, #007BFF 75%);
+    background-size: 300% 300%;
+    animation: gradient 30s linear infinite; /* Fondo animado */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-/* Estilos para el formulario */
+/* Animación del fondo */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* Estilos del header */
+header h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Formulario */
 form {
     background-color: #ffffff;
     padding: 30px;
@@ -24,7 +50,7 @@ form {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     width: 100%;
-    text-align: left; /* Alinea todo el texto hacia la izquierda */
+    text-align: left;
 }
 
 label {
@@ -32,7 +58,6 @@ label {
     margin-bottom: 10px;
     font-size: 1em;
     color: #333;
-    text-align: left; /* Alinea las etiquetas a la izquierda */
 }
 
 input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
@@ -41,14 +66,14 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="password
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
     font-size: 1em;
+    box-sizing: border-box;
 }
 
 input[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #007BFF;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -58,61 +83,47 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: var(--primary-hover);
 }
 
-/* Estilos para el título */
-header h1 {
-    color: #007BFF;
-    text-align: center; /* El título sigue centrado */
-    margin-bottom: 20px;
-}
-
-/* Asegurando que el formulario y contenido estén perfectamente centrados */
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-
-/* Animación de fade-in con desplazamiento lateral */
+/* Animación de fade-in con desplazamiento */
 @keyframes slideInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-50px); /* Comienza desplazado hacia la izquierda */
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0); /* Llega a su posición original */
-    }
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(50px); /* Aparece desde abajo */
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0); /* Llega a su posición original */
-    }
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Aplicación de las animaciones a los elementos del formulario */
-.slide-left {
-    opacity: 0;
-    animation: slideInLeft 1s ease-out forwards;
+.slide-left { opacity: 0; animation: slideInLeft 1s ease-out forwards; }
+.slide-up { opacity: 0; animation: slideInUp 1s ease-out forwards; }
+.slide-up-delay { opacity: 0; animation: slideInUp 1.5s ease-out forwards; }
+
+/* Footer fijo en la parte inferior */
+footer {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
-.slide-up {
-    opacity: 0;
-    animation: slideInUp 1s ease-out forwards;
+/* Media Queries para diseño responsive */
+@media (max-width: 768px) {
+    header h1 { font-size: 2rem; }
+    form { padding: 20px; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="password"] { font-size: 0.9em; }
+    input[type="submit"] { font-size: 1em; }
 }
 
-.slide-up-delay {
-    opacity: 0;
-    animation: slideInUp 1.5s ease-out forwards;
+@media (max-width: 480px) {
+    header h1 { font-size: 1.8rem; }
+    form { padding: 15px; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="password"] { font-size: 0.85em; }
+    input[type="submit"] { font-size: 0.9em; padding: 10px; }
+    .container { padding: 10px; }
 }

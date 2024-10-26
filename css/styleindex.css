@@ -1,19 +1,44 @@
 /* Definición de colores clave */
 :root {
-    --primary-color: #0056b3;  /* Azul oscuro */
-    --primary-hover: #66B2FF;  /* Azul claro para hover */
-    --background-color: #004494; /* Color de fondo del footer y header */
-    --text-color: white;  /* Color blanco para el texto */
+    --primary-color: #0056b3;
+    --primary-hover: #66B2FF;
+    --background-color: #004494;
+    --text-color: white;
 }
 
-html{
+html, body {
     font-family: "Raleway", sans-serif;
     color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Elimina el scroll */
 }
 
+/* Fondo animado en el contenedor principal */
+.container {
+    height: 100vh;
+    background: linear-gradient(135deg, #007BFF 25%, #66B2FF 25%, #66B2FF 50%, #99CCFF 50%, #99CCFF 75%, #007BFF 75%);
+    background-size: 300% 300%;  /* Ajusta el tamaño de desplazamiento */
+    animation: gradient 30s linear infinite; /* Fondo animado */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
 
+/* Animación del fondo */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* Estilos del header */
 header h1 {
-    font-size: 3rem;  /* Cambiado a rem para mayor escalabilidad */
+    font-size: 3rem;
     font-weight: bold;
     margin: 0;
 }
@@ -23,19 +48,19 @@ header p {
     margin: 5px 0;
 }
 
-/* Estilos para el logo */
+/* Logo */
 .logo {
-    width: 200px;    /* Ajusta el tamaño del logo según sea necesario */
-    height: auto;    /* Mantiene la proporción de la imagen */
+    width: 200px;
+    height: auto;
     display: block;
-    margin: 0 auto;  /* Centra la imagen dentro del contenedor */
-    padding-bottom: 20px;  /* Añade espacio debajo de la imagen */
+    margin: 0 auto;
+    padding-bottom: 20px;
 }
 
-/* Botón que contrasta con el fondo */
+/* Botón con contraste */
 .btn {
     display: inline-block;
-    background-color: var(--primary-color);  /* Uso de variables para mantener consistencia */
+    background-color: var(--primary-color);
     color: var(--text-color);
     padding: 12px 25px;
     text-align: center;
@@ -48,52 +73,41 @@ header p {
 }
 
 .btn:hover {
-    background-color: var(--primary-hover);  /* Azul más claro al hacer hover */
+    background-color: var(--primary-hover);
     transform: translateY(-3px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Contenedor principal (agregando espacio interno y centrado) */
-.container {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;  /* Asegura que siempre ocupa la pantalla completa */
-    text-align: center;
- 
-}
-
-
+/* Animación de deslizamiento */
 @keyframes slideUpFade {
     0% {
         opacity: 0;
-        transform: translateY(30px); /* Inicia desde abajo */
+        transform: translateY(30px);
     }
     100% {
         opacity: 1;
-        transform: translateY(0); /* Termina en su posición original */
+        transform: translateY(0);
     }
 }
 
-/* Aplicación de la animación al logo, h1 y p */
-.logo, header h1, header p ,a{
-    opacity: 0; /* Empiezan invisibles */
-    animation: slideUpFade 1s ease-out forwards; /* Todos aparecerán con la misma animación */
+.logo, header h1, header p, .btn {
+    opacity: 0;
+    animation: slideUpFade 1s ease-out forwards;
 }
 
-/* Retraso para el párrafo, opcional si quieres que aparezca después */
 header p {
-    animation-delay: 0.5s; /* El párrafo aparecerá medio segundo después, puedes ajustar este valor o eliminarlo */
+    animation-delay: 0.5s;
 }
-/* Footer optimizado con flexbox para estar siempre en la parte inferior */
+
+/* Footer fijo en la parte inferior */
 footer {
     background-color: var(--background-color);
     color: var(--text-color);
     text-align: center;
     padding: 10px;
     width: 100%;
-    margin-top: auto;
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
 }

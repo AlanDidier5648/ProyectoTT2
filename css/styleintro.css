@@ -5,30 +5,52 @@
     --text-color: white;  /* Color blanco para el texto */
 }
 
-html{
+html, body {
     font-family: "Raleway", sans-serif;
     color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Elimina el scroll */
 }
 
-
-
+/* Fondo animado aplicado al contenedor */
 .container {
-    padding: 20px;
+    height: 100vh;
+    background: linear-gradient(135deg, #007BFF 25%, #66B2FF 25%, #66B2FF 50%, #99CCFF 50%, #99CCFF 75%, #007BFF 75%);
+    background-size: 300% 300%;
+    animation: gradient 30s linear infinite; /* Fondo animado */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;  /* Asegura que siempre ocupa la pantalla completa */
+    padding: 20px;
     text-align: center;
- 
+    box-sizing: border-box;
 }
 
+/* Animación del fondo */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
 
+/* Estilos del header */
+header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+}
 
-/* Botón que contrasta con el fondo */
+header p {
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+/* Botones */
 .btn {
     display: inline-block;
-    background-color: var(--primary-color);  /* Uso de variables para mantener consistencia */
+    background-color: var(--primary-color);
     color: var(--text-color);
     padding: 12px 25px;
     text-align: center;
@@ -41,42 +63,69 @@ html{
 }
 
 .btn:hover {
-    background-color: var(--primary-hover);  /* Azul más claro al hacer hover */
+    background-color: var(--primary-hover);
     transform: translateY(-3px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-
+/* Animación de deslizamiento */
 @keyframes slideUpFade {
     0% {
         opacity: 0;
-        transform: translateY(30px); /* Inicia desde abajo */
+        transform: translateY(30px);
     }
     100% {
         opacity: 1;
-        transform: translateY(0); /* Termina en su posición original */
+        transform: translateY(0);
     }
 }
 
-/* Aplicación de la animación al logo, h1 y p */
-.logo, header h1, header p ,a{
-    opacity: 0; /* Empiezan invisibles */
-    animation: slideUpFade 1s ease-out forwards; /* Todos aparecerán con la misma animación */
+header h1, header p, .btn {
+    opacity: 0;
+    animation: slideUpFade 1s ease-out forwards;
 }
 
-/* Retraso para el párrafo, opcional si quieres que aparezca después */
 header p {
-    animation-delay: 0.5s; /* El párrafo aparecerá medio segundo después, puedes ajustar este valor o eliminarlo */
+    animation-delay: 0.5s;
 }
-/* Footer optimizado con flexbox para estar siempre en la parte inferior */
+
+/* Footer fijo en la parte inferior */
 footer {
     background-color: var(--background-color);
     color: var(--text-color);
     text-align: center;
     padding: 10px;
     width: 100%;
-    margin-top: auto;
-    position: relative;
+    position: absolute;
+    bottom: 0;
 }
 
+/* Media Queries para hacerlo responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    header p {
+        font-size: 1rem;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
 
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    header p {
+        font-size: 0.9rem;
+    }
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    .container {
+        padding: 10px;
+    }
+}
