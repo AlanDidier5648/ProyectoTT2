@@ -21,24 +21,36 @@ body {
 /* Contenedor principal usando Grid */
 .grid-container {
     display: grid;
-    grid-template-rows: auto auto; /* Las filas se ajustan automáticamente según el contenido */
+    grid-template-rows: auto auto; /* Filas se ajustan automáticamente según el contenido */
     width: 100%; /* Usa el 100% del ancho disponible */
     max-width: 1200px; /* Limita el ancho máximo en pantallas grandes */
     gap: 20px;
-    margin: 100px auto 0 auto; /* Centra el contenedor */
+    margin: 100px auto 0 auto; /* Centra el contenedor horizontalmente */
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    box-sizing: border-box;
+    height: auto; /* Deja que la altura se ajuste automáticamente */
+    min-height: 50vh; /* Opcional: Define una altura mínima */
 }
 
-/* Sección Superior e Inferior */
+/* Centrado del contenedor principal dentro de la sección inferior */
+.inferior {
+    display: grid;
+    place-items: center; /* Centra el contenido en ambas direcciones */
+    height: 100%; /* Ocupa todo el espacio de la sección inferior */
+}
+
+/* Asegurarse de que cada sección también se expanda según el contenido */
 .section {
     padding: 20px;
     border-radius: 10px;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
+    width: 100%; /* Mantener el ancho completo */
+    height: auto; /* Ajusta la altura según el contenido */
+    box-sizing: border-box;
 }
 
 /* Estilos para la barra de navegación */
@@ -96,6 +108,23 @@ body {
     color: #003366;
     border-radius: 5px;
 }
+
+/* Botones de control */
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: teal;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004d40;
+}
+
+
 
 /* Media Queries */
 @media (max-width: 768px) {

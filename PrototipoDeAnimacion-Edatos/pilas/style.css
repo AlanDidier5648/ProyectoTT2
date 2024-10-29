@@ -147,7 +147,7 @@ button:hover {
 .nodo {
     width: 100px;
     height: 40px;
-    background-color: #004494;; /* Fondo del nodo */
+    background-color: #004494; /* Fondo del nodo */
     border-radius: 5px;
     display: flex;
     align-items: center;
