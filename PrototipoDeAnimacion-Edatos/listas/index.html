@@ -42,11 +42,22 @@
                 <!-- Sección Inferior para la visualización del algoritmo -->
                 <div class="section inferior">
                     <h2>Visualización del Algoritmo</h2>
+                    <div id="contenedor-nodos">
+                        <div id="lista-enlazada"></div>
+                    </div>
+
+                    <div class="input-buttons">
+                        <button id="addAfterSelected" onclick="addAfterSelected()">Añadir Después de Nodo Seleccionado</button>
+                        <button id="addBeforeSelected" onclick="addBeforeSelected()">Añadir Antes de Nodo Seleccionado</button>
+                        <button id="deleteSelectedNode" onclick="deleteSelectedNode()">Borrar Nodo Seleccionado</button>
+                    </div>
+                    
                 
                 </div>
             </div>
             <!-- Fin del grid-container -->
     
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.min.js"></script>
 </body>
 </html>

@@ -1,190 +1,325 @@
-let array = [];
+// Seleccionar los elementos necesarios
+const numCountInput = document.getElementById("numCount");
+const dynamicInputsContainer = document.getElementById("dynamicInputs");
+const searchValueInput = document.getElementById("searchValue");
 
-function generateSortedArray() {
-    const container = document.getElementById('array-container');
-    container.innerHTML = '';
+let numbers = []; // Almacenará los números generados
+let target; // Número a buscar
+let currentStep = 0; // Controlará el paso actual
+let low, high, mid; // Variables de búsqueda binaria
 
-    // Generar un array ordenado de valores aleatorios
-    array = [];
-    for (let i = 0; i < 10; i++) {
-        const value = Math.floor(Math.random() * 200) + 50; // Valores entre 50 y 250
-        array.push(value);
-    }
-
-    array.sort((a, b) => a - b); // Ordenar el array
-
-    // Crear círculos de visualización junto con los números
-    array.forEach(value => {
-        const circleContainer = document.createElement('div');
-        circleContainer.classList.add('array-circle-container');
-
-        const circle = document.createElement('div');
-        circle.classList.add('array-circle');
-        circle.innerText = value;
-
-        circleContainer.appendChild(circle);
-        container.appendChild(circleContainer);
-    });
+// Función para inicializar inputs en 0 al cargar la página
+function initializeInputs() {
+    searchValueInput.value = 0;
+    numCountInput.value = 0;
 }
 
-async function binarySearch() {
-    const searchValue = parseInt(document.getElementById('search-value').value);
-    const circles = document.getElementsByClassName('array-circle');
-    
-    if (isNaN(searchValue)) {
-        alert("Por favor, introduce un número válido.");
+// Función para generar inputs dinámicos
+function generateDynamicInputs() {
+    dynamicInputsContainer.innerHTML = ""; // Limpiar inputs anteriores
+
+    const count = parseInt(numCountInput.value, 10); // Obtener el número solicitado
+
+    // Verificar si el número excede el límite de 10
+    if (count > 10) {
+        Swal.fire({
+            title: 'Límite excedido',
+            text: 'Solo puedes generar un máximo de 10 números.',
+            icon: 'warning',
+            confirmButtonText: 'Entendido'
+        });
         return;
     }
 
-    let left = 0;
-    let right = array.length - 1;
+    // Crear los nuevos inputs dinámicos
+    const inputs = [];
+    for (let i = 0; i < count; i++) {
+        const input = document.createElement("input");
+        input.type = "number";
+        input.classList.add("dynamic-input");
+        input.placeholder = `Núm. ${i + 1}`;
+        dynamicInputsContainer.appendChild(input);
+        inputs.push(input);
+    }
 
-    while (left <= right) {
-        const mid = Math.floor((left + right) / 2);
+    // Animar los inputs generados
+    anime({
+        targets: inputs,
+        translateY: [-20, 0],
+        opacity: [0, 1],
+        duration: 50,
+        delay: anime.stagger(50)
+    });
+}
 
-        // Resaltar el elemento medio que se está comparando
-        circles[mid].style.backgroundColor = 'yellow';
+// Función para generar números aleatorios en inputs dinámicos
+function generateRandomNumbersInInputs() {
+    const dynamicInputs = document.querySelectorAll("#dynamicInputs input");
 
-        await new Promise(resolve => setTimeout(resolve, 300)); // Pausa para visualización
+    // Asignar un valor aleatorio entre 0 y 100 a cada input
+    dynamicInputs.forEach(input => {
+        input.value = Math.floor(Math.random() * 101); // Número aleatorio entre 0 y 100
+    });
+}
 
-        if (array[mid] === searchValue) {
-            // Si encontramos el valor, resaltamos el círculo en verde
-            circles[mid].style.backgroundColor = 'green';
-            alert(`¡Valor ${searchValue} encontrado en el índice ${mid}!`);
+// Función para poner en cero todos los inputs
+function clearAllInputs() {
+    // Poner en cero el input de "Número a buscar" y "Cantidad de números"
+    document.getElementById("searchValue").value = 0;
+    document.getElementById("numCount").value = 0;
+
+    // Poner en cero todos los inputs generados dinámicamente
+    const dynamicInputs = document.querySelectorAll("#dynamicInputs input");
+    dynamicInputs.forEach(input => {
+        input.value = 0;
+    });
+}
+
+// Función para mostrar los números generados en figuras animadas
+function displayAnimatedFigures() {
+    const animatedContainer = document.getElementById("animatedNumbersContainer");
+    animatedContainer.innerHTML = ""; // Limpiar el contenedor
+
+    const dynamicInputs = document.querySelectorAll("#dynamicInputs input");
+
+    dynamicInputs.forEach(input => {
+        const number = input.value;
+        const figure = document.createElement("div");
+        figure.classList.add("animated-figure");
+        figure.innerText = number;
+        animatedContainer.appendChild(figure);
+        console.log("Figura creada con número:", number); // Verificar creación
+    });
+
+    // Aplicar animación a las figuras con anime.js
+    anime({
+        targets: '.animated-figure',
+        translateY: [-50, 0],
+        opacity: [0, 1],
+        scale: [0.5, 1],
+        duration: 600,
+        delay: anime.stagger(100)
+    });
+}
+
+
+function initializeBinarySearch() {
+    numbers = Array.from(document.querySelectorAll("#dynamicInputs input")).map(input => parseInt(input.value, 10));
+    numbers.sort((a, b) => a - b); // Ordenar los números para la búsqueda binaria
+    target = parseInt(document.getElementById("searchValue").value, 10); // Número que se buscará
+    low = 0;
+    high = numbers.length - 1;
+    currentStep = 0;
+    displayAnimatedFigures(); // Crear las figuras con los números ordenados
+}
+
+function nextStep() {
+    if (low <= high) {
+        mid = Math.floor((low + high) / 2);
+
+        // Animar la figura en análisis
+        animateCurrentStep(mid);
+
+        if (numbers[mid] === target) { 
+            highlightFound(mid); // Resaltar si se encuentra el número
             return;
-        } else if (array[mid] < searchValue) {
-            // Descartar la mitad izquierda
-            for (let i = left; i <= mid; i++) {
-                circles[i].style.backgroundColor = '#3498db'; // Restaurar color
-            }
-            left = mid + 1;
+        } else if (numbers[mid] < target) {
+            low = mid + 1; // Mover el límite inferior
         } else {
-            // Descartar la mitad derecha
-            for (let i = mid; i <= right; i++) {
-                circles[i].style.backgroundColor = '#3498db'; // Restaurar color
-            }
-            right = mid - 1;
+            high = mid - 1; // Mover el límite superior
         }
-    }
-
-    // Si el valor no se encuentra
-    alert(`Valor ${searchValue} no encontrado en el array.`);
-}
-
-
-function generateRandomNumber() {
-    // Generar un número aleatorio entre 1 y 100
-    const randomNumber = Math.floor(Math.random() * 100) + 1;
-    
-    // Asignar el número al input de búsqueda
-    document.getElementById('search-value').value = randomNumber;
-}
-
-
-// Crear la escena
-var scene = new THREE.Scene();
-
-// Crear la cámara
-var camera = new THREE.PerspectiveCamera(75, 800 / 600, 0.1, 1000);
-camera.position.z = 50;
-
-// Crear el renderizador y agregarlo al contenedor #threejs-container
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(800, 600);
-document.getElementById('threejs-container').appendChild(renderer.domElement);
-
-// Array para guardar las esferas generadas
-var spheres = [];
-
-// Variables para el movimiento del número
-var scaleDirection = 1;
-var scaleFactor = 1;
-
-// Función para crear una textura con número en un canvas
-function createNumberTexture(number) {
-    var canvas = document.createElement('canvas');
-    canvas.width = 128;  // Canvas más grande para el número
-    canvas.height = 128;
-    var context = canvas.getContext('2d');
-
-    // Fondo del canvas (opcional)
-    context.fillStyle = '#3498db'; // Fondo azul
-    context.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Cambiar tamaño de fuente según el factor de escala
-    context.font = `Bold ${40 * scaleFactor}px Arial`;  // Escalamos el tamaño del texto
-    context.fillStyle = 'white'; // Color del texto
-    context.textAlign = 'center';
-    context.textBaseline = 'middle';
-    context.fillText(number, canvas.width / 2, canvas.height / 2);
-
-    // Crear la textura de Three.js a partir del canvas
-    var texture = new THREE.CanvasTexture(canvas);
-    return texture;
-}
-
-// Función para generar números aleatorios y visualizarlos como esferas con números
-function generateRandomSpheres() {
-    // Elimina las esferas previas
-    spheres.forEach(function (sphere) {
-        scene.remove(sphere);
-    });
-    spheres = [];
-
-    // Generar 10 números aleatorios
-    for (let i = 0; i < 10; i++) {
-        // Generar un número aleatorio entre 1 y 100
-        let randomNumber = Math.floor(Math.random() * 100) + 1;
-
-        // Crear la geometría de la esfera más grande
-        let geometry = new THREE.SphereGeometry(4, 32, 32);
-
-        // Crear la textura del número
-        let texture = createNumberTexture(randomNumber);
-        let material = new THREE.MeshBasicMaterial({ map: texture });
-        let sphere = new THREE.Mesh(geometry, material);
-
-        // Posición aleatoria de la esfera
-        sphere.position.x = (Math.random() - 0.5) * 60;
-        sphere.position.y = (Math.random() - 0.5) * 40;
-        sphere.position.z = (Math.random() - 0.5) * 40;
-
-        // Agregar la esfera a la escena
-        scene.add(sphere);
-
-        // Guardar la esfera en el array
-        spheres.push(sphere);
-
-        // Opción: Mostrar el número aleatorio en la consola
-        console.log("Número aleatorio: " + randomNumber);
+    } else {
+        showNotFound(); // Mensaje si no se encuentra el número
     }
 }
 
-// Función de animación para rotar las esferas y animar los números
-function animate() {
-    requestAnimationFrame(animate);
 
-    // Cambiar el factor de escala para el número (efecto de pulsación)
-    scaleFactor += 0.01 * scaleDirection;
-    if (scaleFactor > 1.5 || scaleFactor < 1) {
-        scaleDirection *= -1;  // Cambiar la dirección del escalado
-    }
+// Animación del paso actual en la búsqueda binaria
+function animateCurrentStep(mid) {
+    const figures = document.querySelectorAll(".animated-figure");
 
-    // Rotar todas las esferas
-    spheres.forEach(function (sphere, index) {
-        sphere.rotation.x += 0.01;
-        sphere.rotation.y += 0.01;
-
-        // Actualizar la textura del número con el nuevo tamaño
-        let randomNumber = Math.floor(Math.random() * 100) + 1;
-        let texture = createNumberTexture(randomNumber);
-        sphere.material.map = texture;
-        sphere.material.needsUpdate = true;
+    // Cambiar todos los números a un color neutro gris
+    figures.forEach(figure => {
+        anime({
+            targets: figure,
+            backgroundColor: '#ccc',
+            duration: 500,
+            easing: 'easeInOutQuad'
+        });
     });
 
-    // Renderizar la escena
-    renderer.render(scene, camera);
+    // Aplicar color distintivo solo al número en el paso actual
+    anime({
+        targets: figures[mid],
+        backgroundColor: '#FFA500', // Naranja para el número en análisis
+        duration: 500,
+        direction: 'alternate',
+        easing: 'easeInOutQuad'
+    });
 }
 
-// Iniciar la animación
-animate();
+function highlightFound(mid) {
+    const figure = document.querySelectorAll(".animated-figure")[mid];
+    anime({
+        targets: figure,
+        backgroundColor: '#00FF00', // Color verde si se encuentra el número
+        duration: 700,
+        easing: 'easeInOutQuad'
+    });
+}
+
+
+// Función para resaltar solo el número encontrado y mostrar un mensaje
+function highlightFound() {
+    const figures = document.querySelectorAll(".animated-figure");
+    const targetValue = parseInt(document.getElementById("searchValue").value, 10);
+
+    // Cambiar todos los números a color neutro
+    figures.forEach(figure => {
+        anime({
+            targets: figure,
+            backgroundColor: '#ccc',
+            duration: 500,
+            easing: 'easeInOutQuad'
+        });
+    });
+
+    // Aplicar color dorado solo al número encontrado
+    figures.forEach(figure => {
+        if (parseInt(figure.innerText, 10) === targetValue) {
+            anime({
+                targets: figure,
+                backgroundColor: '#FFD700',
+                duration: 700,
+                easing: 'easeInOutQuad'
+            });
+        }
+    });
+
+    // Mensaje de confirmación usando SweetAlert
+    Swal.fire({
+        title: '¡Número Encontrado!',
+        text: 'El número ingresado ha sido encontrado.',
+        icon: 'success',
+        confirmButtonText: 'Entendido'
+    });
+}
+
+
+
+// Función para poner en cero todos los inputs y borrar las figuras animadas
+function clearAllInputs() {
+    // Poner en cero el input de "Número a buscar" y "Cantidad de números"
+    document.getElementById("searchValue").value = 0;
+    document.getElementById("numCount").value = 0;
+
+    // Poner en cero todos los inputs generados dinámicamente
+    const dynamicInputs = document.querySelectorAll("#dynamicInputs input");
+    dynamicInputs.forEach(input => {
+        input.value = 0;
+    });
+
+    // Limpiar el contenedor de figuras animadas
+    document.getElementById("animatedNumbersContainer").innerHTML = "";
+}
+
+// Función de simulación del algoritmo de búsqueda binaria
+function simulateBinarySearch() {
+    initializeBinarySearch();
+
+    const interval = setInterval(() => {
+        if (low <= high) {
+            mid = Math.floor((low + high) / 2);
+            animateCurrentStep(mid);
+
+            if (numbers[mid] === target) { 
+                highlightFound(mid);
+                clearInterval(interval); // Detener la simulación si el número se encuentra
+                return;
+            } else if (numbers[mid] < target) {
+                low = mid + 1; // Mover el límite inferior
+            } else {
+                high = mid - 1; // Mover el límite superior
+            }
+        } else {
+            clearInterval(interval);
+            showNotFound(); // Mostrar mensaje si no se encuentra el número
+        }
+    }, 1000); // Tiempo de espera entre pasos, ajustable para velocidad
+}
+
+// Función para resaltar el número encontrado y mostrar un mensaje de éxito
+// Función para resaltar exclusivamente el número encontrado y dejar los demás en color neutro
+function highlightFound() {
+    const figures = document.querySelectorAll(".animated-figure");
+    const targetValue = parseInt(document.getElementById("searchValue").value, 10); // Número objetivo
+
+    // Cambiar todos los números a un color neutro
+    figures.forEach(figure => {
+        anime({
+            targets: figure,
+            backgroundColor: '#ccc', // Color neutro gris para todos los números
+            duration: 500,
+            easing: 'easeInOutQuad'
+        });
+    });
+
+    // Buscar y resaltar solo el número que coincide con el valor del input
+    figures.forEach(figure => {
+        const figureValue = parseInt(figure.innerText, 10); // Convertir el texto en número
+
+        if (figureValue === targetValue) {
+            // Aplicar color distintivo únicamente al número encontrado
+            anime({
+                targets: figure,
+                backgroundColor: '#FFD700', // Color dorado para el número encontrado
+                duration: 700,
+                easing: 'easeInOutQuad'
+            });
+        }
+    });
+
+    // Mostrar mensaje de confirmación usando SweetAlert
+    Swal.fire({
+        title: '¡Número Encontrado!',
+        text: `El número ingresado ha sido encontrado.`,
+        icon: 'success',
+        confirmButtonText: 'Entendido'
+    });
+}
+
+
+
+// Agrega el botón de simulación
+document.getElementById("simulateButton").onclick = simulateBinarySearch;
+
+
+// Asignar la función al botón de limpiar
+document.getElementById("clearInputs").onclick = clearAllInputs;
+
+// Función para generar números aleatorios y luego mostrar las figuras animadas
+function generateRandomNumbers() {
+    generateRandomNumbersInInputs(); // Llama a la función para generar números aleatorios en los inputs
+    displayAnimatedFigures(); // Muestra las figuras animadas con los valores generados
+}
+
+// Asignar la función al botón de "Generar Números Aleatorios"
+document.getElementById("generateRandom").onclick = generateRandomNumbers;
+
+// Asignar la función al botón de limpiar
+document.getElementById("clearInputs").onclick = clearAllInputs;
+
+// Llamar a la función de inicialización al cargar la página
+window.addEventListener("load", initializeInputs);
+
+// Escuchar cambios en el input de cantidad de números para generar dinámicamente los inputs
+numCountInput.addEventListener("input", generateDynamicInputs);
+
+document.getElementById("nextButton").onclick = nextStep;
+// Asignación para un botón de "Paso anterior" en caso de implementación futura
+// document.getElementById("prevButton").onclick = previousStep; 
+// Asignar las funciones a los botones
+
+document.getElementById("prevButton").onclick = function() {
+    // Podemos implementar una función de retroceso aquí en el futuro si deseas
+};
