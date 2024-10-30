@@ -33,11 +33,47 @@
 
             <!-- Contenedor principal con Grid -->
             <div class="grid-container">
-                <!-- Sección Superior para la explicación del algoritmo -->
-                <div class="section superior">
-                    <h2>Explicación General del Algoritmo</h2>
-                    <p>El algoritmo de ordenamiento seleccion Sort es un algoritmo simple que compara pares adyacentes...</p>
-                </div>
+             <!-- Sección Superior para la explicación del algoritmo -->
+             <div class="section superior">
+                <h2>Explicación General del Algoritmo</h2>
+                <p style="text-align: justify;">El algoritmo de Selección es un método de ordenamiento que selecciona el elemento más pequeño de una lista y lo coloca en su posición correcta. Repite este proceso con los elementos restantes hasta que la lista esté completamente ordenada.</p>
+                <h3>¿En qué consiste?</h3>
+                <p style="text-align: justify;">El algoritmo de selección funciona de la siguiente manera:</p>
+                    <ol style="text-align: justify;">
+                        <li><strong>Dividir la lista en dos partes:</strong> La parte ordenada (que comienza vacía) y la parte desordenada (que al inicio es toda la lista).</li>
+                        <li><strong>Buscar el mínimo:</strong> Encontrar el elemento más pequeño en la parte desordenada de la lista.</li>
+                        <li><strong>Intercambiar:</strong> Colocar el elemento mínimo en la primera posición de la parte desordenada, moviéndolo a la última posición de la parte ordenada.</li>
+                        <li><strong>Repetir:</strong> Continuar el proceso con el resto de la lista hasta que esté completamente ordenada.</li>
+                    </ol><br>
+                    <h3>Ejemplo</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <!-- Columna de texto del ejemplo -->
+                        <div style="flex: 0.8; padding-right: 15px;">
+                            <p>Dada la lista <code>[7, 5, 9, 2]</code>, el algoritmo de selección ordena los elementos paso a paso:</p>
+                            <p><strong>Primera iteración:</strong><br>
+                                - Se busca el elemento mínimo en la lista <code> [7, 5, 9, 2]</code>, que en este caso es <strong>2</strong>. <br>
+                                - Se intercambia <strong>2</strong> con el primer elemento (<strong>7</strong>), obteniendo<code>[2, 5, 9, 7]</code>. <br>
+                            </p>
+                            <p><strong>Segunda iteración:</strong><br>
+                                - Se busca el siguiente elemento mínimo en los elementos restantes <code>[5, 9, 7]</code>, el mínimo es <strong>5</strong>.<br>
+                                - Como <strong>5</strong> ya está en la posición correcta, no se hace intercambio, obteniendo <code>[2, 5, 9, 7]</code>.<br>
+
+                            </p>
+                            <p><strong>Tercer iteración:</strong><br>
+                                - Con <strong>2</strong> y <strong>5</strong> ya ordenados, ahora se busca el siguiente mínimo en los elementos restantes <code>[9, 7]</code>, el mínimo es <strong>7</strong>.<br>
+                                - Se intercambia <strong>7</strong> con <strong>9</strong>, obteniendo <code>[2, 5, 7, 9]</code>.<br>
+                            </p>
+                            <p><strong>Cuarta iteración:</strong><br>
+                                - Solo queda un elemento, el número <strong>9 </strong>, que ya está en su lugar.<br>    
+                                - La lista final es: <code>[2, 5, 7, 9]</code>.
+                            </p>
+                        </div>
+                        <!-- Columna de imagen explicativa -->
+                        <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
+                            <img src="../../img/seleccion.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
+                        </div>
+                    </div>
+            </div>  
 
                 <!-- Sección Inferior para la visualización del algoritmo -->
                 <div class="section inferior">

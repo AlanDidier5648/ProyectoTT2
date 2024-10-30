@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización del Algoritmo de Ordenamiento</title>
+    <title>Visualizar mergesort</title>
     <!-- Enlace al archivo CSS de estilos generales -->
     <link rel="stylesheet" href="style.css">
     <!-- Enlace al archivo CSS para el background animado -->
@@ -35,11 +35,53 @@
 
             <!-- Contenedor principal con Grid -->
             <div class="grid-container">
-                <!-- Sección Superior para la explicación del algoritmo -->
-                <div class="section superior">
-                    <h2>Explicación General del Algoritmo</h2>
-                    <p>El algoritmo de ordenamiento Merge Sort es un algoritmo simple que compara pares adyacentes...</p>
-                </div>
+               <!-- Sección Superior para la explicación del algoritmo -->
+             <div class="section superior">
+                <h2>Explicación General del Algoritmo</h2>
+                <p style="text-align: justify;">Mergesort es un método para organizar elementos en orden usando la estrategia de divide y vencerás. Funciona dividiendo la lista en dos partes iguales una y otra vez hasta que quedan listas de un solo elemento, que ya están ordenadas. Luego, va uniendo estas partes, comparando los elementos para que cada nueva lista resultante quede en orden.</p>
+                <p style="text-align: justify;">Este método es muy efectivo para listas grandes porque organiza de manera ordenada sin importar el tamaño de la lista. Además, mantiene el orden original de elementos iguales, lo cual es útil cuando se necesita preservar un orden específico en los datos.</p>
+                <h3>¿En qué consiste?</h3>
+                <p style="text-align: justify;">El algoritmo MergeSort funciona de la siguiente manera:</p>
+                    <ol style="text-align: justify;">
+                        <li><strong>Dividir en mitades:</strong> Separar la lista en dos partes iguales de manera repetida hasta que cada sublista tenga un solo elemento. Estas divisiones siguen ocurriendo hasta que no haya más posibilidad de dividir.</li>
+                        <li><strong>Ordenar y fusionar:</strong> Tomar las sublistas de un solo elemento y comenzar a unirlas en pares, ordenando los elementos a medida que se fusionan. En cada fusión, se compara cada par de elementos para asegurar que la lista combinada esté en orden.</li>
+                        <li><strong>Repetir el proceso:</strong> Continuar fusionando y ordenando las sublistas hasta que todas se combinen en una sola lista ordenada.</li>
+                    </ol><br>
+                    <h3>Ejemplo</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <!-- Columna de texto del ejemplo -->
+                        <div style="flex: 0.8; padding-right: 15px;">
+                            <p>Dada la lista inicial: <code>[8, 3, 7, 4]</code>, ordenando según Mergesort:</p>
+                            <p><strong>Primera división:</strong><br>
+                            Se divide la lista en dos mitades: <code> [8, 3]</code> y <code>[7, 4]</code>. <br> 
+                            </p>
+                            <p><strong>Segunda división:</strong><br>
+                            Se continúa dividiendo cada mitad: <br><br>
+                                    - <code>[8,3]</code> se divide en <strong>[8]</strong> y <strong>[3]</strong>.<br>
+                                    - <code>[7,4]</code> se divide en <strong>[7]</strong> y <strong>[4]</strong>.<br><br>
+                                Ahora tenemos <strong>4</strong> listas de un sólo elemento: <strong>[8]</strong>, <strong>[3]</strong>, <strong>[7]</strong> y <strong>[4]</strong>.
+                            </p>
+                            <p><strong>Primera fusión:</strong><br>
+                                - Se comienza a fusionar las sublistas de un solo elemento, ordenándolas en el proceso:<br><br>
+                                - <code>[8] y [3]</code> se fusionan en <strong>[3, 8]</strong>.<br>
+                                - <code>[7] y [4]</code> se fusionan en <strong>[4, 7]</strong>.<br><br>
+                                Después de esta fusión inicial, tenemos dos listas ordenadas: <code>[3, 8] y [4, 7].</code>
+                            </p>
+                            <p><strong>Fusión final:</strong><br>
+                            Se fusionan las dos listas resultantes <code>[3, 8]</code> y <code>[4, 7]</code> en una sola lista ordenada.<br>    
+                                - Comparando elementos, se obtiene <strong>[3, 4, 7, 8]</strong>.<br>
+                            </p>
+                        </div>
+                        <!-- Columna de imagen explicativa -->
+                        <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
+                            <img src="../../img/merge.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
+                        </div>
+                    </div>
+            </div>  
+
+
+
+
 
                 <!-- Sección Inferior para la visualización del algoritmo -->
                 <div class="section inferior">
