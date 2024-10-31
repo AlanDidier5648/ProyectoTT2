@@ -2,31 +2,40 @@ let array = [];
 
 
 
-// Función para generar y mostrar un array de valores aleatorios
+// Función para generar un array desordenado de valores aleatorios
 function generateArray() {
-    const container = document.getElementById('array-container'); // Contenedor para los elementos visuales del array
+    const container = document.getElementById('array-container');
     container.innerHTML = ''; // Limpiar el contenedor antes de generar un nuevo array
 
-    // Crear un array de 10 elementos con valores aleatorios entre 50 y 250
+    // Generar un array de 10 valores aleatorios entre 50 y 250 sin ordenar
     array = [];
     for (let i = 0; i < 10; i++) {
-        const value = Math.floor(Math.random() * 200) + 50; // Genera un número aleatorio entre 50 y 250
-        array.push(value); // Agrega el valor al array
+        const value = Math.floor(Math.random() * 200) + 50;
+        array.push(value);
     }
-    array.sort((a, b) => a - b); // Ordena el array en orden ascendente, necesario para la búsqueda binaria
 
-    // Crear elementos visuales (círculos) para cada valor en el array
+    // Crear elementos visuales para cada valor en el array
     array.forEach(value => {
         const circleContainer = document.createElement('div');
-        circleContainer.classList.add('array-circle-container'); // Contenedor para cada círculo
+        circleContainer.classList.add('array-circle-container');
 
         const circle = document.createElement('div');
-        circle.classList.add('array-circle'); // Círculo que representa un valor en el array
-        circle.innerText = value; // Mostrar el valor dentro del círculo
+        circle.classList.add('array-circle');
+        circle.innerText = value;
 
-        circleContainer.appendChild(circle); // Agregar el círculo a su contenedor
-        container.appendChild(circleContainer); // Agregar el contenedor de círculos al contenedor principal
+        circleContainer.appendChild(circle);
+        container.appendChild(circleContainer);
     });
+}
+
+// Función para verificar si el array está ordenado
+function isArraySorted() {
+    for (let i = 0; i < array.length - 1; i++) {
+        if (array[i] > array[i + 1]) {
+            return false; // Si algún elemento está fuera de orden, el array no está ordenado
+        }
+    }
+    return true; // El array está ordenado
 }
 
 // Función asincrónica para realizar una búsqueda binaria en el array
@@ -43,6 +52,17 @@ async function binarySearch() {
             confirmButtonText: 'Entendido'
         });
         return;
+    }
+
+      // Verificar si el array está ordenado antes de realizar la búsqueda
+      if (!isArraySorted()) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Lista Desordenada',
+            text: 'La búsqueda binaria requiere una lista ordenada. Por favor, ordena la lista antes de continuar.',
+            confirmButtonText: 'Ordenar Lista'
+        });
+        return; // Detener la búsqueda si el array no está ordenado
     }
 
     // Reinicia los colores de todos los círculos antes de iniciar la búsqueda
@@ -102,4 +122,30 @@ async function binarySearch() {
             confirmButtonText: 'OK'
         });
     }
+}
+
+
+// Función para ordenar el array cuando el usuario hace clic en el botón
+function orderlist() {
+    array.sort((a, b) => a - b); // Ordenar el array en orden ascendente
+    renderOrderedArray(); // Renderizar el array ordenado en la pantalla
+}
+
+// Función para renderizar el array ordenado en el contenedor
+function renderOrderedArray() {
+    const container = document.getElementById('array-container');
+    container.innerHTML = ''; // Limpiar el contenedor antes de renderizar
+
+    // Crear elementos visuales (círculos) para cada valor en el array ordenado
+    array.forEach(value => {
+        const circleContainer = document.createElement('div');
+        circleContainer.classList.add('array-circle-container');
+
+        const circle = document.createElement('div');
+        circle.classList.add('array-circle');
+        circle.innerText = value;
+
+        circleContainer.appendChild(circle);
+        container.appendChild(circleContainer);
+    });
 }
