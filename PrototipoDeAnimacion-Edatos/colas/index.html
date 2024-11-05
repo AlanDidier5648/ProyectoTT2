@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización del Algoritmo de Ordenamiento</title>
+    <title>Visualizar Colas</title>
     <!-- Enlace al archivo CSS de estilos generales -->
     <link rel="stylesheet" href="style.css">
     <!-- Enlace a Chart.js para generar gráficos -->
@@ -36,8 +36,45 @@
                 <!-- Sección Superior para la explicación del algoritmo -->
                 <div class="section superior">
                     <h2>Explicación General del Algoritmo</h2>
-                    <p>El algoritmo de ordenamiento seleccion Sort es un algoritmo simple que compara pares adyacentes...</p>
+                    <p style="text-align: justify;">Una cola es una estructura de datos lineal que organiza elementos en orden secuencial siguiendo el principio FIFO (First In, First Out), donde el primer elemento en entrar es el primero en salir. Los elementos se agregan al final de la cola y solo se pueden retirar desde el frente, manteniendo el orden de llegada.</p>
+                    <p style="text-align: justify;">En una cola, las operaciones principales son encolar (añadir un elemento al final) y desencolar (retirar el elemento del frente). Este funcionamiento asegura que los elementos se procesen en el mismo orden en que ingresaron, sin acceso directo a elementos intermedios, lo que hace a la cola simple pero efectiva para gestionar un flujo ordenado de datos.</p>
+                    <h3>¿En qué consiste?</h3>
+                    <p style="text-align: justify;">Una cola funciona de la siguiente manera:</p>
+                        <ol style="text-align: justify;">
+                            <li><strong>Inicialización:</strong> La cola se crea como una estructura vacía, lista para almacenar elementos en orden secuencial.</li>
+                            <li><strong>Encolar:</strong> Cada vez que un elemento nuevo llega a la cola, se coloca al final. Este proceso garantiza que todos los elementos mantengan el orden de llegada.</li>
+                            <li><strong>Desencolar: </strong> Para procesar o eliminar un elemento, siempre se toma el que está al frente de la cola. Este paso sigue el principio FIFO (First In, First Out), asegurando que el primer elemento en entrar sea el primero en salir.</li><br>
+                        </ol>
+                        <h3>Ejemplo</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <!-- Columna de texto del ejemplo -->
+                            <div style="flex: 0.8; padding-right: 15px;">
+                                <p><strong>Cola inicial:</strong> <code>[]</code>.<br>
+                                <strong>Elemento a buscar:</strong> <code>27</code>.
+                                </p>
+                                <p><strong>Primera iteración:</strong><br>
+                                    - Se selecciona el elemento medio de la lista, que es <strong>20</strong>.<br>
+                                    - Como <strong>27 &gt; 20</strong>, se descarta la <strong>mitad izquierda</strong>, incluyendo el 20.<br>
+                                    - <strong>Nota:</strong> Es esencial que la lista esté <strong>ordenada</strong> para asegurar que, al descartar una mitad, el elemento buscado realmente no esté en esa parte.<br>
+                                    - <strong>Nueva lista:</strong> <code>[27, 33, 42]</code>.<br>
+                                </p>
+                                <p><strong>Segunda iteración:</strong><br>
+                                    - En la nueva lista, el elemento medio es <strong>33</strong>.<br>
+                                    - Como <strong>27 &lt; 33</strong>, se descarta la <strong>mitad derecha</strong>, incluyendo el 33.<br>
+                                    - <strong>Nueva lista:</strong><code>[27]</code>.
+                                </p>
+                                <p><strong>Tercera iteración:</strong><br>
+                                    - El único elemento restante es <strong>27</strong>, que coincide con el valor buscado.<br>
+                                </p>
+                                <p>El número <strong>27</strong> ha sido encontrado en la lista.</p>
+                            </div>
+                            <!-- Columna de imagen explicativa -->
+                            <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
+                                <img src="../../img/bin.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
+                            </div>
+                        </div>
                 </div>
+
 
                 <!-- Sección Inferior para la visualización del algoritmo -->
                 <div class="section inferior">
