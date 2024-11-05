@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización del Algoritmo de Ordenamiento</title>
+    <title>Visualizar Arbol Binario</title>
     <!-- Enlace al archivo CSS de estilos generales -->
     <link rel="stylesheet" href="style.css">
     <!-- Enlace a Chart.js para generar gráficos -->
@@ -36,8 +36,80 @@
                 <!-- Sección Superior para la explicación del algoritmo -->
                 <div class="section superior">
                     <h2>Explicación General del Algoritmo</h2>
-                    <p>El algoritmo de ordenamiento seleccion Sort es un algoritmo simple que compara pares adyacentes...</p>
+                    <p style="text-align: justify;">El árbol binario es una estructura jerárquica en la cual cada nodo puede tener hasta dos hijos, denominados “hijo izquierdo” y “hijo derecho.” Esta estructura permite organizar los datos de manera eficiente, facilitando la búsqueda, inserción y eliminación de elementos al dividir los datos en niveles, lo que reduce la cantidad de comparaciones necesarias.
+                    </p>
+                    <h3>¿En qué consiste?</h3>
+                    <p style="text-align: justify;">Los árboles binarios funcionan de la siguiente manera:</p>
+                        <ol style="text-align: justify;">
+                            <li><strong>Inserción:</strong> Comienza desde la raíz y, dependiendo de la posición que se determine, se mueve hacia el hijo izquierdo o derecho. Este proceso continúa hasta encontrar una posición vacía donde se pueda insertar el nuevo nodo, manteniendo la estructura jerárquica.</li>
+                            <li><strong>Recorrido de los Nodos:</strong></li>
+                            <ul style="text-align: justify;">
+                                <li><code><strong>Inorden (izquierda, raíz, derecha):</strong></code> Se recorre el subárbol izquierdo, luego se visita el nodo actual (raíz), y finalmente se recorre el subárbol derecho.</li>
+                                <li><code><strong>Preorden (raíz, izquierda, derecha):</strong></code> Se visita primero el nodo raíz y luego se recorren sus subárboles izquierdo y derecho en ese orden.</li>
+                                <li><code><strong>Postorden (izquierda, derecha, raíz):</strong></code> Se recorren primero los subárboles y se visita el nodo raíz al final, útil para liberar o procesar nodos después de sus hijos.</li>
+                            </ul>
+                            <li><strong>Eliminación:</strong> Para eliminar un nodo, se identifican los hijos del nodo a eliminar y se ajustan los enlaces de los nodos vecinos para mantener la estructura del árbol.</li>
+                        </ol>
+                        <h3>Ejemplo</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <!-- Columna de texto del ejemplo -->
+                            <div style="flex: 0.8; padding-right: 15px;">
+                                <p><strong>Valores Iniciales para Insertar en el Árbol Binario:</strong><br><code>[15, 10, 20, 8, 12]</code>.<br><br>
+                                </p>
+                                <p><strong>Primera iteración:</strong><br>
+                                    - <strong>Nodo a insertar:</strong><code> 15</code>.<br>
+                                    - Como el árbol está vacío, <strong><code>15</code></strong> se convierte en la raíz.<br>
+                                    - Estado del árbol:<br>  
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;15<br>
+                                </p>
+                                <p><strong>Segunda iteración:</strong><br>
+                                    - <strong>Nodo a insertar:</strong> <code> 10</code>.<br>
+                                    - Como <strong><code>10 &lt; 15</code></strong>, <strong><code>10</code></strong> se coloca como el hijo izquierdo de <strong><code>15</code></strong>.<br>
+                                    - Estado del árbol:<br>  
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;15<br>
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;/<br>
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;10<br>
+                                </p>
+                                <p><strong>Tercera iteración:</strong><br>
+                                    - <strong>Nodo a insertar:</strong> <code> 20</code>.<br>
+                                    - Como <strong><code>20 &gt; 15</code></strong>, <strong><code>20</code></strong> se coloca como el hijo derecho de <strong><code>15</code></strong>.<br>
+                                    - Estado del árbol:<br>  
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;15<br>
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;/&ensp;&ensp;\<br>
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;10 &ensp;&ensp;&ensp; 20 <br> 
+                                </p>
+                                <p><strong>Cuarta iteración:</strong><br>
+                                    - <strong>Nodo a insertar:</strong> <code> 8</code>.<br>
+                                    - Como <strong><code>8 &lt; 15</code></strong>, <strong><code>8</code></strong> se coloca como el hijo izquierdo de <strong><code>10</code></strong>.<br>
+                                    - Estado del árbol:<br>  
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;15<br>
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;/&ensp;&ensp;\<br>
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;10 &ensp;&ensp;&ensp; 20 <br> 
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;/<br>
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;8<br>
+                                </p>
+                                <p><strong>Quinta iteración:</strong><br>
+                                    - <strong>Nodo a insertar:</strong> <code> 12</code>.<br>
+                                    - <strong><code>12 &lt; 15</code></strong>, así que nos movemos a la izquierda de <strong><code>15</code></strong>.<br>
+                                    - Luego, <strong><code>12 &gt; 10</code></strong>, por lo que <strong><code>12</code></strong> se coloca como el hijo derecho de <strong><code>10</code></strong>.<br> 
+                                    - Estado del árbol:<br>  
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;15<br>
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;/&ensp;&ensp;\<br>
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;10 &ensp;&ensp;&ensp; 20 <br> 
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;/&ensp;\<br>
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;8&ensp;&ensp; 12<br>
+                                </p>
+                            </div>
+                            <!-- Columna de imagen explicativa -->
+                            <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
+                                <img src="../../img/bin.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
+                            </div>
+                        </div>
                 </div>
+
+
+
+
 
                 <!-- Sección Inferior para la visualización del algoritmo -->
                 <div class="section inferior">

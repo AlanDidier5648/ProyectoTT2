@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización del Algoritmo de Ordenamiento</title>
+    <title>Visualizar Búsqueda Binaria</title>
     <!-- Enlace al archivo CSS de estilos generales -->
     <link rel="stylesheet" href="style.css">
     <!-- Enlace a Chart.js para generar gráficos -->
@@ -36,8 +36,49 @@
                 <!-- Sección Superior para la explicación del algoritmo -->
                 <div class="section superior">
                     <h2>Explicación General del Algoritmo</h2>
-                    <p>El algoritmo de ordenamiento seleccion Sort es un algoritmo simple que compara pares adyacentes...</p>
+                    <p style="text-align: justify;">El algoritmo de Búsqueda Binaria es un método rápido y eficiente para encontrar un elemento específico en una lista ordenada. A diferencia de una búsqueda secuencial, que revisa cada elemento uno por uno, la búsqueda binaria reduce el número de elementos a la mitad en cada paso. Esto se logra mediante una estrategia de divide y vencerás, en la que se compara el elemento objetivo con el elemento central de la lista, descartando la mitad en la que no puede estar el elemento. Debido a esta división constante, la búsqueda binaria es especialmente útil para listas grandes, siempre y cuando estén ordenadas previamente.</p>
+                    <h3>¿En qué consiste?</h3>
+                    <p style="text-align: justify;">El algoritmo de Búsqueda Binaria funciona de la siguiente manera:</p>
+                        <ol style="text-align: justify;">
+                            <li><strong>Selección del punto medio:</strong> Se elige el elemento que está en el centro de la lista actual. Este valor permite decidir en qué mitad de la lista podría estar el elemento buscado.</li>
+                            <li><strong>Comparación:</strong> Se compara el elemento medio con el valor que se está buscando:</li>
+                            <ul style="text-align: justify;">
+                                <li>Si el elemento medio es el valor que se busca, la búsqueda termina.</li>
+                                <li>Si el valor buscado es menor, se descarta la mitad derecha de la lista.</li>
+                                <li>Si el valor buscado es mayor, se descarta la mitad izquierda de la lista.</li>
+                            </ul>
+                            <li><strong>Repetición:</strong> Este proceso se repite en la mitad restante, eligiendo un nuevo punto medio y descartando la mitad correspondiente, hasta que se encuentra el elemento o se determina que no está en la lista.</li>
+                        </ol>
+                        <h3>Ejemplo</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <!-- Columna de texto del ejemplo -->
+                            <div style="flex: 0.8; padding-right: 15px;">
+                                <p><strong>Lista inicial:</strong> <code>[3, 8, 12, 20, 27, 33, 42]</code>.<br>
+                                <strong>Elemento a buscar:</strong> <code>27</code>.
+                                </p>
+                                <p><strong>Primera iteración:</strong><br>
+                                    - Se selecciona el elemento medio de la lista, que es <strong>20</strong>.<br>
+                                    - Como <strong>27 &gt; 20</strong>, se descarta la <strong>mitad izquierda</strong>, incluyendo el 20.<br>
+                                    - <strong>Nota:</strong> Es esencial que la lista esté <strong>ordenada</strong> para asegurar que, al descartar una mitad, el elemento buscado realmente no esté en esa parte.<br>
+                                    - <strong>Nueva lista:</strong> <code>[27, 33, 42]</code>.<br>
+                                </p>
+                                <p><strong>Segunda iteración:</strong><br>
+                                    - En la nueva lista, el elemento medio es <strong>33</strong>.<br>
+                                    - Como <strong>27 &lt; 33</strong>, se descarta la <strong>mitad derecha</strong>, incluyendo el 33.<br>
+                                    - <strong>Nueva lista:</strong><code>[27]</code>.
+                                </p>
+                                <p><strong>Tercera iteración:</strong><br>
+                                    - El único elemento restante es <strong>27</strong>, que coincide con el valor buscado.<br>
+                                </p>
+                                <p>El número <strong>27</strong> ha sido encontrado en la lista.</p>
+                            </div>
+                            <!-- Columna de imagen explicativa -->
+                            <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
+                                <img src="../../img/bin.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
+                            </div>
+                        </div>
                 </div>
+
 
 
 
