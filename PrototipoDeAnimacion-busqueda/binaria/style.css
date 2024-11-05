@@ -145,8 +145,36 @@ input {
     font-size: 16px;
 }
 
+/* Animación de entrada */
+@keyframes entradaSuave {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Clase para aplicar la animación */
+.array-circle {
+    animation: entradaSuave 0.5s ease-out; /* Aplica la animación de entrada */
+}
 
 
+#step-container {
+    display: flex;
+    flex-direction: column; /* Alinea los pasos verticalmente */
+    gap: 15px; /* Espacio entre cada paso */
+    margin-top: 20px;
+}
+
+.step-array-container {
+    display: flex;
+    justify-content: center; /* Centra los círculos dentro de cada línea */
+    gap: 10px;
+}
 
 
 
