@@ -50,23 +50,17 @@
                             <!-- Columna de texto del ejemplo -->
                             <div style="flex: 0.8; padding-right: 15px;">
                                 <p><strong>Cola inicial:</strong> <code>[]</code>.<br>
-                                <strong>Elemento a buscar:</strong> <code>27</code>.
                                 </p>
-                                <p><strong>Primera iteración:</strong><br>
-                                    - Se selecciona el elemento medio de la lista, que es <strong>20</strong>.<br>
-                                    - Como <strong>27 &gt; 20</strong>, se descarta la <strong>mitad izquierda</strong>, incluyendo el 20.<br>
-                                    - <strong>Nota:</strong> Es esencial que la lista esté <strong>ordenada</strong> para asegurar que, al descartar una mitad, el elemento buscado realmente no esté en esa parte.<br>
-                                    - <strong>Nueva lista:</strong> <code>[27, 33, 42]</code>.<br>
+                                <p><strong>Primera iteración (Encolar elementos):</strong><br>
+                                    - Se añade el elemento <strong>A</strong>. &nbsp;&nbsp;&nbsp;Nueva cola: <code><strong>[A]</strong></code>.<br>
+                                    - Se añade el elemento <strong>B</strong>. &nbsp;&nbsp;&nbsp;Nueva cola: <code><strong>[A,B]</strong></code>.<br>
+                                    - Se añade el elemento <strong>C</strong>. &nbsp;&nbsp;&nbsp;Nueva cola: <code><strong>[A,B,C]</strong></code>.<br>
                                 </p>
-                                <p><strong>Segunda iteración:</strong><br>
-                                    - En la nueva lista, el elemento medio es <strong>33</strong>.<br>
-                                    - Como <strong>27 &lt; 33</strong>, se descarta la <strong>mitad derecha</strong>, incluyendo el 33.<br>
-                                    - <strong>Nueva lista:</strong><code>[27]</code>.
+                                <p><strong>Segunda iteración (Desencolar elementos):</strong><br>
+                                    - Se retira el &nbsp;<code>primer</code>&nbsp;  elemento, <strong>A</strong>. &nbsp;&nbsp;&nbsp;Nueva cola: <code><strong>[B,C]</strong></code>.<br>
+                                    - Se retira el &nbsp;<code>siguiente</code>&nbsp; elemento, <strong>B</strong>. &nbsp;&nbsp;&nbsp;Nueva cola: <code><strong>[C]</strong></code>.<br>
+                                    - Se retira el &nbsp;<code>último</code>&nbsp; elemento, <strong>C</strong>, dejando la cola <strong>vacía</strong> <code><strong>[]</strong></code>.<br>
                                 </p>
-                                <p><strong>Tercera iteración:</strong><br>
-                                    - El único elemento restante es <strong>27</strong>, que coincide con el valor buscado.<br>
-                                </p>
-                                <p>El número <strong>27</strong> ha sido encontrado en la lista.</p>
                             </div>
                             <!-- Columna de imagen explicativa -->
                             <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
