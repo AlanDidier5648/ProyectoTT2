@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización del Algoritmo de Ordenamiento</title>
+    <title>Visualizar Formaciones</title>
     <!-- Enlace al archivo CSS de estilos generales -->
     <link rel="stylesheet" href="style.css">
     <!-- Enlace a Chart.js para generar gráficos -->
@@ -36,7 +36,48 @@
                 <!-- Sección Superior para la explicación del algoritmo -->
                 <div class="section superior">
                     <h2>Explicación General del Algoritmo</h2>
-                    <p>El algoritmo de ordenamiento seleccion Sort es un algoritmo simple que compara pares adyacentes...</p>
+                    <p style="text-align: justify;">Una formación, también conocida como cola, es una estructura de datos lineal que organiza elementos siguiendo el principio FIFO (First In, First Out), lo que significa que el primer elemento en entrar es el primero en salir. Este funcionamiento es similar a una fila en la vida real, como una fila para comprar boletos: el primer cliente en llegar es el primero en ser atendido.</p>
+                    <p style="text-align: justify;">Las operaciones principales en una formación son encolar (enqueue), que añade un elemento al final de la formación, y desencolar (dequeue), que retira el elemento al frente. En una formación, el acceso está restringido al primer elemento, lo que asegura que los elementos se procesen en el mismo orden en que ingresaron.</p>
+                    <h3>¿En qué consiste?</h3>
+                    <p style="text-align: justify;">Una pila funciona de la siguiente manera:</p>
+                        <ol style="text-align: justify;">
+                            <li><strong>Inicialización:</strong> Se crea la pila como una estructura vacía, lista para almacenar elementos en orden secuencial.</li><br>
+                            <li><strong>Apilar (push):</strong> Cada vez que un nuevo elemento llega a la pila, se coloca en el tope. Este proceso asegura que el elemento recién añadido esté siempre en la parte superior, accesible para ser retirado primero.</li><br>
+                            <li><strong>Desapilar (pop):</strong> Para retirar un elemento, siempre se toma el que está en el tope de la pila. Este paso sigue el principio LIFO (Last In, First Out), asegurando que el último elemento en entrar sea el primero en salir.</li><br>
+                        </ol>
+                        <h3>Ejemplo</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <!-- Columna de texto del ejemplo -->
+                            <div style="flex: 0.8; padding-right: 15px;">
+                                <p><strong>Pila inicial:</strong> <code>[]</code>&nbsp;&nbsp;&nbsp;(vacía).<br></p>
+                                <ol style="text-align: justify;">
+                                    <li><strong>Apilar elementos (push):</strong><br><br>
+                                    Se añade el elemento <strong><code>A</code></strong> en el tope de la pila.<br>
+                                    - <strong>Pila:</strong> <code>[A]</code>.<br><br>
+                                    Se añade el elemento <strong><code>B</code></strong> en el tope de la pila.<br>
+                                    - <strong>Pila:</strong> <code>[B]<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[A]</code><br>
+                                    Se añade el elemento <strong><code>C</code></strong> en el tope de la pila.<br>
+                                    - <strong>Pila:</strong> <code>[C]<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[B]<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[A]</code><br>
+                                    </li><br>
+                                    <li><strong>Desapilar elementos (pop):</strong><br><br>
+                                    Se retira el elemento <strong>en el tope</strong>, que es <strong>C</strong>.<br>
+                                    - <strong>Pila:</strong> <code>[B]<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[A]</code><br><br>
+                                    Se retira el <strong>siguiente</strong> elemento en el tope, que es <strong>B</strong>.<br>
+                                    - <strong>Pila:</strong> <code>[A]</code><br><br>
+                                    Se retira el <strong>último</strong> elemento, que es <strong>A</strong>, dejando la pila <strong>vacía</strong>.<br>
+                                    - <strong>Pila:</strong> <code>[]</code>&nbsp;&nbsp;&nbsp;(vacía).<br>
+                                    </li><br>
+                                </ol>
+                            </div>
+                            <!-- Columna de imagen explicativa -->
+                            <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
+                                <img src="../../img/bin.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
+                            </div>
+                        </div>
                 </div>
 
                 <!-- Sección Inferior para la visualización del algoritmo -->

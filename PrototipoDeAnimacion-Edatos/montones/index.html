@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización del Algoritmo de Ordenamiento</title>
+    <title>Visualizar montones</title>
     <!-- Enlace al archivo CSS de estilos generales -->
     <link rel="stylesheet" href="style.css">
     <!-- Enlace a Chart.js para generar gráficos -->
@@ -36,43 +36,57 @@
                 <!-- Sección Superior para la explicación del algoritmo -->
                 <div class="section superior">
                     <h2>Explicación General del Algoritmo</h2>
-                    <p style="text-align: justify;">Una pila es una estructura de datos lineal que organiza elementos siguiendo el principio LIFO (Last In, First Out), lo que significa que el último elemento en entrar es el primero en salir. Funciona de manera similar a una pila de platos: el último plato que se coloca en la pila es el primero que se quita.</p>
-                    <p style="text-align: justify;">Las operaciones principales en una pila son apilar (push), que añade un elemento al tope de la pila, y desapilar (pop), que retira el elemento del tope. En una pila, el acceso está restringido solo al elemento en el tope, lo que significa que solo se puede agregar o retirar el elemento en la parte superior, sin acceso directo a los elementos en medio o en el fondo.</p>
+                    <p style="text-align: justify;">Un <strong>montón (heap)</strong> es una estructura de datos en forma de árbol binario completo, en la que los elementos se organizan según una propiedad específica que depende del tipo de montón:</p>
+                    <ul style="text-align: justify;">
+                        <li><strong>Montón Mínimo (Min-Heap):</strong> En cada nodo, el valor es menor o igual al de sus hijos, lo que garantiza que el valor más bajo se encuentre siempre en la raíz.</li>
+                        <li><strong>Montón Máximo (Max-Heap):</strong> En cada nodo, el valor es mayor o igual al de sus hijos, lo que asegura que el valor más alto esté en la raíz.</li>
+                    </ul>
+                    <p style="text-align: justify;">Los montones son útiles porque permiten acceder rápidamente al valor más pequeño o más grande de todos los elementos. Esto los hace efectivos para organizar datos o gestionar prioridades de manera eficiente.</p>
                     <h3>¿En qué consiste?</h3>
-                    <p style="text-align: justify;">Una pila funciona de la siguiente manera:</p>
-                        <ol style="text-align: justify;">
-                            <li><strong>Inicialización:</strong> Se crea la pila como una estructura vacía, lista para almacenar elementos en orden secuencial.</li><br>
-                            <li><strong>Apilar (push):</strong> Cada vez que un nuevo elemento llega a la pila, se coloca en el tope. Este proceso asegura que el elemento recién añadido esté siempre en la parte superior, accesible para ser retirado primero.</li><br>
-                            <li><strong>Desapilar (pop):</strong> Para retirar un elemento, siempre se toma el que está en el tope de la pila. Este paso sigue el principio LIFO (Last In, First Out), asegurando que el último elemento en entrar sea el primero en salir.</li><br>
-                        </ol>
+                    <p style="text-align: justify;">Un montón mínimo (Min-Heap) funciona de la siguiente manera:</p>
+                    <ol style="text-align: justify;">
+                        <li><strong>Construcción inicial:</strong> Se crea el montón organizando los elementos de forma que el valor más pequeño siempre esté en la raíz. Esto asegura que se cumpla la propiedad de Min-Heap desde el inicio.</li><br>
+                        <li><strong>Insertar elemento:</strong> Cada nuevo elemento se añade en la última posición del árbol y se compara con su nodo padre. Si es menor que su padre, se intercambian, y el elemento sube en el árbol hasta encontrar su posición correcta.</li><br>
+                        <li><strong>Eliminar el mínimo:</strong> El elemento en la raíz (el más pequeño) se elimina, y el último elemento del árbol se mueve a la raíz temporalmente. Después, se ajusta el árbol desplazando el elemento hacia abajo hasta que se restaure la propiedad de Min-Heap.</li><br>
+                        <li><strong>Reajuste del montón (heapify):</strong> Tras una inserción o eliminación, el montón se reorganiza intercambiando los elementos según las relaciones entre padres e hijos, asegurando que el valor más pequeño permanezca en la raíz.</li><br>
+                    </ol>
                         <h3>Ejemplo</h3>
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                             <!-- Columna de texto del ejemplo -->
                             <div style="flex: 0.8; padding-right: 15px;">
-                                <p><strong>Pila inicial:</strong> <code>[]</code>&nbsp;&nbsp;&nbsp;(vacía).<br></p>
+                                <p><strong>Montón inicial:</strong> <code>[]</code>&nbsp;&nbsp;&nbsp;(vacío).<br></p>
                                 <ol style="text-align: justify;">
-                                    <li><strong>Apilar elementos (push):</strong><br><br>
-                                    Se añade el elemento <strong><code>A</code></strong> en el tope de la pila.<br>
-                                    - <strong>Pila:</strong> <code>[A]</code>.<br><br>
-                                    Se añade el elemento <strong><code>B</code></strong> en el tope de la pila.<br>
-                                    - <strong>Pila:</strong> <code>[B]<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[A]</code><br>
-                                    Se añade el elemento <strong><code>C</code></strong> en el tope de la pila.<br>
-                                    - <strong>Pila:</strong> <code>[C]<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[B]<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[A]</code><br>
+                                    <li><strong>Insertar elementos:</strong><br><br>
+                                        Se añade el elemento <strong><code>5</code></strong> como raíz del montón.<br>
+                                        - <strong>Montón:</strong> <code>[5]</code><br><br>
+                                        Se añade el elemento <strong><code>8</code></strong> como hijo del nodo raíz, sin necesidad de reajustar.<br>
+                                        - <strong>Montón:</strong> <code>[5]<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ <br>   
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8]</code><br><br>
+                                        Se añade el elemento <strong><code>3</code></strong>. Como <strong><code>3</code></strong> es menor que la raíz <strong><code>5</code></strong>, se intercambian.<br>
+                                        - <strong>Montón:</strong> <code>[3]<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;   \ <br>   
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5]</code><br><br>
+                                        Se añade el elemento <strong><code>7</code></strong> como hijo del nodo <strong><code>8</code></strong>, sin necesidad de reajustar.<br>
+                                        - <strong>Montón:</strong> <code>[3]<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;   \ <br>   
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5]<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;[7]</code>
                                     </li><br>
-                                    <li><strong>Desapilar elementos (pop):</strong><br><br>
-                                    Se retira el elemento <strong>en el tope</strong>, que es <strong>C</strong>.<br>
-                                    - <strong>Pila:</strong> <code>[B]<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[A]</code><br><br>
-                                    Se retira el <strong>siguiente</strong> elemento en el tope, que es <strong>B</strong>.<br>
-                                    - <strong>Pila:</strong> <code>[A]</code><br><br>
-                                    Se retira el <strong>último</strong> elemento, que es <strong>A</strong>, dejando la pila <strong>vacía</strong>.<br>
-                                    - <strong>Pila:</strong> <code>[]</code>&nbsp;&nbsp;&nbsp;(vacía).<br>
+                                    <li><strong>Eliminar el mínimo (raíz):</strong><br><br>
+                                        Se elimina el elemento en la raíz, que es <strong><code>3</code></strong>, y se mueve el último elemento (<strong><code>7</code></strong>) temporalmente a la raíz.<br>
+                                        - <strong>Montón temporal:</strong> <code>[7]<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;   \ <br>   
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8]&nbsp;&nbsp;&nbsp;[5]</code><br><br>
+                                        Para restaurar la propiedad de Min-Heap, se intercambia <strong><code>7</code></strong> con el menor de sus hijos (<strong><code>5</code></strong>).<br>
+                                        - <strong>Montón reajustado:</strong> <code>[5]<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;   \ <br>   
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8]&nbsp;&nbsp;&nbsp;[7]</code><br><br>
                                     </li><br>
                                 </ol>
                             </div>
+                            
                             <!-- Columna de imagen explicativa -->
                             <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
                                 <img src="../../img/bin.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">

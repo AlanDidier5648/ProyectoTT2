@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización del Algoritmo de Ordenamiento</title>
+    <title>Visualizar Tablas Hash</title>
     <!-- Enlace al archivo CSS de estilos generales -->
     <link rel="stylesheet" href="style.css">
     <!-- Enlace a Chart.js para generar gráficos -->
@@ -36,8 +36,61 @@
                 <!-- Sección Superior para la explicación del algoritmo -->
                 <div class="section superior">
                     <h2>Explicación General del Algoritmo</h2>
-                    <p>El algoritmo de ordenamiento seleccion Sort es un algoritmo simple que compara pares adyacentes...</p>
+                    <p style="text-align: justify;">Una tabla hash es una estructura de datos que almacena elementos utilizando una clave única asociada a cada uno de ellos. Esta clave se transforma mediante una función hash en un índice, que indica la posición en la tabla donde se guarda el elemento.</p>
+                    <p style="text-align: justify;">Las tablas hash destacan por su eficiencia al realizar búsquedas, inserciones y eliminaciones, ya que permiten acceder directamente a los elementos mediante su clave. Para manejar situaciones donde dos claves generan el mismo índice (colisiones), se utilizan métodos como listas encadenadas o sondeos para resolver conflictos y mantener el orden.</p>                    
+                    <h3>¿En qué consiste?</h3>
+                    <p style="text-align: justify;">Una tabla hash funciona de la siguiente manera:</p>
+                        <ol style="text-align: justify;">
+                            <li><strong>Inicialización:</strong> Se crea una tabla vacía con un tamaño inicial fijo, donde cada posición puede almacenar elementos o referencias a ellos.</li><br>
+                            <li><strong>Función hash:</strong> Cuando se quiere insertar o buscar un elemento, su clave pasa por una función hash que transforma esa clave en un índice dentro de la tabla.</li><br>
+                            <li><strong>Inserción:</strong> El elemento se almacena en la posición de la tabla indicada por el índice generado por la función hash. Si hay una colisión (dos claves generan el mismo índice), se utiliza una técnica de resolución como encadenamiento o sondeo para encontrar un lugar disponible.</li><br>
+                            <li><strong>Búsqueda:</strong> Para buscar un elemento, la clave se transforma en un índice mediante la función hash, y se verifica la posición correspondiente en la tabla. Si hay una colisión, se siguen las referencias para encontrar el elemento deseado.</li><br>
+                            <li><strong>Eliminación:</strong> Para eliminar un elemento, se localiza mediante su índice hash y se elimina de la posición correspondiente. Si hay colisiones, se ajustan las referencias para evitar inconsistencias.</li><br>
+                        </ol>
+                        <h3>Ejemplo</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <!-- Columna de texto del ejemplo -->
+                            <div style="flex: 0.8; padding-right: 15px;">
+                                <p><strong>Tabla hash inicial:</strong> <code>[ , , , , ]</code>&nbsp;&nbsp;&nbsp;(vacía, tamaño 5).<br></p>
+                                <ol style="text-align: justify;">
+                                    <li><strong>Insertar elementos:</strong><br><br>
+                                    Se calcula el índice hash para la clave <strong><code>15</code></strong>.<br>
+                                    - Índice generado: <code>15 % 5 = 0</code>.<br>
+                                    - Se almacena el elemento <strong><code>15</code></strong> en la posición <code>0</code>.<br>
+                                    - <strong>Tabla hash:</strong> <code>[15, -, -, -, -]</code><br><br>
+
+                                    Se calcula el índice hash para la clave <strong><code>10</code></strong>.<br>
+                                    - Índice generado: <code>10 % 5 = 0</code>.<br>
+                                    - Se detecta una colisión en la posición <code>0</code>. Se utiliza encadenamiento (lista).<br>
+                                    - Se añade <strong><code>10</code></strong> a la lista en la posición <code>0</code>.<br>
+                                    - <strong>Tabla hash:</strong> <code>[[15, 10], -, -, -, -]</code><br><br>
+
+                                    Se calcula el índice hash para la clave <strong><code>22</code></strong>.<br>
+                                    - Índice generado: <code>22 % 5 = 2</code>.<br>
+                                    - Se almacena el elemento <strong><code>22</code></strong> en la posición <code>2</code>.<br>
+                                    - <strong>Tabla hash:</strong> <code>[[15, 10], -, [22], -, -]</code><br>
+                                    </li><br>
+
+                                    <li><strong>Búsqueda de elementos:</strong><br><br>
+                                    Se busca el elemento <strong><code>10</code></strong>.<br>
+                                    - Se calcula el índice hash: <code>10 % 5 = 0</code>.<br>
+                                    - En la posición <code>0</code>, se recorre la lista y se encuentra el elemento.<br>
+                                    - Resultado: Elemento <strong><code>10</code></strong> encontrado.<br><br>
+
+                                    Se busca el elemento <strong><code>22</code></strong>.<br>
+                                    - Se calcula el índice hash: <code>22 % 5 = 2</code>.<br>
+                                    - En la posición <code>2</code>, se encuentra el elemento directamente.<br>
+                                    - Resultado: Elemento <strong><code>22</code></strong> encontrado.<br><br>
+                                    </li><br>
+                                </ol>
+                            </div>
+                            <!-- Columna de imagen explicativa -->
+                            <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
+                                <img src="../../img/bin.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
+                            </div>
+                        </div>
                 </div>
+
 
                 <!-- Sección Inferior para la visualización del algoritmo -->
                 <div class="section inferior">
