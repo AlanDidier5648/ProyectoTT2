@@ -36,43 +36,59 @@
                 <!-- Sección Superior para la explicación del algoritmo -->
                 <div class="section superior">
                     <h2>Explicación General del Algoritmo</h2>
-                    <p style="text-align: justify;">Una formación, también conocida como cola, es una estructura de datos lineal que organiza elementos siguiendo el principio FIFO (First In, First Out), lo que significa que el primer elemento en entrar es el primero en salir. Este funcionamiento es similar a una fila en la vida real, como una fila para comprar boletos: el primer cliente en llegar es el primero en ser atendido.</p>
-                    <p style="text-align: justify;">Las operaciones principales en una formación son encolar (enqueue), que añade un elemento al final de la formación, y desencolar (dequeue), que retira el elemento al frente. En una formación, el acceso está restringido al primer elemento, lo que asegura que los elementos se procesen en el mismo orden en que ingresaron.</p>
+                    <p style="text-align: justify;">
+                        Las "Formaciones", también conocidas como "Arrays", son estructuras de datos que permiten almacenar múltiples valores en posiciones específicas. Cada elemento en una formación es accesible mediante su índice, un número que indica la posición del elemento dentro de la estructura, comenzando normalmente desde cero. 
+                    </p>
+                    <p style="text-align: justify;">
+                        Los arrays almacenan datos en ubicaciones consecutivas en la memoria, lo cual permite acceder a cualquier elemento de manera directa usando su índice. Aunque este tipo de acceso es rápido, agregar o eliminar elementos en una posición intermedia puede ser costoso en términos de rendimiento, ya que implica desplazar otros elementos.
+                        </p>
+                    <p style="text-align: justify;">
+                        Una diferencia importante entre las formaciones y otras estructuras de datos como las listas es que las formaciones tienen un tamaño fijo. Esto significa que, una vez creada, una formación no puede aumentar o reducir su tamaño sin crear una nueva estructura en la memoria.
+                    </p>                        
                     <h3>¿En qué consiste?</h3>
-                    <p style="text-align: justify;">Una pila funciona de la siguiente manera:</p>
-                        <ol style="text-align: justify;">
-                            <li><strong>Inicialización:</strong> Se crea la pila como una estructura vacía, lista para almacenar elementos en orden secuencial.</li><br>
-                            <li><strong>Apilar (push):</strong> Cada vez que un nuevo elemento llega a la pila, se coloca en el tope. Este proceso asegura que el elemento recién añadido esté siempre en la parte superior, accesible para ser retirado primero.</li><br>
-                            <li><strong>Desapilar (pop):</strong> Para retirar un elemento, siempre se toma el que está en el tope de la pila. Este paso sigue el principio LIFO (Last In, First Out), asegurando que el último elemento en entrar sea el primero en salir.</li><br>
-                        </ol>
-                        <h3>Ejemplo</h3>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <!-- Columna de texto del ejemplo -->
-                            <div style="flex: 0.8; padding-right: 15px;">
-                                <p><strong>Pila inicial:</strong> <code>[]</code>&nbsp;&nbsp;&nbsp;(vacía).<br></p>
-                                <ol style="text-align: justify;">
-                                    <li><strong>Apilar elementos (push):</strong><br><br>
-                                    Se añade el elemento <strong><code>A</code></strong> en el tope de la pila.<br>
-                                    - <strong>Pila:</strong> <code>[A]</code>.<br><br>
-                                    Se añade el elemento <strong><code>B</code></strong> en el tope de la pila.<br>
-                                    - <strong>Pila:</strong> <code>[B]<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[A]</code><br>
-                                    Se añade el elemento <strong><code>C</code></strong> en el tope de la pila.<br>
-                                    - <strong>Pila:</strong> <code>[C]<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[B]<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[A]</code><br>
-                                    </li><br>
-                                    <li><strong>Desapilar elementos (pop):</strong><br><br>
-                                    Se retira el elemento <strong>en el tope</strong>, que es <strong>C</strong>.<br>
-                                    - <strong>Pila:</strong> <code>[B]<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[A]</code><br><br>
-                                    Se retira el <strong>siguiente</strong> elemento en el tope, que es <strong>B</strong>.<br>
-                                    - <strong>Pila:</strong> <code>[A]</code><br><br>
-                                    Se retira el <strong>último</strong> elemento, que es <strong>A</strong>, dejando la pila <strong>vacía</strong>.<br>
-                                    - <strong>Pila:</strong> <code>[]</code>&nbsp;&nbsp;&nbsp;(vacía).<br>
-                                    </li><br>
-                                </ol>
-                            </div>
+                    <p style="text-align: justify;">Una formación (array) funciona de la siguiente manera:</p>
+                    <ol style="text-align: justify;">
+                        <li><strong>Inicialización:</strong> Se crea una formación con un tamaño fijo determinado en la memoria. Este tamaño no puede cambiar durante la vida útil de la formación.</li><br>
+                        <li><strong>Almacenamiento de elementos:</strong> Cada elemento de la formación es almacenado en una posición específica. Las posiciones son accesibles mediante índices, que comienzan desde <code>0</code> y se incrementan secuencialmente.</li><br>
+                        <li><strong>Acceso a elementos:</strong> Se puede acceder a cualquier elemento directamente utilizando su índice. Por ejemplo, el índice <code>0</code> representa el primer elemento, el índice <code>1</code> el segundo, y así sucesivamente. Esto permite un acceso rápido a cualquier elemento de la formación.</li><br>
+                        <li><strong>Modificación de elementos:</strong> Un elemento en una posición específica se puede reemplazar asignando un nuevo valor al índice correspondiente. Por ejemplo, para cambiar el valor en la posición <code>2</code>, se asigna el nuevo valor a <code>a[2]</code>.</li><br>
+                        <li><strong>Limitación de tamaño:</strong> Como las formaciones tienen un tamaño fijo, no es posible agregar elementos adicionales sin crear una nueva formación más grande y copiar los elementos existentes.</li><br>
+                    </ol>
+                    <h3>Ejemplo</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <!-- Columna de texto del ejemplo -->
+                        <div style="flex: 0.8; padding-right: 15px;">
+                            <p><strong>Arreglo inicial:</strong> <code>[ , , , , ]</code> (vacío, tamaño 5).<br></p>
+                            <ol style="text-align: justify;">
+                                <li><strong>Insertar elementos:</strong><br><br>
+                                    Se añade el número <strong><code>10</code></strong> en la posición <strong><code>0</code></strong>.<br>
+                                    - <strong>Arreglo:</strong> <code>[10, , , , ]</code><br><br>
+                                    
+                                    Se añade el número <strong><code>15</code></strong> en la posición <strong><code>1</code></strong>.<br>
+                                    - <strong>Arreglo:</strong> <code>[10, 15, , , ]</code><br><br>
+                                    
+                                    Se añade el número <strong><code>22</code></strong> en la posición <strong><code>2</code></strong>.<br>
+                                    - <strong>Arreglo:</strong> <code>[10, 15, 22, , ]</code><br><br>
+                                </li><br>
+                                
+                                <li><strong>Acceso a elementos:</strong><br><br>
+                                    Se accede al elemento en la posición <strong><code>1</code></strong>, que es el número <strong><code>15</code></strong>.<br>
+                                    - <strong>Resultado:</strong> <code>15</code><br><br>
+                                    
+                                    Se accede al elemento en la posición <strong><code>2</code></strong>, que es el número <strong><code>22</code></strong>.<br>
+                                    - <strong>Resultado:</strong> <code>22</code><br><br>
+                                </li><br>
+                                
+                                <li><strong>Modificar elementos:</strong><br><br>
+                                    Se reemplaza el número en la posición <strong><code>1</code></strong> por el número <strong><code>18</code></strong>.<br>
+                                    - <strong>Arreglo:</strong> <code>[10, 18, 22, , ]</code><br><br>
+                                    
+                                    Se añade el número <strong><code>5</code></strong> en la posición <strong><code>3</code></strong>.<br>
+                                    - <strong>Arreglo:</strong> <code>[10, 18, 22, 5, ]</code><br><br>
+                                </li><br>
+                            </ol>
+                        </div>
+             
                             <!-- Columna de imagen explicativa -->
                             <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
                                 <img src="../../img/bin.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
