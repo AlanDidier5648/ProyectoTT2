@@ -98,7 +98,7 @@ body {
 /* Contenedor de las tarjetas de algoritmos con Grid */
 .algorithms {
    
-
+    
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Siempre 3 columnas en pantallas grandes */
     grid-template-rows: repeat(2, 1fr); /* Siempre 2 filas */
