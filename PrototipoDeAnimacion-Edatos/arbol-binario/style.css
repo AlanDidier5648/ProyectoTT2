@@ -97,6 +97,56 @@ body {
     border-radius: 5px;
 }
 
+button {
+    
+    margin: 20px;
+    padding: 12px 25px;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#tree-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recorrido-container {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    margin-top: 20px;
+}
+
+#recorrido-buttons {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+
+
+#array-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+
+button:hover {
+    background-color: #1e6e8b;
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
     .navbar {
