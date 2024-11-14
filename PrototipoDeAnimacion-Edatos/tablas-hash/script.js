@@ -21,9 +21,17 @@ function searchInHashTable() {
         const index = hashFunction(value);
         const found = hashTable[index].includes(value);
         if (found) {
-            alert(`El valor ${value} se encuentra en el índice ${index}.`);
+            Swal.fire({
+                icon: 'success',
+                title: 'Elemento encontrado',
+                text: `El valor ${value} se encuentra en el índice ${index}.`
+            });
         } else {
-            alert(`El valor ${value} no se encontró en la tabla.`);
+            Swal.fire({
+                icon: 'error',
+                title: 'Elemento no encontrado',
+                text: `El valor ${value} no se encontró en la tabla.`
+            });
         }
         document.getElementById("input-value").value = '';
     }
@@ -37,9 +45,17 @@ function deleteFromHashTable() {
         if (valueIndex !== -1) {
             hashTable[index].splice(valueIndex, 1);
             updateHashTableDisplay();
-            alert(`El valor ${value} ha sido eliminado del índice ${index}.`);
+            Swal.fire({
+                icon: 'success',
+                title: 'Elemento eliminado',
+                text: `El valor ${value} ha sido eliminado del índice ${index}.`
+            });
         } else {
-            alert(`El valor ${value} no se encontró en la tabla.`);
+            Swal.fire({
+                icon: 'error',
+                title: 'Elemento no encontrado',
+                text: `El valor ${value} no se encontró en la tabla.`
+            });
         }
         document.getElementById("input-value").value = '';
     }

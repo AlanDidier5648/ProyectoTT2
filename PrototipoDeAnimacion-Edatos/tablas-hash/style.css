@@ -1,200 +1,199 @@
 /* Fondo animado aplicado al body */
 body {
-    font-family: "Raleway", sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #007BFF 25%, #66B2FF 25%, #66B2FF 50%, #99CCFF 50%, #99CCFF 75%, #007BFF 75%);
-    background-size: 300% 300%;
-    animation: gradient 30s linear infinite;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #007BFF 25%, #66B2FF 25%, #66B2FF 50%, #99CCFF 50%, #99CCFF 75%, #007BFF 75%);
+  background-size: 300% 300%;
+  animation: gradient 30s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 
 @keyframes gradient {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 300% 50%; }
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
 }
 
 /* Contenedor principal usando Grid */
 .grid-container {
-    display: grid;
-    grid-template-rows: auto auto; /* Las filas se ajustan automáticamente según el contenido */
-    width: 100%; /* Usa el 100% del ancho disponible */
-    max-width: 1200px; /* Limita el ancho máximo en pantallas grandes */
-    gap: 20px;
-    margin: 100px auto 0 auto; /* Centra el contenedor */
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+  display: grid;
+  grid-template-rows: auto auto; /* Las filas se ajustan automáticamente según el contenido */
+  width: 100%; /* Usa el 100% del ancho disponible */
+  max-width: 1200px; /* Limita el ancho máximo en pantallas grandes */
+  gap: 20px;
+  margin: 100px auto 0 auto; /* Centra el contenedor */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
 }
 
 /* Sección Superior e Inferior */
 .section {
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
 }
 
 /* Estilos para la barra de navegación */
 .navbar {
-    padding: 20px;
-    background-color: #004494;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-sizing: border-box;
+  padding: 20px;
+  background-color: #004494;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
 }
 
 .navbar .logo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .navbar .profile-pic {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .navbar h2 {
-    margin: 0;
-    font-size: 1.5em;
+  margin: 0;
+  font-size: 1.5em;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
+  list-style: none;
+  display: flex;
+  gap: 30px;
 }
 
 .nav-links li {
-    margin: 0;
+  margin: 0;
 }
 
 .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1em;
-    transition: background-color 0.4s ease, color 0.4s ease;
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .nav-links a:hover {
-    background-color: #99CCFF;
-    color: #003366;
-    border-radius: 5px;
+  background-color: #99CCFF;
+  color: #003366;
+  border-radius: 5px;
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
-    }
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  .nav-links {
+      flex-direction: column;
+      gap: 10px;
+  }
 }
 
 /* Media query para pantallas más pequeñas */
 @media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr; /* Cambia a una columna en pantallas pequeñas */
-        padding: 10px;
-    }
+  .grid-container {
+      grid-template-columns: 1fr; /* Cambia a una columna en pantallas pequeñas */
+      padding: 10px;
+  }
 }
 
 /* Contenedor de la simulación */
 .algorithm-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .algorithm-container h1 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-  }
-  
-  /* Estilos de la tabla hash */
-  .hash-table {
-    display: grid;
-    grid-template-columns: repeat(5, 80px);
-    gap: 15px;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .cell {
-    width: 80px;
-    height: 80px;
-    border: 2px solid #333;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #e0f7fa;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cell .index {
-    font-weight: bold;
-    font-size: 16px;
-    color: #00796b;
-  }
-  
-  .cell .values {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #00796b;
-  }
-  
-  /* Estilos del campo de entrada y botón */
-  .input-container {
-    margin-top: 20px;
-  }
-  
-  input[type="number"] {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 200px;
-    margin-right: 10px;
-  }
-  
-  button {
-    padding: 10px 15px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #00796b;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #004d40;
-  }
-  
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.algorithm-container h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Estilos de la tabla hash */
+.hash-table {
+  display: grid;
+  grid-template-columns: repeat(5, 80px);
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.cell {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #e0f7fa;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.cell .index {
+  font-weight: bold;
+  font-size: 16px;
+  color: #00796b;
+}
+
+.cell .values {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #00796b;
+}
+
+/* Estilos del campo de entrada y botón */
+.input-container {
+  margin-top: 20px;
+}
+
+input[type="number"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 200px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #00796b;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #004d40;
+}
