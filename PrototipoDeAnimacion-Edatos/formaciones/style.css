@@ -12,7 +12,6 @@ body {
     align-items: flex-start;
 }
 
-
 @keyframes gradient {
     0% { background-position: 0% 50%; }
     100% { background-position: 300% 50%; }
@@ -115,4 +114,94 @@ body {
         grid-template-columns: 1fr; /* Cambia a una columna en pantallas pequeñas */
         padding: 10px;
     }
+}
+
+/* CONTENEDOR DE LA SIMULACIÓN */
+.algorithm-container {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.algorithm-container h1 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #004494;
+    font-weight: bold;
+}
+
+/* Visualización del array */
+.array-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.cell {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border: 2px solid #004c3f;
+    border-radius: 8px;
+    background-color: #e0f7fa;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell .index {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    font-size: 18px; /* Tamaño de letra más grande para el índice */
+    font-weight: bold;
+    color: #004494;
+    text-align: center;
+}
+
+.cell .value {
+    font-size: 14px; /* Tamaño de letra más pequeño para los valores */
+    color: #00372e;
+    font-weight: normal;
+    margin-top: 20px; /* Da espacio para el índice */
+}
+
+/* Contenedor de los inputs y botones */
+.input-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.input-container input {
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #004c3f;
+}
+
+.input-container button {
+    background-color: #004c3f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.input-container button:hover {
+    background-color: #00372e;
 }
