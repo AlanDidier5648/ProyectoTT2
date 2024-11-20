@@ -18,7 +18,6 @@ body {
     100% { background-position: 300% 50%; }
 }
 
-
 /* Estilos para la barra de navegación */
 .navbar {
     padding: 20px;
@@ -36,12 +35,14 @@ body {
 }
 
 .navbar .profile-pic {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
+    width: 70px; /* Ajusta el tamaño de la imagen */
+    height: 70px; /* Mantén proporciones */
+    border-radius: 50%; /* Mantén el borde redondeado */
+    margin-right: 10px; /* Margen para separación */
+    object-fit: cover; /* La imagen se ajusta al contenedor sin deformarse */
 }
 
+/* Títulos y enlaces */
 .navbar h2 {
     margin: 0;
     font-size: 1.5em;
@@ -69,6 +70,8 @@ body {
     color: #003366; /* Azul oscuro para el texto, manteniendo el contraste suave */
     border-radius: 5px; /* Redondea las esquinas suavemente */
 }
+
+/* Contenido principal */
 .main-content {
     display: flex;
     flex-direction: column;
@@ -97,8 +100,6 @@ body {
 
 /* Contenedor de las tarjetas de algoritmos con Grid */
 .algorithms {
-   
-
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Siempre 3 columnas en pantallas grandes */
     grid-template-rows: repeat(2, 1fr); /* Siempre 2 filas */
@@ -106,11 +107,9 @@ body {
     padding: 20px; /* Espaciado alrededor del contenedor */
     justify-items: center; /* Centra las tarjetas horizontalmente */
     align-items: center; /* Centra las tarjetas verticalmente */
-   
     margin: 20px; /* Distancia de los lados y del footer */
     box-sizing: border-box; /* Para que padding y margin se calculen correctamente */
     overflow: hidden; /* Evita que aparezca scroll */
-
     margin-top: 40px; /* Aumenta el margen superior para separar del párrafo */
     width: 100%; /* Asegura que las tarjetas tomen todo el ancho */
 }
@@ -155,8 +154,6 @@ body {
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-
-
 .algorithm-card:hover span {
     transform: translateY(50px); /* Desplaza el texto hacia abajo al hacer hover */
 }
@@ -166,16 +163,13 @@ body {
     opacity: 1; /* El GIF se hace visible */
 }
 
-
-
 /* Efecto hover en la tarjeta */
 .algorithm-card:hover {
     transform: scale(1.05);
     background-color: #FFA500;
 }
 
-
-
+/* Footer */
 footer {
     padding-top: 20px; /* Añade un padding superior para separar el footer del contenido */
     background-color: #004494;
@@ -186,7 +180,6 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
 
 /* Responsive design: Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
