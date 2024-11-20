@@ -8,8 +8,8 @@ body {
     background-size: 300% 300%;
     animation: gradient 30s linear infinite;
     display: flex;
-    flex-direction: column; /* Para organizar el contenido verticalmente */
-    height: 100vh; /* Ocupa toda la pantalla */
+    flex-direction: column;
+    height: 100vh;
 }
 
 /* Animación del fondo */
@@ -20,38 +20,34 @@ body {
 
 /* Estilos para la barra de navegación */
 .navbar {
-    padding: 20px;
+    padding: 0 20px; /* Ajuste preciso del padding lateral */
     background-color: #004494;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-sizing: border-box; /* Asegura que padding se calcule correctamente */
+    box-sizing: border-box;
+    height: 70px; /* Altura fija exacta */
 }
 
 .navbar .logo {
     display: flex;
     align-items: center;
+    height: 100%; /* Garantiza la alineación dentro del navbar */
 }
 
 .navbar .profile-pic {
-    width: 70px; /* Ajusta el tamaño de la imagen */
-    height: 70px; /* Mantén proporciones */
-    border-radius: 50%; /* Mantén el borde redondeado */
-    margin-right: 10px; /* Margen para separación */
-    object-fit: cover; /* La imagen se ajusta al contenedor sin deformarse */
-}
-
-/* Títulos y enlaces */
-.navbar h2 {
-    margin: 0;
-    font-size: 1.5em;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px; /* Aumenta el espacio entre los elementos */
+    gap: 30px; /* Espacio uniforme entre enlaces */
 }
 
 .nav-links li {
@@ -62,60 +58,56 @@ body {
     color: white;
     text-decoration: none;
     font-size: 1em;
-    transition: background-color 0.4s ease, color 0.4s ease; /* Transición suave */
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .nav-links a:hover {
-    background-color: #99CCFF; /* Un azul claro y suave */
-    color: #003366; /* Azul oscuro para el texto, manteniendo el contraste suave */
-    border-radius: 5px; /* Redondea las esquinas suavemente */
+    background-color: #99CCFF;
+    color: #003366;
+    border-radius: 5px;
 }
 
 /* Contenido principal */
 .main-content {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Alinea los elementos desde el principio */
-    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: flex-start;
+    align-items: center;
     text-align: center;
     padding: 20px;
-    height: auto; /* Deja que el contenedor tome el tamaño necesario */
-    margin-bottom: 50px; /* Añade margen inferior para separarlo del footer */
+    height: auto;
+    margin-bottom: 50px;
 }
 
 /* Título principal */
 .main-content h1 {
     font-size: 2.5em;
     color: #333;
-    margin-top: 20px; /* Añade margen superior */
+    margin-top: 20px;
     margin-bottom: 30px;
 }
 
 /* Descripción principal */
 .main-content p {
-    margin-bottom: 40px; /* Añade espacio debajo del párrafo */
+    margin-bottom: 40px;
     color: #555;
     font-size: 1.2em;
 }
 
-/* Contenedor de las tarjetas de algoritmos con Grid */
+/* Contenedor de las tarjetas de algoritmos */
 .algorithms {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Siempre 3 columnas en pantallas grandes */
-    grid-template-rows: repeat(2, 1fr); /* Siempre 2 filas */
-    gap: 20px; /* Espacio entre las tarjetas */
-    padding: 20px; /* Espaciado alrededor del contenedor */
-    justify-items: center; /* Centra las tarjetas horizontalmente */
-    align-items: center; /* Centra las tarjetas verticalmente */
-    margin: 20px; /* Distancia de los lados y del footer */
-    box-sizing: border-box; /* Para que padding y margin se calculen correctamente */
-    overflow: hidden; /* Evita que aparezca scroll */
-    margin-top: 40px; /* Aumenta el margen superior para separar del párrafo */
-    width: 100%; /* Asegura que las tarjetas tomen todo el ancho */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+    align-items: center;
+    margin: 20px;
 }
 
 .algorithm-card {
-    margin: 20px; /* Añade margen alrededor de cada tarjeta */
+    margin: 20px;
     background-color: #FDBA50;
     padding: 20px;
     border-radius: 5px;
@@ -124,27 +116,27 @@ body {
     color: #333;
     font-size: 1.2em;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 150px; /* Aumenta la altura de las tarjetas */
-    width: 90%; /* Asegura que las tarjetas ocupen todo el ancho disponible */
+    height: 150px;
+    width: 90%;
     position: relative;
     overflow: hidden;
 }
 
 .algorithm-card img {
     max-width: 60%;
-    max-height: 120px; /* Ajusta el tamaño del GIF */
+    max-height: 120px;
     object-fit: contain;
     position: absolute;
-    top: -100px; /* Inicialmente, el GIF está oculto fuera de la tarjeta */
+    top: -100px;
     left: 50%;
     transform: translateX(-50%);
-    opacity: 0; /* Oculto por defecto */
-    transition: all 0.4s ease-in-out; /* Transición suave */
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
 }
 
 .algorithm-card span {
@@ -155,15 +147,14 @@ body {
 }
 
 .algorithm-card:hover span {
-    transform: translateY(50px); /* Desplaza el texto hacia abajo al hacer hover */
+    transform: translateY(50px);
 }
 
 .algorithm-card:hover img {
-    top: 20px; /* El GIF aparece dentro del contenedor */
-    opacity: 1; /* El GIF se hace visible */
+    top: 20px;
+    opacity: 1;
 }
 
-/* Efecto hover en la tarjeta */
 .algorithm-card:hover {
     transform: scale(1.05);
     background-color: #FFA500;
@@ -171,7 +162,7 @@ body {
 
 /* Footer */
 footer {
-    padding-top: 20px; /* Añade un padding superior para separar el footer del contenido */
+    padding-top: 20px;
     background-color: #004494;
     color: white;
     text-align: center;
@@ -179,22 +170,4 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
-
-/* Responsive design: Ajustes para pantallas pequeñas */
-@media (max-width: 768px) {
-    .algorithms {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas más pequeñas */
-        grid-template-rows: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta las filas automáticamente */
-        height: auto; /* Permite que el contenido se ajuste a la altura disponible */
-        margin: 10px; /* Reduce el margen en pantallas pequeñas */
-    }
-
-    .algorithm-card {
-        font-size: 1em; /* Ajusta el tamaño del texto en pantallas pequeñas */
-    }
-
-    .navbar, footer {
-        padding: 10px; /* Reduce el padding en pantallas pequeñas */
-    }
 }
