@@ -55,7 +55,8 @@ body {
 
 /* Estilos para la barra de navegación */
 .navbar {
-    padding: 20px;
+    padding: 10px 20px; /* Ajuste uniforme */
+    height: 70px; /* Altura fija */
     background-color: #004494;
     color: white;
     display: flex;
