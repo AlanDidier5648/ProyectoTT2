@@ -1,7 +1,10 @@
 let array = [];
 // Variables de control para el estado de la búsqueda binaria
-let left, right, targetValue, stepActive, currentMid;
+let left, right, targetValue,  currentMid;
 let isArrayGenerated = false; 
+// Variables globales para el estado de la búsqueda lineal
+let currentIndex = 0; // Índice actual en la búsqueda lineal
+let stepActive = false; // Control del estado de la búsqueda paso a paso
 
 // Función para generar un array desordenado de valores aleatorios
 function generateArray() {
@@ -30,22 +33,7 @@ function generateArray() {
 }
 
 
-// Función para verificar si el array está ordenado
-function isArraySorted() {
-    for (let i = 0; i < array.length - 1; i++) {
-        if (array[i] > array[i + 1]) {
-            return false; // Si algún elemento está fuera de orden, el array no está ordenado
-        }
-    }
-    return true; // El array está ordenado
-}
 
-
-// Función para ordenar el array cuando el usuario hace clic en el botón
-function orderlist() {
-    array.sort((a, b) => a - b); // Ordenar el array en orden ascendente
-    renderOrderedArray(); // Renderizar el array ordenado en la pantalla
-}
 
 // Función asincrónica para realizar una búsqueda binaria en el array
 async function binarySearch() {
@@ -63,16 +51,7 @@ async function binarySearch() {
         return;
     }
 
-      // Verificar si el array está ordenado antes de realizar la búsqueda
-      if (!isArraySorted()) {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Lista Desordenada',
-            text: 'La búsqueda binaria requiere una lista ordenada. Por favor, ordena la lista antes de continuar.',
-            confirmButtonText: 'Ordenar Lista'
-        });
-        return; // Detener la búsqueda si el array no está ordenado
-    }
+   
 
     // Reinicia los colores de todos los círculos antes de iniciar la búsqueda
     for (let circle of circles) {
@@ -168,8 +147,8 @@ function renderOrderedArray() {
 
 
 
-
-function startBinarySearch() {
+// Función para iniciar la búsqueda lineal paso a paso
+function startLinearSearch() {
     targetValue = parseInt(document.getElementById('search-value').value);
     if (isNaN(targetValue)) {
         Swal.fire({
@@ -181,27 +160,16 @@ function startBinarySearch() {
         return;
     }
 
-    if (!isArraySorted()) {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Lista Desordenada',
-            text: 'Ordena la lista antes de continuar.',
-            confirmButtonText: 'Ordenar Lista'
-        });
-        return;
-    }
-
-    left = 0;
-    right = array.length - 1;
     stepActive = true;
+    currentIndex = 0; // Reiniciar la búsqueda
     document.getElementById('step-container').innerHTML = ''; // Limpiar pasos anteriores
-
-    binarySearchStep();
+    linearSearchStep(); // Iniciar el primer paso
 }
 
-function binarySearchStep() {
-    if (!stepActive || left > right) {
-        // Verificar si la búsqueda ha terminado sin encontrar el valor
+// Función para realizar un paso de la búsqueda lineal
+function linearSearchStep() {
+    if (!stepActive || currentIndex >= array.length) {
+        // Si se han recorrido todos los elementos sin éxito
         if (!stepActive) {
             Swal.fire({
                 icon: 'info',
@@ -213,30 +181,32 @@ function binarySearchStep() {
         return;
     }
 
-    currentMid = Math.floor((left + right) / 2);
+    // Obtener los elementos visuales del array
+    const circles = document.getElementsByClassName('array-circle');
 
-    // Crear y mostrar el estado actual del array en una nueva línea
-    createStepContainer(array, currentMid);
+    // Resaltar el elemento actual
+    circles[currentIndex].style.backgroundColor = 'yellow';
 
-    // Verificar si se ha encontrado el valor
-    if (array[currentMid] === targetValue) {
+    // Crear y mostrar el estado actual del array
+    createStepContainer(array, currentIndex);
+
+    // Verificar si el elemento actual coincide con el valor buscado
+    if (array[currentIndex] === targetValue) {
         Swal.fire({
             icon: 'success',
             title: '¡Valor encontrado!',
-            text: `El valor ${targetValue} se encuentra en el índice ${currentMid}.`,
+            text: `El valor ${targetValue} se encuentra en el índice ${currentIndex}.`,
             confirmButtonText: 'Entendido'
         });
+        circles[currentIndex].style.backgroundColor = 'green';
         stepActive = false; // Finalizar búsqueda
     } else {
-        // Ajustar los límites para el siguiente paso
-        if (array[currentMid] > targetValue) {
-            right = currentMid - 1;
-        } else {
-            left = currentMid + 1;
-        }
+        // Restaurar el color si no coincide
+        circles[currentIndex].style.backgroundColor = '#3498db';
+        currentIndex++; // Avanzar al siguiente índice
 
-        // Si hemos agotado los pasos sin encontrar el valor
-        if (left > right) {
+        // Si llegamos al final sin encontrar el valor
+        if (currentIndex >= array.length) {
             Swal.fire({
                 icon: 'info',
                 title: 'Búsqueda Terminada',

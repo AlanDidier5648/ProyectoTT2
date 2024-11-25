@@ -1,5 +1,3 @@
-
-
 // Inicializa Chart.js
 const ctx = document.getElementById('bubbleChart').getContext('2d');
 let data = []; // Inicializamos el array vacío
@@ -254,3 +252,4 @@ function startSorting() {
     currentStep = 0;
     showStep(currentStep);
 }
+
