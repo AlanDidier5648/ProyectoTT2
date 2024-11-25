@@ -37,8 +37,51 @@
                 <!-- Sección Superior para la explicación del algoritmo -->
                 <div class="section superior">
                     <h2>Explicación General del Algoritmo</h2>
-                   
-                </div>
+                    <p style="text-align: justify;">El algoritmo de Búsqueda Lineal es uno de los métodos más simples para encontrar un elemento específico en una lista. Este método consiste en recorrer la lista elemento por elemento, comparando cada uno con el valor que se desea encontrar. La búsqueda lineal no requiere que la lista esté ordenada previamente, lo que la hace muy versátil, pero puede ser menos eficiente en listas grandes, ya que su tiempo de ejecución es proporcional al tamaño de la lista.</p>
+
+                    <h3>¿En qué consiste?</h3>
+                    <p style="text-align: justify;">El algoritmo de Búsqueda Lineal funciona de la siguiente manera:</p>
+                    <ol style="text-align: justify;">
+                        <li><strong>Recorrido de la lista:</strong> Se empieza desde el primer elemento de la lista y se avanza uno por uno.</li>
+                        <li><strong>Comparación:</strong> Cada elemento se compara con el valor buscado:</li>
+                        <ul style="text-align: justify;">
+                            <li>Si el elemento coincide con el valor buscado, la búsqueda termina.</li>
+                            <li>Si no coincide, se pasa al siguiente elemento.</li>
+                        </ul>
+                        <li><strong>Finalización:</strong> Este proceso se repite hasta encontrar el elemento o hasta llegar al final de la lista. Si se llega al final sin encontrar el elemento, significa que este no está presente en la lista.</li>
+                    </ol>
+
+                    <h3>Ejemplo</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <!-- Columna de texto del ejemplo -->
+                        <div style="flex: 0.8; padding-right: 15px;">
+                            <p><strong>Lista inicial:</strong> <code>[5, 12, 18, 23, 42]</code>.<br>
+                            <strong>Elemento a buscar:</strong> <code>23</code>.</p>
+                            <p><strong>Primera iteración:</strong><br>
+                                - Se compara el primer elemento <strong>5</strong> con el valor buscado <strong>23</strong>.<br>
+                                - Como <strong>5 ≠ 23</strong>, se avanza al siguiente elemento.<br>
+                            </p>
+                            <p><strong>Segunda iteración:</strong><br>
+                                - Se compara el segundo elemento <strong>12</strong> con el valor buscado <strong>23</strong>.<br>
+                                - Como <strong>12 ≠ 23</strong>, se avanza al siguiente elemento.<br>
+                            </p>
+                            <p><strong>Tercera iteración:</strong><br>
+                                - Se compara el tercer elemento <strong>18</strong> con el valor buscado <strong>23</strong>.<br>
+                                - Como <strong>18 ≠ 23</strong>, se avanza al siguiente elemento.<br>
+                            </p>
+                            <p><strong>Cuarta iteración:</strong><br>
+                                - Se compara el cuarto elemento <strong>23</strong> con el valor buscado <strong>23</strong>.<br>
+                                - Como <strong>23 = 23</strong>, se ha encontrado el elemento buscado.<br>
+                            </p>
+                            <p>El número <strong>23</strong> ha sido encontrado en la posición <strong>4</strong> de la lista.</p>
+                        </div>
+                        <!-- Columna de imagen explicativa -->
+                        <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
+                        <img src="../../img/bin.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
+                        </div>
+                    </div>
+            </div>
+
 
 
 
