@@ -43,20 +43,30 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la complejidad temporal del peor caso del algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question1" value="O(n)"> O(n)</label><br>
-                        <label><input type="radio" name="question1" value="O(n log n)"> O(n log n)</label><br>
-                        <label><input type="radio" name="question1" value="O(n²)"> O(n²)</label><br>
+                        <p>1. ¿Cómo funciona el algoritmo de Burbuja?</p>
+                        <label><input type="radio" name="question1" value="a"> Compara elementos no adyacentes y realiza intercambios para ordenarlos de mayor a menor.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Compara elementos adyacentes, y si el primero es mayor que el segundo, los intercambia.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Ordena directamente los elementos más grandes primero, dejando los más pequeños para el final.</label><br>
                         
-                        <p>2. ¿Qué operación realiza repetidamente el algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question2" value="Comparar e intercambiar"> Comparar e intercambiar</label><br>
-                        <label><input type="radio" name="question2" value="Buscar el máximo"> Buscar el máximo</label><br>
-                        <label><input type="radio" name="question2" value="Sumar elementos"> Sumar elementos</label><br>
+                        <p>2. ¿Qué asegura que el algoritmo de Burbuja ha finalizado correctamente?</p>
+                        <label><input type="radio" name="question2" value="a"> Que se hayan realizado al menos dos iteraciones sobre la lista completa.</label><br>
+                        <label><input type="radio" name="question2" value="b"> Que ya no se detecten elementos adyacentes en orden incorrecto.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Que todos los elementos intercambiados hayan llegado a su posición final en la primera iteración.</label><br>
             
-                        <p>3. ¿Cuántos elementos se comparan en cada iteración?</p>
-                        <label><input type="radio" name="question3" value="Adyacentes"> Adyacentes</label><br>
-                        <label><input type="radio" name="question3" value="Aleatorios"> Aleatorios</label><br>
-                        <label><input type="radio" name="question3" value="Todos los elementos"> Todos los elementos</label><br>
+                        <p>3. En el ejemplo dado, ¿cuál fue el último intercambio realizado en la tercera iteración?</p>
+                        <label><input type="radio" name="question3" value="a"> Se intercambiaron los valores 2 y 1, dejando la lista como [1, 2, 3, 4].</label><br>
+                        <label><input type="radio" name="question3" value="b"> Se intercambiaron los valores 3 y 4, dejando la lista como [2, 1, 3, 4].</label><br>
+                        <label><input type="radio" name="question3" value="c"> Se intercambiaron los valores 1 y 2, dejando la lista como [1, 3, 2, 4].</label><br>
+
+                        <p>4. ¿Qué representa cada iteración en el algoritmo de Burbuja?</p>
+                        <label><input type="radio" name="question4" value="a"> Una comparación única entre dos elementos consecutivos.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Un ciclo completo donde se comparan pares de elementos adyacentes en la lista.</label><br>
+                        <label><input type="radio" name="question4" value="c"> El movimiento directo del elemento más pequeño al inicio de la lista.</label><br>
+
+                        <p>5. En la segunda iteración del ejemplo, ¿por qué no se intercambiaron los valores 3 y 2?</p>
+                        <label><input type="radio" name="question5" value="a"> Porque ya se había alcanzado el orden correcto en la lista durante la primera iteración.</label><br>
+                        <label><input type="radio" name="question5" value="b"> Porque 3 es menor que 2 y no cumple con la condición de intercambio.</label><br>
+                        <label><input type="radio" name="question5" value="c"> Porque 3 es mayor que 2, pero no es necesario intercambiarlos en esa etapa.</label><br>
             
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>
