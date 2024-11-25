@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Quicksort</title>
+    <!-- Enlace al archivo CSS de estilos generales -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Enlace al archivo CSS para el background animado -->
+    <link rel="stylesheet" href="stylebackground.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Enlace a Chart.js para generar gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Enlace a SweetAlert2 para notificaciones -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="../../pages/perfil.html">
+                <img src="../../img/image1.png" alt="Foto de perfil" class="profile-pic">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../pages/perfil.html">Inicio</a></li>
+            <li><a href="../../pages/ordenamiento.html">Ordenamiento</a></li>
+            <li><a href="../../pages/busqueda.html">Búsqueda en lista</a></li>
+            <li><a href="../../pages/busquedaGraf.html">Búsqueda en gráfico</a></li>
+            <li><a href="../../pages/edatos.html">Estructuras de datos</a></li>
+        </ul>
+    </nav>
+
+            <!-- Contenedor principal con Grid -->
+            <div class="grid-container">
+              <!-- Sección Inferior para la visualización del algoritmo -->
+                <div class="section inferior">
+                    <h2>Visualización del Algoritmo</h2>
+                    <!-- Input para seleccionar el número de números a generar -->
+                    <label for="numCount">Indique el número de números a generar:</label>
+                    <input type="number" id="numCount" name="numCount" min="1" max="10" value="5">
+                    
+                    <!-- Inputs dinámicos generados -->
+                    <div id="dynamicInputs"></div>
+
+                    <!-- Botones para generar números aleatorios y limpiar los inputs -->
+                    <div class="input-buttons">
+                        <button id="generateRandom" onclick="generateRandomNumbers()">Generar números aleatorios</button>
+                        <button id="clearInputs" onclick="clearInputs()">Limpiar inputs</button>
+                    </div>
+
+                    <!-- Canvas para la visualización del gráfico (Chart.js) -->
+                    <canvas id="bubbleChart" width="800" height="300"></canvas>
+
+                    <!-- Lista para mostrar los pasos del algoritmo -->
+                    <ul id="stepList"></ul> 
+
+                    <!-- Controles de navegación paso a paso -->
+                    <div id="controls">
+                        <button id="prevButton">Paso Anterior</button>
+                        <span id="narration">Inicia el proceso de ordenamiento...</span>
+                        <button id="nextButton">Paso Siguiente</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin del grid-container -->
+    
+    <script src="script.js"></script>
+</body>
+</html>

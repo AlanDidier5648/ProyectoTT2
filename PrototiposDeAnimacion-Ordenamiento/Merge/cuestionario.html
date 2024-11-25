@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización del Algoritmo de Ordenamiento</title>
+    <!-- Enlace al archivo CSS de estilos generales -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Enlace a Chart.js para generar gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Enlace a SweetAlert2 para notificaciones -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+            <!-- Barra de navegación -->
+<nav class="navbar">
+    <div class="logo">
+        <img src="../../img/user.png" alt="Foto de perfil" class="profile-pic">
+        <h2>Valeria Ortiz</h2>
+    </div>
+        <ul class="nav-links">
+            <li><a href="../../pages/perfil.html">Inicio</a></li>
+            <li><a href="../../pages/ordenamiento.html">Ordenamiento</a></li>
+            <li><a href="../../pages/busqueda.html">Búsqueda en lista</a></li>
+            <li><a href="../../pages/busquedaGraf.html">Búsqueda en gráfico</a></li>
+            <li><a href="../../pages/edatos.html">Estructuras de datos</a></li>
+        </ul>
+</nav>
+  
+            <!-- Contenedor principal con Grid -->
+            <div class="grid-container">
+
+                <!-- Sección Inferior para la visualización del algoritmo -->
+                <div class="section inferior">
+                    <h2>Cuestionario</h2>
+
+                    <p>Responde las siguientes preguntas para desbloquear la animación:</p>
+
+                    <!-- Formulario del cuestionario -->
+                    <form id="quizForm">
+                        <p>1. ¿Cuál es la complejidad temporal del peor caso del algoritmo de Burbuja?</p>
+                        <label><input type="radio" name="question1" value="O(n)"> O(n)</label><br>
+                        <label><input type="radio" name="question1" value="O(n log n)"> O(n log n)</label><br>
+                        <label><input type="radio" name="question1" value="O(n²)"> O(n²)</label><br>
+                        
+                        <p>2. ¿Qué operación realiza repetidamente el algoritmo de Burbuja?</p>
+                        <label><input type="radio" name="question2" value="Comparar e intercambiar"> Comparar e intercambiar</label><br>
+                        <label><input type="radio" name="question2" value="Buscar el máximo"> Buscar el máximo</label><br>
+                        <label><input type="radio" name="question2" value="Sumar elementos"> Sumar elementos</label><br>
+            
+                        <p>3. ¿Cuántos elementos se comparan en cada iteración?</p>
+                        <label><input type="radio" name="question3" value="Adyacentes"> Adyacentes</label><br>
+                        <label><input type="radio" name="question3" value="Aleatorios"> Aleatorios</label><br>
+                        <label><input type="radio" name="question3" value="Todos los elementos"> Todos los elementos</label><br>
+            
+                        <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
+                    </form>
+                  
+                </div>
+            </div>
+            <!-- Fin del grid-container -->
+     
+    <script src="scriptCU.js"></script>
+</body>
+</html>
