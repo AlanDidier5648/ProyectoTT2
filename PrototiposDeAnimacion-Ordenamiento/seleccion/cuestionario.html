@@ -43,20 +43,30 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la complejidad temporal del peor caso del algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question1" value="O(n)"> O(n)</label><br>
-                        <label><input type="radio" name="question1" value="O(n log n)"> O(n log n)</label><br>
-                        <label><input type="radio" name="question1" value="O(n²)"> O(n²)</label><br>
+                        <p>1. ¿Cuál es la función principal del algoritmo de selección?</p>
+                        <label><input type="radio" name="question1" value="a"> Seleccionar el elemento mayor de la lista y colocarlo en la primera posición de la parte ordenada.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Encontrar el elemento más pequeño de la lista y moverlo a su posición final en cada iteración.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Dividir la lista en dos partes iguales y ordenar cada parte independientemente.</label><br>
                         
-                        <p>2. ¿Qué operación realiza repetidamente el algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question2" value="Comparar e intercambiar"> Comparar e intercambiar</label><br>
-                        <label><input type="radio" name="question2" value="Buscar el máximo"> Buscar el máximo</label><br>
-                        <label><input type="radio" name="question2" value="Sumar elementos"> Sumar elementos</label><br>
+                        <p>2. ¿Cómo se divide la lista durante el proceso de selección?</p>
+                        <label><input type="radio" name="question2" value="a"> En una parte ordenada, que comienza con todos los elementos, y una parte desordenada que se reduce con cada iteración.</label><br>
+                        <label><input type="radio" name="question2" value="b"> En una parte ordenada, que comienza vacía, y una parte desordenada que contiene el resto de los elementos.</label><br>
+                        <label><input type="radio" name="question2" value="c"> En sublistas de tamaño fijo que se ordenan por separado antes de combinarse.</label><br>
             
-                        <p>3. ¿Cuántos elementos se comparan en cada iteración?</p>
-                        <label><input type="radio" name="question3" value="Adyacentes"> Adyacentes</label><br>
-                        <label><input type="radio" name="question3" value="Aleatorios"> Aleatorios</label><br>
-                        <label><input type="radio" name="question3" value="Todos los elementos"> Todos los elementos</label><br>
+                        <p>3. En el ejemplo proporcionado, ¿qué sucede durante la segunda iteración?</p>
+                        <label><input type="radio" name="question3" value="a"> Se busca el siguiente elemento más pequeño en los elementos restantes [5, 9, 7], y como 5 ya está en su lugar, no se realiza ningún intercambio.</label><br>
+                        <label><input type="radio" name="question3" value="b"> Se selecciona el elemento 9 como el mínimo, ya que es menor que 7, y se intercambia con el primer elemento de la parte desordenada.</label><br>
+                        <label><input type="radio" name="question3" value="c"> Se busca el siguiente elemento mayor en los elementos restantes y se intercambia con el último elemento de la lista ordenada.</label><br>
+
+                        <p>4. ¿Qué sucede durante la tercera iteración del ejemplo?</p>
+                        <label><input type="radio" name="question4" value="a"> Se encuentra el mínimo entre [9, 7], que es 9, y se intercambia con el primer elemento de la lista ordenada.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Se encuentra el mínimo entre [9, 7], que es 7, y se intercambia con 9, dejando la lista como [2, 5, 7, 9].</label><br>
+                        <label><input type="radio" name="question4" value="c"> Se encuentra el máximo entre [9, 7], que es 9, y se mueve a su posición final en la lista.</label><br>
+
+                        <p>5. ¿Cómo se determina que la lista está completamente ordenada en el algoritmo de selección?</p>
+                        <label><input type="radio" name="question5" value="a"> Cuando la parte desordenada contiene solo un elemento, ya que este siempre estará en su lugar.</label><br>
+                        <label><input type="radio" name="question5" value="b"> Cuando la parte ordenada alcanza la mitad de la lista y la otra mitad se fusiona con ella.</label><br>
+                        <label><input type="radio" name="question5" value="c"> Cuando el último elemento de la lista se intercambia con el primero de la parte ordenada.</label><br>
             
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>
