@@ -43,21 +43,31 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la complejidad temporal del peor caso del algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question1" value="O(n)"> O(n)</label><br>
-                        <label><input type="radio" name="question1" value="O(n log n)"> O(n log n)</label><br>
-                        <label><input type="radio" name="question1" value="O(n²)"> O(n²)</label><br>
+                        <p>1. ¿Cuál es el principio básico del algoritmo de inserción?</p>
+                        <label><input type="radio" name="question1" value="a"> Dividir la lista en dos partes: una ordenada y otra desordenada, insertando elementos en la parte desordenada.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Tomar elementos de la lista desordenada y compararlos con la parte ordenada para colocarlos en su posición correcta.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Comparar todos los elementos de la lista simultáneamente para reducir el número de movimientos necesarios.</label><br>
                         
-                        <p>2. ¿Qué operación realiza repetidamente el algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question2" value="Comparar e intercambiar"> Comparar e intercambiar</label><br>
-                        <label><input type="radio" name="question2" value="Buscar el máximo"> Buscar el máximo</label><br>
-                        <label><input type="radio" name="question2" value="Sumar elementos"> Sumar elementos</label><br>
+                        <p>2. En el primer paso del ejemplo, ¿qué sucede cuando se toma el valor 2 como clave?</p>
+                        <label><input type="radio" name="question2" value="a"> Se compara 2 con 5, y como 2 es menor, se coloca en la posición correcta.</label><br>
+                        <label><input type="radio" name="question2" value="b"> Se mueve 2 al inicio de la lista sin necesidad de comparación porque es menor que todos los elementos.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Se compara 2 con todos los elementos de la lista y se intercambia con el más grande.</label><br>
             
-                        <p>3. ¿Cuántos elementos se comparan en cada iteración?</p>
-                        <label><input type="radio" name="question3" value="Adyacentes"> Adyacentes</label><br>
-                        <label><input type="radio" name="question3" value="Aleatorios"> Aleatorios</label><br>
-                        <label><input type="radio" name="question3" value="Todos los elementos"> Todos los elementos</label><br>
-            
+                        <p>3. ¿Qué sucede durante el tercer paso del ejemplo (clave = 1)?</p>
+                        <label><input type="radio" name="question3" value="a"> Se mueve el valor 1 al final de la lista porque es menor que el último elemento ordenado.</label><br>
+                        <label><input type="radio" name="question3" value="b"> Se mueven 5, 4 y 2 una posición a la derecha para hacer espacio y colocar 1 en su posición correcta.</label><br>
+                        <label><input type="radio" name="question3" value="c"> Se compara 1 únicamente con 5 y 4, y después se coloca directamente en su posición final.</label><br>
+                        
+                        <p>4. ¿Qué ventaja tiene el algoritmo de inserción en comparación con el de Burbuja?</p>
+                        <label><input type="radio" name="question4" value="a"> Es más eficiente cuando se trabaja con listas pequeñas o que ya están parcialmente ordenadas.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Reduce el número de comparaciones necesarias al ordenar elementos grandes primero.</label><br>
+                        <label><input type="radio" name="question4" value="c"> No requiere iterar sobre toda la lista para ordenar un elemento en cada paso.</label><br>
+
+                        <p>5. ¿Qué determina que un elemento se mueva en el algoritmo de inserción?</p>
+                        <label><input type="radio" name="question5" value="a"> Que sea mayor que todos los elementos en la parte ordenada de la lista.</label><br>
+                        <label><input type="radio" name="question5" value="b"> Que sea menor que el siguiente elemento en la parte desordenada.</label><br>
+                        <label><input type="radio" name="question5" value="c"> Que sea menor que los elementos de la parte ordenada con los que se compara.</label><br>
+
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>
                   
