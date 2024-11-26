@@ -43,20 +43,30 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la complejidad temporal del peor caso del algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question1" value="O(n)"> O(n)</label><br>
-                        <label><input type="radio" name="question1" value="O(n log n)"> O(n log n)</label><br>
-                        <label><input type="radio" name="question1" value="O(n²)"> O(n²)</label><br>
+                        <p>1. ¿Cuál es el propósito del pivote en el algoritmo QuickSort?</p>
+                        <label><input type="radio" name="question1" value="a"> Sirve como referencia para dividir la lista en partes iguales.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Ayuda a comparar los elementos para colocarlos a su izquierda o derecha según su valor.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Determina la posición final de todos los elementos de la lista en un solo paso.</label><br>
                         
-                        <p>2. ¿Qué operación realiza repetidamente el algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question2" value="Comparar e intercambiar"> Comparar e intercambiar</label><br>
-                        <label><input type="radio" name="question2" value="Buscar el máximo"> Buscar el máximo</label><br>
-                        <label><input type="radio" name="question2" value="Sumar elementos"> Sumar elementos</label><br>
+                        <p>2. ¿Qué sucede durante el primer paso del QuickSort (elegir pivote)?</p>
+                        <label><input type="radio" name="question2" value="a"> Se selecciona el pivote y los elementos más pequeños se colocan a su derecha.</label><br>
+                        <label><input type="radio" name="question2" value="b"> El pivote puede ser cualquier elemento, pero comúnmente se elige el último, el primero o uno al azar.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Los elementos mayores al pivote se dividen en sublistas para procesarlos por separado.</label><br>
             
-                        <p>3. ¿Cuántos elementos se comparan en cada iteración?</p>
-                        <label><input type="radio" name="question3" value="Adyacentes"> Adyacentes</label><br>
-                        <label><input type="radio" name="question3" value="Aleatorios"> Aleatorios</label><br>
-                        <label><input type="radio" name="question3" value="Todos los elementos"> Todos los elementos</label><br>
+                        <p>3. En el ejemplo, ¿qué ocurre después de la primera iteración?</p>
+                        <label><input type="radio" name="question3" value="a"> Los elementos menores al pivote (5) se colocan a la izquierda y los mayores a la derecha, obteniendo [2, 5, 9, 6].</label><br>
+                        <label><input type="radio" name="question3" value="b"> El pivote se ordena junto con los elementos menores, dejando solo los mayores para la siguiente iteración.</label><br>
+                        <label><input type="radio" name="question3" value="c"> La lista se divide en sublistas [2] y [9, 6], mientras el pivote 5 queda en su posición final.</label><br>
+
+                        <p>4. ¿Qué hace el algoritmo QuickSort con las sublistas después de dividirlas?</p>
+                        <label><input type="radio" name="question4" value="a"> Aplica el proceso recursivamente hasta que cada sublista tenga un solo elemento o esté vacía.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Fusiona las sublistas en orden ascendente antes de aplicar la recursión.</label><br>
+                        <label><input type="radio" name="question4" value="c"> Ordena primero la sublista más grande para reducir la complejidad del algoritmo.</label><br>
+
+                        <p>5. En la última etapa del ejemplo, ¿cómo se obtiene la lista ordenada final?</p>
+                        <label><input type="radio" name="question5" value="a"> Las sublistas ordenadas [2], [5] y [6, 9] se combinan directamente en [2, 5, 6, 9].</label><br>
+                        <label><input type="radio" name="question5" value="b"> Los elementos se comparan entre sublistas y se reacomodan para formar la lista [2, 5, 6, 9].</label><br>
+                        <label><input type="radio" name="question5" value="c"> El pivote se fusiona con las sublistas izquierda y derecha para obtener [2, 5, 6, 9].</label><br>
             
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>

@@ -1,9 +1,11 @@
 document.getElementById('checkAnswers')?.addEventListener('click', () => {
     const form = document.getElementById('quizForm');
     const correctAnswers = {
-        question1: "O(n²)",
-        question2: "Comparar e intercambiar",
-        question3: "Adyacentes"
+        question1: "b",
+        question2: "b",
+        question3: "c",
+        question4: "a",
+        question5: "a"
     };
 
     let allCorrect = true;
