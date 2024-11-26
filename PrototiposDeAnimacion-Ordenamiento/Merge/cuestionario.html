@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización del Algoritmo de Ordenamiento</title>
+    <title>Visualizar MergeSort</title>
     <!-- Enlace al archivo CSS de estilos generales -->
     <link rel="stylesheet" href="style.css">
 
@@ -43,20 +43,30 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la complejidad temporal del peor caso del algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question1" value="O(n)"> O(n)</label><br>
-                        <label><input type="radio" name="question1" value="O(n log n)"> O(n log n)</label><br>
-                        <label><input type="radio" name="question1" value="O(n²)"> O(n²)</label><br>
+                        <p>1. ¿Qué estrategia utiliza el algoritmo MergeSort para ordenar una lista?</p>
+                        <label><input type="radio" name="question1" value="a"> Divide la lista en partes iguales repetidamente y fusiona cada sublista ordenándolas en el proceso.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Fusiona primero los elementos más pequeños para formar una lista ordenada.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Ordena directamente los elementos de mayor a menor en una sola pasada.</label><br>
                         
-                        <p>2. ¿Qué operación realiza repetidamente el algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question2" value="Comparar e intercambiar"> Comparar e intercambiar</label><br>
-                        <label><input type="radio" name="question2" value="Buscar el máximo"> Buscar el máximo</label><br>
-                        <label><input type="radio" name="question2" value="Sumar elementos"> Sumar elementos</label><br>
+                        <p>2. ¿Qué define el proceso de "Ordenar y fusionar" en MergeSort?</p>
+                        <label><input type="radio" name="question2" value="a"> Combina dos listas ordenadas en una sola, comparando elemento por elemento.</label><br>
+                        <label><input type="radio" name="question2" value="b"> Junta todas las sublistas en un solo paso, sin necesidad de comparaciones adicionales.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Reorganiza los elementos más grandes primero para acelerar el ordenamiento.</label><br>
             
-                        <p>3. ¿Cuántos elementos se comparan en cada iteración?</p>
-                        <label><input type="radio" name="question3" value="Adyacentes"> Adyacentes</label><br>
-                        <label><input type="radio" name="question3" value="Aleatorios"> Aleatorios</label><br>
-                        <label><input type="radio" name="question3" value="Todos los elementos"> Todos los elementos</label><br>
+                        <p>3. En el ejemplo proporcionado, ¿qué ocurre durante la primera fusión?</p>
+                        <label><input type="radio" name="question3" value="a"> Las sublistas [8] y [3] se combinan en [3, 8], y [7] y [4] en [4, 7], ordenándolas en el proceso.</label><br>
+                        <label><input type="radio" name="question3" value="b"> Todas las sublistas se fusionan en un solo paso para obtener la lista [3, 4, 7, 8].</label><br>
+                        <label><input type="radio" name="question3" value="c"> Se realiza una comparación general de todos los elementos sin formar sublistas intermedias.</label><br>
+
+                        <p>4. ¿Cuál es una característica importante de MergeSort?</p>
+                        <label><input type="radio" name="question4" value="a"> Divide la lista en partes desiguales para priorizar los elementos más pequeños.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Mantiene el orden original de elementos iguales durante el proceso de ordenamiento.</label><br>
+                        <label><input type="radio" name="question4" value="c"> Requiere menos memoria al no usar sublistas intermedias.</label><br>
+
+                        <p>5. En la fusión final del ejemplo, ¿cómo se obtiene la lista ordenada?</p>
+                        <label><input type="radio" name="question5" value="a"> Se combinan las sublistas [3, 8] y [4, 7] directamente, comparando cada elemento para asegurarse de mantener el orden.</label><br>
+                        <label><input type="radio" name="question5" value="b"> Las sublistas se mezclan automáticamente en una sola lista ordenada sin necesidad de comparaciones.</label><br>
+                        <label><input type="radio" name="question5" value="c"> Los elementos de cada sublista se reorganizan al fusionarse sin seguir el orden establecido.</label><br>
             
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>
