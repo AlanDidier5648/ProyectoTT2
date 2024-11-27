@@ -43,30 +43,30 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cómo funciona el algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question1" value="a"> Compara elementos no adyacentes y realiza intercambios para ordenarlos de mayor a menor.</label><br>
-                        <label><input type="radio" name="question1" value="b"> Compara elementos adyacentes, y si el primero es mayor que el segundo, los intercambia.</label><br>
-                        <label><input type="radio" name="question1" value="c"> Ordena directamente los elementos más grandes primero, dejando los más pequeños para el final.</label><br>
+                        <p>1. ¿Cuál es la principal característica del algoritmo de Búsqueda Binaria?</p>
+                        <label><input type="radio" name="question1" value="a"> Revisa cada elemento uno por uno hasta encontrar el valor buscado.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Reduce la búsqueda a la mitad en cada paso, descartando la mitad en la que no puede estar el elemento.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Ordena la lista previamente antes de realizar la búsqueda.</label><br>
                         
-                        <p>2. ¿Qué asegura que el algoritmo de Burbuja ha finalizado correctamente?</p>
-                        <label><input type="radio" name="question2" value="a"> Que se hayan realizado al menos dos iteraciones sobre la lista completa.</label><br>
-                        <label><input type="radio" name="question2" value="b"> Que ya no se detecten elementos adyacentes en orden incorrecto.</label><br>
-                        <label><input type="radio" name="question2" value="c"> Que todos los elementos intercambiados hayan llegado a su posición final en la primera iteración.</label><br>
+                        <p>2. ¿Qué condición es indispensable para que la Búsqueda Binaria funcione correctamente?</p>
+                        <label><input type="radio" name="question2" value="a"> Que la lista esté dividida previamente en sublistas iguales.</label><br>
+                        <label><input type="radio" name="question2" value="b"> Que los elementos estén ordenados en forma ascendente o descendente.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Que el valor buscado esté en la primera mitad de la lista.</label><br>
             
-                        <p>3. En el ejemplo dado, ¿cuál fue el último intercambio realizado en la tercera iteración?</p>
-                        <label><input type="radio" name="question3" value="a"> Se intercambiaron los valores 2 y 1, dejando la lista como [1, 2, 3, 4].</label><br>
-                        <label><input type="radio" name="question3" value="b"> Se intercambiaron los valores 3 y 4, dejando la lista como [2, 1, 3, 4].</label><br>
-                        <label><input type="radio" name="question3" value="c"> Se intercambiaron los valores 1 y 2, dejando la lista como [1, 3, 2, 4].</label><br>
+                        <p>3. En el ejemplo, ¿qué sucede durante la primera iteración?</p>
+                        <label><input type="radio" name="question3" value="a"> Se selecciona 20 como punto medio y, como 27 > 20, se descarta la mitad izquierda, incluido el 20.</label><br>
+                        <label><input type="radio" name="question3" value="b"> Se selecciona 20 como punto medio y, como 27 > 20, se descarta la mitad derecha, incluido el 20.</label><br>
+                        <label><input type="radio" name="question3" value="c"> Se selecciona 20 como punto medio y, como 27 < 20, se descarta la mitad izquierda, incluido el 20.</label><br>
 
-                        <p>4. ¿Qué representa cada iteración en el algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question4" value="a"> Una comparación única entre dos elementos consecutivos.</label><br>
-                        <label><input type="radio" name="question4" value="b"> Un ciclo completo donde se comparan pares de elementos adyacentes en la lista.</label><br>
-                        <label><input type="radio" name="question4" value="c"> El movimiento directo del elemento más pequeño al inicio de la lista.</label><br>
+                        <p>4. ¿Qué ocurre en la segunda iteración del ejemplo?</p>
+                        <label><input type="radio" name="question4" value="a"> Se selecciona 33 como punto medio y, como 27 < 33, se descarta la mitad derecha, incluido el 33.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Se selecciona 33 como punto medio y, como 27 > 33, se descarta la mitad izquierda, incluido el 33.</label><br>
+                        <label><input type="radio" name="question4" value="c"> Se selecciona 33 como punto medio y, como 27 = 33, se termina la búsqueda.</label><br>
 
-                        <p>5. En la segunda iteración del ejemplo, ¿por qué no se intercambiaron los valores 3 y 2?</p>
-                        <label><input type="radio" name="question5" value="a"> Porque ya se había alcanzado el orden correcto en la lista durante la primera iteración.</label><br>
-                        <label><input type="radio" name="question5" value="b"> Porque 3 es menor que 2 y no cumple con la condición de intercambio.</label><br>
-                        <label><input type="radio" name="question5" value="c"> Porque 3 es mayor que 2, pero no es necesario intercambiarlos en esa etapa.</label><br>
+                        <p>5. ¿Cómo se sabe que el número buscado está en la lista durante la última iteración?</p>
+                        <label><input type="radio" name="question5" value="a"> El único elemento restante en la lista coincide con el valor buscado.</label><br>
+                        <label><input type="radio" name="question5" value="b"> Se alcanza el inicio de la lista y el número coincide con el punto medio.</label><br>
+                        <label><input type="radio" name="question5" value="c"> La mitad descartada contiene únicamente el número buscado.</label><br>
             
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>

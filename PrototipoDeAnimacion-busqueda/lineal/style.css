@@ -3,16 +3,17 @@ body {
     font-family: "Raleway", sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh; /* Asegura que siempre ocupe al menos la altura de la ventana */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Comienza desde la parte superior de la pantalla */
     background: linear-gradient(135deg, #007BFF 25%, #66B2FF 25%, #66B2FF 50%, #99CCFF 50%, #99CCFF 75%, #007BFF 75%);
     background-size: 300% 300%;
     animation: gradient 30s linear infinite;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    overflow-y: auto; /* Activa el scroll vertical si es necesario */
 }
 
-
+/* Animación de fondo */
 @keyframes gradient {
     0% { background-position: 0% 50%; }
     100% { background-position: 300% 50%; }
@@ -21,16 +22,14 @@ body {
 /* Contenedor principal usando Grid */
 .grid-container {
     display: grid;
-    grid-template-rows: auto auto; /* Las filas se ajustan automáticamente según el contenido */
-    width: 100%; /* Usa el 100% del ancho disponible */
-    max-width: 1200px; /* Limita el ancho máximo en pantallas grandes */
+    grid-template-rows: auto auto;
+    width: 80%;
     gap: 20px;
-    margin: 100px auto 0 auto; /* Centra el contenedor */
-    padding: 20px;
+    margin-top: 100px;
     background-color: #fff;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
 }
 
 /* Sección Superior e Inferior */
@@ -39,6 +38,130 @@ body {
     border-radius: 10px;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
+}
+
+/* Estilo para los inputs */
+input[type="number"] {
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100px;
+}
+
+/* Control de botones en la sección inferior */
+.control-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Botones de control */
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: teal;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004d40;
+}
+
+/* Ajuste del lienzo (canvas) */
+canvas {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 800px;
+    max-height: 300px;
+}
+
+/* Botones debajo de los inputs dinámicos */
+.input-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.input-buttons button {
+    padding: 10px 20px;
+    background-color: teal;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-buttons button:hover {
+    background-color: #004d40;
+}
+
+/* Contenedor de los inputs dinámicos */
+#dynamicInputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Estilo para los inputs generados */
+.dynamic-input {
+    flex: 1 1 calc(10% - 10px);
+    padding: 8px;
+    margin: 5px 0;
+    min-width: 60px;
+    max-width: 80px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.dynamic-input.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#stepList {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Animación para los elementos de la lista de pasos */
+#stepList li {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#stepList li.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Estilos para la barra de navegación */
@@ -98,85 +221,6 @@ body {
     border-radius: 5px;
 }
 
-#array-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    gap: 20px;
-}
-
-.array-circle-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.array-circle {
-    width: 50px;
-    height: 50px;
-    background-color: #3498db;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    color: white;
-    transition: background-color 0.4s ease;
-}
-
-button {
-    margin: 20px;
-    padding: 12px 25px;
-    background-color: #2980b9;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #1e6e8b;
-}
-
-input {
-    padding: 10px;
-    margin: 20px;
-    font-size: 16px;
-}
-
-/* Animación de entrada */
-@keyframes entradaSuave {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/* Clase para aplicar la animación */
-.array-circle {
-    animation: entradaSuave 0.5s ease-out; /* Aplica la animación de entrada */
-}
-
-
-#step-container {
-    display: flex;
-    flex-direction: column; /* Alinea los pasos verticalmente */
-    gap: 15px; /* Espacio entre cada paso */
-    margin-top: 20px;
-}
-
-.step-array-container {
-    display: flex;
-    justify-content: center; /* Centra los círculos dentro de cada línea */
-    gap: 10px;
-}
-
 
 /* Botón con contraste */
 .btn {
@@ -199,25 +243,14 @@ input {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-
-
-
-/* Media Queries */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
         align-items: flex-start;
     }
+
     .nav-links {
         flex-direction: column;
         gap: 10px;
-    }
-}
-
-/* Media query para pantallas más pequeñas */
-@media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr; /* Cambia a una columna en pantallas pequeñas */
-        padding: 10px;
     }
 }

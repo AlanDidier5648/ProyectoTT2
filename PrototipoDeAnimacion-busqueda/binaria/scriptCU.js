@@ -4,7 +4,7 @@ document.getElementById('checkAnswers')?.addEventListener('click', () => {
         question1: "b",
         question2: "b",
         question3: "a",
-        question4: "b",
+        question4: "a",
         question5: "a"
     };
 

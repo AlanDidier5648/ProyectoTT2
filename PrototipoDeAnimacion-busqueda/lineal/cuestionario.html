@@ -43,30 +43,30 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cómo funciona el algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question1" value="a"> Compara elementos no adyacentes y realiza intercambios para ordenarlos de mayor a menor.</label><br>
-                        <label><input type="radio" name="question1" value="b"> Compara elementos adyacentes, y si el primero es mayor que el segundo, los intercambia.</label><br>
-                        <label><input type="radio" name="question1" value="c"> Ordena directamente los elementos más grandes primero, dejando los más pequeños para el final.</label><br>
+                        <p>1. ¿Cuál es la característica principal del algoritmo de Búsqueda Lineal?</p>
+                        <label><input type="radio" name="question1" value="a"> Recorre cada elemento de la lista desde el inicio hasta encontrar el valor buscado o llegar al final.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Divide la lista en mitades y compara el elemento medio con el valor buscado.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Requiere que los elementos estén ordenados previamente para realizar la búsqueda.</label><br>
                         
-                        <p>2. ¿Qué asegura que el algoritmo de Burbuja ha finalizado correctamente?</p>
-                        <label><input type="radio" name="question2" value="a"> Que se hayan realizado al menos dos iteraciones sobre la lista completa.</label><br>
-                        <label><input type="radio" name="question2" value="b"> Que ya no se detecten elementos adyacentes en orden incorrecto.</label><br>
-                        <label><input type="radio" name="question2" value="c"> Que todos los elementos intercambiados hayan llegado a su posición final en la primera iteración.</label><br>
+                        <p>2. ¿En qué se diferencia la Búsqueda Lineal de otros métodos como la Búsqueda Binaria?</p>
+                        <label><input type="radio" name="question2" value="a"> Es más eficiente para listas grandes porque revisa todos los elementos.</label><br>
+                        <label><input type="radio" name="question2" value="b"> No requiere que la lista esté ordenada previamente.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Realiza comparaciones solo en los elementos mayores al valor buscado.</label><br>
             
-                        <p>3. En el ejemplo dado, ¿cuál fue el último intercambio realizado en la tercera iteración?</p>
-                        <label><input type="radio" name="question3" value="a"> Se intercambiaron los valores 2 y 1, dejando la lista como [1, 2, 3, 4].</label><br>
-                        <label><input type="radio" name="question3" value="b"> Se intercambiaron los valores 3 y 4, dejando la lista como [2, 1, 3, 4].</label><br>
-                        <label><input type="radio" name="question3" value="c"> Se intercambiaron los valores 1 y 2, dejando la lista como [1, 3, 2, 4].</label><br>
+                        <p>3. En el ejemplo, ¿qué sucede durante la segunda iteración?</p>
+                        <label><input type="radio" name="question3" value="a"> Se compara el elemento 12 con el valor buscado 23, y como no coincide, se detiene la búsqueda.</label><br>
+                        <label><input type="radio" name="question3" value="b"> Se compara el elemento 12 con el valor buscado 23, y como no coincide, se avanza al siguiente elemento.</label><br>
+                        <label><input type="radio" name="question3" value="c"> Se compara el elemento 12 con el valor buscado 23, y como no es mayor, se descarta.</label><br>
 
-                        <p>4. ¿Qué representa cada iteración en el algoritmo de Burbuja?</p>
-                        <label><input type="radio" name="question4" value="a"> Una comparación única entre dos elementos consecutivos.</label><br>
-                        <label><input type="radio" name="question4" value="b"> Un ciclo completo donde se comparan pares de elementos adyacentes en la lista.</label><br>
-                        <label><input type="radio" name="question4" value="c"> El movimiento directo del elemento más pequeño al inicio de la lista.</label><br>
+                        <p>4. ¿Qué ocurre cuando el elemento buscado coincide con uno de los elementos de la lista?</p>
+                        <label><input type="radio" name="question4" value="a"> La búsqueda se detiene inmediatamente al encontrar el valor, sin continuar con los demás elementos.</label><br>
+                        <label><input type="radio" name="question4" value="b"> La búsqueda continúa para asegurarse de que el valor no aparece más veces en la lista.</label><br>
+                        <label><input type="radio" name="question4" value="c"> El valor se descarta porque ya se encuentra en su posición final.</label><br>
 
-                        <p>5. En la segunda iteración del ejemplo, ¿por qué no se intercambiaron los valores 3 y 2?</p>
-                        <label><input type="radio" name="question5" value="a"> Porque ya se había alcanzado el orden correcto en la lista durante la primera iteración.</label><br>
-                        <label><input type="radio" name="question5" value="b"> Porque 3 es menor que 2 y no cumple con la condición de intercambio.</label><br>
-                        <label><input type="radio" name="question5" value="c"> Porque 3 es mayor que 2, pero no es necesario intercambiarlos en esa etapa.</label><br>
+                        <p>5. ¿Qué hace la Búsqueda Lineal si el valor buscado no está en la lista?</p>
+                        <label><input type="radio" name="question5" value="a"> Recorre toda la lista y finaliza confirmando que el elemento no está presente.</label><br>
+                        <label><input type="radio" name="question5" value="b"> Detiene la búsqueda tan pronto como encuentra un elemento mayor al valor buscado.</label><br>
+                        <label><input type="radio" name="question5" value="c"> Realiza una comparación adicional con el último elemento de la lista antes de detenerse.                        </label><br>
             
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>
