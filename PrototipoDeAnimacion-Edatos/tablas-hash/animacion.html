@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Tablas Hash</title>
+    <!-- Enlace al archivo CSS de estilos generales -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Enlace a Chart.js para generar gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Enlace a SweetAlert2 para notificaciones -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="../../pages/perfil.html">
+                <img src="../../img/image1.png" alt="Foto de perfil" class="profile-pic">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../pages/perfil.html">Inicio</a></li>
+            <li><a href="../../pages/ordenamiento.html">Ordenamiento</a></li>
+            <li><a href="../../pages/busqueda.html">Búsqueda en lista</a></li>
+            <li><a href="../../pages/busquedaGraf.html">Búsqueda en gráfico</a></li>
+            <li><a href="../../pages/edatos.html">Estructuras de datos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenedor principal con Grid -->
+    <div class="grid-container">
+       
+    <!-- Sección Inferior para la visualización del algoritmo -->
+    <div class="section inferior">
+        <h2>Visualización del Algoritmo</h2>
+        <section class="algorithm-container">
+            <h1>Simulación de Tabla Hash</h1>
+            <div class="hash-table">
+                <div class="cell" id="cell-0"><span class="index">0</span><div class="values"></div></div>
+                <div class="cell" id="cell-1"><span class="index">1</span><div class="values"></div></div>
+                <div class="cell" id="cell-2"><span class="index">2</span><div class="values"></div></div>
+                <div class="cell" id="cell-3"><span class="index">3</span><div class="values"></div></div>
+                <div class="cell" id="cell-4"><span class="index">4</span><div class="values"></div></div>
+                <div class="cell" id="cell-5"><span class="index">5</span><div class="values"></div></div>
+                <div class="cell" id="cell-6"><span class="index">6</span><div class="values"></div></div>
+                <div class="cell" id="cell-7"><span class="index">7</span><div class="values"></div></div>
+                <div class="cell" id="cell-8"><span class="index">8</span><div class="values"></div></div>
+                <div class="cell" id="cell-9"><span class="index">9</span><div class="values"></div></div>
+            </div>
+            <div class="input-container">
+                <input type="number" id="input-value" placeholder="Ingresa un número">
+                <button onclick="insertToHashTable()">Insertar</button>
+                <button onclick="searchInHashTable()">Buscar</button>
+                <button onclick="deleteFromHashTable()">Eliminar</button>
+            </div>
+        </section>
+    </div>
+   
+
+    <script src="script.js"></script>
+</body>
+</html>

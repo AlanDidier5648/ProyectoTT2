@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Arbol Binario</title>
+    <!-- Enlace al archivo CSS de estilos generales -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Enlace a Chart.js para generar gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Enlace a SweetAlert2 para notificaciones -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="../../pages/perfil.html">
+                <img src="../../img/image1.png" alt="Foto de perfil" class="profile-pic">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../pages/perfil.html">Inicio</a></li>
+            <li><a href="../../pages/ordenamiento.html">Ordenamiento</a></li>
+            <li><a href="../../pages/busqueda.html">Búsqueda en lista</a></li>
+            <li><a href="../../pages/busquedaGraf.html">Búsqueda en gráfico</a></li>
+            <li><a href="../../pages/edatos.html">Estructuras de datos</a></li>
+        </ul>
+    </nav>
+
+            <!-- Contenedor principal con Grid -->
+            <div class="grid-container">
+                <!-- Sección Inferior para la visualización del algoritmo -->
+                <div class="section inferior">
+                    <h2>Visualización del Algoritmo</h2>
+
+                    
+
+                    <div class="button-container">
+                        <button onclick="crearArbolCompleto()">Árbol Binario Completo</button>
+                        <button onclick="crearArbolLleno()">Árbol Binario Lleno</button>
+                        <button onclick="crearArbolBusqueda()">Árbol Binario de Búsqueda</button>
+                    </div>
+
+                    <div id="tree-container"></div>
+
+                    <div class="recorrido-container">
+                        <div id="recorrido-buttons" style="display: none;">
+                            <button onclick="recorridoPreorden(raizActual)">Recorrido Preorden</button>
+                            <button onclick="recorridoEnOrden(raizActual)">Recorrido En Orden</button>
+                            <button onclick="recorridoPostorden(raizActual)">Recorrido Postorden</button>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                
+                </div>
+            </div>
+            <!-- Fin del grid-container -->
+    
+    <script src="script.js"></script>
+</body>
+</html>
