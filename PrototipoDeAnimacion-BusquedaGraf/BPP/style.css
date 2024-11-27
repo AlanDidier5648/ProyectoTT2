@@ -97,6 +97,22 @@ body {
     border-radius: 5px;
 }
 
+/* Botones de control */
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: teal;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004d40;
+}
+
+
 /* Media Queries */
 @media (max-width: 768px) {
     .navbar {
@@ -115,4 +131,26 @@ body {
         grid-template-columns: 1fr; /* Cambia a una columna en pantallas pequeñas */
         padding: 10px;
     }
+}
+
+
+/* Botón con contraste */
+.btn {
+    display: inline-block;
+    background-color: #0056b3;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #66B2FF;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }

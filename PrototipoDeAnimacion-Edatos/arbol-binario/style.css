@@ -98,16 +98,7 @@ body {
     border-radius: 5px;
 }
 
-button {
-    
-    margin: 20px;
-    padding: 12px 25px;
-    background-color: #2980b9;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 
 #tree-container {
     display: flex;
@@ -162,6 +153,17 @@ button {
     background-color: #66B2FF;
     transform: translateY(-3px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+button {
+    
+    margin: 20px;
+    padding: 12px 25px;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 button:hover {
