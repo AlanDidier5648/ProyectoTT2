@@ -43,12 +43,30 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la principal característica del algoritmo de Búsqueda Binaria?</p>
-                        <label><input type="radio" name="question1" value="a"> Revisa cada elemento uno por uno hasta encontrar el valor buscado.</label><br>
-                        <label><input type="radio" name="question1" value="b"> Reduce la búsqueda a la mitad en cada paso, descartando la mitad en la que no puede estar el elemento.</label><br>
-                        <label><input type="radio" name="question1" value="c"> Ordena la lista previamente antes de realizar la búsqueda.</label><br>
-                        
-                       
+                        <p>1. ¿Qué define la estructura de un árbol binario?</p>
+                        <label><input type="radio" name="question1" value="a"> Cada nodo puede tener hasta dos hijos, llamados "hijo izquierdo" y "hijo derecho".</label><br>
+                        <label><input type="radio" name="question1" value="b"> Cada nodo puede tener una cantidad ilimitada de hijos organizados jerárquicamente.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Los nodos se organizan únicamente en niveles según el orden de inserción.</label><br>
+
+                        <p>2. ¿Qué determina si un nuevo nodo se inserta como hijo izquierdo o derecho en un árbol binario?</p>
+                        <label><input type="radio" name="question2" value="a"> El valor del nuevo nodo se compara con el valor de la raíz, decidiendo su posición.</label><br>
+                        <label><input type="radio" name="question2" value="b"> Los nodos se insertan como hijo derecho por defecto, a menos que el hijo izquierdo esté vacío.</label><br>
+                        <label><input type="radio" name="question2" value="c"> El nivel del árbol donde se inserta el nodo depende de la cantidad de nodos actuales.</label><br>
+
+                        <p>3. En el recorrido "Postorden" (izquierda, derecha, raíz), ¿cuál es la secuencia para procesar los nodos?</p>
+                        <label><input type="radio" name="question3" value="a"> Primero se procesa la raíz, luego el subárbol izquierdo y finalmente el subárbol derecho.</label><br>
+                        <label><input type="radio" name="question3" value="b"> Primero se recorren los subárboles y al final se procesa la raíz.</label><br>
+                        <label><input type="radio" name="question3" value="c"> Primero se procesa el subárbol derecho, luego el izquierdo y finalmente la raíz.</label><br>
+
+                        <p>4. En el ejemplo, ¿qué ocurre durante la inserción del nodo con valor 8?</p>
+                        <label><input type="radio" name="question4" value="a"> Se compara con 15, y como 8 es menor, se inserta como hijo izquierdo de 15.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Se compara con 15, luego con 10, y como 8 es menor que ambos, se inserta como hijo izquierdo de 10.</label><br>
+                        <label><input type="radio" name="question4" value="c"> Se inserta directamente como hijo izquierdo de 15 sin realizar comparaciones adicionales.</label><br>
+
+                        <p>5. ¿Qué sucede al eliminar un nodo en un árbol binario?</p>
+                        <label><input type="radio" name="question5" value="a"> Los hijos del nodo eliminado se eliminan junto con él para mantener la estructura jerárquica.</label><br>
+                        <label><input type="radio" name="question5" value="b"> Los enlaces entre los nodos vecinos se ajustan para preservar la estructura del árbol.</label><br>
+                        <label><input type="radio" name="question5" value="c"> Se reemplaza automáticamente por el nodo más pequeño del subárbol derecho.</label><br>
             
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>
