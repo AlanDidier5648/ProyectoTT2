@@ -164,6 +164,42 @@ canvas {
     transform: translateY(0);
 }
 
+.array-circle-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.array-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #3498db;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+    transition: background-color 0.4s ease;
+}
+
+@keyframes entradaSuave {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.array-circle {
+    animation: entradaSuave 0.5s ease-out; /* Aplica la animación de entrada */
+}
+
+
 /* Estilos para la barra de navegación */
 .navbar {
     padding: 10px 20px; /* Ajuste uniforme */
@@ -243,6 +279,14 @@ canvas {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
+#array-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -253,4 +297,20 @@ canvas {
         flex-direction: column;
         gap: 10px;
     }
+}
+
+
+
+
+#step-container {
+    display: flex;
+    flex-direction: column; /* Alinea los pasos verticalmente */
+    gap: 15px; /* Espacio entre cada paso */
+    margin-top: 20px;
+}
+
+.step-array-container {
+    display: flex;
+    justify-content: center; /* Centra los círculos dentro de cada línea */
+    gap: 10px;
 }
