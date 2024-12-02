@@ -36,8 +36,69 @@
                 <!-- Sección Superior para la explicación del algoritmo -->
                 <div class="section superior">
                     <h2>Explicación General del Algoritmo</h2>
-                    
-                </div>
+                    <p style="text-align: justify;">El algoritmo de Dijkstra es un método utilizado para encontrar las rutas más cortas desde un nodo inicial hasta todos los demás nodos en un grafo con pesos no negativos. Este algoritmo es ampliamente utilizado en problemas de redes, como el cálculo de rutas óptimas en mapas. Dijkstra se basa en una estrategia de exploración que selecciona los nodos más cercanos no visitados, actualizando progresivamente las distancias más cortas conocidas hasta llegar al destino o completar el recorrido por el grafo.</p>
+
+                    <h3>¿En qué consiste?</h3>
+                    <p style="text-align: justify;">El algoritmo de Dijkstra funciona de la siguiente manera:</p>
+                    <ol style="text-align: justify;">
+                        <li><strong>Inicialización:</strong> Se asigna una distancia inicial de 0 al nodo de origen y una distancia infinita a todos los demás nodos. Se marca el nodo de origen como el nodo actual.</li>
+                        <li><strong>Exploración:</strong> Para el nodo actual, se calcula la distancia total hacia cada nodo vecino sumando el peso del arco que los conecta. Si esta distancia es menor que la distancia previamente registrada para ese nodo vecino, se actualiza.</li>
+                        <li><strong>Marcar nodo visitado:</strong> Una vez que se han evaluado todos los vecinos del nodo actual, se marca como visitado, lo que significa que ya no se reevaluará.</li>
+                        <li><strong>Selección del siguiente nodo:</strong> De los nodos no visitados, se selecciona el que tiene la distancia más corta registrada y se repite el proceso.</li>
+                        <li><strong>Finalización:</strong> El algoritmo termina cuando todos los nodos han sido visitados o cuando se ha alcanzado el nodo de destino (si se busca una ruta específica).</li>
+                    </ol>
+
+                    <h3>Ejemplo</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <!-- Columna de texto del ejemplo -->
+                        <div style="flex: 0.8; padding-right: 15px;">
+                            <p><strong>Grafo inicial:</strong><br>
+                                Nodos: <code>{A, B, C, D, E}</code>.<br>
+                                Arcos con pesos: <code>{(A-B: 4), (A-C: 2), (B-C: 5), (B-D: 10), (C-D: 3), (C-E: 4), (D-E: 1)}</code>.<br>
+                                <strong>Nodo de inicio:</strong> <code>A</code>.
+                            </p>
+                            <p><strong>Paso 1:</strong><br>
+                                - Distancia inicial desde A: <code>A=0, B=∞, C=∞, D=∞, E=∞</code>.<br>
+                                - Se evalúan los vecinos de A: <br>
+                                &nbsp;&nbsp;• Distancia a B: <code>0 + 4 = 4</code>.<br>
+                                &nbsp;&nbsp;• Distancia a C: <code>0 + 2 = 2</code>.<br>
+                                - Distancias actualizadas: <code>A=0, B=4, C=2, D=∞, E=∞</code>.<br>
+                                - Nodo A marcado como visitado.
+                            </p>
+                            <p><strong>Paso 2:</strong><br>
+                                - Nodo con menor distancia no visitado: <code>C</code> (distancia 2).<br>
+                                - Se evalúan los vecinos de C:<br>
+                                &nbsp;&nbsp;• Distancia a D: <code>2 + 3 = 5</code>.<br>
+                                &nbsp;&nbsp;• Distancia a E: <code>2 + 4 = 6</code>.<br>
+                                - Distancias actualizadas: <code>A=0, B=4, C=2, D=5, E=6</code>.<br>
+                                - Nodo C marcado como visitado.
+                            </p>
+                            <p><strong>Paso 3:</strong><br>
+                                - Nodo con menor distancia no visitado: <code>B</code> (distancia 4).<br>
+                                - Se evalúan los vecinos de B:<br>
+                                &nbsp;&nbsp;• Distancia a D: <code>4 + 10 = 14</code> (no se actualiza, ya que <code>5 < 14</code>).<br>
+                                - Distancias actualizadas: <code>A=0, B=4, C=2, D=5, E=6</code>.<br>
+                                - Nodo B marcado como visitado.
+                            </p>
+                            <p><strong>Paso 4:</strong><br>
+                                - Nodo con menor distancia no visitado: <code>D</code> (distancia 5).<br>
+                                - Se evalúan los vecinos de D:<br>
+                                &nbsp;&nbsp;• Distancia a E: <code>5 + 1 = 6</code> (no se actualiza, ya que <code>6 = 6</code>).<br>
+                                - Nodo D marcado como visitado.
+                            </p>
+                            <p><strong>Paso 5:</strong><br>
+                                - Nodo con menor distancia no visitado: <code>E</code> (distancia 6).<br>
+                                - Nodo E marcado como visitado.<br>
+                                - Todos los nodos han sido visitados.
+                            </p>
+                            <p>Distancias finales desde A: <code>A=0, B=4, C=2, D=5, E=6</code>.</p>
+                        </div>
+                        <!-- Columna de imagen explicativa -->
+                        <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
+                            <img src="../../img/ExplicacionBurbuja.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
+                        </div>
+                    </div>
+            </div>
 
                 <a href="cuestionario.html" class="btn zoom-slide-delay">Ir al cuestionario</a>
             </div>

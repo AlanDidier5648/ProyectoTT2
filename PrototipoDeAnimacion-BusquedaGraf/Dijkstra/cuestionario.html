@@ -43,12 +43,30 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la principal característica del algoritmo de Búsqueda Binaria?</p>
-                        <label><input type="radio" name="question1" value="a"> Revisa cada elemento uno por uno hasta encontrar el valor buscado.</label><br>
-                        <label><input type="radio" name="question1" value="b"> Reduce la búsqueda a la mitad en cada paso, descartando la mitad en la que no puede estar el elemento.</label><br>
-                        <label><input type="radio" name="question1" value="c"> Ordena la lista previamente antes de realizar la búsqueda.</label><br>
-                        
-                       
+                        <p>1. ¿Cuál es la función principal de la inicialización en el algoritmo de Dijkstra?</p>
+                        <label><input type="radio" name="question1" value="a"> Asignar una distancia infinita a todos los nodos y marcar todos los nodos como visitados.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Asignar una distancia inicial de 0 al nodo de origen y una distancia infinita a los demás nodos.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Calcular las distancias entre todos los nodos antes de comenzar la exploración.</label><br>
+
+                        <p>2. ¿Qué sucede cuando un nodo es marcado como visitado?</p>
+                        <label><input type="radio" name="question2" value="a"> Sus vecinos no pueden ser reevaluados en futuras iteraciones.</label><br>
+                        <label><input type="radio" name="question2" value="b"> Significa que se han evaluado todas las posibles rutas desde ese nodo y no se volverá a revisar.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Se detiene el algoritmo si el nodo es el de destino.</label><br>
+
+                        <p>3. En el ejemplo, ¿por qué no se actualiza la distancia al nodo E en el Paso 4?</p>
+                        <label><input type="radio" name="question3" value="a"> Porque la distancia calculada desde el nodo D es mayor o igual a la distancia ya registrada para el nodo E.</label><br>
+                        <label><input type="radio" name="question3" value="b"> Porque el nodo E ya había sido marcado como visitado previamente.</label><br>
+                        <label><input type="radio" name="question3" value="c"> Porque el nodo D no tiene una conexión directa con el nodo E.</label><br>
+
+                        <p>4. ¿Qué criterio se utiliza para seleccionar el siguiente nodo a evaluar en cada iteración?</p>
+                        <label><input type="radio" name="question4" value="a"> El nodo que tenga la menor cantidad de vecinos no visitados.</label><br>
+                        <label><input type="radio" name="question4" value="b"> El nodo no visitado con la distancia más corta registrada.</label><br>
+                        <label><input type="radio" name="question4" value="c"> El nodo que esté más alejado del nodo de origen.</label><br>
+
+                        <p>5. ¿Cuándo finaliza el algoritmo de Dijkstra?</p>
+                        <label><input type="radio" name="question5" value="a"> Cuando todos los nodos han sido visitados o se ha alcanzado el nodo de destino.</label><br>
+                        <label><input type="radio" name="question5" value="b"> Cuando se alcanzan las distancias finales para todos los nodos conectados al nodo de origen.</label><br>
+                        <label><input type="radio" name="question5" value="c"> Cuando todos los nodos alcanzables tienen la misma distancia desde el nodo de origen.</label><br>
             
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>

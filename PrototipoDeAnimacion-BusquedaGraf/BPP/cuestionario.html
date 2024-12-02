@@ -43,13 +43,31 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la principal característica del algoritmo de Búsqueda Binaria?</p>
-                        <label><input type="radio" name="question1" value="a"> Revisa cada elemento uno por uno hasta encontrar el valor buscado.</label><br>
-                        <label><input type="radio" name="question1" value="b"> Reduce la búsqueda a la mitad en cada paso, descartando la mitad en la que no puede estar el elemento.</label><br>
-                        <label><input type="radio" name="question1" value="c"> Ordena la lista previamente antes de realizar la búsqueda.</label><br>
+                        <p>1. ¿Cuál es la estrategia principal que utiliza BPP para recorrer un grafo?</p>
+                        <label><input type="radio" name="question1" value="a"> Avanza tan lejos como sea posible por cada rama y retrocede si no encuentra nodos adyacentes no visitados.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Selecciona el nodo con la menor cantidad de conexiones y continúa hacia sus nodos vecinos.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Divide el grafo en subgrafos más pequeños y aplica búsquedas independientes en cada uno.</label><br>
                         
+                        <p>2. ¿Qué sucede durante la etapa de retroceso en BPP?</p>
+                        <label><input type="radio" name="question2" value="a"> Se detiene el algoritmo si no hay nodos adyacentes no visitados.</label><br>
+                        <label><input type="radio" name="question2" value="b"> El algoritmo regresa al nodo anterior y explora otras ramas no visitadas.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Los nodos ya visitados se eliminan para evitar explorarlos nuevamente.</label><br>
+
+                        <p>3. En el ejemplo proporcionado, ¿qué ocurre en el Paso 3 cuando el nodo D no tiene nodos adyacentes no visitados?</p>
+                        <label><input type="radio" name="question3" value="a"> El algoritmo retrocede al nodo B para continuar explorando.</label><br>
+                        <label><input type="radio" name="question3" value="b"> El nodo D se elimina del grafo para simplificar la exploración.</label><br>
+                        <label><input type="radio" name="question3" value="c"> Se selecciona el siguiente nodo en la lista de adyacencia del nodo D.</label><br>
+
+                        <p>4. ¿Cómo decide BPP qué nodo visitar después de retroceder a un nodo anterior?</p>
+                        <label><input type="radio" name="question4" value="a"> Selecciona el nodo con menor peso en su conexión al nodo actual.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Selecciona el siguiente nodo adyacente no visitado en el orden en que aparecen en la lista de conexiones.</label><br>
+                        <label><input type="radio" name="question4" value="c"> Selecciona el nodo más cercano al nodo inicial del grafo.</label><br>
+
+                        <p>5. ¿Cuándo finaliza el algoritmo BPP?</p>
+                        <label><input type="radio" name="question5" value="a"> Cuando todos los nodos visitables han sido explorados y no hay ramas restantes.</label><br>
+                        <label><input type="radio" name="question5" value="b"> Cuando se alcanza el nodo más lejano del nodo inicial.</label><br>
+                        <label><input type="radio" name="question5" value="c"> Cuando se encuentra un ciclo en el grafo y no hay nodos adyacentes no visitados.</label><br>
                        
-            
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>
                   

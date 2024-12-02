@@ -43,12 +43,30 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la principal característica del algoritmo de Búsqueda Binaria?</p>
-                        <label><input type="radio" name="question1" value="a"> Revisa cada elemento uno por uno hasta encontrar el valor buscado.</label><br>
-                        <label><input type="radio" name="question1" value="b"> Reduce la búsqueda a la mitad en cada paso, descartando la mitad en la que no puede estar el elemento.</label><br>
-                        <label><input type="radio" name="question1" value="c"> Ordena la lista previamente antes de realizar la búsqueda.</label><br>
-                        
-                       
+                        <p>1. ¿Qué estructura de datos utiliza el algoritmo BPA para gestionar los nodos por explorar?</p>
+                        <label><input type="radio" name="question1" value="a"> Una pila, ya que permite avanzar hacia los nodos más profundos primero.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Una cola, para procesar los nodos en el orden en que fueron descubiertos.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Una lista, donde los nodos se seleccionan aleatoriamente para explorar.</label><br>
+
+                        <p>2. ¿Cuál es el objetivo principal de la etapa de exploración en BPA?</p>
+                        <label><input type="radio" name="question2" value="a"> Visitar el nodo con la menor cantidad de conexiones adyacentes.</label><br>
+                        <label><input type="radio" name="question2" value="b"> Inspeccionar los nodos adyacentes al nodo actual y agregarlos a la cola si no han sido visitados.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Retroceder al nodo inicial si no se encuentran nodos adyacentes no visitados.</label><br>
+
+                        <p>3. En el ejemplo, ¿qué sucede durante el Paso 2?</p>
+                        <label><input type="radio" name="question3" value="a"> Se extrae el nodo B de la cola, se visitan los nodos adyacentes D y E, y estos se agregan a la cola.</label><br>
+                        <label><input type="radio" name="question3" value="b"> Se visita el nodo B, pero no se encuentran nodos adyacentes no visitados.</label><br>
+                        <label><input type="radio" name="question3" value="c"> Se agregan todos los nodos del grafo a la cola después de visitar B.</label><br>
+
+                        <p>4. ¿Cómo se determina el orden de visita final en el algoritmo BPA?</p>
+                        <label><input type="radio" name="question4" value="a"> Siguiendo la secuencia de nodos en la cola hasta que esta quede vacía.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Avanzando primero hacia los nodos con más conexiones y luego hacia los de menor peso.</label><br>
+                        <label><input type="radio" name="question4" value="c"> Seleccionando los nodos en el orden en que se marcan como visitados.</label><br>
+
+                        <p>5. ¿Cuándo finaliza el algoritmo BPA?</p>
+                        <label><input type="radio" name="question5" value="a"> Cuando todos los nodos alcanzables han sido visitados y la cola está vacía.</label><br>
+                        <label><input type="radio" name="question5" value="b"> Cuando se han explorado todos los caminos posibles hacia el nodo más lejano.</label><br>
+                        <label><input type="radio" name="question5" value="c"> Cuando no se encuentran más nodos con conexiones directas al nodo inicial.</label><br>
             
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>

@@ -36,11 +36,77 @@
                 <!-- Sección Superior para la explicación del algoritmo -->
                 <div class="section superior">
                     <h2>Explicación General del Algoritmo</h2>
-             
-                </div>
+                    <p style="text-align: justify;">El algoritmo de Búsqueda Primero en Amplitud (BFS, por sus siglas en inglés: Breadth-First Search) es un método utilizado para recorrer o buscar elementos en estructuras de datos como grafos y árboles. BFS explora todos los nodos de un nivel antes de pasar al siguiente nivel, asegurando que se encuentre la ruta más corta en un grafo no ponderado. Este algoritmo utiliza una cola para gestionar los nodos visitados y los pendientes de explorar, y es útil para resolver problemas como encontrar la distancia mínima entre dos nodos o descubrir todos los nodos alcanzables desde un nodo inicial.</p>
 
-         
-                <a href="cuestionario.html" class="btn zoom-slide-delay">Ir al cuestionario</a>
+                    <h3>¿En qué consiste?</h3>
+                    <p style="text-align: justify;">El algoritmo de Búsqueda Primero en Amplitud funciona de la siguiente manera:</p>
+                    <ol style="text-align: justify;">
+                        <li><strong>Inicialización:</strong> Se selecciona un nodo inicial para comenzar la búsqueda. Este nodo se marca como visitado y se agrega a una cola.</li>
+                        <li><strong>Exploración:</strong> Se extrae el primer nodo de la cola y se inspeccionan todos sus nodos adyacentes. Los nodos adyacentes que no han sido visitados se marcan como visitados y se agregan a la cola.</li>
+                        <li><strong>Repetición:</strong> El proceso se repite extrayendo nodos de la cola y explorando sus vecinos hasta que la cola esté vacía.</li>
+                        <li><strong>Finalización:</strong> Cuando la cola está vacía, significa que todos los nodos alcanzables desde el nodo inicial han sido visitados.</li>
+                    </ol>
+
+                    <h3>Ejemplo</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <!-- Columna de texto del ejemplo -->
+                        <div style="flex: 0.8; padding-right: 15px;">
+                            <p><strong>Grafo inicial:</strong><br>
+                                Nodos: <code>{A, B, C, D, E, F, G}</code>.<br>
+                                Arcos: <code>{(A-B), (A-C), (B-D), (B-E), (C-F), (C-G)}</code>.<br>
+                                <strong>Nodo de inicio:</strong> <code>A</code>.
+                            </p>
+                            <p><strong>Paso 1:</strong><br>
+                                - Nodo inicial: <strong>A</strong>.<br>
+                                - Se visita <strong>A</strong> y se agregan sus nodos adyacentes <strong>B</strong> y <strong>C</strong> a la cola.<br>
+                                - Cola: <code>[B, C]</code>.<br>
+                                - Orden de visita: <code>[A]</code>.
+                            </p>
+                            <p><strong>Paso 2:</strong><br>
+                                - Nodo extraído de la cola: <strong>B</strong>.<br>
+                                - Se visita <strong>B</strong> y se agregan sus nodos adyacentes no visitados <strong>D</strong> y <strong>E</strong> a la cola.<br>
+                                - Cola: <code>[C, D, E]</code>.<br>
+                                - Orden de visita: <code>[A, B]</code>.
+                            </p>
+                            <p><strong>Paso 3:</strong><br>
+                                - Nodo extraído de la cola: <strong>C</strong>.<br>
+                                - Se visita <strong>C</strong> y se agregan sus nodos adyacentes no visitados <strong>F</strong> y <strong>G</strong> a la cola.<br>
+                                - Cola: <code>[D, E, F, G]</code>.<br>
+                                - Orden de visita: <code>[A, B, C]</code>.
+                            </p>
+                            <p><strong>Paso 4:</strong><br>
+                                - Nodo extraído de la cola: <strong>D</strong>.<br>
+                                - Se visita <strong>D</strong>. No tiene nodos adyacentes no visitados.<br>
+                                - Cola: <code>[E, F, G]</code>.<br>
+                                - Orden de visita: <code>[A, B, C, D]</code>.
+                            </p>
+                            <p><strong>Paso 5:</strong><br>
+                                - Nodo extraído de la cola: <strong>E</strong>.<br>
+                                - Se visita <strong>E</strong>. No tiene nodos adyacentes no visitados.<br>
+                                - Cola: <code>[F, G]</code>.<br>
+                                - Orden de visita: <code>[A, B, C, D, E]</code>.
+                            </p>
+                            <p><strong>Paso 6:</strong><br>
+                                - Nodo extraído de la cola: <strong>F</strong>.<br>
+                                - Se visita <strong>F</strong>. No tiene nodos adyacentes no visitados.<br>
+                                - Cola: <code>[G]</code>.<br>
+                                - Orden de visita: <code>[A, B, C, D, E, F]</code>.
+                            </p>
+                            <p><strong>Paso 7:</strong><br>
+                                - Nodo extraído de la cola: <strong>G</strong>.<br>
+                                - Se visita <strong>G</strong>. No tiene nodos adyacentes no visitados.<br>
+                                - Cola: <code>[]</code>.<br>
+                                - Orden de visita: <code>[A, B, C, D, E, F, G]</code>.
+                            </p>
+                            <p>El recorrido ha terminado. Orden de visita final: <code>[A, B, C, D, E, F, G]</code>.</p>
+                        </div>
+                         <!-- Columna de imagen explicativa -->
+                         <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
+                            <img src="../../img/ExplicacionBurbuja.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
+                        </div>
+                    </div>
+            </div>
+            <a href="cuestionario.html" class="btn zoom-slide-delay">Ir al cuestionario</a>
             </div>
             <!-- Fin del grid-container -->
     
