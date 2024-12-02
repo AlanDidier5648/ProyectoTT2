@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <!-- Enlace a Chart.js para generar gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <!-- Enlace a SweetAlert2 para notificaciones -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -38,6 +39,14 @@
                 <!-- Sección Inferior para la visualización del algoritmo -->
                 <div class="section inferior">
                     <h2>Visualización del Algoritmo</h2>
+                    <svg id="graph" width="1000" height="600"></svg>
+                 
+                    <div id="recorrido">
+                        <h3>Recorrido DFS:</h3>
+                        <ul id="recorrido-lista"></ul>
+                    </div>
+                    
+                    <button id="start">Iniciar Animación</button>
                 
                 </div>
             </div>
