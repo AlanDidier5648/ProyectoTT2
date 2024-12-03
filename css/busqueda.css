@@ -10,6 +10,7 @@ body {
     display: flex;
     flex-direction: column; /* Para organizar el contenido verticalmente */
     height: 100vh; /* Ocupa toda la pantalla */
+    
 }
 
 /* Animación del fondo */
@@ -97,13 +98,14 @@ body {
 /* Contenedor de las tarjetas de algoritmos */
 .algorithms {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Siempre 3 columnas en pantallas grandes */
+    grid-template-columns: repeat(2, 1fr); /* Siempre 3 columnas en pantallas grandes */
     grid-template-rows: repeat(2, 1fr); /* Siempre 2 filas */
     gap: 20px; /* Espacio entre las tarjetas */
     padding: 20px;
     justify-items: center;
     align-items: center;
     margin: 20px;
+    width: 90%; /* Aumenta al 100% del contenedor padre */
 }
 
 .algorithm-card {
@@ -122,9 +124,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 150px;
-    width: 90%;
+    width: 700px;
     position: relative;
     overflow: hidden;
+  
 }
 
 .algorithm-card img {
