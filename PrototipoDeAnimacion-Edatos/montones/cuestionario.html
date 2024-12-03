@@ -44,13 +44,31 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la principal característica del algoritmo de Búsqueda Binaria?</p>
-                        <label><input type="radio" name="question1" value="a"> Revisa cada elemento uno por uno hasta encontrar el valor buscado.</label><br>
-                        <label><input type="radio" name="question1" value="b"> Reduce la búsqueda a la mitad en cada paso, descartando la mitad en la que no puede estar el elemento.</label><br>
-                        <label><input type="radio" name="question1" value="c"> Ordena la lista previamente antes de realizar la búsqueda.</label><br>
+                        <p>1. ¿Cuál es la principal diferencia entre un Montón Mínimo y un Montón Máximo?</p>
+                        <label><input type="radio" name="question1" value="a"> En un Montón Mínimo, el valor más pequeño siempre está en la raíz, mientras que en un Montón Máximo el valor más grande está en la raíz.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Los Montones Mínimos permiten más de dos hijos por nodo, mientras que los Montones Máximos tienen un máximo de dos hijos.</label><br>
+                        <label><input type="radio" name="question1" value="c"> En un Montón Máximo, los nodos hojas tienen siempre valores más grandes que sus padres.</label><br>
+
+                        <p>2. ¿Qué ocurre al insertar un nuevo elemento en un Montón Mínimo?</p>
+                        <label><input type="radio" name="question2" value="a"> Se añade en cualquier posición y luego se reorganiza para garantizar que la raíz mantenga el valor más pequeño.</label><br>
+                        <label><input type="radio" name="question2" value="b"> Se añade como hijo del último nodo y sube intercambiándose con su padre si es necesario.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Se añade en la raíz, desplazando el valor original de la raíz al último nodo.</label><br>
+
+                        <p>3. Si un Montón Mínimo tiene los valores [4, 6, 8], ¿qué ocurre si se elimina el mínimo?</p>
+                        <label><input type="radio" name="question3" value="a"> El último elemento (8) se mueve a la raíz y luego se reorganiza intercambiándose con el valor más pequeño de sus hijos.</label><br>
+                        <label><input type="radio" name="question3" value="b"> El nodo con el valor 4 es eliminado, y el Montón Mínimo se reorganiza automáticamente para cumplir con la propiedad de Montón Mínimo.</label><br>
+                        <label><input type="radio" name="question3" value="c"> Todos los nodos del Montón se reorganizan de menor a mayor sin necesidad de intercambios.</label><br>
+
+                        <p>4. ¿Qué asegura el proceso de ajuste del montón (heapify) en un Montón Mínimo?</p>
+                        <label><input type="radio" name="question4" value="a"> Que los nodos hojas siempre tengan valores mayores que la raíz.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Que la propiedad de Montón Mínimo se mantenga, garantizando que el valor más pequeño permanezca en la raíz.</label><br>
+                        <label><input type="radio" name="question4" value="c"> Que el Montón Mínimo pueda aumentar su tamaño dinámicamente.</label><br>
+
+                        <p>5. Si un Montón Mínimo contiene los valores [5, 8, 10] y se agrega el valor 3, ¿qué sucede?</p>
+                        <label><input type="radio" name="question5" value="a"> El valor 3 se convierte en la nueva raíz, desplazando el 5 y reorganizando los valores restantes.</label><br>
+                        <label><input type="radio" name="question5" value="b"> El valor 3 se añade al final del montón y no se realizan cambios adicionales.</label><br>
+                        <label><input type="radio" name="question5" value="c"> El valor 3 se intercambia con el 10 para mantener la propiedad del Montón Mínimo.</label><br>
                         
-                       
-            
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>
                   

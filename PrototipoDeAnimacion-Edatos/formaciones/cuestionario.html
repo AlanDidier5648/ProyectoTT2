@@ -44,13 +44,31 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la principal característica del algoritmo de Búsqueda Binaria?</p>
-                        <label><input type="radio" name="question1" value="a"> Revisa cada elemento uno por uno hasta encontrar el valor buscado.</label><br>
-                        <label><input type="radio" name="question1" value="b"> Reduce la búsqueda a la mitad en cada paso, descartando la mitad en la que no puede estar el elemento.</label><br>
-                        <label><input type="radio" name="question1" value="c"> Ordena la lista previamente antes de realizar la búsqueda.</label><br>
-                        
-                       
-            
+                        <p>1. ¿Qué característica principal distingue a las formaciones de otras estructuras de datos?</p>
+                        <label><input type="radio" name="question1" value="a"> Su capacidad de cambiar dinámicamente de tamaño según se añadan o eliminen elementos.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Su tamaño fijo, que no puede modificarse después de ser creado en la memoria.</label><br>
+                        <label><input type="radio" name="question1" value="c"> La posibilidad de almacenar elementos en ubicaciones no consecutivas en la memoria.</label><br>
+
+                        <p>2. ¿Cómo se puede acceder a los elementos de una formación?</p>
+                        <label><input type="radio" name="question2" value="a"> Usando el índice del elemento, comenzando desde 1 en lugar de 0.</label><br>
+                        <label><input type="radio" name="question2" value="b"> Recorriendo todos los elementos desde el principio hasta encontrar el deseado.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Usando el índice del elemento, que comienza desde 0 y aumenta secuencialmente.</label><br>
+
+                        <p>3. Si tienes una formación con los valores [3, 7, 12, 5, 8], ¿qué sucede si intentas acceder al índice 5?</p>
+                        <label><input type="radio" name="question3" value="a"> El programa devolverá un valor vacío, ya que la posición 5 está disponible pero no ocupada.</label><br>
+                        <label><input type="radio" name="question3" value="b"> Se producirá un error porque el índice 5 está fuera del rango permitido.</label><br>
+                        <label><input type="radio" name="question3" value="c"> Se devolverá el valor 8, ya que es el último elemento en la formación.</label><br>
+
+                        <p>4. ¿Qué operación es necesaria para cambiar el valor en una posición específica de una formación?</p>
+                        <label><input type="radio" name="question4" value="a"> Eliminar la formación existente y crear una nueva con los valores actualizados.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Usar el índice correspondiente para asignar un nuevo valor a esa posición.</label><br>
+                        <label><input type="radio" name="question4" value="c"> Insertar un nuevo elemento al final de la formación, desplazando los valores hacia adelante.</label><br>
+
+                        <p>5. Supongamos que tienes una formación de tamaño 4: [1, 2, 3, 4]. ¿Qué pasa si intentas añadir un nuevo elemento 5 a esta formación?</p>
+                        <label><input type="radio" name="question5" value="a"> El nuevo elemento 5 reemplaza automáticamente al primer valor de la formación.</label><br>
+                        <label><input type="radio" name="question5" value="b"> El nuevo elemento no puede añadirse porque la formación tiene un tamaño fijo.</label><br>
+                        <label><input type="radio" name="question5" value="c"> La formación aumenta su tamaño automáticamente para incluir el nuevo elemento.</label><br>
+
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>
                   

@@ -44,12 +44,30 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la principal característica del algoritmo de Búsqueda Binaria?</p>
-                        <label><input type="radio" name="question1" value="a"> Revisa cada elemento uno por uno hasta encontrar el valor buscado.</label><br>
-                        <label><input type="radio" name="question1" value="b"> Reduce la búsqueda a la mitad en cada paso, descartando la mitad en la que no puede estar el elemento.</label><br>
-                        <label><input type="radio" name="question1" value="c"> Ordena la lista previamente antes de realizar la búsqueda.</label><br>
+                        <p>1. ¿Qué permite a una tabla hash acceder directamente a los elementos almacenados?</p>
+                        <label><input type="radio" name="question1" value="a"> La función hash, que transforma una clave en un índice dentro de la tabla.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Las referencias directas a la posición de memoria del elemento.</label><br>
+                        <label><input type="radio" name="question1" value="c"> El uso de listas encadenadas para todos los valores.</label><br>
                         
-                       
+                        <p>2. ¿Qué sucede si dos claves generan el mismo índice en una tabla hash?</p>
+                        <label><input type="radio" name="question2" value="a"> Se elimina una de las claves para evitar inconsistencias.</label><br>
+                        <label><input type="radio" name="question2" value="b"> Se utiliza una técnica de resolución, como encadenamiento o sondeo, para manejar la colisión.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Se redistribuyen todos los elementos de la tabla para crear índices únicos.</label><br>
+
+                        <p>3. ¿Qué operación debe realizarse para localizar un elemento en una tabla hash?</p>
+                        <label><input type="radio" name="question3" value="a"> Recorrer secuencialmente todos los índices de la tabla.</label><br>
+                        <label><input type="radio" name="question3" value="b"> Transformar la clave en un índice mediante la función hash y buscar en la posición correspondiente.</label><br>
+                        <label><input type="radio" name="question3" value="c"> Acceder directamente al valor almacenado en el índice proporcionado por el usuario.</label><br>
+
+                        <p>4. ¿Qué ocurre al eliminar un elemento en una tabla hash con colisiones?</p>
+                        <label><input type="radio" name="question4" value="a"> Se eliminan todos los elementos de la lista encadenada asociada a esa posición.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Se elimina únicamente el elemento deseado y se ajustan las referencias en la lista.</label><br>
+                        <label><input type="radio" name="question4" value="c"> La tabla se reestructura completamente para evitar futuros conflictos.</label><br>
+
+                        <p>5. Si una tabla hash tiene tamaño 7 y la clave es 16, ¿en qué posición se almacenará el elemento utilizando la función hash clave % tamaño de tabla?</p>
+                        <label><input type="radio" name="question5" value="a"> Posición 2</label><br>
+                        <label><input type="radio" name="question5" value="b"> Posición 3</label><br>
+                        <label><input type="radio" name="question5" value="c"> Posición 1</label><br>
             
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>

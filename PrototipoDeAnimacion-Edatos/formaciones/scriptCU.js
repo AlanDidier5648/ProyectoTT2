@@ -1,7 +1,11 @@
 document.getElementById('checkAnswers')?.addEventListener('click', () => {
     const form = document.getElementById('quizForm');
     const correctAnswers = {
-        question1: "b"
+        question1: "b",
+        question2: "c",
+        question3: "b",
+        question4: "b",
+        question5: "b"
     };
 
     let allCorrect = true;

@@ -44,11 +44,30 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la principal característica del algoritmo de Búsqueda Binaria?</p>
-                        <label><input type="radio" name="question1" value="a"> Revisa cada elemento uno por uno hasta encontrar el valor buscado.</label><br>
-                        <label><input type="radio" name="question1" value="b"> Reduce la búsqueda a la mitad en cada paso, descartando la mitad en la que no puede estar el elemento.</label><br>
-                        <label><input type="radio" name="question1" value="c"> Ordena la lista previamente antes de realizar la búsqueda.</label><br>
+                        <p>1. ¿Qué diferencia principal existe entre una lista y una formación (array)?</p>
+                        <label><input type="radio" name="question1" value="a"> Una lista tiene un tamaño fijo, mientras que una formación puede cambiar de tamaño dinámicamente.</label><br>
+                        <label><input type="radio" name="question1" value="b"> Las listas permiten agregar, eliminar o modificar elementos en cualquier posición, mientras que las formaciones tienen un tamaño fijo.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Las listas requieren que todos los elementos sean del mismo tipo de dato, mientras que las formaciones no tienen esta restricción.</label><br>
                      
+                        <p>2. ¿Cómo se ajustan los índices al eliminar un elemento en una lista?</p>
+                        <label><input type="radio" name="question2" value="a"> Todos los índices posteriores al elemento eliminado disminuyen en uno para llenar el espacio vacío.</label><br>
+                        <label><input type="radio" name="question2" value="b"> Los índices no cambian, y el espacio vacío permanece hasta que se agregue un nuevo elemento.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Los índices se ajustan automáticamente, pero los elementos mantienen su posición original.</label><br>
+
+                        <p>3. Si tienes una lista vacía y agregas los elementos 3, 6 y 9 en ese orden, ¿cómo se verá la lista si luego agregas el número 4 en la posición 1?</p>
+                        <label><input type="radio" name="question3" value="a"> [3, 6, 9, 4]</label><br>
+                        <label><input type="radio" name="question3" value="b"> [3, 4, 6, 9]</label><br>
+                        <label><input type="radio" name="question3" value="c"> [4, 3, 6, 9]</label><br>
+
+                        <p>4. ¿Qué sucede si modificas el valor del elemento en la posición 0 de una lista que contiene los valores [7, 5, 8, 12] y lo cambias a 10?</p>
+                        <label><input type="radio" name="question4" value="a"> La lista se convierte en [10, 5, 8, 12].</label><br>
+                        <label><input type="radio" name="question4" value="b"> El valor 7 se desplaza a la posición 1, y la lista queda como [10, 7, 8, 12].</label><br>
+                        <label><input type="radio" name="question4" value="c"> La lista no cambia porque no se permite modificar elementos.</label><br>
+
+                        <p>5. ¿Qué permite el acceso directo a los elementos en una lista?</p>
+                        <label><input type="radio" name="question5" value="a"> Los índices que identifican la posición de cada elemento dentro de la lista.</label><br>
+                        <label><input type="radio" name="question5" value="b"> Una búsqueda secuencial que recorre la lista desde el inicio hasta encontrar el elemento deseado.</label><br>
+                        <label><input type="radio" name="question5" value="c"> La capacidad de almacenar los elementos en memoria no consecutiva.</label><br>
             
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>

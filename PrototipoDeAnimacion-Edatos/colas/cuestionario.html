@@ -44,12 +44,30 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la principal característica del algoritmo de Búsqueda Binaria?</p>
-                        <label><input type="radio" name="question1" value="a"> Revisa cada elemento uno por uno hasta encontrar el valor buscado.</label><br>
-                        <label><input type="radio" name="question1" value="b"> Reduce la búsqueda a la mitad en cada paso, descartando la mitad en la que no puede estar el elemento.</label><br>
-                        <label><input type="radio" name="question1" value="c"> Ordena la lista previamente antes de realizar la búsqueda.</label><br>
-                        
-                   
+                        <p>1. ¿Qué principio define el funcionamiento de una cola?</p>
+                        <label><input type="radio" name="question1" value="a"> LIFO (Last In, First Out), donde el último elemento en entrar es el primero en salir.</label><br>
+                        <label><input type="radio" name="question1" value="b"> FIFO (First In, First Out), donde el primer elemento en entrar es el primero en salir.</label><br>
+                        <label><input type="radio" name="question1" value="c"> FILO (First In, Last Out), donde el primer elemento en entrar es el último en salir.</label><br>
+
+                        <p>2. ¿Qué sucede durante la operación de encolar un elemento en una cola?</p>
+                        <label><input type="radio" name="question2" value="a"> El elemento se coloca al inicio de la cola, desplazando a los demás hacia el final.</label><br>
+                        <label><input type="radio" name="question2" value="b"> El elemento se añade al final de la cola, manteniendo el orden de llegada.</label><br>
+                        <label><input type="radio" name="question2" value="c"> El elemento se inserta en el centro de la cola para optimizar su procesamiento.</label><br>
+
+                        <p>3. En el ejemplo, después de encolar A, B y C, ¿cuál es el orden de los elementos en la cola?</p>
+                        <label><input type="radio" name="question3" value="a"> [A, C, B]</label><br>
+                        <label><input type="radio" name="question3" value="b"> [C, B, A]</label><br>
+                        <label><input type="radio" name="question3" value="c"> [A, B, C]</label><br>
+
+                        <p>4. ¿Qué ocurre cuando se desencola un elemento en una cola?</p>
+                        <label><input type="radio" name="question4" value="a"> Se elimina el último elemento de la cola, manteniendo el orden de los demás elementos.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Se elimina el elemento del frente de la cola, y los demás elementos avanzan una posición.</label><br>
+                        <label><input type="radio" name="question4" value="c"> Se eliminan todos los elementos de la cola al mismo tiempo para vaciarla rápidamente.</label><br>
+
+                        <p>5. Si se tienen los elementos [X, Y, Z] en una cola, ¿qué ocurrirá si se encola el elemento W y luego se desencolan dos elementos?</p>
+                        <label><input type="radio" name="question5" value="a"> El estado final de la cola será [Z, W].</label><br>
+                        <label><input type="radio" name="question5" value="b"> El estado final de la cola será [X, Y].</label><br>
+                        <label><input type="radio" name="question5" value="c"> La cola estará vacía después de las operaciones.</label><br>
             
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>

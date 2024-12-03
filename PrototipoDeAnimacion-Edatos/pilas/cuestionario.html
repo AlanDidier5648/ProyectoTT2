@@ -44,13 +44,31 @@
 
                     <!-- Formulario del cuestionario -->
                     <form id="quizForm">
-                        <p>1. ¿Cuál es la principal característica del algoritmo de Búsqueda Binaria?</p>
-                        <label><input type="radio" name="question1" value="a"> Revisa cada elemento uno por uno hasta encontrar el valor buscado.</label><br>
-                        <label><input type="radio" name="question1" value="b"> Reduce la búsqueda a la mitad en cada paso, descartando la mitad en la que no puede estar el elemento.</label><br>
-                        <label><input type="radio" name="question1" value="c"> Ordena la lista previamente antes de realizar la búsqueda.</label><br>
-                        
-                       
-            
+                        <p>1. ¿Cuál es la principal característica que define el funcionamiento de una pila?</p>
+                        <label><input type="radio" name="question1" value="a"> El primer elemento en entrar es el primero en salir.</label><br>
+                        <label><input type="radio" name="question1" value="b"> El último elemento en entrar es el primero en salir.</label><br>
+                        <label><input type="radio" name="question1" value="c"> Los elementos se organizan de manera aleatoria según el orden de ingreso.</label><br>
+
+                        <p>2. ¿Qué sucede al apilar (push) un nuevo elemento en una pila?</p>
+                        <label><input type="radio" name="question2" value="a"> El elemento se coloca en el fondo de la pila.</label><br>
+                        <label><input type="radio" name="question2" value="b"> El elemento se coloca en la parte superior de la pila.</label><br>
+                        <label><input type="radio" name="question2" value="c"> Se reorganizan todos los elementos para que el nuevo quede en el centro.</label><br>
+
+                        <p>3. Si una pila contiene los elementos [X, Y, Z], ¿qué elemento será retirado primero si se realiza una operación de desapilar (pop)?</p>
+                        <label><input type="radio" name="question3" value="a"> Z</label><br>
+                        <label><input type="radio" name="question3" value="b"> X</label><br>
+                        <label><input type="radio" name="question3" value="c"> Y</label><br>
+
+                        <p>4. ¿Qué ventaja tiene el uso de una pila frente a otras estructuras de datos?</p>
+                        <label><input type="radio" name="question4" value="a"> Permite un acceso directo a todos los elementos sin importar su posición.</label><br>
+                        <label><input type="radio" name="question4" value="b"> Restringe el acceso solo al elemento en la parte superior, asegurando un control secuencial.</label><br>
+                        <label><input type="radio" name="question4" value="c"> Ofrece un orden aleatorio de los elementos para agilizar búsquedas específicas.</label><br>
+
+                        <p>5. Si una pila está inicialmente vacía y se apilan los valores 5, 10 y 15, ¿qué pasa si luego se realizan dos operaciones de desapilar?</p>
+                        <label><input type="radio" name="question5" value="a"> Los valores 10 y 15 son eliminados, dejando la pila con [5].</label><br>
+                        <label><input type="radio" name="question5" value="b"> Los valores 5 y 10 son eliminados, dejando la pila con [15].</label><br>
+                        <label><input type="radio" name="question5" value="c"> Los valores 15 y 10 son eliminados, dejando la pila con [5].</label><br>
+
                         <button type="button" id="checkAnswers" class="btn-primary">Verificar respuestas</button>
                     </form>
                   
