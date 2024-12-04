@@ -21,7 +21,7 @@ body {
 
 /* Estilos para la barra de navegación */
 .navbar {
-    padding: 20px; /* Uniforme para asegurar consistencia */
+    padding: 10px 20px; /* Uniforme para asegurar consistencia */
     background-color: #004494;
     color: white;
     display: flex;
@@ -34,7 +34,6 @@ body {
 .navbar .logo {
     display: flex;
     align-items: center;
-    height: 100%; /* Garantiza que respete la altura del navbar */
 }
 
 .navbar .profile-pic {
@@ -98,14 +97,13 @@ body {
 /* Contenedor de las tarjetas de algoritmos */
 .algorithms {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Siempre 3 columnas en pantallas grandes */
-    grid-template-rows: repeat(2, 1fr); /* Siempre 2 filas */
-    gap: 20px; /* Espacio entre las tarjetas */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     padding: 20px;
     justify-items: center;
     align-items: center;
     margin: 20px;
-    width: 90%; /* Aumenta al 100% del contenedor padre */
+    width: 90%;
 }
 
 .algorithm-card {
@@ -124,10 +122,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 150px;
-    width: 700px;
+    width: 90%;
     position: relative;
     overflow: hidden;
-  
 }
 
 .algorithm-card img {
