@@ -112,18 +112,19 @@ footer {
     bottom: 0;
 }
 
-/* Media Queries para diseño responsive */
-@media (max-width: 768px) {
-    header h1 { font-size: 2rem; }
-    form { padding: 20px; }
-    input[type="text"], input[type="email"], input[type="tel"], input[type="password"] { font-size: 0.9em; }
-    input[type="submit"] { font-size: 1em; }
+@media (min-width: 2560px) {
+    .section {
+        font-size: 1.2rem; /* Aumentar el tamaño del texto */
+        padding: 15px; /* Más espacio interno */
+        max-height: 1000px; /* Incrementar el límite de altura */
+    }
 }
 
-@media (max-width: 480px) {
-    header h1 { font-size: 1.8rem; }
-    form { padding: 15px; }
-    input[type="text"], input[type="email"], input[type="tel"], input[type="password"] { font-size: 0.85em; }
-    input[type="submit"] { font-size: 0.9em; padding: 10px; }
-    .container { padding: 10px; }
+/* Ajustes específicos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .section {
+        height: calc(90% - 10px); /* Reducir altura para dispositivos más pequeños */
+        font-size: 0.9rem; /* Reducir tamaño de fuente */
+        padding: 8px; /* Espaciado interno más compacto */
+    }
 }
