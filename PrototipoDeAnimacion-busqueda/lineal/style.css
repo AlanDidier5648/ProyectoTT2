@@ -44,6 +44,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
+    overflow: scroll;
 }
 
 /* Imagen explicativa dentro de la sección */
