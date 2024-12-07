@@ -58,6 +58,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
+    overflow: scroll;
 }
 
 /* Primera fila: sección con scroll interno */
@@ -90,7 +91,7 @@ body {
 .section img {
     width: 90%; /* Ajustar ancho */
     height: auto; /* Mantener proporción */
-    max-height: 200px; /* Limitar altura máxima */
+    max-height: 400px; /* Limitar altura máxima */
     margin: 0 auto; /* Centrar */
     display: block;
 }

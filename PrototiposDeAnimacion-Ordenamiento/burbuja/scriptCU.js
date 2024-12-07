@@ -23,10 +23,10 @@ document.getElementById('checkAnswers')?.addEventListener('click', () => {
         Swal.fire({
             icon: 'success',
             title: '¡Correcto!',
-            text: 'Has respondido todas las preguntas correctamente. Ahora puedes acceder a la animación.',
+            text: 'Has respondido todas las preguntas correctamente. Puedes pasar al siguiente algoritmo',
         }).then(() => {
             sessionStorage.setItem('quizCompleted', 'true'); // Guarda el estado del cuestionario
-            window.location.href = "animacion.html"; // Redirige a la página de animación
+            window.location.href = "../../pages/ordenamiento.html"; // Redirige a la página de animación
         });
     } else {
         Swal.fire({
