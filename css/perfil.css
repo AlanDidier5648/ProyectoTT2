@@ -97,13 +97,14 @@ body {
 /* Contenedor de las tarjetas de algoritmos */
 .algorithms {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 20px;
     padding: 20px;
     justify-items: center;
     align-items: center;
     margin: 20px;
+    width: 100%;
 }
 
 .algorithm-card {
