@@ -70,7 +70,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
-    overflow-y: auto; /* Scroll interno para texto dinámico */
+    overflow-y: hidden; /* Scroll interno para texto dinámico */
 }
 
 /* Sección de botones centrados */
