@@ -358,3 +358,64 @@ canvas {
     justify-content: center; /* Centra los círculos dentro de cada línea */
     gap: 10px;
 }
+
+
+/* Contenedor de mensajes */
+
+/* Animación emergente */
+@keyframes fadeIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+.message-box {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    background-color: #f0f8ff;
+    color: #004d99;
+    font-size: 1rem;
+    text-align: center;
+    max-height: 700px; /* Limitar la altura */
+    overflow-y: auto; /* Scroll si la lista crece demasiado */
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.message-box.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Lista dentro del contenedor */
+.message-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Aplicar animación a los elementos de la lista */
+.message-box li {
+    margin-bottom: 5px;
+    line-height: 1.4;
+    background-color: #e8f4ff;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-out; /* Animación al agregar */
+    transition: all 0.3s ease-in-out;
+}
+
+.message-box li.highlight {
+    background-color: #d1ecf1;
+    border-left: 4px solid #007BFF;
+}
