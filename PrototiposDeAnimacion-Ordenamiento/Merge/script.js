@@ -1,8 +1,12 @@
 // Inicializa Chart.js
 const ctx = document.getElementById('bubbleChart').getContext('2d');
 let data = []; // Inicializamos el array vacío
-let mergeSteps = []; // Almacena los pasos del algoritmo de merge sort
+let steps = []; // Almacena los pasos del algoritmo
 let currentStep = 0; // Controla el paso actual
+// Variables para contadores
+let comparisonCount = 0;
+let swapCount = 0;
+
 
 const bubbleChart = new Chart(ctx, {
     type: 'bar', 
@@ -56,8 +60,64 @@ const bubbleChart = new Chart(ctx, {
     }
 });
 
+
 // Inicializa el input numérico sin valor al cargar la página
-document.getElementById('numCount').value = ''; 
+document.getElementById('numCount').value = '10'; 
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const numCountInput = document.getElementById('numCount');
+    const dynamicInputsContainer = document.getElementById('dynamicInputs');
+
+    if (numCountInput && dynamicInputsContainer) {
+        const initialValue = 10;
+
+        // Configura el valor inicial
+        numCountInput.value = initialValue;
+
+        // Genera los inputs dinámicos automáticamente
+        const count = initialValue;
+        dynamicInputsContainer.innerHTML = '';
+        data = []; // Reinicia el array de datos
+        bubbleChart.data.labels = []; // Reinicia las etiquetas del gráfico
+
+        for (let i = 0; i < count; i++) {
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.placeholder = `Número ${i + 1}`;
+            input.classList.add('dynamic-input', 'show');
+
+            // Genera valores iniciales aleatorios
+            const randomValue = Math.floor(Math.random() * 100);
+            input.value = randomValue;
+
+            // Añade el input al contenedor
+            dynamicInputsContainer.appendChild(input);
+
+            // Actualiza los datos del array y las etiquetas
+            data.push(randomValue);
+            bubbleChart.data.labels.push(randomValue.toString());
+
+            // Vincula el evento input para reflejar cambios en el gráfico
+            input.addEventListener('input', function () {
+                const value = parseInt(this.value) || 0; // Si el input queda vacío, se toma como 0
+                data[i] = value; // Actualiza solo el índice correspondiente en el array de datos
+                bubbleChart.data.datasets[0].data[i] = value; // Actualiza solo el valor específico en el gráfico
+                bubbleChart.data.labels[i] = value.toString(); // Actualiza la etiqueta correspondiente
+                bubbleChart.update(); // Refresca el gráfico
+            });
+        }
+
+        // Actualiza el gráfico
+        bubbleChart.data.datasets[0].data = data;
+        bubbleChart.update();
+
+        // Inicia la animación de ordenamiento con los datos generados
+        startSorting(); // Llama directamente a la función de inicio de ordenamiento
+    }
+});
+
+
 
 document.getElementById('numCount').addEventListener('input', function () {
     const count = parseInt(this.value) || 0;
@@ -73,35 +133,58 @@ document.getElementById('numCount').addEventListener('input', function () {
     }
 
     const container = document.getElementById('dynamicInputs');
-    container.innerHTML = ''; // Limpia los inputs existentes
 
-    data = []; 
-    bubbleChart.data.labels = [];
+    // Ajusta el número de inputs visibles
+    while (container.children.length > count) {
+        container.removeChild(container.lastChild); // Elimina los inputs excedentes
+        data.pop(); // Actualiza el array eliminando valores extras
+        bubbleChart.data.datasets[0].data.pop(); // Elimina los datos del gráfico
+        bubbleChart.data.labels.pop(); // Elimina las etiquetas del gráfico
+    }
 
-    for (let i = 0; i < count; i++) {
+    while (container.children.length < count) {
         const input = document.createElement('input');
         input.type = 'number';
-        input.placeholder = `Número ${i + 1}`;
+        input.placeholder = `Número ${container.children.length + 1}`;
         input.classList.add('dynamic-input');
-
+    
+        // Genera un valor aleatorio para los nuevos inputs
+        const randomValue = Math.floor(Math.random() * 100);
+        input.value = randomValue;
+    
+        // Vincula el evento input para actualizar el valor en el gráfico
+        input.addEventListener('input', function () {
+            const index = Array.from(container.children).indexOf(this); // Índice del input
+            const value = parseInt(this.value) || 0; // Si está vacío, toma como 0
+            data[index] = value; // Actualiza el valor en el array de datos
+            bubbleChart.data.datasets[0].data[index] = value; // Actualiza el gráfico
+            bubbleChart.data.labels[index] = value.toString(); // Actualiza las etiquetas
+            bubbleChart.update(); // Refresca el gráfico
+        });
+    
+        // Agrega el input al contenedor
+        container.appendChild(input);
+    
+        // Asegurarse de que la clase `show` se agregue después de un pequeño retraso
         setTimeout(() => {
             input.classList.add('show');
         }, 50);
-
-        input.addEventListener('input', function () {
-            let value = parseInt(this.value) || 0;
-            data[i] = value;
-            bubbleChart.data.datasets[0].data = data; 
-            bubbleChart.data.labels[i] = value.toString(); 
-            bubbleChart.update();
-        });
-
-        container.appendChild(input);
-        data.push(0);
-        bubbleChart.data.labels.push('');
+    
+        // Actualiza los datos y el gráfico
+        data.push(randomValue);
+        bubbleChart.data.datasets[0].data.push(randomValue);
+        bubbleChart.data.labels.push(randomValue.toString());
     }
+
+    // **Regenera los pasos del algoritmo con los datos actuales**
+    bubbleSortStepByStep(data);
+
+    // Refresca el gráfico para reflejar los cambios
     bubbleChart.update();
 });
+
+
+
 
 function generateRandomNumbers() {
     const inputs = document.querySelectorAll('#dynamicInputs input');
@@ -123,133 +206,41 @@ function generateRandomNumbers() {
     bubbleChart.update(); // Refrescar el gráfico para mostrar los cambios
 }
 
-// Función para ordenar por merge paso a paso y registrar los índices
-function mergeSortStepByStep(arr) {
-    let steps = [];
 
-    function merge(arr, left, mid, right) {
-        let n1 = mid - left + 1;
-        let n2 = right - mid;
 
-        let L = new Array(n1);
-        let R = new Array(n2);
 
-        for (let i = 0; i < n1; i++) L[i] = arr[left + i];
-        for (let i = 0; i < n2; i++) R[i] = arr[mid + 1 + i];
+function finishSorting() {
+    document.getElementById('narration').textContent = "¡Ordenamiento completado!";
 
-        let i = 0, j = 0, k = left;
-
-        while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                arr[k] = L[i];
-                i++;
-            } else {
-                arr[k] = R[j];
-                j++;
-            }
-            steps.push({ array: [...arr], compared: [k] });
-            k++;
-        }
-
-        while (i < n1) {
-            arr[k] = L[i];
-            i++;
-            k++;
-            steps.push({ array: [...arr], compared: [k - 1] });
-        }
-
-        while (j < n2) {
-            arr[k] = R[j];
-            j++;
-            k++;
-            steps.push({ array: [...arr], compared: [k - 1] });
-        }
-    }
-
-    function mergeSort(arr, left, right) {
-        if (left < right) {
-            let mid = Math.floor((left + right) / 2);
-
-            mergeSort(arr, left, mid);
-            mergeSort(arr, mid + 1, right);
-            merge(arr, left, mid, right);
-        }
-    }
-
-    mergeSort(arr, 0, arr.length - 1);
-    return steps;
-}
-
-// Función para mostrar el paso actual y cambiar el color de las barras comparadas
-function showStep(stepIndex) {
-    const step = mergeSteps[stepIndex]; // Obtener el paso actual
-    const comparedIndexes = step.compared; // Índices de los números comparados
-
-    // Creamos una copia del array de colores donde todas las barras serán de color estándar
-    let barColors = new Array(step.array.length).fill('rgba(75, 192, 192, 0.8)'); // Color estándar (turquesa)
-
-    // Cambiamos el color de los números que se están comparando a escarlata brillante
-    comparedIndexes.forEach(index => {
-        barColors[index] = 'rgba(255, 36, 0, 0.8)'; // Escarlata brillante para los números comparados
+    // Mostrar alerta SweetAlert
+    Swal.fire({
+        title: '¡Ordenamiento completado!',
+        text: 'El algoritmo ha finalizado correctamente.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
     });
 
-    // Actualizamos los datos y los colores en el gráfico
-    bubbleChart.data.datasets[0].data = step.array; // Actualiza los datos
-    bubbleChart.data.datasets[0].backgroundColor = barColors; // Actualiza los colores de las barras
+    // Actualiza el gráfico para reflejar el estado final ordenado
+    bubbleChart.data.datasets[0].data = data; // Asegura que `data` esté ordenado
+    bubbleChart.data.labels = data.map(String); // Actualiza las etiquetas debajo de las barras
     bubbleChart.update(); // Refresca el gráfico
-
-    const narration = document.getElementById('narration');
-    const compared = comparedIndexes.map(i => step.array[i]).join(', ');
-    narration.innerHTML = `Paso ${stepIndex + 1}: Comparando elementos: ${compared}`;
-
-    // Agregar el paso a la lista con animación
-    const stepList = document.getElementById('stepList');
-    const listItem = document.createElement('li');
-    listItem.innerText = `Paso ${stepIndex + 1}: Comparando ${compared}`;
-    stepList.appendChild(listItem);
-
-    // Añadir la clase `.show` después de un pequeño retraso para activar la animación
-    setTimeout(() => {
-        listItem.classList.add('show');
-    }, 100); // Retraso para que se note la animación
 }
 
-// Funciones de control de pasos
-document.getElementById('prevButton').addEventListener('click', prevStep);
 
-document.getElementById('nextButton').addEventListener('click', nextStep);
+// Aquí colocas el código que mencionas
+document.getElementById('generateRandom').addEventListener('click', function() {
+    generateRandomNumbers(); // Genera los números aleatorios
+    startSorting(); // Inicia el algoritmo paso a paso con los números generados
+});
 
-// Función que se ejecuta al presionar "Paso siguiente"
-function nextStep() {
-    // Asegurarse de que los datos se tomen directamente desde los inputs
-    const inputs = document.querySelectorAll('#dynamicInputs input');
-    inputs.forEach((input, index) => {
-        let value = parseInt(input.value) || 0;
-        data[index] = value;  // Actualizar el array `data` con los valores actuales de los inputs
-    });
-
-    // Verificar si los pasos del algoritmo ya fueron generados
-    if (mergeSteps.length === 0) {
-        // Si no hay pasos generados, ejecutamos el algoritmo con los datos actuales
-        mergeSteps = mergeSortStepByStep(data);
-        currentStep = 0; // Reiniciamos los pasos
-    }
-
-    if (currentStep < mergeSteps.length - 1) {
-        currentStep++;
-        showStep(currentStep); // Mostrar el siguiente paso
-    }
+// Función que registra los pasos del algoritmo
+function bubbleSortStepByStep(arr) {
+    // Aquí va tu lógica de Bubble Sort...
 }
 
-// Retroceder al paso anterior
-function prevStep() {
-    if (currentStep > 0) {
-        currentStep--;
-        showStep(currentStep);
-    }
-}
+// Funciones de control de pasos como nextStep y prevStep
 
-// Función para limpiar todos los inputs generados y poner los valores de las barras en cero
+
 // Función para limpiar todos los inputs generados y poner los valores de las barras en cero
 function clearInputs() {
     const inputs = document.querySelectorAll('#dynamicInputs input');
@@ -265,20 +256,129 @@ function clearInputs() {
     bubbleChart.update(); // Refrescar el gráfico para mostrar los cambios
 }
 
-// Función para iniciar el algoritmo de ordenamiento por Merge Sort
-function startSorting() {
-    mergeSteps = mergeSortStepByStep(data); // Genera los pasos del algoritmo de Merge Sort
-    currentStep = 0; // Reiniciar el contador de pasos
-    showStep(currentStep); // Mostrar el primer paso
+
+
+function bubbleSortStepByStep(arr) {
+    steps = []; // Reinicia los pasos
+    comparisonCount = 0; // Reinicia el contador de comparaciones
+    swapCount = 0; // Reinicia el contador de intercambios
+
+    let n = arr.length;
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            comparisonCount++; // Incrementa el contador de comparaciones
+            steps.push({ 
+                array: [...arr], 
+                compared: [j, j + 1], 
+                swap: false,
+                comparisonCount: comparisonCount,
+                swapCount: swapCount 
+            });
+
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; // Realiza el intercambio
+                swapCount++; // Incrementa el contador de intercambios
+                steps.push({ 
+                    array: [...arr], 
+                    compared: [j, j + 1], 
+                    swap: true,
+                    comparisonCount: comparisonCount,
+                    swapCount: swapCount 
+                });
+            }
+        }
+    }
 }
 
-// Iniciar el algoritmo cuando se generen los números aleatorios
-document.getElementById('generateRandom').addEventListener('click', function() {
-    generateRandomNumbers(); // Genera los números aleatorios
-    startSorting(); // Inicia el algoritmo de Merge Sort paso a paso
-});
 
-// Inicializar el algoritmo al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-    startSorting(); // Inicia el algoritmo de Merge Sort
-});
+
+function showStep(stepIndex) {
+    const step = steps[stepIndex]; // Obtiene el paso actual
+    const comparedIndexes = step.compared; // Índices de los números comparados
+
+    // Actualiza los contadores visualmente
+    document.getElementById('comparisonCount').textContent = step.comparisonCount;
+    document.getElementById('swapCount').textContent = step.swapCount;
+
+    // Actualiza los colores de las barras
+    let barColors = new Array(step.array.length).fill('rgba(75, 192, 192, 0.8)');
+    if (comparedIndexes.length > 0) {
+        barColors[comparedIndexes[0]] = 'rgba(255, 36, 0, 0.8)';
+        barColors[comparedIndexes[1]] = 'rgba(255, 36, 0, 0.8)';
+    }
+
+    // Actualiza los datos y etiquetas del gráfico
+    bubbleChart.data.datasets[0].data = step.array;
+    bubbleChart.data.labels = step.array.map(String);
+    bubbleChart.data.datasets[0].backgroundColor = barColors;
+    bubbleChart.update();
+
+    // Actualiza la narración
+    const narration = document.getElementById('narration');
+    const num1 = step.array[step.compared[0]];
+    const num2 = step.array[step.compared[1]];
+
+    let stepMessage = step.swap
+        ? `Se compararon ${num1} y ${num2}. Se intercambiaron.`
+        : `Se compararon ${num1} y ${num2}.`;
+
+    narration.textContent = stepMessage;
+
+    // Agrega el paso a la lista para mostrar al final
+    const stepList = document.getElementById('stepList');
+    const listItem = document.createElement('li');
+    listItem.innerText = `Paso ${stepIndex + 1}: ${stepMessage}`;
+    stepList.appendChild(listItem);
+}
+
+
+// Funcionalidad paso a paso
+document.getElementById('nextButton').addEventListener('click', nextStep);
+document.getElementById('prevButton').addEventListener('click', prevStep);
+
+function nextStep() {
+    if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+    } else if (currentStep === steps.length - 1) {
+        finishSorting(); // Finaliza si es el último paso
+    }
+}
+
+
+
+
+// Retroceder al paso anterior
+function prevStep() {
+    if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+    }
+}
+
+
+function startSorting() {
+    comparisonCount = 0;
+    swapCount = 0; // Reinicia los contadores
+    document.getElementById('comparisonCount').textContent = comparisonCount;
+    document.getElementById('swapCount').textContent = swapCount;
+
+    bubbleSortStepByStep(data); // Genera los pasos
+    currentStep = 0; // Reinicia el paso actual
+    showStep(currentStep);
+}
+
+
+
+
+
+function syncDataWithInputs() {
+    const inputs = document.querySelectorAll('#dynamicInputs input');
+    data = Array.from(inputs).map(input => parseInt(input.value) || 0); // Actualiza los datos con el orden actual de los inputs
+    bubbleChart.data.datasets[0].data = [...data]; // Actualiza las barras del gráfico
+    bubbleChart.data.labels = data.map(String); // Actualiza las etiquetas debajo de las barras
+    bubbleChart.update(); // Refresca el gráfico
+}
+
+
+

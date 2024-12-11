@@ -7,6 +7,7 @@ let currentStep = 0; // Controla el paso actual
 let comparisonCount = 0;
 let swapCount = 0;
 
+
 const bubbleChart = new Chart(ctx, {
     type: 'bar', 
     data: {
@@ -257,71 +258,70 @@ function clearInputs() {
 
 
 
-
-
 function bubbleSortStepByStep(arr) {
     steps = []; // Reinicia los pasos
     comparisonCount = 0; // Reinicia el contador de comparaciones
     swapCount = 0; // Reinicia el contador de intercambios
-    let n = arr.length;
 
+    let n = arr.length;
     for (let i = 0; i < n; i++) {
         for (let j = 0; j < n - i - 1; j++) {
             comparisonCount++; // Incrementa el contador de comparaciones
-            steps.push({ array: [...arr], compared: [j, j + 1], swap: false }); // Registra el paso antes del intercambio
+            steps.push({ 
+                array: [...arr], 
+                compared: [j, j + 1], 
+                swap: false,
+                comparisonCount: comparisonCount,
+                swapCount: swapCount 
+            });
+
             if (arr[j] > arr[j + 1]) {
                 [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; // Realiza el intercambio
                 swapCount++; // Incrementa el contador de intercambios
-                steps.push({ array: [...arr], compared: [j, j + 1], swap: true }); // Registra el paso después del intercambio
+                steps.push({ 
+                    array: [...arr], 
+                    compared: [j, j + 1], 
+                    swap: true,
+                    comparisonCount: comparisonCount,
+                    swapCount: swapCount 
+                });
             }
         }
     }
-
-    // Agrega el paso final con el array ordenado
-    steps.push({ array: [...arr], compared: [], swap: false });
 }
 
 
 
-
-
-// Función para mostrar un paso del algoritmo
 function showStep(stepIndex) {
     const step = steps[stepIndex]; // Obtiene el paso actual
     const comparedIndexes = step.compared; // Índices de los números comparados
 
-    // Actualiza los contadores
-    document.getElementById('comparisonCount').textContent = comparisonCount;
-    if (step.swap) {
-        document.getElementById('swapCount').textContent = ++swapCount; // Incrementa el contador de intercambios
+    // Actualiza los contadores visualmente
+    document.getElementById('comparisonCount').textContent = step.comparisonCount;
+    document.getElementById('swapCount').textContent = step.swapCount;
+
+    // Actualiza los colores de las barras
+    let barColors = new Array(step.array.length).fill('rgba(75, 192, 192, 0.8)');
+    if (comparedIndexes.length > 0) {
+        barColors[comparedIndexes[0]] = 'rgba(255, 36, 0, 0.8)';
+        barColors[comparedIndexes[1]] = 'rgba(255, 36, 0, 0.8)';
     }
 
-    // Creamos una copia del array de colores donde todas las barras serán de color estándar
-    let barColors = new Array(step.array.length).fill('rgba(75, 192, 192, 0.8)'); // Color estándar (turquesa)
-
-    // Cambiamos el color de los números que se están comparando a escarlata brillante
-    barColors[comparedIndexes[0]] = 'rgba(255, 36, 0, 0.8)'; // Escarlata brillante para el primer número
-    barColors[comparedIndexes[1]] = 'rgba(255, 36, 0, 0.8)'; // Escarlata brillante para el segundo número
-
-    // Actualizamos los datos y las etiquetas en el gráfico
-    bubbleChart.data.datasets[0].data = step.array; // Actualiza los datos de las barras
-    bubbleChart.data.labels = step.array.map(String); // Actualiza las etiquetas con los valores actuales
-    bubbleChart.data.datasets[0].backgroundColor = barColors; // Actualiza los colores de las barras
-
-    // Actualiza el gráfico
-    bubbleChart.update(); // Refresca el gráfico para reflejar los cambios
+    // Actualiza los datos y etiquetas del gráfico
+    bubbleChart.data.datasets[0].data = step.array;
+    bubbleChart.data.labels = step.array.map(String);
+    bubbleChart.data.datasets[0].backgroundColor = barColors;
+    bubbleChart.update();
 
     // Actualiza la narración
     const narration = document.getElementById('narration');
     const num1 = step.array[step.compared[0]];
     const num2 = step.array[step.compared[1]];
 
-    let stepMessage;
-    if (step.swap) {
-        stepMessage = `Se compararon ${num1} y ${num2}. Se intercambiaron.`;
-    } else {
-        stepMessage = `Se compararon ${num1} y ${num2}.`;
-    }
+    let stepMessage = step.swap
+        ? `Se compararon ${num1} y ${num2}. Se intercambiaron.`
+        : `Se compararon ${num1} y ${num2}.`;
+
     narration.textContent = stepMessage;
 
     // Agrega el paso a la lista para mostrar al final
@@ -332,24 +332,16 @@ function showStep(stepIndex) {
 }
 
 
-
-
-
 // Funcionalidad paso a paso
 document.getElementById('nextButton').addEventListener('click', nextStep);
 document.getElementById('prevButton').addEventListener('click', prevStep);
 
 function nextStep() {
-    if (currentStep === 0) {
-        syncDataWithInputs(); // Asegúrate de sincronizar antes de iniciar la animación
-        bubbleSortStepByStep(data); // Genera los pasos desde el estado actual
-    }
-
     if (currentStep < steps.length - 1) {
         currentStep++;
         showStep(currentStep);
     } else if (currentStep === steps.length - 1) {
-        finishSorting(); // Llama a finishSorting si es el último paso
+        finishSorting(); // Finaliza si es el último paso
     }
 }
 
@@ -366,15 +358,17 @@ function prevStep() {
 
 
 function startSorting() {
-    syncDataWithInputs(); // Sincroniza los datos antes de iniciar
-    bubbleSortStepByStep(data); // Regenera los pasos del algoritmo
-    currentStep = 0; // Reinicia al primer paso
+    comparisonCount = 0;
+    swapCount = 0; // Reinicia los contadores
+    document.getElementById('comparisonCount').textContent = comparisonCount;
+    document.getElementById('swapCount').textContent = swapCount;
 
-    // Muestra el primer paso si existen pasos
-    if (steps.length > 0) {
-        showStep(currentStep);
-    }
+    bubbleSortStepByStep(data); // Genera los pasos
+    currentStep = 0; // Reinicia el paso actual
+    showStep(currentStep);
 }
+
+
 
 
 

@@ -41,7 +41,7 @@
                     <h2>Visualización del Algoritmo</h2>
                     <!-- Input para seleccionar el número de números a generar -->
                     <label for="numCount">Indique el número de números a generar:</label>
-                    <input type="number" id="numCount" name="numCount" min="1" max="10">
+                    <input type="number" id="numCount" name="numCount" min="1" max="10" value="10">
                     
                     <!-- Inputs dinámicos generados -->
                     <div id="dynamicInputs"></div>
@@ -55,16 +55,18 @@
                     <!-- Canvas para la visualización del gráfico (Chart.js) -->
                     <canvas id="bubbleChart" width="800" height="300"></canvas>
 
-                    <!-- Lista para mostrar los pasos del algoritmo -->
-                    <span id="narration"></span>
-                    <ul id="stepList" style="display: none;"></ul>
-
                     <div id="counters">
                         <p>Comparaciones: <span id="comparisonCount">0</span></p>
                         <p>Intercambios: <span id="swapCount">0</span></p>
                     </div>
-            
-                  
+
+                    <!-- Lista para mostrar los pasos del algoritmo -->
+                    <ul id="stepList" style="display: none;"></ul>
+                    <span id="narration"></span>
+
+                    <!-- Contenedor para contadores -->
+                   
+                                    
                 </div>
                   <!-- Controles de navegación paso a paso -->
                   <div id="controls" class="control-buttons">
