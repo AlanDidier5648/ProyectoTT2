@@ -39,7 +39,7 @@ body {
 .section {
     height: 100%; /* Ocupar todo el espacio de la fila */
     padding: 10px;
-    font-size: 0.90rem;
+    font-size: 1rem;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 10px;
