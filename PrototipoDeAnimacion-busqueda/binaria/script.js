@@ -1,3 +1,295 @@
+
+let array = [];
+let left = 0, right = 0, mid = 0, targetValue = null;
+let stepActive = false;
+
+function generateArray() {
+    const container = document.getElementById('array-container');
+    container.innerHTML = ''; // Limpiar contenedor
+    array = [];
+
+    // Generar un array de 10 valores aleatorios entre 1 y 100
+    for (let i = 0; i < 10; i++) {
+        array.push(Math.floor(Math.random() * 100) + 1);
+    }
+
+    // Crear elementos visuales para cada valor en el array
+    array.forEach(value => {
+        const circleContainer = document.createElement('div');
+        circleContainer.classList.add('array-circle-container');
+
+        const circle = document.createElement('div');
+        circle.classList.add('array-circle');
+        circle.innerText = value;
+
+        circleContainer.appendChild(circle);
+        container.appendChild(circleContainer);
+    });
+
+    // Reiniciar el estado de búsqueda
+    resetBinarySearch();
+}
+
+function orderList() {
+    // Ordenar el array global
+    array.sort((a, b) => a - b);
+
+    // Actualizar la visualización con el array ordenado
+    const container = document.getElementById('array-container');
+    container.innerHTML = ''; // Limpiar el contenedor actual
+
+    array.forEach(value => {
+        const circleContainer = document.createElement('div');
+        circleContainer.classList.add('array-circle-container');
+
+        const circle = document.createElement('div');
+        circle.classList.add('array-circle');
+        circle.innerText = value;
+
+        circleContainer.appendChild(circle);
+        container.appendChild(circleContainer);
+    });
+
+    // Mostrar mensaje de confirmación
+    Swal.fire({
+        icon: 'success',
+        title: 'Lista ordenada',
+        text: 'La lista ha sido ordenada correctamente.',
+        confirmButtonText: 'Entendido'
+    });
+}
+
+
+async function binarySearch() {
+    if (!isArraySorted(array)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Array no ordenado',
+            text: 'Por favor, ordena la lista antes de buscar.',
+            confirmButtonText: 'Entendido'
+        });
+        return;
+    }
+
+    targetValue = parseInt(document.getElementById('search-value').value);
+
+    if (isNaN(targetValue)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Valor no válido',
+            text: 'Introduce un número válido para buscar.',
+            confirmButtonText: 'Entendido'
+        });
+        return;
+    }
+
+    left = 0;
+    right = array.length - 1;
+
+    // Mostrar mensaje inicial
+    updateMessageList('Iniciando búsqueda binaria...');
+    const circles = document.getElementsByClassName('array-circle');
+
+    while (left <= right) {
+        mid = Math.floor((left + right) / 2);
+
+        clearHighlights(); // Limpiar resaltados previos
+        circles[mid].style.backgroundColor = 'blue'; // Resaltar el elemento actual
+
+        // Mostrar mensaje del paso actual
+        updateMessageList(`Comparando ${array[mid]} con ${targetValue}...`);
+
+        await pause(500); // Pausa para visualización
+
+        if (array[mid] === targetValue) {
+            circles[mid].style.backgroundColor = 'green'; // Resaltar éxito
+            updateMessageList(`¡Valor encontrado! ${array[mid]} está en el índice ${mid}.`);
+            Swal.fire({
+                icon: 'success',
+                title: '¡Valor encontrado!',
+                text: `El valor ${targetValue} se encuentra en el índice ${mid}.`,
+                confirmButtonText: 'Entendido'
+            });
+            return; // Terminar la búsqueda
+        } else if (array[mid] < targetValue) {
+            updateMessageList(`${array[mid]} es menor que ${targetValue}. Buscando en la mitad derecha.`);
+            left = mid + 1; // Mover el puntero izquierdo
+        } else {
+            updateMessageList(`${array[mid]} es mayor que ${targetValue}. Buscando en la mitad izquierda.`);
+            right = mid - 1; // Mover el puntero derecho
+        }
+
+        await pause(500); // Pausa para el siguiente paso
+    }
+
+    // Si no se encuentra el valor
+    updateMessageList(`El valor ${targetValue} no se encuentra en el array.`);
+    Swal.fire({
+        icon: 'info',
+        title: 'Búsqueda Terminada',
+        text: `El valor ${targetValue} no se encuentra en el array.`,
+        confirmButtonText: 'Entendido'
+    });
+}
+
+
+function pause(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+function isArraySorted(arr) {
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < arr[i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+function binarySearchStep() {
+    if (!stepActive || left > right) {
+        if (left > right) {
+            updateMessageList(`El valor ${targetValue} no se encuentra en el array.`);
+            Swal.fire({
+                icon: 'info',
+                title: 'Búsqueda Terminada',
+                text: `El valor ${targetValue} no se encuentra en el array.`,
+                confirmButtonText: 'Entendido'
+            });
+        }
+        stepActive = false;
+        return;
+    }
+
+    mid = Math.floor((left + right) / 2);
+    const circles = document.getElementsByClassName('array-circle');
+    clearHighlights();
+
+    // Resaltar elemento actual
+    circles[mid].style.backgroundColor = 'yellow';
+    updateMessageList(`Paso: Comparando ${array[mid]} con ${targetValue}.`);
+
+    if (array[mid] === targetValue) {
+        circles[mid].style.backgroundColor = 'green';
+        updateMessageList(`¡Valor encontrado! ${array[mid]} está en el índice ${mid}.`);
+        Swal.fire({
+            icon: 'success',
+            title: '¡Valor encontrado!',
+            text: `El valor ${targetValue} se encuentra en el índice ${mid}.`,
+            confirmButtonText: 'Entendido'
+        });
+        stepActive = false;
+    } else if (array[mid] < targetValue) {
+        left = mid + 1;
+        updateMessageList(`${array[mid]} es menor que ${targetValue}. Buscando en la mitad derecha.`);
+    } else {
+        right = mid - 1;
+        updateMessageList(`${array[mid]} es mayor que ${targetValue}. Buscando en la mitad izquierda.`);
+    }
+}
+
+function updateMessageList(text) {
+    const messageList = document.getElementById('message-list');
+    const listItem = document.createElement('li');
+    listItem.textContent = text;
+    messageList.appendChild(listItem);
+
+    const messageContainer = document.getElementById('message-container');
+    messageContainer.classList.add('show');
+}
+
+function clearHighlights() {
+    const circles = document.getElementsByClassName('array-circle');
+    Array.from(circles).forEach(circle => {
+        circle.style.backgroundColor = '#3498db';
+    });
+}
+
+function resetBinarySearch() {
+    left = 0;
+    right = array.length - 1;
+    stepActive = false;
+    const messageList = document.getElementById('message-list');
+    messageList.innerHTML = '';
+    const messageContainer = document.getElementById('message-container');
+    messageContainer.classList.remove('show');
+    clearHighlights();
+}
+
+function startBinarySearch() {
+    targetValue = parseInt(document.getElementById('search-value').value);
+    if (isNaN(targetValue)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Valor no válido',
+            text: 'Introduce un número válido.',
+            confirmButtonText: 'Entendido'
+        });
+        return;
+    }
+
+    left = 0;
+    right = array.length - 1;
+    stepActive = true;
+    updateMessageList('Iniciando búsqueda binaria...');
+    binarySearchStep();
+}
+
+function binarySearchStep() {
+    if (!stepActive || left > right) {
+        if (left > right) {
+            updateMessageList(`El valor ${targetValue} no se encuentra en el array.`);
+            Swal.fire({
+                icon: 'info',
+                title: 'Búsqueda Terminada',
+                text: `El valor ${targetValue} no se encuentra en el array.`,
+                confirmButtonText: 'Entendido'
+            });
+        }
+        stepActive = false;
+        return;
+    }
+
+    mid = Math.floor((left + right) / 2);
+    const circles = document.getElementsByClassName('array-circle');
+    clearHighlights();
+
+    // Resaltar elemento actual
+    circles[mid].style.backgroundColor = 'blue';
+    updateMessageList(`Paso: Comparando ${array[mid]} con ${targetValue}.`);
+
+    if (array[mid] === targetValue) {
+        circles[mid].style.backgroundColor = 'green';
+        updateMessageList(`¡Valor encontrado! ${array[mid]} está en el índice ${mid}.`);
+        Swal.fire({
+            icon: 'success',
+            title: '¡Valor encontrado!',
+            text: `El valor ${targetValue} se encuentra en el índice ${mid}.`,
+            confirmButtonText: 'Entendido'
+        });
+        stepActive = false;
+    } else if (array[mid] < targetValue) {
+        left = mid + 1;
+        updateMessageList(`${array[mid]} es menor que ${targetValue}. Buscando en la mitad derecha.`);
+    } else {
+        right = mid - 1;
+        updateMessageList(`${array[mid]} es mayor que ${targetValue}. Buscando en la mitad izquierda.`);
+    }
+}
+
+function resetMessages() {
+    const messageList = document.getElementById('message-list'); // Lista de mensajes
+    messageList.innerHTML = ''; // Borrar todo el contenido
+
+    const messageContainer = document.getElementById('message-container'); // Contenedor principal
+    messageContainer.classList.remove('show'); // Ocultar el contenedor
+}
+
+
+/*
+
 let array = [];
 // Variables de control para el estado de la búsqueda binaria
 let left, right, targetValue, stepActive, currentMid;
@@ -284,3 +576,5 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById('search-value');
     searchInput.value = 0;
 });
+
+*/

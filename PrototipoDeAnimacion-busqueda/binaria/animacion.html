@@ -40,7 +40,7 @@
 
 
                 <!-- Sección Inferior para la visualización del algoritmo -->
-                <div class="section inferior">
+                <div class="section">
                     <h1>Visualización de Búsqueda Binaria</h1>
 
                     <div id="array-container"></div>
@@ -49,12 +49,14 @@
                     <input type="number" id="search-value">
                     <button onclick="generateArray()">Generar Nuevo Array</button>
                     <button onclick="binarySearch()">Buscar con Búsqueda Binaria</button>
-                    <button onclick="orderlist()">ordenar lista </button>
+                    <button onclick="orderList()">ordenar lista </button>
+                    <button onclick="resetMessages()">Resetear Mensajes</button>
 
 
-                    <div id="step-container"></div>
 
-                    
+                    <div id="message-container" class="message-box">
+                        <ul id="message-list"></ul>
+                    </div>
                     
                                 
                 </div>
