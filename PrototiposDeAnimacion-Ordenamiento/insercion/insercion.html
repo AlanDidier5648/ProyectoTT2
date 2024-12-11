@@ -39,19 +39,20 @@
                         <div class="grid-container">
                             <!-- Sección Superior para la explicación del algoritmo -->
                             <div class="section superior">
+                                <h1><center>ALGORITMO DE INSERCIÓN</center></h1><br>
                                 <h2>Explicación General del Algoritmo</h2>
-                                <p style="text-align: justify;">El algoritmo de Inserción es un método de ordenamiento que construye la lista final ordenada de un elemento a la vez. Es simple y funciona de manera similar a cómo ordenarías una mano de cartas: se va tomando cada carta y colocándola en su posición correcta con respecto a las cartas ya ordenadas. Es más eficiente que otros algoritmos simples como el de Burbuja cuando se trata de listas pequeñas o casi ordenadas.</p>
+                                <p style="text-align: justify;">El algoritmo de Inserción es un método de ordenamiento que construye la lista final ordenada de un elemento a la vez. Es simple y funciona de manera similar a cómo ordenarías una mano de cartas: se va tomando cada carta y colocándola en su posición correcta con respecto a las cartas ya ordenadas. Es más eficiente que otros algoritmos simples como el de Burbuja cuando se trata de listas pequeñas o casi ordenadas.</p><br><br>
                                 <h3>¿En qué consiste?</h3>
                                 <p style="text-align: justify;">El algoritmo de inserción funciona de la siguiente manera:</p>
                                     <ol style="text-align: justify;">
                                         <li><strong>Partir en dos secciones la lista:</strong> Se considera que el primer elemento está ordenado, y el resto de la lista está desordenado.</li>
                                         <li><strong>Elegir la clave a insertar:</strong> Se toma el siguiente elemento de la lista, llamado clave, y se compara con los elementos en la parte ordenada (a su izquierda). Si la clave es menor, movemos los elementos mayores una posición a la derecha hasta dejar espacio para insertar la clave en su posición correcta.</li>
                                         <li><strong>Repetir:</strong> Se toma el siguiente elemento como nueva clave y se repite el proceso hasta que toda la lista esté ordenada.</li>
-                                    </ol>
+                                    </ol><br><br>
                                     <h3>Ejemplo</h3>
-                                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                                        <!-- Columna de texto del ejemplo -->
-                                        <div style="flex: 0.8; padding-right: 15px;">
+                                    <!--<div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                        Columna de texto del ejemplo
+                                        <div style="flex: 0.8; padding-right: 15px;"> -->
                                             <p>Dada la lista <code>[5, 2, 4, 1, 3]</code> usando el método de ordenación inserción, se procede de la siguiente manera:</p>
                                             <p><strong>Primer paso (clave = 2):</strong><br>
                                                 - Se comparan <code>2</code> y <code>5</code>. Como <strong>2 &lt; 5</strong>, colocamos <strong>2</strong> en la posición correcta. <code>[2, 5, 4, 1, 3]</code>.<br>
@@ -65,13 +66,13 @@
                                             <p><strong>Cuarto paso (clave = 3):</strong><br>
                                                 - Se comparan <code>3</code> y <code>[5, 4] </code>. Como <strong>3 </strong> es<strong> menor que ambos </strong>, movemos <strong>5 y 4</strong> una posición a la derecha.  <code>[1, 2, 3, 4, 5]</code>.<br>                                            </p>
                                             </p>
-                                            <p>La lista ahora está completamente ordenada.</p>
-                                        </div>
-                                        <!-- Columna de imagen explicativa -->
-                                        <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
-                                            <img src="../../img/insercion.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
-                                        </div>
-                                    </div>
+                                            <p>La lista ahora está completamente ordenada.</p><br><br>
+                                        <!--</div>
+                                        Columna de imagen explicativa 
+                                        <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">-->
+                                            <img src="../../img/insercion.png" alt="Explicación Burbuja" style="width: 50%; height: auto;">
+                                        <!--</div>
+                                    </div> -->
                             </div>
                             <a href="animacion.html" class="btn zoom-slide-delay">Ir a la animacion</a>
                         </div>

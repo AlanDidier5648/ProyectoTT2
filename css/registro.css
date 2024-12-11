@@ -11,7 +11,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* Elimina el scroll */
+    /*overflow: hidden; /* Elimina el scroll */
 }
 
 /* Fondo animado en el contenedor principal */
@@ -26,6 +26,7 @@ html, body {
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
+    padding-bottom: 10px;
 }
 
 /* Animación del fondo */
