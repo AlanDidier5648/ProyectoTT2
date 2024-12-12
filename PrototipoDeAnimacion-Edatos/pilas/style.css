@@ -171,7 +171,6 @@ button:hover {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-
 /* Estilo para el contenedor de la pila */
 .pila-contenedor {
     width: 150px; /* Ancho del contenedor de la pila */
@@ -185,7 +184,21 @@ button:hover {
     overflow: hidden; /* Oculta cualquier nodo que se desborde */
     padding: 10px;
     margin: 20px auto;
+
+    /* Configuración inicial para la animación emergente */
+    opacity: 0; /* Invisible por defecto */
+    visibility: hidden; /* Oculto por defecto */
+    transform: scale(0.8); /* Escalado inicial más pequeño */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
+
+/* Estilo cuando la pila aparece */
+.pila-contenedor.show {
+    opacity: 1; /* Visible */
+    visibility: visible; /* Mostrado */
+    transform: scale(1); /* Escala normal */
+}
+
 
 /* Estilo para los nodos de la pila */
 .nodo {
@@ -223,4 +236,33 @@ button:hover {
         grid-template-columns: 1fr; /* Cambia a una columna en pantallas pequeñas */
         padding: 10px;
     }
+}
+
+
+.push-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.push-section input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.push-section button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.push-section button:hover {
+    background-color: #0056b3;
 }

@@ -40,6 +40,11 @@
                 <div class="section inferior">
                     <h2>Visualización del Algoritmo</h2>
 
+                    <div class="push-section">
+                        <input type="number" id="push-input" placeholder="Ingresa un número" />
+                        <button onclick="pushValue()">Push</button>
+                    </div>
+
 
                     <div class="pila-contenedor" id="pila">
                         <!-- Los elementos de la pila (nodos) aparecerán aquí -->
@@ -47,9 +52,13 @@
 
 
                     <div class="input-buttons">
-                        <button id="push" onclick="push()">Push (Añadir al Tope)</button>
-                        <button id="pop" onclick="pop()">Pop (Eliminar del Tope)</button>
-                        <button id="peek" onclick="peek()">Peek (Ver Tope)</button>
+                        <button id="push" onclick="push()">Push ( Agregar elemento(s) aleatorio)</button>
+                        <button id="pop" onclick="pop()">Pop </button>
+                        <button id="peek" onclick="peek()">Ver estado de la pila</button>
+                        <button id="create-pila" onclick="createPila()">Crear Pila</button>
+                        <button id="destroy-pila" onclick="destroyPila()">Destruir Pila</button>
+                        <button onclick="countPilaElements()">Contar Elementos</button>
+
                     </div>
                     
                 
