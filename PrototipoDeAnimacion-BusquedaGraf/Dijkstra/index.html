@@ -35,10 +35,11 @@
             <!-- Contenedor principal con Grid -->
             <div class="grid-container">
                 <!-- Sección Superior para la explicación del algoritmo -->
-                <div class="section superior">
+                <div class="section">
+                    <h1><center>ALGORITMO DIJKSTRA</center></h1><br>
                     <h2>Explicación General del Algoritmo</h2>
                     <p style="text-align: justify;">El algoritmo de Dijkstra es un método utilizado para encontrar las rutas más cortas desde un nodo inicial hasta todos los demás nodos en un grafo con pesos no negativos. Este algoritmo es ampliamente utilizado en problemas de redes, como el cálculo de rutas óptimas en mapas. Dijkstra se basa en una estrategia de exploración que selecciona los nodos más cercanos no visitados, actualizando progresivamente las distancias más cortas conocidas hasta llegar al destino o completar el recorrido por el grafo.</p>
-
+                    <br><br>
                     <h3>¿En qué consiste?</h3>
                     <p style="text-align: justify;">El algoritmo de Dijkstra funciona de la siguiente manera:</p>
                     <ol style="text-align: justify;">
@@ -47,12 +48,12 @@
                         <li><strong>Marcar nodo visitado:</strong> Una vez que se han evaluado todos los vecinos del nodo actual, se marca como visitado, lo que significa que ya no se reevaluará.</li>
                         <li><strong>Selección del siguiente nodo:</strong> De los nodos no visitados, se selecciona el que tiene la distancia más corta registrada y se repite el proceso.</li>
                         <li><strong>Finalización:</strong> El algoritmo termina cuando todos los nodos han sido visitados o cuando se ha alcanzado el nodo de destino (si se busca una ruta específica).</li>
-                    </ol>
+                    </ol><br><br>
 
                     <h3>Ejemplo</h3>
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <!-- Columna de texto del ejemplo -->
-                        <div style="flex: 0.8; padding-right: 15px;">
+                    <!--<div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                         Columna de texto del ejemplo 
+                        <div style="flex: 0.8; padding-right: 15px;">  -->
                             <p><strong>Grafo inicial:</strong><br>
                                 Nodos: <code>{A, B, C, D, E}</code>.<br>
                                 Arcos con pesos: <code>{(A-B: 4), (A-C: 2), (B-C: 5), (B-D: 10), (C-D: 3), (C-E: 4), (D-E: 1)}</code>.<br>
@@ -92,15 +93,14 @@
                                 - Nodo E marcado como visitado.<br>
                                 - Todos los nodos han sido visitados.
                             </p>
-                            <p>Distancias finales desde A: <code>A=0, B=4, C=2, D=5, E=6</code>.</p>
-                        </div>
-                        <!-- Columna de imagen explicativa -->
-                        <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
-                            <img src="../../img/ExplicacionBurbuja.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
-                        </div>
-                    </div>
+                            <p>Distancias finales desde A: <code>A=0, B=4, C=2, D=5, E=6</code>.</p><br><br>
+                        <!-- </div>
+                         Columna de imagen explicativa 
+                        <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">  -->
+                            <img src="../../img/ExplicacionBurbuja.png" alt="Explicación Burbuja" style="width: 60%; height: auto;">
+                        <!--</div>
+                    </div> -->
             </div>
-
                 <a href="animacion.html" class="btn zoom-slide-delay">Ir a la animacion</a>
             </div>
             <!-- Fin del grid-container -->

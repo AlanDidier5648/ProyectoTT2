@@ -19,7 +19,6 @@ body {
     100% { background-position: 300% 50%; }
 }
 
-
 /* Contenedor principal usando Grid */
 .grid-container {
     display: grid;
@@ -27,6 +26,21 @@ body {
     width: 90%;
     height: calc(100vh - 120px); /* Altura total ajustada al viewport */
     margin: 100px auto; /* Centrar contenedor horizontalmente */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    gap: 10px; /* Espaciado entre filas */
+}
+
+/* Contenedor principal usando Grid */
+.grid-container2 {
+    display: grid;
+    grid-template-rows: 95% 5%; /* Primera fila 95%, segunda fila 5% */
+    width: 90%;
+    height: calc(100vh - 120px); /* Mantener tamaño igual al primer grid */
+    margin: 100px auto; /* Centrar horizontalmente */
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -47,6 +61,32 @@ body {
     overflow: scroll;
 }
 
+/* Primera fila: sección con scroll interno */
+.section2 {
+    height: 100%; /* Ocupar todo el espacio de la fila */
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Scroll interno para texto dinámico */
+}
+
+/* Sección de botones centrados */
+.control-buttons {
+    display: flex; /* Habilitar Flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    gap: 10px; /* Espaciado entre botones */
+    height: 100%; /* Ocupar toda la altura de la fila */
+}
+
+
+.control-buttons button:hover {
+    background-color: #66b2ff;
+}
+
 /* Imagen explicativa dentro de la sección */
 .section img {
     width: 90%; /* Ajustar ancho */
@@ -62,26 +102,52 @@ body {
     line-height: 1.4; /* Ajustar espacio entre líneas */
 }
 
-/* Estilo para los inputs */
-input[type="number"] {
-    padding: 8px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
+/* Ajuste del ancho del enlace (botón "Ir al cuestionario") */
+.btn {
+    display: inline-block;
+    background-color: #0056b3;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
     border-radius: 5px;
-    width: 100px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    width: auto; /* Asegurar que no sea más ancho que necesario */
+    max-width: 100%; /* Limitar el ancho máximo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Control de botones en la sección inferior */
-.control-buttons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.btn:hover {
+    background-color: #66B2FF;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Botón con contraste */
+.btn-primary {
+    display: inline-block;
+    background-color: #0056b3;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    width: auto; /* Asegurar que no sea más ancho que necesario */
+    max-width: 100%; /* Limitar el ancho máximo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #66B2FF;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Botones de control */
 button {
-  
     padding: 10px 20px;
     background-color: teal;
     color: white;
@@ -94,38 +160,13 @@ button:hover {
     background-color: #004d40;
 }
 
-/* Ajuste del lienzo (canvas) */
-canvas {
-    display: block;
-    margin: 0 auto;
-    margin-top: 20px;
-    background-color: #f4f4f4;
+/* Estilo para los inputs */
+input[type="number"] {
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    border: 1px solid #ddd;
-    width: 100%;
-    max-width: 800px;
-    max-height: 300px;
-}
-
-/* Botones debajo de los inputs dinámicos */
-.input-buttons {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.input-buttons button {
-    padding: 10px 20px;
-    background-color: teal;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.input-buttons button:hover {
-    background-color: #004d40;
+    width: 100px;
 }
 
 /* Contenedor de los inputs dinámicos */
@@ -156,14 +197,28 @@ canvas {
     transform: translateY(0);
 }
 
-#controls {
+/* Botones debajo de los inputs dinámicos */
+.input-buttons {
+    margin-top: 10px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 15px;
 }
 
+.input-buttons button {
+    padding: 10px 20px;
+    background-color: teal;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-buttons button:hover {
+    background-color: #004d40;
+}
+
+/* Lista de pasos */
 #stepList {
     list-style-type: none;
     padding: 0;
@@ -185,42 +240,6 @@ canvas {
     opacity: 1;
     transform: translateY(0);
 }
-
-.array-circle-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.array-circle {
-    width: 45px;
-    height: 45px;
-    background-color: #3498db;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    color: white;
-    transition: background-color 0.4s ease;
-}
-
-@keyframes entradaSuave {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.array-circle {
-    animation: entradaSuave 0.5s ease-out; /* Aplica la animación de entrada */
-}
-
 
 /* Estilos para la barra de navegación */
 .navbar {
@@ -279,143 +298,33 @@ canvas {
     border-radius: 5px;
 }
 
-
-/* Botón con contraste */
-.btn {
-    display: inline-block;
-    background-color: #0056b3;
-    color: white;
-    padding: 12px 25px;
-    text-align: center;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1.2rem;
-
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn:hover {
-    background-color: #66B2FF;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* Botón con contraste */
-.btn-primary {
-    display: inline-block;
-    background-color: #0056b3;
-    color: white;
-    padding: 12px 25px;
-    text-align: center;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1.2rem;
-    width: auto; /* Asegurar que no sea más ancho que necesario */
-    max-width: 100%; /* Limitar el ancho máximo */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-primary:hover {
-    background-color: #66B2FF;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-#array-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Ajuste del lienzo (canvas) */
+canvas {
+    display: block;
+    margin: 0 auto;
     margin-top: 20px;
-    gap: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 800px;
+    max-height: 300px;
 }
 
+/* Ajustes específicos para pantallas grandes */
+@media (min-width: 2560px) {
+    .section {
+        font-size: 1.2rem; /* Aumentar el tamaño del texto */
+        padding: 15px; /* Más espacio interno */
+        max-height: 1000px; /* Incrementar el límite de altura */
+    }
+}
+
+/* Ajustes específicos para pantallas pequeñas */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
+    .section {
+        height: calc(90% - 10px); /* Reducir altura para dispositivos más pequeños */
+        font-size: 0.9rem; /* Reducir tamaño de fuente */
+        padding: 8px; /* Espaciado interno más compacto */
     }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-
-
-
-#step-container {
-    display: flex;
-    flex-direction: column; /* Alinea los pasos verticalmente */
-    gap: 15px; /* Espacio entre cada paso */
-  
-}
-
-.step-array-container {
-    display: flex;
-    justify-content: center; /* Centra los círculos dentro de cada línea */
-    gap: 10px;
-}
-
-
-/* Contenedor de mensajes */
-
-/* Animación emergente */
-@keyframes fadeIn {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-
-.message-box {
-    margin-top: 20px;
-    padding: 15px;
-    border: 2px solid #007BFF;
-    border-radius: 5px;
-    background-color: #f0f8ff;
-    color: #004d99;
-    font-size: 1rem;
-    text-align: center;
-    max-height: 700px; /* Limitar la altura */
-    overflow-y: auto; /* Scroll si la lista crece demasiado */
-    transition: opacity 0.3s ease-in-out;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.message-box.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Lista dentro del contenedor */
-.message-box ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* Aplicar animación a los elementos de la lista */
-.message-box li {
-    margin-bottom: 5px;
-    line-height: 1.4;
-    background-color: #e8f4ff;
-    padding: 8px;
-    border-radius: 5px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease-out; /* Animación al agregar */
-    transition: all 0.3s ease-in-out;
-}
-
-.message-box li.highlight {
-    background-color: #d1ecf1;
-    border-left: 4px solid #007BFF;
 }
