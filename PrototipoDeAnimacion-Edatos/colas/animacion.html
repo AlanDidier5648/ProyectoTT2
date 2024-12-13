@@ -41,15 +41,21 @@
                 <div class="section inferior">
                     <h2>Visualización del Algoritmo</h2>
                     
+                    <div class="input-container">
+                        <input type="number" id="enqueue-input" placeholder="Ingresa un valor" />
+                        <button id="enqueue-btn" onclick="enqueueManual()">Enqueue (Agregar al Final)</button>
+                    </div>
                     
                     <div class="contenedor-cola" id="cola">
                         
                     </div>
 
                     <div class="input-buttons">
-                        <button id="enqueue" onclick="enqueue()">Enqueue (Agregar al Final)</button>
-                        <button id="dequeue" onclick="dequeue()">Dequeue (Eliminar del Frente)</button>
-                        <button id="peek" onclick="peek()">Peek (Ver Frente)</button>
+                        <button id="enqueue" onclick="enqueue()">Agregar al Final</button>
+                        <button id="dequeue" onclick="dequeue()">Eliminar del Frente</button>
+                        <button id="peek" onclick="peek()">Ver Frente</button>
+                        <button id="initialize" onclick="initializeCola()">Inicializar Cola</button>
+                        <button id="delete" onclick="deleteCola()">Eliminar Cola</button>
                     </div>
                     
                 

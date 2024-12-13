@@ -153,21 +153,34 @@ button:hover {
 /* Estilo para el contenedor de la pila */
 /* Estilo para el contenedor de la cola */
 .contenedor-cola {
-    width: 100%; /* Usa todo el ancho disponible */
-    max-width: 800px; /* Limita el ancho máximo del contenedor */
-    height: 150px; /* Ajusta la altura para adaptarse al diseño horizontal */
-    border: 2px solid #3498db; /* Borde del contenedor */
-    border-radius: 5px;
-    background-color: #f1f9ff; /* Fondo para diferenciarlo */
     display: flex;
-    flex-direction: row; /* Alinea los elementos en una fila horizontal */
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: flex-start; /* Alinea los nodos al inicio de la fila */
-    overflow-x: auto; /* Permite desplazamiento horizontal si hay muchos elementos */
-    padding: 10px;
-    gap: 10px; /* Espacio entre los nodos */
     margin: 20px auto;
+    width: 90%;
+    height: 100px;
+    border: 2px dashed #3498db;
+    border-radius: 10px;
+    background-color: #f1f9ff;
+    overflow-x: auto;
+    padding: 10px;
+    gap: 10px;
+
+    /* Inicialmente oculto */
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
+
+/* Mostrar el contenedor */
+.contenedor-cola.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
 
 
 
@@ -229,4 +242,36 @@ button:hover {
         grid-template-columns: 1fr; /* Cambia a una columna en pantallas pequeñas */
         padding: 10px;
     }
+}
+
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.input-container input {
+    padding: 10px;
+    width: 150px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.input-container button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.input-container button:hover {
+    background-color: #0056b3;
 }
