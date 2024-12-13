@@ -35,30 +35,31 @@
             <!-- Contenedor principal con Grid -->
             <div class="grid-container">
                 <!-- Sección Superior para la explicación del algoritmo -->
-                <div class="section superior">
+                <div class="section">
+                    <h1><center>ARREGLOS</center></h1><br><br>
                     <h2>Explicación General del Algoritmo</h2>
                     <p style="text-align: justify;">
-                        Las "Formaciones", también conocidas como "Arrays", son estructuras de datos que permiten almacenar valores en posiciones específicas. Cada elemento en una formación es accesible mediante su índice, un número que indica la posición del elemento dentro de la estructura, comenzando normalmente desde cero. 
+                        Los arreglos son estructuras de datos que permiten almacenar valores en posiciones específicas. Cada elemento en un arreglo es accesible mediante su índice, un número que indica la posición del elemento dentro de la estructura, comenzando normalmente desde cero. 
                     </p>
                     <p style="text-align: justify;">
                         Los arrays almacenan datos en ubicaciones consecutivas en la memoria, lo cual permite acceder a cualquier elemento de manera directa usando su índice. Aunque este tipo de acceso es rápido, agregar o eliminar elementos en una posición intermedia puede ser costoso en términos de rendimiento, ya que implica desplazar otros elementos.
                         </p>
                     <p style="text-align: justify;">
-                        Una diferencia importante entre las formaciones y otras estructuras de datos como las listas es que las formaciones tienen un tamaño fijo. Esto significa que, una vez creada, una formación no puede aumentar o reducir su tamaño sin crear una nueva estructura en la memoria.
-                    </p>                        
+                        Una diferencia importante entre los arreglos y otras estructuras de datos como las listas es que las formaciones tienen un tamaño fijo. Esto significa que, una vez creada, una formación no puede aumentar o reducir su tamaño sin crear una nueva estructura en la memoria.
+                    </p><br><br>                        
                     <h3>¿En qué consiste?</h3>
-                    <p style="text-align: justify;">Una formación (array) funciona de la siguiente manera:</p>
+                    <p style="text-align: justify;">Una arreglo funciona de la siguiente manera:</p>
                     <ol style="text-align: justify;">
-                        <li><strong>Inicialización:</strong> Se crea una formación con un tamaño fijo determinado en la memoria. Este tamaño no puede cambiar durante la vida útil de la formación.</li><br>
-                        <li><strong>Almacenamiento de elementos:</strong> Cada elemento de la formación es almacenado en una posición específica. Las posiciones son accesibles mediante índices, que comienzan desde <code>0</code> y se incrementan secuencialmente.</li><br>
-                        <li><strong>Acceso a elementos:</strong> Se puede acceder a cualquier elemento directamente utilizando su índice. Por ejemplo, el índice <code>0</code> representa el primer elemento, el índice <code>1</code> el segundo, y así sucesivamente. Esto permite un acceso rápido a cualquier elemento de la formación.</li><br>
+                        <li><strong>Inicialización:</strong> Se crea un arreglo con un tamaño fijo determinado en la memoria. Este tamaño no puede cambiar durante la vida útil de la formación.</li><br>
+                        <li><strong>Almacenamiento de elementos:</strong> Cada elemento es almacenado en una posición específica. Las posiciones son accesibles mediante índices, que comienzan desde <code>0</code> y se incrementan secuencialmente.</li><br>
+                        <li><strong>Acceso a elementos:</strong> Se puede acceder a cualquier elemento directamente utilizando su índice. Por ejemplo, el índice <code>0</code> representa el primer elemento, el índice <code>1</code> el segundo, y así sucesivamente. Esto permite un acceso rápido a cualquier elemento del arreglo.</li><br>
                         <li><strong>Modificación de elementos:</strong> Un elemento en una posición específica se puede reemplazar asignando un nuevo valor al índice correspondiente. Por ejemplo, para cambiar el valor en la posición <code>2</code>, se asigna el nuevo valor a <code>a[2]</code>.</li><br>
-                        <li><strong>Limitación de tamaño:</strong> Como las formaciones tienen un tamaño fijo, no es posible agregar elementos adicionales sin crear una nueva formación más grande y copiar los elementos existentes.</li><br>
-                    </ol>
+                        <li><strong>Limitación de tamaño:</strong> Como los arreglos tienen un tamaño fijo, no es posible agregar elementos adicionales sin crear uno más grande y copiar los elementos existentes.</li><br>
+                    </ol><br><br>
                     <h3>Ejemplo</h3>
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <!-- Columna de texto del ejemplo -->
-                        <div style="flex: 0.8; padding-right: 15px;">
+                    <!--<div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                         Columna de texto del ejemplo 
+                        <div style="flex: 0.8; padding-right: 15px;"> -->
                             <p><strong>Arreglo inicial:</strong> <code>[ , , , , ]</code> (vacío, tamaño 5).<br></p>
                             <ol style="text-align: justify;">
                                 <li><strong>Insertar elementos:</strong><br><br>
@@ -88,19 +89,16 @@
                                     - <strong>Arreglo:</strong> <code>[10, 18, 22, 5, ]</code><br><br>
                                 </li><br>
                             </ol>
-                        </div>
-             
-                            <!-- Columna de imagen explicativa -->
-                            <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
-                                <img src="../../img/formaciones.png" alt="Explicación Burbuja" style="width: 70%; height: auto;">
-                            </div>
-                        </div>
+                        <!--</div>
+                             Columna de imagen explicativa 
+                            <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;"> -->
+                                <img src="../../img/formaciones.png" alt="Explicación Burbuja" style="width: 50%; height: auto;">
+                            <!--</div>
+                        </div> -->
                 </div>
-
                 <a href="animacion.html" class="btn zoom-slide-delay">Ir a la animacion</a>
                 </div>
             <!-- Fin del grid-container -->
-    
     <script src="script.js"></script>
 </body>
 </html>

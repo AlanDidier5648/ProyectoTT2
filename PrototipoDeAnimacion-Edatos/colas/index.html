@@ -35,21 +35,23 @@
             <!-- Contenedor principal con Grid -->
             <div class="grid-container">
                 <!-- Sección Superior para la explicación del algoritmo -->
-                <div class="section superior">
+                <div class="section">
+                    <h1><center>COLAS</center></h1><br><br>
                     <h2>Explicación General del Algoritmo</h2>
                     <p style="text-align: justify;">Una cola es una estructura de datos lineal que organiza elementos en orden secuencial siguiendo el principio FIFO (First In, First Out), donde el primer elemento en entrar es el primero en salir. Los elementos se agregan al final de la cola y solo se pueden retirar desde el frente, manteniendo el orden de llegada.</p>
                     <p style="text-align: justify;">En una cola, las operaciones principales son encolar (añadir un elemento al final) y desencolar (retirar el elemento del frente). Este funcionamiento asegura que los elementos se procesen en el mismo orden en que ingresaron, sin acceso directo a elementos intermedios, lo que hace a la cola simple pero efectiva para gestionar un flujo ordenado de datos.</p>
+                    <br><br>
                     <h3>¿En qué consiste?</h3>
                     <p style="text-align: justify;">Una cola funciona de la siguiente manera:</p>
                         <ol style="text-align: justify;">
                             <li><strong>Inicialización:</strong> La cola se crea como una estructura vacía, lista para almacenar elementos en orden secuencial.</li>
                             <li><strong>Encolar:</strong> Cada vez que un elemento nuevo llega a la cola, se coloca al final. Este proceso garantiza que todos los elementos mantengan el orden de llegada.</li>
                             <li><strong>Desencolar: </strong> Para procesar o eliminar un elemento, siempre se toma el que está al frente de la cola. Este paso sigue el principio FIFO (First In, First Out), asegurando que el primer elemento en entrar sea el primero en salir.</li><br>
-                        </ol>
+                        </ol><br><br>
                         <h3>Ejemplo</h3>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <!-- Columna de texto del ejemplo -->
-                            <div style="flex: 0.8; padding-right: 15px;">
+                        <!--<div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                             Columna de texto del ejemplo 
+                            <div style="flex: 0.8; padding-right: 15px;"> -->
                                 <p><strong>Cola inicial:</strong> <code>[]</code>.<br>
                                 </p>
                                 <p><strong>Primera iteración (Encolar elementos):</strong><br>
@@ -61,20 +63,17 @@
                                     - Se retira el &nbsp;<code>primer</code>&nbsp;  elemento, <strong>A</strong>. &nbsp;&nbsp;&nbsp;Nueva cola: <code><strong>[B,C]</strong></code>.<br>
                                     - Se retira el &nbsp;<code>siguiente</code>&nbsp; elemento, <strong>B</strong>. &nbsp;&nbsp;&nbsp;Nueva cola: <code><strong>[C]</strong></code>.<br>
                                     - Se retira el &nbsp;<code>último</code>&nbsp; elemento, <strong>C</strong>, dejando la cola <strong>vacía</strong> <code><strong>[]</strong></code>.<br>
-                                </p>
-                            </div>
-                            <!-- Columna de imagen explicativa -->
-                            <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
-                                <img src="../../img/bin.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
-                            </div>
-                        </div>
+                                </p><br><br>
+                            <!--</div>
+                             Columna de imagen explicativa 
+                            <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;"> -->
+                                <img src="../../img/bin.png" alt="Explicación Burbuja" style="width: 50%; height: auto;">
+                            <!--</div>
+                        </div> -->
                 </div>
-
-
                 <a href="animacion.html" class="btn zoom-slide-delay">Ir a la animacion</a>
             </div>
             <!-- Fin del grid-container -->
-    
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.min.js"></script>
 </body>

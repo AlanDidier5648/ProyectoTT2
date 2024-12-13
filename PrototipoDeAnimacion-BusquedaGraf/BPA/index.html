@@ -35,10 +35,11 @@
             <!-- Contenedor principal con Grid -->
             <div class="grid-container">
                 <!-- Sección Superior para la explicación del algoritmo -->
-                <div class="section superior">
+                <div class="section">
+                    <h1><center>ALGORITMO BÚSQUEDA PRIMERO EN AMPLITUD</center></h1><br><br>
                     <h2>Explicación General del Algoritmo</h2>
                     <p style="text-align: justify;">El algoritmo de Búsqueda Primero en Amplitud (BFS, por sus siglas en inglés: Breadth-First Search) es un método utilizado para recorrer o buscar elementos en estructuras de datos como grafos y árboles. BFS explora todos los nodos de un nivel antes de pasar al siguiente nivel, asegurando que se encuentre la ruta más corta en un grafo no ponderado. Este algoritmo utiliza una cola para gestionar los nodos visitados y los pendientes de explorar, y es útil para resolver problemas como encontrar la distancia mínima entre dos nodos o descubrir todos los nodos alcanzables desde un nodo inicial.</p>
-
+                    <br><br>
                     <h3>¿En qué consiste?</h3>
                     <p style="text-align: justify;">El algoritmo de Búsqueda Primero en Amplitud funciona de la siguiente manera:</p>
                     <ol style="text-align: justify;">
@@ -46,12 +47,12 @@
                         <li><strong>Exploración:</strong> Se extrae el primer nodo de la cola y se inspeccionan todos sus nodos adyacentes. Los nodos adyacentes que no han sido visitados se marcan como visitados y se agregan a la cola.</li>
                         <li><strong>Repetición:</strong> El proceso se repite extrayendo nodos de la cola y explorando sus vecinos hasta que la cola esté vacía.</li>
                         <li><strong>Finalización:</strong> Cuando la cola está vacía, significa que todos los nodos alcanzables desde el nodo inicial han sido visitados.</li>
-                    </ol>
+                    </ol><br><br>
 
                     <h3>Ejemplo</h3>
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <!-- Columna de texto del ejemplo -->
-                        <div style="flex: 0.8; padding-right: 15px;">
+                    <!--<div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                         Columna de texto del ejemplo 
+                        <div style="flex: 0.8; padding-right: 15px;">  -->
                             <p><strong>Grafo inicial:</strong><br>
                                 Nodos: <code>{A, B, C, D, E, F, G}</code>.<br>
                                 Arcos: <code>{(A-B), (A-C), (B-D), (B-E), (C-F), (C-G)}</code>.<br>
@@ -99,13 +100,13 @@
                                 - Cola: <code>[]</code>.<br>
                                 - Orden de visita: <code>[A, B, C, D, E, F, G]</code>.
                             </p>
-                            <p>El recorrido ha terminado. Orden de visita final: <code>[A, B, C, D, E, F, G]</code>.</p>
-                        </div>
-                         <!-- Columna de imagen explicativa -->
-                         <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
-                            <img src="../../img/ExplicacionBurbuja.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
-                        </div>
-                    </div>
+                            <p>El recorrido ha terminado. Orden de visita final: <code>[A, B, C, D, E, F, G]</code>.</p><br><br>
+                        <!--</div>
+                         <!-- Columna de imagen explicativa 
+                         <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;"> -->
+                            <img src="../../img/ExplicacionBurbuja.png" alt="Explicación Burbuja" style="width: 60%; height: auto;">
+                        <!--</div>
+                    </div> -->
             </div>
             <a href="animacion.html" class="btn zoom-slide-delay">Ir a la animacion</a>
             </div>

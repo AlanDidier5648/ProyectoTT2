@@ -34,10 +34,11 @@
             <!-- Contenedor principal con Grid -->
             <div class="grid-container">
                 <!-- Sección Superior para la explicación del algoritmo -->
-                <div class="section superior">
+                <div class="section">
+                    <h1><center>ALGORITMO BÚSQUEDA PRIMERO EN PROFUNDIDAD</center></h1><br><br>
                     <h2>Explicación General del Algoritmo</h2>
                     <p style="text-align: justify;">El algoritmo de Búsqueda Primero en Profundidad (DFS, por sus siglas en inglés: Depth-First Search) es un método utilizado para recorrer o buscar elementos en estructuras de datos como grafos y árboles. Este algoritmo explora tan lejos como sea posible a lo largo de cada rama antes de retroceder. DFS se basa en una estrategia de "backtracking" (retroceso) y utiliza una pila, ya sea explícita o implícita en el caso de una implementación recursiva. Es útil para descubrir componentes conexos en un grafo, resolver laberintos y generar árboles de decisión.</p>
-
+                    <br><br>
                     <h3>¿En qué consiste?</h3>
                     <p style="text-align: justify;">El algoritmo de Búsqueda Primero en Profundidad funciona de la siguiente manera:</p>
                     <ol style="text-align: justify;">
@@ -45,12 +46,12 @@
                         <li><strong>Exploración:</strong> Desde el nodo actual, se selecciona uno de sus nodos adyacentes no visitados y se avanza hacia él.</li>
                         <li><strong>Retroceso:</strong> Si un nodo no tiene nodos adyacentes no visitados, el algoritmo retrocede al nodo anterior para continuar explorando otras ramas.</li>
                         <li><strong>Finalización:</strong> El proceso se repite hasta que todos los nodos alcanzables hayan sido visitados.</li>
-                    </ol>
+                    </ol><br><br>
 
                     <h3>Ejemplo</h3>
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <!-- Columna de texto del ejemplo -->
-                        <div style="flex: 0.8; padding-right: 15px;">
+                    <!-- <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                         Columna de texto del ejemplo 
+                        <div style="flex: 0.8; padding-right: 15px;"> -->
                             <p><strong>Grafo inicial:</strong><br>
                                 Nodos: <code>{A, B, C, D, E, F, G}</code>.<br>
                                 Arcos: <code>{(A-B), (A-C), (B-D), (B-E), (C-F), (C-G)}</code>.<br>
@@ -100,18 +101,17 @@
                                 - <strong>G</strong> no tiene nodos adyacentes no visitados, se retrocede a <strong>C</strong>, luego a <strong>A</strong>.<br>
                                 - Todos los nodos han sido visitados.<br>
                             </p>
-                            <p>Orden de visita final: <code>[A, B, D, E, C, F, G]</code>.</p>
-                        </div>
-                        <!-- Columna de imagen explicativa -->
-                        <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
-                            <img src="../../img/ExplicacionBurbuja.png" alt="Explicación Burbuja" style="width: 105%; height: auto;">
-                        </div>
-                    </div>
+                            <p>Orden de visita final: <code>[A, B, D, E, C, F, G]</code>.</p><br><br>
+                        <!--</div>
+                         Columna de imagen explicativa 
+                        <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;"> -->
+                            <img src="../../img/ExplicacionBurbuja.png" alt="Explicación Burbuja" style="width: 60%; height: auto;">
+                        <!--</div>
+                    </div> -->
             </div>
             <a href="animacion.html" class="btn zoom-slide-delay">Ir a la animacion</a>
             </div>
             <!-- Fin del grid-container -->
-    
     <script src="script.js"></script>
 </body>
 </html>

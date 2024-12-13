@@ -35,10 +35,12 @@
     <!-- Contenedor principal con Grid -->
     <div class="grid-container">
         <!-- Sección Superior para la explicación del algoritmo -->
-        <div class="section superior">
+        <div class="section">
+            <h1><center>TABLAS HASH</center></h1><br><br>
             <h2>Explicación General del Algoritmo</h2>
             <p style="text-align: justify;">Una tabla hash es una estructura de datos que almacena elementos utilizando una clave única asociada a cada uno de ellos. Esta clave se transforma mediante una función hash en un índice, que indica la posición en la tabla donde se guarda el elemento.</p>
             <p style="text-align: justify;">Las tablas hash destacan por su eficiencia al realizar búsquedas, inserciones y eliminaciones, ya que permiten acceder directamente a los elementos mediante su clave. Para manejar situaciones donde dos claves generan el mismo índice (colisiones), se utilizan métodos como listas encadenadas o sondeos para resolver conflictos y mantener el orden.</p>                    
+            <br><br>
             <h3>¿En qué consiste?</h3>
             <p style="text-align: justify;">Una tabla hash funciona de la siguiente manera:</p>
             <ol style="text-align: justify;">
@@ -47,11 +49,11 @@
                 <li><strong>Inserción:</strong> El elemento se almacena en la posición de la tabla indicada por el índice generado por la función hash. Si hay una colisión (dos claves generan el mismo índice), se utiliza una técnica de resolución como encadenamiento o sondeo para encontrar un lugar disponible.</li><br>
                 <li><strong>Búsqueda:</strong> Para buscar un elemento, la clave se transforma en un índice mediante la función hash, y se verifica la posición correspondiente en la tabla. Si hay una colisión, se siguen las referencias para encontrar el elemento deseado.</li><br>
                 <li><strong>Eliminación:</strong> Para eliminar un elemento, se localiza mediante su índice hash y se elimina de la posición correspondiente. Si hay colisiones, se ajustan las referencias para evitar inconsistencias.</li><br>
-            </ol>
+            </ol><br><br>
          <h3>Ejemplo</h3>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <!-- Columna de texto del ejemplo -->
-                <div style="flex: 0.8; padding-right: 15px;">
+            <!--<div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                 Columna de texto del ejemplo 
+                <div style="flex: 0.8; padding-right: 15px;"> -->
                     <p><strong>Tabla hash inicial:</strong> <code>[ , , , , ]</code>&nbsp;&nbsp;&nbsp;(vacía, tamaño 5).<br></p>
                     <ol style="text-align: justify;">
                         <li><strong>Insertar elementos:</strong><br><br>
@@ -95,16 +97,15 @@
                         - En la posición <code>2</code>, se elimina el elemento directamente.<br>
                         - <strong>Tabla hash:</strong> <code>[[15], -, -, -, -]</code><br>
                         </li><br>
-                    </ol>
-                    </div>
+                    </ol><br><br>
+                    <!--</div>
                     
-                    <!-- Columna de imagen explicativa -->
-                    <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;">
-                        <img src="../../img/hash.png" alt="Explicación Burbuja" style="width: 80%; height: auto;">
-                    </div>
-            </div>
+                     Columna de imagen explicativa 
+                    <div style="flex: 0.7; display: flex; justify-content: flex-end; margin-left: 15px;"> -->
+                        <img src="../../img/hash.png" alt="Explicación Burbuja" style="width: 50%; height: auto;">
+                    <!--</div>
+            </div>-->
         </div>
-
         <a href="animacion.html" class="btn zoom-slide-delay">Ir a la animacion</a>
     </div>
 

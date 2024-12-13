@@ -181,9 +181,9 @@ button:hover {
 .array-container {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    gap: 10px;
+    gap: 10px; /* Espaciado entre las celdas */
     justify-content: center;
-    margin: 20px 0;
+    margin: 20px 0 60px 0; /* Espacio superior e inferior */
 }
 
 .cell {
@@ -247,6 +247,42 @@ button:hover {
 
 .input-container button:hover {
     background-color: #00372e;
+}
+
+/* Aplicar estilo a los botones "Acceder" y "Confirmar Índice" */
+.access-container {
+    margin-top: 20px; /* Agregar espacio superior */
+    text-align: center;
+}
+
+.access-container button {
+    margin: 10px 5px; /* Espacio entre los botones */
+    background-color: #004c3f; /* Color de fondo */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.access-container button:hover {
+    background-color: #00372e; /* Cambio de color al pasar el mouse */
+}
+
+/* Aplicar estilo a la entrada "Índice" debajo del botón "Acceder" */
+.access-container input {
+    margin: 10px 5px; /* Espacio alrededor de la entrada */
+    width: 120px; /* Ancho igual al de las otras entradas */
+    height: 40px; /* Altura consistente */
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #004c3f; /* Borde igual */
+    margin: 10px 5px; /* Espaciado */
+    outline: none; /* Elimina borde por defecto al enfocar */
+    box-sizing: border-box;
 }
 
 
