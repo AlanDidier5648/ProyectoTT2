@@ -263,32 +263,67 @@ function bubbleSortStepByStep(arr) {
     comparisonCount = 0; // Reinicia el contador de comparaciones
     swapCount = 0; // Reinicia el contador de intercambios
 
-    let n = arr.length;
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < n - i - 1; j++) {
-            comparisonCount++; // Incrementa el contador de comparaciones
-            steps.push({ 
-                array: [...arr], 
-                compared: [j, j + 1], 
-                swap: false,
-                comparisonCount: comparisonCount,
-                swapCount: swapCount 
-            });
+    quickSort(arr, 0, arr.length - 1); // Llama a la función recursiva Quick Sort
+}
 
-            if (arr[j] > arr[j + 1]) {
-                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; // Realiza el intercambio
-                swapCount++; // Incrementa el contador de intercambios
-                steps.push({ 
-                    array: [...arr], 
-                    compared: [j, j + 1], 
-                    swap: true,
-                    comparisonCount: comparisonCount,
-                    swapCount: swapCount 
-                });
-            }
-        }
+function quickSort(arr, low, high) {
+    if (low < high) {
+        const pivotIndex = partition(arr, low, high);
+
+        // Ordenar las particiones izquierda y derecha
+        quickSort(arr, low, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, high);
     }
 }
+
+function partition(arr, low, high) {
+    const pivot = arr[high]; // Seleccionar el último elemento como pivote
+    let i = low - 1; // Índice del elemento más pequeño
+
+    for (let j = low; j < high; j++) {
+        comparisonCount++; // Incrementa el contador de comparaciones
+
+        // Registrar el estado antes de comparar
+        steps.push({
+            array: [...arr],
+            compared: [j, high],
+            swap: false,
+            comparisonCount: comparisonCount,
+            swapCount: swapCount,
+        });
+
+        if (arr[j] < pivot) {
+            i++;
+            [arr[i], arr[j]] = [arr[j], arr[i]]; // Intercambiar si el elemento actual es menor que el pivote
+            swapCount++; // Incrementa el contador de intercambios
+
+            // Registrar el estado después del intercambio
+            steps.push({
+                array: [...arr],
+                compared: [i, j],
+                swap: true,
+                comparisonCount: comparisonCount,
+                swapCount: swapCount,
+            });
+        }
+    }
+
+    // Mover el pivote a su posición correcta
+    [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+    swapCount++;
+
+    // Registrar el estado después de mover el pivote
+    steps.push({
+        array: [...arr],
+        compared: [i + 1, high],
+        swap: true,
+        comparisonCount: comparisonCount,
+        swapCount: swapCount,
+    });
+
+    return i + 1; // Retorna el índice del pivote
+}
+
 
 
 

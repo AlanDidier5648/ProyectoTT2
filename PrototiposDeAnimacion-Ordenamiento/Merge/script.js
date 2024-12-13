@@ -261,34 +261,80 @@ function clearInputs() {
 function bubbleSortStepByStep(arr) {
     steps = []; // Reinicia los pasos
     comparisonCount = 0; // Reinicia el contador de comparaciones
-    swapCount = 0; // Reinicia el contador de intercambios
+    mergeSort(arr, 0, arr.length - 1); // Llamada inicial a Merge Sort
+}
 
-    let n = arr.length;
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < n - i - 1; j++) {
-            comparisonCount++; // Incrementa el contador de comparaciones
-            steps.push({ 
-                array: [...arr], 
-                compared: [j, j + 1], 
-                swap: false,
-                comparisonCount: comparisonCount,
-                swapCount: swapCount 
-            });
+function mergeSort(arr, left, right) {
+    if (left < right) {
+        const mid = Math.floor((left + right) / 2);
 
-            if (arr[j] > arr[j + 1]) {
-                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; // Realiza el intercambio
-                swapCount++; // Incrementa el contador de intercambios
-                steps.push({ 
-                    array: [...arr], 
-                    compared: [j, j + 1], 
-                    swap: true,
-                    comparisonCount: comparisonCount,
-                    swapCount: swapCount 
-                });
-            }
-        }
+        // Dividir el array
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+
+        // Combinar las mitades
+        merge(arr, left, mid, right);
     }
 }
+
+function merge(arr, left, mid, right) {
+    const leftArray = arr.slice(left, mid + 1);
+    const rightArray = arr.slice(mid + 1, right + 1);
+
+    let i = 0, j = 0, k = left;
+
+    while (i < leftArray.length && j < rightArray.length) {
+        comparisonCount++; // Incrementa el contador de comparaciones
+
+        if (leftArray[i] <= rightArray[j]) {
+            arr[k] = leftArray[i];
+            i++;
+        } else {
+            arr[k] = rightArray[j];
+            j++;
+        }
+
+        // Registrar el estado del array después de cada inserción
+        steps.push({
+            array: [...arr],
+            compared: [k], // Índice donde se inserta
+            swap: false, // Merge Sort no tiene intercambios
+            comparisonCount: comparisonCount,
+            swapCount: 0,
+        });
+
+        k++;
+    }
+
+    // Copiar los elementos restantes de la mitad izquierda
+    while (i < leftArray.length) {
+        arr[k] = leftArray[i];
+        steps.push({
+            array: [...arr],
+            compared: [k],
+            swap: false,
+            comparisonCount: comparisonCount,
+            swapCount: 0,
+        });
+        i++;
+        k++;
+    }
+
+    // Copiar los elementos restantes de la mitad derecha
+    while (j < rightArray.length) {
+        arr[k] = rightArray[j];
+        steps.push({
+            array: [...arr],
+            compared: [k],
+            swap: false,
+            comparisonCount: comparisonCount,
+            swapCount: 0,
+        });
+        j++;
+        k++;
+    }
+}
+
 
 
 

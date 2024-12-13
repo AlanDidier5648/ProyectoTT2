@@ -264,31 +264,52 @@ function bubbleSortStepByStep(arr) {
     swapCount = 0; // Reinicia el contador de intercambios
 
     let n = arr.length;
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < n - i - 1; j++) {
-            comparisonCount++; // Incrementa el contador de comparaciones
-            steps.push({ 
-                array: [...arr], 
-                compared: [j, j + 1], 
-                swap: false,
-                comparisonCount: comparisonCount,
-                swapCount: swapCount 
-            });
 
-            if (arr[j] > arr[j + 1]) {
-                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; // Realiza el intercambio
-                swapCount++; // Incrementa el contador de intercambios
-                steps.push({ 
-                    array: [...arr], 
-                    compared: [j, j + 1], 
-                    swap: true,
-                    comparisonCount: comparisonCount,
-                    swapCount: swapCount 
-                });
-            }
+    for (let i = 1; i < n; i++) {
+        let key = arr[i]; // El valor actual a ordenar
+        let j = i - 1;
+
+        // Registrar el estado inicial antes de mover el valor clave
+        steps.push({
+            array: [...arr],
+            compared: [j, i],
+            swap: false,
+            comparisonCount: comparisonCount,
+            swapCount: swapCount,
+        });
+
+        // Mover los elementos mayores hacia adelante
+        while (j >= 0 && arr[j] > key) {
+            comparisonCount++; // Incrementa el contador de comparaciones
+            arr[j + 1] = arr[j]; // Mover el elemento
+            j--;
+
+            // Registrar cada movimiento
+            steps.push({
+                array: [...arr],
+                compared: [j + 1, j + 2],
+                swap: true,
+                comparisonCount: comparisonCount,
+                swapCount: swapCount,
+            });
         }
+
+        // Insertar el valor clave en su posición ordenada
+        arr[j + 1] = key;
+        swapCount++; // Incrementa el contador de intercambios
+
+        // Registrar el estado final del paso
+        steps.push({
+            array: [...arr],
+            compared: [j + 1, i],
+            swap: true,
+            comparisonCount: comparisonCount,
+            swapCount: swapCount,
+        });
     }
 }
+
+
 
 
 
@@ -304,7 +325,9 @@ function showStep(stepIndex) {
     let barColors = new Array(step.array.length).fill('rgba(75, 192, 192, 0.8)');
     if (comparedIndexes.length > 0) {
         barColors[comparedIndexes[0]] = 'rgba(255, 36, 0, 0.8)';
-        barColors[comparedIndexes[1]] = 'rgba(255, 36, 0, 0.8)';
+        if (comparedIndexes[1] !== undefined) {
+            barColors[comparedIndexes[1]] = 'rgba(255, 36, 0, 0.8)';
+        }
     }
 
     // Actualiza los datos y etiquetas del gráfico
@@ -316,10 +339,12 @@ function showStep(stepIndex) {
     // Actualiza la narración
     const narration = document.getElementById('narration');
     const num1 = step.array[step.compared[0]];
-    const num2 = step.array[step.compared[1]];
+    const num2 = step.compared[1] !== undefined ? step.array[step.compared[1]] : null;
 
     let stepMessage = step.swap
-        ? `Se compararon ${num1} y ${num2}. Se intercambiaron.`
+        ? num2 !== null
+            ? `Se compararon ${num1} y ${num2}. Se movió ${num1}.`
+            : `Se insertó ${num1} en su posición correcta.`
         : `Se compararon ${num1} y ${num2}.`;
 
     narration.textContent = stepMessage;
