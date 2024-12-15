@@ -59,8 +59,6 @@ body {
     display: block;
 } 
 
-
-
 /* Sección de botones centrados */
 .control-buttons {
     display: flex; /* Habilitar Flexbox */
