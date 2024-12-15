@@ -34,19 +34,12 @@ body {
     gap: 10px; /* Espaciado entre filas */
 }
 
-/* Contenedor principal usando Grid */
-.grid-container2 {
-    display: grid;
-    grid-template-rows: 95% 5%; /* Primera fila 95%, segunda fila 5% */
-    width: 90%;
-    height: calc(100vh - 120px); /* Mantener tamaño igual al primer grid */
-    margin: 100px auto; /* Centrar horizontalmente */
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    gap: 10px; /* Espaciado entre filas */
+#array-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
 }
 
 /* Sección principal */
@@ -61,17 +54,7 @@ body {
     overflow: scroll;
 }
 
-/* Primera fila: sección con scroll interno */
-.section2 {
-    height: 100%; /* Ocupar todo el espacio de la fila */
-    padding: 10px;
-    font-size: 1rem;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-    overflow-y: auto; /* Scroll interno para texto dinámico */
-}
+
 
 /* Sección de botones centrados */
 .control-buttons {
@@ -241,6 +224,42 @@ input[type="number"] {
     transform: translateY(0);
 }
 
+.array-circle-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.array-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #3498db;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+    transition: background-color 0.4s ease;
+}
+
+@keyframes entradaSuave {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.array-circle {
+    animation: entradaSuave 0.5s ease-out; /* Aplica la animación de entrada */
+}
+
+
 /* Estilos para la barra de navegación */
 .navbar {
     padding: 10px 20px; /* Ajuste uniforme */
@@ -326,5 +345,73 @@ canvas {
         height: calc(90% - 10px); /* Reducir altura para dispositivos más pequeños */
         font-size: 0.9rem; /* Reducir tamaño de fuente */
         padding: 8px; /* Espaciado interno más compacto */
+    }
+}
+
+
+#step-container {
+    display: flex;
+    flex-direction: column; /* Alinea los pasos verticalmente */
+    gap: 15px; /* Espacio entre cada paso */
+    margin-top: 20px;
+}
+
+.step-array-container {
+    display: flex;
+    justify-content: center; /* Centra los círculos dentro de cada línea */
+    gap: 10px;
+}
+
+.message-box {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    background-color: #f0f8ff;
+    color: #004d99;
+    font-size: 1rem;
+    max-height: 600px;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+    display: flex; /* Usamos flexbox */
+    flex-direction: column; /* Para alinear los elementos en columna */
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+}
+
+.message-box.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.message-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    text-align: center; /* Centra el texto dentro de la lista */
+}
+
+.message-box li {
+    margin-bottom: 5px;
+    line-height: 1.4;
+    background-color: #e8f4ff;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-out;
+    transition: all 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
     }
 }
