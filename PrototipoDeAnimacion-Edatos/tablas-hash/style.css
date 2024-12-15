@@ -45,6 +45,11 @@ body {
   overflow: auto;
 }
 
+.section img {
+  margin: 0 auto; /* Centrar */
+  display: block;
+}
+
 /* Estilos para la barra de navegación */
 .navbar {
   padding: 10px 20px; /* Ajuste uniforme */

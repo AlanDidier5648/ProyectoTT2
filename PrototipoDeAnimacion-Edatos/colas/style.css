@@ -54,6 +54,11 @@ body {
     overflow: auto;
 }
 
+.section img {
+    margin: 0 auto; /* Centrar */
+    display: block;
+} 
+
 /* Botón con contraste */
 .btn-primary {
     display: inline-block;

@@ -54,7 +54,10 @@ body {
     overflow: scroll;
 }
 
-
+.section img {
+    margin: 0 auto; /* Centrar */
+    display: block;
+} 
 
 /* Sección de botones centrados */
 .control-buttons {
@@ -68,15 +71,6 @@ body {
 
 .control-buttons button:hover {
     background-color: #66b2ff;
-}
-
-/* Imagen explicativa dentro de la sección */
-.section img {
-    width: 90%; /* Ajustar ancho */
-    height: auto; /* Mantener proporción */
-    max-height: 200px; /* Limitar altura máxima */
-    margin: 0 auto; /* Centrar */
-    display: block;
 }
 
 /* Texto dentro de la sección */
