@@ -40,7 +40,25 @@
         <h2>Visualización del Algoritmo</h2>
         <section class="algorithm-container">
             <h1>Simulación de Tabla Hash</h1>
-            <div class="hash-table">
+
+            <div id="collision-method">
+                <button id="btn-abierto">Hashing Abierto</button>
+                <button id="btn-cerrado">Hashing Cerrado</button>
+            </div>
+
+            <div id="input-section">
+                <input type="text" id="input-key" placeholder="Ingresa una llave (nombre)">
+                <input type="text" id="input-value" placeholder="Ingresa un valor (teléfono)">
+                <button id="btn-insertar">Insertar en Tabla Hash</button>
+            </div>
+            <div id="tabla-container">
+                <h2>Tabla Hash</h2>
+                <div id="tabla-hash">
+                    <!-- Aquí se generará la tabla hash -->
+                </div>
+            </div>
+
+            <!-- <div class="hash-table">
                 <div class="cell" id="cell-0"><span class="index">0</span><div class="values"></div></div>
                 <div class="cell" id="cell-1"><span class="index">1</span><div class="values"></div></div>
                 <div class="cell" id="cell-2"><span class="index">2</span><div class="values"></div></div>
@@ -57,7 +75,7 @@
                 <button onclick="insertToHashTable()">Insertar</button>
                 <button onclick="searchInHashTable()">Buscar</button>
                 <button onclick="deleteFromHashTable()">Eliminar</button>
-            </div>
+            </div>-  -->
         </section>
         
     </div>

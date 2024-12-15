@@ -57,8 +57,11 @@
     <footer>
         <p>&copy; ESCUELA SUPERIOR DE CÓMPUTO</p>
     </footer>
+ 
+
 
     <script>
+    //-------------------------------- codigo requerido para cambiar de color links visitados
   document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".algorithm-card");
 
@@ -75,9 +78,9 @@
             sessionStorage.setItem(href, true); // Marca como visitado
             card.classList.add("visited"); // Cambia el estilo inmediatamente
         });
+        });
     });
-});
-
+//-------------------------------- codigo requerido para cambiar de color links visitados
 
 
     </script>

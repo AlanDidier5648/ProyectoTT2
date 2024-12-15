@@ -246,3 +246,66 @@ button:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
+
+
+
+
+/*tablas hash*/
+
+
+#input-section {
+  margin: 20px auto;
+}
+
+#input-section input {
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+#input-section button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+#tabla-container {
+  margin-top: 30px;
+}
+
+#tabla-hash {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columnas por fila */
+  gap: 10px;
+  margin: 20px auto;
+  width: 80%;
+}
+
+.celda {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.celda.ocupada {
+  background-color: #add8e6;
+}
+
+.llave {
+  font-weight: bold;
+}
+
+.valor {
+  font-size: 12px;
+  color: #555;
+}
