@@ -63,5 +63,29 @@
     <footer>
         <p>&copy; ESCUELA SUPERIOR DE CÓMPUTO</p>
     </footer>
+    <script>
+        //-------------------------------- codigo requerido para cambiar de color links visitados
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".algorithm-card");
+    
+        // Al cargar la página, verifica si los enlaces fueron visitados
+        cards.forEach(card => {
+            const href = card.getAttribute("href"); // Obtén la URL del enlace
+    
+            if (sessionStorage.getItem(href)) {
+                card.classList.add("visited");
+            }
+    
+            // Escucha los clics para marcar como visitado
+            card.addEventListener("click", () => {
+                sessionStorage.setItem(href, true); // Marca como visitado
+                card.classList.add("visited"); // Cambia el estilo inmediatamente
+            });
+            });
+        });
+    //-------------------------------- codigo requerido para cambiar de color links visitados
+    
+    
+        </script>
 </body>
 </html>
