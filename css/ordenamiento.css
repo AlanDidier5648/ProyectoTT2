@@ -1,3 +1,13 @@
+
+:root {
+    --primary1: #00415d;  /* Azul oscuro */
+    --primary2: #808080;  /* Azul claro para hover */
+    --primary3: #454545;  /* Azul claro para hover */
+    --primary4: #C0C0C0;  /* Azul claro para hover */
+    --primary5: #027db0;  /* Azul claro para hover */
+   
+}
+
 /* Estilo general del cuerpo */
 body {
     font-family: "Raleway", sans-serif;
@@ -107,7 +117,7 @@ body {
 
 .algorithm-card {
     margin: 20px;
-    background-color: #FDBA50;
+    background-color: var(--primary2);
     padding: 20px;
     border-radius: 5px;
     text-align: center;
@@ -125,6 +135,14 @@ body {
     position: relative;
     overflow: hidden;
 }
+
+/*-------------------------------- codigo requerido para cambiar de color links visitados*/
+.algorithm-card.visited {
+    background-color: var(--primary3); /* Nuevo color para enlaces visitados */
+    color: #fff; /* Color del texto */
+}
+
+/*-------------------------------- codigo requerido para cambiar de color links visitados*/
 
 .algorithm-card img {
     max-width: 60%;
@@ -156,7 +174,8 @@ body {
 
 .algorithm-card:hover {
     transform: scale(1.05);
-    background-color: #FFA500;
+    background-color: var(--primary4);
+    color:#333;
 }
 
 /* Footer */
