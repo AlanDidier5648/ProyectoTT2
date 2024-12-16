@@ -13,6 +13,18 @@ body {
     overflow-y: hidden; 
 }
 
+/* Sección principal */
+.section2 {
+    height: 100%; /* Ocupar todo el espacio de la fila */
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: scroll;
+}
+
 
 @keyframes gradient {
     0% { background-position: 0% 50%; }

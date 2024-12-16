@@ -29,6 +29,19 @@ body {
 }
 
 
+/* Sección principal */
+.section2 {
+    height: 100%; /* Ocupar todo el espacio de la fila */
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: scroll;
+}
+
+
 
 .button-container button:hover {
     background-color: #004d40; /* Color de fondo al pasar el cursor */
