@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <!-- Enlace a Chart.js para generar gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <!-- Enlace a SweetAlert2 para notificaciones -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -35,26 +36,41 @@
 
             <!-- Contenedor principal con Grid -->
             <div class="grid-container">
-          
+                
 
                 <!-- Sección Inferior para la visualización del algoritmo -->
-                <div class="section inferior">
+                <div class="section">
                     <h2>Visualización del Algoritmo</h2>
-                    <svg id="graph" width="1000" height="600"></svg>
-                 
-                    <div id="recorrido">
-                        <h3>Recorrido DFS:</h3>
-                        <ul id="recorrido-lista"></ul>
+                      <!-- Botones superiores -->
+                    <div class="top-buttons">
+                        <button id="graph-6">Grafo de 5 nodos</button>
+                        <button id="graph-7">Grafo de 7 nodos</button>
+                        <button id="graph-8">Grafo de 8 nodos</button>
+                        <button id="graph-9">Grafo de 9 nodos</button>
+                        <button id="graph-12">Grafo de 12 nodos</button>
                     </div>
-                    
-                    
-                
-                </div>
+                   
+                      <!-- Contenedor SVG y narración -->
+                    <div class="svg-section">
+                        <svg id="graph" width="800" height="600" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet"></svg>
 
-                <div id="controls" class="control-buttons">
-                    <button id="start">Iniciar Animación</button>
-                    <a href="cuestionario.html" class="btn zoom-slide-delay">Ir al cuestionario</a>
-                </div>
+
+                        <div id="narration">Narración del grafo...</div>
+                    </div>
+
+                    
+                    
+
+                        </div>
+                    
+                        <!-- Botones inferiores -->
+                        <div class="bottom-buttons">
+                            <button id="start">Iniciar BFS</button>
+                            <button id="nextStep">Siguiente Paso</button>
+                            <button id="prevStep">Paso Anterior</button>
+                            <a href="cuestionario.html" class="btn zoom-slide-delay">Ir al cuestionario</a>
+                        </div>
+
                 
             </div>
             <!-- Fin del grid-container -->

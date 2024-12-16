@@ -213,35 +213,38 @@ let dfsSteps = [];
 let currentStepIndex = -1;
 let currentGraph = null; // Mantendrá el grafo actual
 
-// Función para inicializar el DFS y generar pasos
-function initializeDFS(graph) {
-    dfsSteps = [];
+// Función para inicializar el BFS y generar pasos
+function initializeBFS(graph) {
+    dfsSteps = []; // Reutilizamos el array para almacenar los pasos
     const visited = new Set();
-    const stack = [];
+    const queue = []; // Usamos una cola en lugar de una pila
 
-    function dfs(nodeId) {
-        stack.push(nodeId);
-        dfsSteps.push({ nodeId, stack: [...stack], action: "visit" });
+    // Iniciamos el BFS en el primer nodo
+    const startNode = graph.nodes[0].id;
+    queue.push(startNode);
+    visited.add(startNode);
 
-        visited.add(nodeId);
+    dfsSteps.push({ nodeId: startNode, action: "visit" });
 
+    while (queue.length > 0) {
+        const currentNode = queue.shift(); // Sacamos el nodo actual de la cola
+
+        // Explorar los vecinos
         graph.links.forEach(link => {
-            if (link.source === nodeId && !visited.has(link.target)) {
-                dfsSteps.push({ nodeId, stack: [...stack], action: "explore", target: link.target });
-                dfs(link.target);
+            if (link.source === currentNode && !visited.has(link.target)) {
+                queue.push(link.target);
+                visited.add(link.target);
+                dfsSteps.push({ nodeId: link.target, action: "visit" });
+                dfsSteps.push({ nodeId: currentNode, action: "explore", target: link.target });
             }
         });
-
-        stack.pop();
-        dfsSteps.push({ nodeId, stack: [...stack], action: "backtrack" });
     }
 
-    dfs(graph.nodes[0].id); // Asumimos que el DFS inicia en el primer nodo
     currentStepIndex = -1; // Reinicia el índice de pasos
 }
 
-// Función para ejecutar el paso actual del DFS
-// Función para ejecutar el paso actual del DFS
+
+// Función para ejecutar el paso actual del BFS
 function executeCurrentStep() {
     if (currentStepIndex < 0 || currentStepIndex >= dfsSteps.length) return;
 
@@ -259,17 +262,13 @@ function executeCurrentStep() {
             narration.textContent = `Explorando el enlace desde ${nodeId} hacia ${target}.`;
             highlightLink(nodeId, target, "blue");
             break;
-        case "backtrack":
-            narration.textContent = `Retrocediendo desde el nodo ${nodeId}.`;
-            highlightNode(nodeId, "red");
-            break;
     }
 
     // Si es el último paso, mostrar SweetAlert
     if (currentStepIndex === dfsSteps.length - 1) {
         Swal.fire({
-            title: "¡DFS Completado!",
-            text: "El algoritmo de búsqueda en profundidad ha terminado.",
+            title: "¡BFS Completado!",
+            text: "El algoritmo de búsqueda en amplitud ha terminado.",
             icon: "success",
             confirmButtonText: "Entendido",
             timer: 3000,
@@ -277,7 +276,6 @@ function executeCurrentStep() {
         });
     }
 }
-
 
 
 // Función para resaltar nodos
@@ -298,9 +296,10 @@ function highlightLink(source, target, color) {
         .style("stroke", color);
 }
 
+// Cambiar los eventos del botón para BFS
 document.getElementById("start").addEventListener("click", () => {
     if (currentGraph) {
-        initializeDFS(currentGraph);
+        initializeBFS(currentGraph); // Llama a la función de BFS
         currentStepIndex = 0;
         executeCurrentStep();
     } else {
