@@ -104,12 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (result.isConfirmed) {
                 // Redirigir a otra página
                 window.location.href = "../dist/index.html"; // Cambiar por tu URL
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
-                Swal.fire(
-                    "¡Genial!",
-                    "info"
-                );
-            }
+            } 
         });
 
         // Guardar en localStorage que el mensaje ya se mostró

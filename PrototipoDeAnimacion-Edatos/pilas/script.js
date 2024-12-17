@@ -97,8 +97,8 @@ function peek() {
         const valorTope = nodoTope.textContent;
 
         // Efecto visual temporal para resaltar el nodo en el tope
-        Velocity(nodoTope, { backgroundColor: "#ffb3b3", scale: 1.1 }, { duration: 300 })
-            .then(() => Velocity(nodoTope, { backgroundColor: "#b80202", scale: 1 }, { duration: 300 }));
+        Velocity(nodoTope, { backgroundColor: "#004494", scale: 1.1 }, { duration: 300 })
+            .then(() => Velocity(nodoTope, { backgroundColor: "#004494", scale: 1 }, { duration: 300 }));
 
         // Mostrar SweetAlert con el valor del tope
         Swal.fire({
