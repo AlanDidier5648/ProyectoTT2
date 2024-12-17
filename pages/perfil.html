@@ -94,11 +94,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // Mostrar el SweetAlert
         Swal.fire({
             title: "¡Bienvenido!",
-            text: "Puedes elegir entre continuar en esta página o ir a otra.",
+            text: "Puedes elegir hacer el cuestionario para conocer tu estilo de aprendizaje para mejorar tu experiencia.",
             icon: "info",
             showCancelButton: true,
-            confirmButtonText: "Ir a la otra página",
-            cancelButtonText: "Quedarme aquí",
+            confirmButtonText: "Ir al cuestionario",
+            cancelButtonText: "Quedarme",
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
@@ -107,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 Swal.fire(
                     "¡Genial!",
-                    "Te quedarás en esta página.",
                     "info"
                 );
             }
