@@ -54,8 +54,18 @@ function updateMessageList(text) {
     }, 500); // Duración de la animación
 }
 
-// Iniciar la búsqueda lineal paso a paso
+// Validar que el array esté completo antes de iniciar la búsqueda
 function startLinearSearch() {
+    if (array.includes(null)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Faltan valores',
+            text: 'Asegúrate de completar todos los números antes de iniciar la animación.',
+            confirmButtonText: 'Entendido'
+        });
+        return;
+    }
+
     targetValue = parseInt(document.getElementById('search-value').value);
     if (isNaN(targetValue)) {
         Swal.fire({
@@ -179,6 +189,65 @@ function resetLinearSearch() {
     messageContainer.classList.remove('show');
 }
 
+
+function validateCircleCount() {
+    const circleCount = parseInt(document.getElementById('circle-count').value);
+    const container = document.getElementById('array-container');
+
+    // Limpiar el contenedor del array
+    container.innerHTML = '';
+
+    if (isNaN(circleCount) || circleCount <= 0) {
+        return; // Si no es válido, no hacemos nada
+    }
+
+    if (circleCount > 10) {
+        Swal.fire({
+            icon: 'error',
+            title: '¡Número demasiado alto!',
+            text: 'Solo se permite un máximo de 10 círculos.',
+            confirmButtonText: 'Entendido'
+        });
+        return;
+    }
+
+    // Crear inputs y círculos en el `array-container`
+    array = new Array(circleCount).fill(null); // Inicializar el array con valores nulos
+    for (let i = 0; i < circleCount; i++) {
+        const circleContainer = document.createElement('div');
+        circleContainer.classList.add('array-circle-container');
+
+        // Crear un círculo vacío
+        const circle = document.createElement('div');
+        circle.classList.add('array-circle');
+        circle.innerText = ''; // Vacío inicialmente
+
+        // Crear un input asociado
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.classList.add('dynamic-input');
+        input.placeholder = `Número ${i + 1}`;
+        input.oninput = () => updateCircleValue(i, input.value);
+
+        // Agregar el círculo y el input al contenedor
+        circleContainer.appendChild(circle);
+        circleContainer.appendChild(input);
+
+        // Agregar el contenedor al `array-container`
+        container.appendChild(circleContainer);
+    }
+}
+
+function updateCircleValue(index, value) {
+    const circles = document.getElementsByClassName('array-circle');
+    if (value) {
+        circles[index].innerText = value; // Actualizar número en el círculo
+        array[index] = parseInt(value); // Actualizar el array interno
+    } else {
+        circles[index].innerText = ''; // Vaciar si el input está vacío
+        array[index] = null; // Reiniciar valor en el array interno
+    }
+}
 
 
 
