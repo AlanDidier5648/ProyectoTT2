@@ -54,6 +54,15 @@ function updateMessageList(text) {
     }, 500); // Duración de la animación
 }
 
+
+function clearMessageContainer() {
+    const messageList = document.getElementById('message-list');
+    messageList.innerHTML = ''; // Limpiar los mensajes
+    const messageContainer = document.getElementById('message-container');
+    messageContainer.classList.remove('show'); // Ocultar el contenedor si estaba visible
+}
+
+
 // Validar que el array esté completo antes de iniciar la búsqueda
 function startLinearSearch() {
     if (array.includes(null)) {
