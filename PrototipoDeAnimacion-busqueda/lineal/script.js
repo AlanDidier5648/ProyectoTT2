@@ -4,6 +4,12 @@ let currentIndex = 0; // Índice actual en la búsqueda lineal
 let stepActive = false; // Control del estado de la búsqueda paso a paso
 let targetValue = null; // Definir como variable global
 
+// Genera los círculos e inputs al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    validateCircleCount(); // Genera los círculos con el valor inicial de 10
+});
+
+
 // Generar un array desordenado de valores aleatorios
 function generateArray() {
     const container = document.getElementById('array-container');
