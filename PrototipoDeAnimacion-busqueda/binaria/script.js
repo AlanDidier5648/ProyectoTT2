@@ -3,58 +3,36 @@ let array = [];
 let left = 0, right = 0, mid = 0, targetValue = null;
 let stepActive = false;
 
-function generateArray() {
-    const container = document.getElementById('array-container');
-    container.innerHTML = ''; // Limpiar contenedor
-    array = [];
+// Genera los círculos e inputs al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    updateBinaryCircleCount(); // Genera los círculos con el valor inicial de 10
+});
 
-    // Generar un array de 10 valores aleatorios entre 1 y 100
-    for (let i = 0; i < 10; i++) {
-        array.push(Math.floor(Math.random() * 100) + 1);
-    }
-
-    // Crear elementos visuales para cada valor en el array
-    array.forEach(value => {
-        const circleContainer = document.createElement('div');
-        circleContainer.classList.add('array-circle-container');
-
-        const circle = document.createElement('div');
-        circle.classList.add('array-circle');
-        circle.innerText = value;
-
-        circleContainer.appendChild(circle);
-        container.appendChild(circleContainer);
-    });
-
-    // Reiniciar el estado de búsqueda
-    resetBinarySearch();
+function clearMessageContainer() {
+    const messageList = document.getElementById('message-list');
+    messageList.innerHTML = ''; // Limpiar los mensajes
+    const messageContainer = document.getElementById('message-container');
+    messageContainer.classList.remove('show'); // Ocultar el contenedor si estaba visible
 }
 
 function orderList() {
-    // Ordenar el array global
+    if (array.includes(null)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Valores incompletos',
+            text: 'Asegúrate de completar todos los números antes de ordenar.',
+            confirmButtonText: 'Entendido'
+        });
+        return;
+    }
+
+    // Ordenar el array
     array.sort((a, b) => a - b);
-
-    // Actualizar la visualización con el array ordenado
-    const container = document.getElementById('array-container');
-    container.innerHTML = ''; // Limpiar el contenedor actual
-
-    array.forEach(value => {
-        const circleContainer = document.createElement('div');
-        circleContainer.classList.add('array-circle-container');
-
-        const circle = document.createElement('div');
-        circle.classList.add('array-circle');
-        circle.innerText = value;
-
-        circleContainer.appendChild(circle);
-        container.appendChild(circleContainer);
-    });
-
-    // Mostrar mensaje de confirmación
+    updateCircleValues(); // Actualizar los valores visuales en los círculos
     Swal.fire({
         icon: 'success',
         title: 'Lista ordenada',
-        text: 'La lista ha sido ordenada correctamente.',
+        text: 'La lista se ha ordenado correctamente.',
         confirmButtonText: 'Entendido'
     });
 }
@@ -86,23 +64,21 @@ async function binarySearch() {
     left = 0;
     right = array.length - 1;
 
-    // Mostrar mensaje inicial
     updateMessageList('Iniciando búsqueda binaria...');
     const circles = document.getElementsByClassName('array-circle');
 
     while (left <= right) {
         mid = Math.floor((left + right) / 2);
 
-        clearHighlights(); // Limpiar resaltados previos
-        circles[mid].style.backgroundColor = 'blue'; // Resaltar el elemento actual
+        clearHighlights();
+        circles[mid].style.backgroundColor = 'blue';
 
-        // Mostrar mensaje del paso actual
         updateMessageList(`Comparando ${array[mid]} con ${targetValue}...`);
 
-        await pause(500); // Pausa para visualización
+        await pause(500);
 
         if (array[mid] === targetValue) {
-            circles[mid].style.backgroundColor = 'green'; // Resaltar éxito
+            circles[mid].style.backgroundColor = 'green';
             updateMessageList(`¡Valor encontrado! ${array[mid]} está en el índice ${mid}.`);
             Swal.fire({
                 icon: 'success',
@@ -110,19 +86,18 @@ async function binarySearch() {
                 text: `El valor ${targetValue} se encuentra en el índice ${mid}.`,
                 confirmButtonText: 'Entendido'
             });
-            return; // Terminar la búsqueda
+            return;
         } else if (array[mid] < targetValue) {
             updateMessageList(`${array[mid]} es menor que ${targetValue}. Buscando en la mitad derecha.`);
-            left = mid + 1; // Mover el puntero izquierdo
+            left = mid + 1;
         } else {
             updateMessageList(`${array[mid]} es mayor que ${targetValue}. Buscando en la mitad izquierda.`);
-            right = mid - 1; // Mover el puntero derecho
+            right = mid - 1;
         }
 
-        await pause(500); // Pausa para el siguiente paso
+        await pause(500);
     }
 
-    // Si no se encuentra el valor
     updateMessageList(`El valor ${targetValue} no se encuentra en el array.`);
     Swal.fire({
         icon: 'info',
@@ -131,6 +106,7 @@ async function binarySearch() {
         confirmButtonText: 'Entendido'
     });
 }
+
 
 
 function pause(ms) {
@@ -279,12 +255,130 @@ function binarySearchStep() {
     }
 }
 
-function resetMessages() {
-    const messageList = document.getElementById('message-list'); // Lista de mensajes
-    messageList.innerHTML = ''; // Borrar todo el contenido
+function updateBinaryCircleCount() {
+    const count = parseInt(document.getElementById('binary-circle-count').value) || 0;
+    const arrayContainer = document.getElementById('array-container');
 
-    const messageContainer = document.getElementById('message-container'); // Contenedor principal
-    messageContainer.classList.remove('show'); // Ocultar el contenedor
+    // Limpia el contenedor antes de generar nuevos elementos
+    arrayContainer.innerHTML = '';
+    array = Array(count).fill(null); // Inicializa el array con valores nulos
+
+    for (let i = 0; i < count; i++) {
+        const circleContainer = document.createElement('div');
+        circleContainer.className = 'array-circle-container';
+
+        // Círculo vacío
+        const circle = document.createElement('div');
+        circle.className = 'array-circle';
+        circle.dataset.index = i; // Identificador para cada círculo
+        circle.textContent = ''; // Inicialmente vacío
+
+        // Input debajo del círculo
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.className = 'dynamic-input';
+        input.dataset.index = i; // Identificador para cada input
+
+        // Agrega evento para reflejar el valor en el círculo y array
+        input.addEventListener('input', (event) => {
+            const index = event.target.dataset.index;
+            const value = event.target.value;
+
+            // Actualiza el array y el círculo visual
+            array[index] = value ? parseInt(value) : null;
+            document.querySelector(`.array-circle[data-index="${index}"]`).textContent = value;
+        });
+
+        // Agrega los elementos al contenedor
+        circleContainer.appendChild(circle);
+        circleContainer.appendChild(input);
+        arrayContainer.appendChild(circleContainer);
+    }
+}
+
+
+
+
+function updateBinaryCircleCount() {
+    const count = parseInt(document.getElementById('binary-circle-count').value) || 0;
+    const arrayContainer = document.getElementById('array-container');
+
+    // Limpia el contenedor antes de generar nuevos elementos
+    arrayContainer.innerHTML = '';
+    array = Array(count).fill(null); // Inicializa el array con valores nulos
+
+    for (let i = 0; i < count; i++) {
+        const circleContainer = document.createElement('div');
+        circleContainer.className = 'array-circle-container';
+
+        // Círculo vacío
+        const circle = document.createElement('div');
+        circle.className = 'array-circle';
+        circle.dataset.index = i; // Identificador para cada círculo
+        circle.textContent = ''; // Inicialmente vacío
+
+        // Input debajo del círculo
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.className = 'dynamic-input';
+        input.dataset.index = i; // Identificador para cada input
+
+        // Evento para reflejar el valor ingresado en el círculo
+        input.addEventListener('input', (event) => {
+            const index = event.target.dataset.index;
+            const value = event.target.value;
+
+            // Actualiza el array y el círculo visual
+            array[index] = value ? parseInt(value) : null;
+            document.querySelector(`.array-circle[data-index="${index}"]`).textContent = value;
+        });
+
+        // Agregar círculo e input al contenedor
+        circleContainer.appendChild(circle);
+        circleContainer.appendChild(input);
+        arrayContainer.appendChild(circleContainer);
+    }
+}
+
+
+function updateCircleValues() {
+    const circles = document.getElementsByClassName('array-circle');
+    array.forEach((value, index) => {
+        circles[index].textContent = value !== null ? value : ''; // Mostrar el valor o dejar vacío
+    });
+}
+
+function updateCircleValue(index, value) {
+    const circles = document.getElementsByClassName('array-circle');
+    if (value) {
+        array[index] = parseInt(value); // Actualizar valor en el array
+        circles[index].innerText = value; // Mostrar el valor en el círculo
+    } else {
+        array[index] = null; // Restablecer si se borra el valor
+        circles[index].innerText = ''; // Vaciar el círculo
+    }
+}
+
+function clearHighlights() {
+    const circles = document.getElementsByClassName('array-circle');
+    Array.from(circles).forEach(circle => {
+        circle.style.backgroundColor = '#3498db'; // Restaurar el color base
+    });
+}
+
+function generateRandomNumbers() {
+    if (array.length === 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'No hay círculos generados',
+            text: 'Primero debes ingresar la cantidad de elementos.',
+            confirmButtonText: 'Entendido'
+        });
+        return;
+    }
+
+    array = array.map(() => Math.floor(Math.random() * 100) + 1); // Generar números aleatorios entre 1 y 100
+    updateCircleValues(); // Actualizar los valores visuales en los círculos
 }
 
 

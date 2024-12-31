@@ -125,27 +125,14 @@ canvas {
     background-color: #004d40;
 }
 
-/* Contenedor de los inputs dinámicos */
-#dynamicInputs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
 
-/* Estilo para los inputs generados */
+
 .dynamic-input {
-    flex: 1 1 calc(10% - 10px);
+    width: 80px;
     padding: 8px;
-    margin: 5px 0;
-    min-width: 60px;
-    max-width: 80px;
     border: 1px solid #ccc;
     border-radius: 5px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .dynamic-input.show {
@@ -185,9 +172,11 @@ canvas {
 
 .array-circle-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Alinear círculo e input en columna */
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
+    gap: 5px; /* Espacio entre el círculo y el input */
 }
 
 .array-circle {

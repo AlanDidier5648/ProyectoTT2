@@ -43,14 +43,19 @@
                 <div class="section">
                     <h1>Visualización de Búsqueda Binaria</h1>
 
+                    <div>
+                        <label for="binary-circle-count">Número de elementos (máximo 10):</label>
+                        <input type="number" id="binary-circle-count" min="1" max="10" value="10" oninput="updateBinaryCircleCount()">
+                    </div>
+
                     <div id="array-container"></div>
 
                     <label for="search-value">Valor a buscar:</label>
                     <input type="number" id="search-value">
-                    <button onclick="generateArray()">Generar Nuevo Array</button>
+                    <button onclick="generateRandomNumbers()">Generar Nuevo Array</button>
                     <button onclick="binarySearch()">Buscar con Búsqueda Binaria</button>
                     <button onclick="orderList()">ordenar lista </button>
-                    <button onclick="resetMessages()">Resetear Mensajes</button>
+                    
 
 
 
@@ -63,7 +68,7 @@
                 <div class="space-stepbystep">
                     <button onclick="startBinarySearch()">Iniciar Búsqueda Paso a Paso</button>
                     <button id="nextStepBinary" onclick="binarySearchStep()">Paso siguiente</button>
-                    <button id="previousStepBinary" onclick="previousBinaryStep()">Paso anterior</button>
+                    <button id="clear-messages" onclick="clearMessageContainer()">Limpiar Mensajes</button>
 
                     <a href="cuestionario.html" class="btn zoom-slide-delay">Ir al cuestionario</a>
                 </div>
