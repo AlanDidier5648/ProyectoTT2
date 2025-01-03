@@ -1,65 +1,12 @@
-
 let array = [];
-let currentIndex = 0; // Índice actual en la búsqueda lineal
-let stepActive = false; // Control del estado de la búsqueda paso a paso
-let targetValue = null; // Definir como variable global
+let targetValue = null;
+let currentIndex = 0; // Índice actual para la búsqueda lineal
+let stepActive = false;
 
 // Genera los círculos e inputs al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
-    validateCircleCount(); // Genera los círculos con el valor inicial de 10
+    updateCircleCount(); // Genera los círculos con el valor inicial de 10
 });
-
-
-// Generar un array desordenado de valores aleatorios
-function generateArray() {
-    const container = document.getElementById('array-container');
-    container.innerHTML = ''; // Limpiar el contenedor antes de generar un nuevo array
-
-    // Generar un array de 10 valores aleatorios entre 50 y 250
-    array = [];
-    for (let i = 0; i < 10; i++) {
-        const value = Math.floor(Math.random() * 200) + 50;
-        array.push(value);
-    }
-
-    // Crear elementos visuales para cada valor en el array
-    array.forEach(value => {
-        const circleContainer = document.createElement('div');
-        circleContainer.classList.add('array-circle-container');
-
-        const circle = document.createElement('div');
-        circle.classList.add('array-circle');
-        circle.innerText = value;
-
-        circleContainer.appendChild(circle);
-        container.appendChild(circleContainer);
-    });
-
-    // Reiniciar estado de búsqueda
-    resetLinearSearch();
-}
-
-function updateMessageList(text) {
-    const messageList = document.getElementById('message-list');
-
-    // Crear un nuevo elemento de lista
-    const listItem = document.createElement('li');
-    listItem.textContent = text;
-
-    // Agregar animación emergente
-    listItem.classList.add('highlight'); // Clase para destacar inicialmente
-    messageList.appendChild(listItem);
-
-    // Mostrar el contenedor de mensajes
-    const messageContainer = document.getElementById('message-container');
-    messageContainer.classList.add('show');
-
-    // Eliminar la clase 'highlight' después de la animación
-    setTimeout(() => {
-        listItem.classList.remove('highlight');
-    }, 500); // Duración de la animación
-}
-
 
 function clearMessageContainer() {
     const messageList = document.getElementById('message-list');
@@ -68,20 +15,14 @@ function clearMessageContainer() {
     messageContainer.classList.remove('show'); // Ocultar el contenedor si estaba visible
 }
 
+function pause(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-// Validar que el array esté completo antes de iniciar la búsqueda
-function startLinearSearch() {
-    if (array.includes(null)) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Faltan valores',
-            text: 'Asegúrate de completar todos los números antes de iniciar la animación.',
-            confirmButtonText: 'Entendido'
-        });
-        return;
-    }
 
+async function startLinearSearch() {
     targetValue = parseInt(document.getElementById('search-value').value);
+
     if (isNaN(targetValue)) {
         Swal.fire({
             icon: 'error',
@@ -92,38 +33,73 @@ function startLinearSearch() {
         return;
     }
 
-    stepActive = true;
-    currentIndex = 0; // Reiniciar la búsqueda
-    clearHighlights(); // Limpiar cualquier resaltado previo
-    updateMessageList('Iniciando búsqueda...'); // Mensaje inicial
-    linearSearchStep(); // Llamar al primer paso
+    clearHighlights(); // Limpia cualquier resaltado previo
+    clearMessageContainer(); // Limpia mensajes anteriores
+
+    updateMessageList('Iniciando búsqueda lineal...');
+
+    const circles = document.getElementsByClassName('array-circle');
+
+    // Recorre automáticamente el array
+    for (let i = 0; i < array.length; i++) {
+        // Resaltar el círculo actual
+        circles[i].style.backgroundColor = 'blue';
+        updateMessageList(`Paso: Comparando ${array[i]} con ${targetValue}.`);
+
+        await pause(500); // Pausa para la animación
+
+        if (array[i] === targetValue) {
+            circles[i].style.backgroundColor = 'green'; // Marca como encontrado
+            updateMessageList(`¡Valor encontrado! ${array[i]} está en el índice ${i}.`);
+
+            Swal.fire({
+                icon: 'success',
+                title: '¡Búsqueda completada!',
+                text: `El valor ${targetValue} se encuentra en el índice ${i}.`,
+                confirmButtonText: 'Entendido'
+            });
+
+            return; // Termina la búsqueda si se encuentra el valor
+        } else {
+            circles[i].style.backgroundColor = '#3498db'; // Restaurar el color si no coincide
+        }
+    }
+
+    // Si el valor no se encuentra
+    updateMessageList(`El valor ${targetValue} no se encuentra en el array.`);
+    Swal.fire({
+        icon: 'info',
+        title: 'Búsqueda completada',
+        text: `El valor ${targetValue} no se encuentra en el array.`,
+        confirmButtonText: 'Entendido'
+    });
 }
+
+
 
 function linearSearchStep() {
     if (!stepActive || currentIndex >= array.length) {
-        if (currentIndex >= array.length) {
-            updateMessageList(`El valor ${targetValue} no se encuentra en el array.`);
-            Swal.fire({
-                icon: 'info',
-                title: 'Búsqueda Terminada',
-                text: `El valor ${targetValue} no se encuentra en el array.`,
-                confirmButtonText: 'Entendido'
-            });
-        }
+        updateMessageList(`El valor ${targetValue} no se encuentra en el array.`);
+        Swal.fire({
+            icon: 'info',
+            title: 'Búsqueda Terminada',
+            text: `El valor ${targetValue} no se encuentra en el array.`,
+            confirmButtonText: 'Entendido'
+        });
         stepActive = false;
         return;
     }
 
     const circles = document.getElementsByClassName('array-circle');
-    clearHighlights(); // Limpiar resaltados previos
-    circles[currentIndex].style.backgroundColor = 'blue'; // Resaltar elemento actual
+    clearHighlights();
 
-    // Agregar mensaje del paso actual
-    updateMessageList(`Paso ${currentIndex + 1}: Comparando ${array[currentIndex]} con ${targetValue}.`);
+    // Resaltar el círculo actual
+    circles[currentIndex].style.backgroundColor = 'blue';
+    updateMessageList(`Paso: Comparando ${array[currentIndex]} con ${targetValue}.`);
 
     if (array[currentIndex] === targetValue) {
-        circles[currentIndex].style.backgroundColor = 'green'; // Resaltar éxito
-        updateMessageList(`¡Valor encontrado! ${array[currentIndex]} coincide con el valor objetivo.`);
+        circles[currentIndex].style.backgroundColor = 'green';
+        updateMessageList(`¡Valor encontrado! ${array[currentIndex]} está en el índice ${currentIndex}.`);
         Swal.fire({
             icon: 'success',
             title: '¡Valor encontrado!',
@@ -132,137 +108,108 @@ function linearSearchStep() {
         });
         stepActive = false;
     } else {
+        updateMessageList(`${array[currentIndex]} no es igual a ${targetValue}. Continuando con el siguiente elemento.`);
         currentIndex++; // Avanzar al siguiente índice
     }
 }
 
-// Búsqueda automática con pausa entre pasos
-async function linearSearch() {
-    const searchValue = parseInt(document.getElementById('search-value').value);
-    const circles = document.getElementsByClassName('array-circle');
-
-    if (isNaN(searchValue)) {
+function generateRandomNumbers() {
+    if (array.length === 0) {
         Swal.fire({
             icon: 'error',
-            title: 'Valor no válido',
-            text: 'Introduce un número válido.',
+            title: 'No hay círculos generados',
+            text: 'Primero debes ingresar la cantidad de elementos.',
             confirmButtonText: 'Entendido'
         });
         return;
     }
 
-    let found = false;
-    clearHighlights(); // Limpiar cualquier resaltado previo
+    array = array.map(() => Math.floor(Math.random() * 100) + 1); // Generar números aleatorios entre 1 y 100
+    updateCircleValues(); // Actualizar los valores visuales en los círculos
+}
 
-    for (let i = 0; i < array.length; i++) {
-        circles[i].style.backgroundColor = 'blue'; // Resaltar elemento actual
-        await new Promise(resolve => setTimeout(resolve, 500)); // Pausa para visualización
+function updateCircleCount() {
+    const countInput = document.getElementById('circle-count');
+    const count = parseInt(countInput.value) || 0;
 
-        if (array[i] === searchValue) {
-            circles[i].style.backgroundColor = 'green'; // Resaltar éxito
-            Swal.fire({
-                icon: 'success',
-                title: '¡Valor encontrado!',
-                text: `El valor ${searchValue} se encuentra en el índice ${i}.`,
-                confirmButtonText: 'Entendido'
-            });
-            found = true;
-            break;
-        } else {
-            circles[i].style.backgroundColor = '#3498db'; // Restaurar color
-        }
+    if (count > 10) {
+        // Notificar al usuario que el máximo es 10
+        Swal.fire({
+            icon: 'warning',
+            title: 'Límite excedido',
+            text: 'Solo se pueden agregar hasta 10 números.',
+            confirmButtonText: 'Entendido'
+        });
+
+        // Restablecer el valor a 10
+        countInput.value = 10;
+        return;
     }
 
-    if (!found) {
-        Swal.fire({
-            icon: 'info',
-            title: 'No encontrado',
-            text: `El valor ${searchValue} no se encuentra en el array.`,
-            confirmButtonText: 'OK'
+    const arrayContainer = document.getElementById('array-container');
+
+    // Limpia el contenedor antes de generar nuevos elementos
+    arrayContainer.innerHTML = '';
+    array = Array(count).fill(null); // Inicializa el array con valores nulos
+
+    for (let i = 0; i < count; i++) {
+        const circleContainer = document.createElement('div');
+        circleContainer.className = 'array-circle-container';
+
+        // Círculo vacío
+        const circle = document.createElement('div');
+        circle.className = 'array-circle';
+        circle.dataset.index = i; // Identificador para cada círculo
+        circle.textContent = ''; // Inicialmente vacío
+
+        // Input debajo del círculo
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.className = 'dynamic-input';
+        input.dataset.index = i; // Identificador para cada input
+
+        // Agrega evento para reflejar el valor en el círculo y array
+        input.addEventListener('input', (event) => {
+            const index = event.target.dataset.index;
+            const value = event.target.value;
+
+            // Actualiza el array y el círculo visual
+            array[index] = value ? parseInt(value) : null;
+            document.querySelector(`.array-circle[data-index="${index}"]`).textContent = value;
         });
+
+        // Agrega los elementos al contenedor
+        circleContainer.appendChild(circle);
+        circleContainer.appendChild(input);
+        arrayContainer.appendChild(circleContainer);
     }
 }
 
-// Limpiar resaltados
+
+function updateMessageList(text) {
+    const messageList = document.getElementById('message-list');
+    const listItem = document.createElement('li');
+    listItem.textContent = text;
+    messageList.appendChild(listItem);
+
+    const messageContainer = document.getElementById('message-container');
+    messageContainer.classList.add('show');
+}
+
 function clearHighlights() {
     const circles = document.getElementsByClassName('array-circle');
     Array.from(circles).forEach(circle => {
-        circle.style.backgroundColor = '#3498db'; // Color base
+        circle.style.backgroundColor = '#3498db'; // Restaurar el color base
     });
 }
 
-// Reiniciar mensajes y estado de búsqueda
-function resetLinearSearch() {
-    currentIndex = 0;
-    stepActive = false;
-    clearHighlights(); // Limpiar cualquier resaltado previo
-
-    // Limpiar lista de mensajes
-    const messageList = document.getElementById('message-list');
-    messageList.innerHTML = ''; // Vaciar la lista
-    const messageContainer = document.getElementById('message-container');
-    messageContainer.classList.remove('show');
-}
-
-
-function validateCircleCount() {
-    const circleCount = parseInt(document.getElementById('circle-count').value);
-    const container = document.getElementById('array-container');
-
-    // Limpiar el contenedor del array
-    container.innerHTML = '';
-
-    if (isNaN(circleCount) || circleCount <= 0) {
-        return; // Si no es válido, no hacemos nada
-    }
-
-    if (circleCount > 10) {
-        Swal.fire({
-            icon: 'error',
-            title: '¡Número demasiado alto!',
-            text: 'Solo se permite un máximo de 10 círculos.',
-            confirmButtonText: 'Entendido'
-        });
-        return;
-    }
-
-    // Crear inputs y círculos en el `array-container`
-    array = new Array(circleCount).fill(null); // Inicializar el array con valores nulos
-    for (let i = 0; i < circleCount; i++) {
-        const circleContainer = document.createElement('div');
-        circleContainer.classList.add('array-circle-container');
-
-        // Crear un círculo vacío
-        const circle = document.createElement('div');
-        circle.classList.add('array-circle');
-        circle.innerText = ''; // Vacío inicialmente
-
-        // Crear un input asociado
-        const input = document.createElement('input');
-        input.type = 'number';
-        input.classList.add('dynamic-input');
-        input.placeholder = `Número ${i + 1}`;
-        input.oninput = () => updateCircleValue(i, input.value);
-
-        // Agregar el círculo y el input al contenedor
-        circleContainer.appendChild(circle);
-        circleContainer.appendChild(input);
-
-        // Agregar el contenedor al `array-container`
-        container.appendChild(circleContainer);
-    }
-}
-
-function updateCircleValue(index, value) {
+function updateCircleValues() {
     const circles = document.getElementsByClassName('array-circle');
-    if (value) {
-        circles[index].innerText = value; // Actualizar número en el círculo
-        array[index] = parseInt(value); // Actualizar el array interno
-    } else {
-        circles[index].innerText = ''; // Vaciar si el input está vacío
-        array[index] = null; // Reiniciar valor en el array interno
-    }
+    array.forEach((value, index) => {
+        circles[index].textContent = value !== null ? value : ''; // Mostrar el valor o dejar vacío
+    });
 }
+
 
 
 

@@ -40,8 +40,8 @@
                     <h1>Visualización de Búsqueda Lineal</h1>
 
                     <div>
-                        <label for="circle-count">Ingresa manualmente un numero (máximo 10):</label>
-                        <input type="number" id="circle-count" min="1" max="10" value="10" oninput="validateCircleCount()">
+                        <label for="circle-count">Número de elementos (máximo 10):</label>
+                        <input type="number" id="circle-count" min="1" max="10" value="10" oninput="updateCircleCount()">
                     </div>
                     
                     <div id="array-container"></div>
@@ -49,8 +49,8 @@
                     <label for="search-value">Valor a buscar:</label>
                     <input type="number" id="search-value">
 
-                    <button onclick="generateArray()">Generar Nuevo Array</button>
-                    <button onclick="linearSearch()">Buscar con Búsqueda Lineal</button>
+                    <button onclick="generateRandomNumbers()">Generar Nuevo Array</button>
+                    <button onclick="startLinearSearch()">Buscar con Búsqueda Lineal</button>
 
                                   
 
@@ -64,10 +64,10 @@
                     </div>         
                 </div>
 
+                <!-- Controles para la búsqueda paso a paso -->
                 <div class="space-stepbystep">
                     <button onclick="startLinearSearch()">Iniciar Búsqueda Paso a Paso</button>
-
-                    <button id="nextStepBinary" onclick="linearSearchStep()">Paso siguiente</button>
+                    <button id="nextStepLinear" onclick="linearSearchStep()">Paso siguiente</button>
                     <button id="clear-messages" onclick="clearMessageContainer()">Limpiar Mensajes</button>
                     <a href="cuestionario.html" class="btn zoom-slide-delay">Ir al cuestionario</a>
                 </div>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Arbol Binario</title>
+    <!-- Enlace al archivo CSS de estilos generales -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Enlace a Chart.js para generar gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Enlace a SweetAlert2 para notificaciones -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.21.0/cytoscape.min.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+                <nav class="navbar">
+                    <div class="logo">
+                        <a href="../../pages/perfil.html">
+                            <img src="../../img/image1.png" alt="Foto de perfil" class="profile-pic">
+                        </a>
+                    </div>
+                    <ul class="nav-links">
+                        <li><a href="../../pages/perfil.html">Inicio</a></li>
+                        <li><a href="../../pages/ordenamiento.html">Ordenamiento</a></li>
+                        <li><a href="../../pages/busqueda.html">Búsqueda en lista</a></li>
+                        <li><a href="../../pages/busquedaGraf.html">Búsqueda en gráfico</a></li>
+                        <li><a href="../../pages/edatos.html">Estructuras de datos</a></li>
+                    </ul>
+                </nav>
+
+            <!-- Contenedor principal con Grid -->
+            <div class="grid-container">
+                <div class="container">
+                    <!-- Área para los controles de inserción -->
+                    <div id="controls">
+
+                        <input type="number" id="nodeInput" placeholder="Ingrese un valor" />
+                        <button id="insertButton">Agregar Nodo</button>
+
+                        <input type="number" id="searchInput" placeholder="Ingrese un valor para buscar" />
+                        <button id="searchButton">Buscar Nodo</button>
+
+
+                      </div>
+                    
+                    <!-- Área exclusiva para el árbol -->
+                    <div id="cy"></div>
+                  </div>
+                  
+                <a href="cuestionario.html" class="btn zoom-slide-delay">Ir al cuestionario</a>
+            </div>
+            <!-- Fin del grid-container -->
+    
+    <script src="scriptABB.js"></script>
+  
+</body>
+</html>

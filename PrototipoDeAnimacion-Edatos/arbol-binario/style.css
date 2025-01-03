@@ -73,6 +73,8 @@ body {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
+
+
 /* Estilos para la barra de navegación */
 .navbar {
     padding: 10px 20px; /* Ajuste uniforme */
@@ -132,39 +134,7 @@ body {
 
 
 
-#tree-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.recorrido-container {
-    display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    margin-top: 20px;
-}
-
-#recorrido-buttons {
-    display: flex;
-    gap: 10px; /* Espacio entre los botones */
-}
-
-
-.button-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-
-
-#array-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    gap: 20px;
-}
 
 /* Botón con contraste */
 .btn {
@@ -201,22 +171,54 @@ button:hover {
     background-color: #1e6e8b;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
+/* Contenedor padre del `cy` */
+.container {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    max-width: 1800px; /* Limita el tamaño máximo del contenedor */
+    height: auto; /* Permite ajustar la altura al contenido */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 10px; /* Espacio interno para evitar bordes pegados */
+    box-sizing: border-box; /* Asegura que padding y bordes estén incluidos */
+    overflow: hidden; /* Previene desbordes */
+  }
+  
+  /* Estilos para el contenedor `cy` */
+  #cy {
+    width: 100%; /* Ajusta al contenedor padre */
+    height: 700px; /* Altura base */
+    max-height: 800px; /* Limita la altura máxima */
+    border: 1px solid #ccc;
+    background-color: #f9f9f9; /* Color de fondo opcional */
+    box-sizing: border-box; /* Incluye bordes en las dimensiones */
+    transition: height 0.3s ease; /* Transición suave al cambiar tamaño */
+  }
+  
+  /* Ajustes responsivos para pantallas pequeñas */
+  @media (max-width: 1366px) {
+    .container {
+      max-width: 95%; /* Ajustar a un porcentaje para pantallas más pequeñas */
+      padding: 5px; /* Reduce el padding */
     }
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
+  
+    #cy {
+      height: 500px; /* Reduce la altura */
     }
-}
+  }
+  
+  /* Ajustes responsivos para pantallas muy pequeñas */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 100%; /* Ocupar todo el ancho */
+      padding: 0; /* Elimina padding */
+    }
+  
+    #cy {
+      height: 400px; /* Altura mínima en pantallas pequeñas */
+    }
+  }
+  
 
-/* Media query para pantallas más pequeñas */
-@media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr; /* Cambia a una columna en pantallas pequeñas */
-        padding: 10px;
-    }
-}
+  #controls {
+    margin: 20px;
+  }
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="../../../css/busquedaGraf.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="../../pages/perfil.html">
+                <img src="../../img/image1.png" alt="Foto de perfil" class="profile-pic">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../pages/perfil.html">Inicio</a></li>
+            <li><a href="../../pages/ordenamiento.html">Ordenamiento</a></li>
+            <li><a href="../../pages/busqueda.html">Búsqueda en lista</a></li>
+            <li><a href="../../pages/busquedaGraf.html">Búsqueda en gráfico</a></li>
+            <li><a href="../../pages/edatos.html">Estructuras de datos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal de la página -->
+    <main class="main-content">
+        <h1 id="titulo-principal">Búsqueda en gráfico</h1>
+        <p id="descripcion-principal">Seleccione una opción del menú para comenzar</p>
+        <div class="algorithms">
+            <a href="animacionABB.html" class="algorithm-card">
+                <img src="../../video-giff/Merge.gif" alt="Animación de Burbuja" id="gif">
+                <span id="texto">Arbol Binario de busqueda</span>
+            </a>
+            <a href="../PrototipoDeAnimacion-BusquedaGraf/BPA/index.html" class="algorithm-card">
+                <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
+                <span id="texto">2</span>
+            </a>
+            <a href="../PrototipoDeAnimacion-BusquedaGraf/BPP/index.html" class="algorithm-card">
+                <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
+                <span id="texto">3</span>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; ESCUELA SUPERIOR DE CÓMPUTO</p>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript separado -->
+    <script src="../js/scriptPerfil.js"></script>
+    <script>
+        //-------------------------------- codigo requerido para cambiar de color links visitados
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".algorithm-card");
+    
+        // Al cargar la página, verifica si los enlaces fueron visitados
+        cards.forEach(card => {
+            const href = card.getAttribute("href"); // Obtén la URL del enlace
+    
+            if (sessionStorage.getItem(href)) {
+                card.classList.add("visited");
+            }
+    
+            // Escucha los clics para marcar como visitado
+            card.addEventListener("click", () => {
+                sessionStorage.setItem(href, true); // Marca como visitado
+                card.classList.add("visited"); // Cambia el estilo inmediatamente
+            });
+            });
+        });
+    //-------------------------------- codigo requerido para cambiar de color links visitados
+    
+    
+        </script>
+</body>
+</html>
