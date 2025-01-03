@@ -38,28 +38,33 @@
                     </ul>
                 </nav>
 
-            <!-- Contenedor principal con Grid -->
-            <div class="grid-container">
-                <div class="container">
-                    <!-- Área para los controles de inserción -->
-                    <div id="controls">
+           <!-- Contenedor principal con Grid -->
+     <!-- Contenedor principal con Grid -->
+     <div class="grid-container">
+        <div class="container">
+            <!-- Controles de inserción y búsqueda -->
+            <div id="controls">
+              
+                <input type="number" id="nodeInput" placeholder="Valor del nodo" />
+                <button onclick="handleInsert()">Agregar Nodo</button>
+            
+               
+                <input type="number" id="removeInput" placeholder="Valor del nodo" />
+                <button onclick="handleRemove()">Eliminar Nodo</button>
+            
+                <input type="number" id="searchInput" placeholder="Valor del nodo" />
+                <button onclick="handleSearch()">Buscar Nodo</button>
 
-                        <input type="number" id="nodeInput" placeholder="Ingrese un valor" />
-                        <button id="insertButton">Agregar Nodo</button>
-
-                        <input type="number" id="searchInput" placeholder="Ingrese un valor para buscar" />
-                        <button id="searchButton">Buscar Nodo</button>
-
-
-                      </div>
-                    
-                    <!-- Área exclusiva para el árbol -->
-                    <div id="cy"></div>
-                  </div>
-                  
-                <a href="cuestionario.html" class="btn zoom-slide-delay">Ir al cuestionario</a>
+                <button onclick="handleClear()">Limpiar Árbol</button>
             </div>
-            <!-- Fin del grid-container -->
+
+            <!-- Área exclusiva para el árbol -->
+            <div id="cy"></div>
+        </div>
+
+        <!-- Botón para ir al cuestionario -->
+        <a href="cuestionario.html" class="btn zoom-slide-delay">Ir al cuestionario</a>
+    </div>
     
     <script src="scriptABB.js"></script>
   

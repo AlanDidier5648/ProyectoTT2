@@ -171,54 +171,46 @@ button:hover {
     background-color: #1e6e8b;
 }
 
-/* Contenedor padre del `cy` */
-.container {
-    width: 100%; /* Ocupar todo el ancho disponible */
-    max-width: 1800px; /* Limita el tamaño máximo del contenedor */
-    height: auto; /* Permite ajustar la altura al contenido */
-    margin: 0 auto; /* Centra el contenedor horizontalmente */
-    padding: 10px; /* Espacio interno para evitar bordes pegados */
-    box-sizing: border-box; /* Asegura que padding y bordes estén incluidos */
-    overflow: hidden; /* Previene desbordes */
-  }
-  
-  /* Estilos para el contenedor `cy` */
-  #cy {
-    width: 100%; /* Ajusta al contenedor padre */
-    height: 700px; /* Altura base */
-    max-height: 800px; /* Limita la altura máxima */
+#container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+}
+
+
+
+.node {
+    fill: #007bff;
+    stroke: #fff;
+    stroke-width: 1px;
+    transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.node:hover {
+    transform: scale(1.2);
+    fill: #0056b3;
+}
+
+.link {
+    fill: none;
+    stroke: #999;
+    stroke-width: 2px;
+    transition: stroke-width 0.3s ease, stroke 0.3s ease;
+}
+
+.link:hover {
+    stroke-width: 3px;
+    stroke: #333;
+}
+
+#cy {
+    width: 100%;
+    height: 93%;
     border: 1px solid #ccc;
-    background-color: #f9f9f9; /* Color de fondo opcional */
-    box-sizing: border-box; /* Incluye bordes en las dimensiones */
-    transition: height 0.3s ease; /* Transición suave al cambiar tamaño */
-  }
-  
-  /* Ajustes responsivos para pantallas pequeñas */
-  @media (max-width: 1366px) {
-    .container {
-      max-width: 95%; /* Ajustar a un porcentaje para pantallas más pequeñas */
-      padding: 5px; /* Reduce el padding */
-    }
-  
-    #cy {
-      height: 500px; /* Reduce la altura */
-    }
-  }
-  
-  /* Ajustes responsivos para pantallas muy pequeñas */
-  @media (max-width: 768px) {
-    .container {
-      max-width: 100%; /* Ocupar todo el ancho */
-      padding: 0; /* Elimina padding */
-    }
-  
-    #cy {
-      height: 400px; /* Altura mínima en pantallas pequeñas */
-    }
-  }
-  
-
-  #controls {
-    margin: 20px;
-  }
-
+    background: #e9ecef;
+    display: flex; /* Usamos Flexbox para centrar el SVG */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
