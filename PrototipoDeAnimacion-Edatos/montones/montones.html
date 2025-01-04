@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="../../../css/busquedaGraf.css">
+    <link rel="stylesheet" href="../../css/busqueda.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Barra de navegación -->
+
+  <!-- Barra de navegación -->
     <nav class="navbar">
         <div class="logo">
-            <a href="../../pages/perfil.html">
+            <!-- Imagen del perfil sin el texto -->
+            <a href="perfil.html">
                 <img src="../../img/image1.png" alt="Foto de perfil" class="profile-pic">
             </a>
         </div>
@@ -29,20 +31,16 @@
 
     <!-- Contenido principal de la página -->
     <main class="main-content">
-        <h1 id="titulo-principal">Búsqueda en gráfico</h1>
+        <h1 id="titulo-principal">Búsqueda en lista</h1>
         <p id="descripcion-principal">Seleccione una opción del menú para comenzar</p>
         <div class="algorithms">
-            <a href="animacionABB.html" class="algorithm-card">
+            <a href="animacionMax.html" class="algorithm-card">
                 <img src="../../video-giff/Merge.gif" alt="Animación de Burbuja" id="gif">
-                <span id="texto">Arbol Binario de busqueda</span>
+                <span id="texto">Monticulos Maximo</span>
             </a>
-            <a href="../PrototipoDeAnimacion-BusquedaGraf/BPA/index.html" class="algorithm-card">
-                <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
-                <span id="texto">2</span>
-            </a>
-            <a href="../PrototipoDeAnimacion-BusquedaGraf/BPP/index.html" class="algorithm-card">
-                <img src="../video-giff/Burbuja-unscreen.gif" alt="Animación de Burbuja" id="gif">
-                <span id="texto">3</span>
+            <a href="animacionMin.html" class="algorithm-card">
+                <img src="../../video-giff/seleccion.gif" alt="Animación de Burbuja" id="gif">
+                <span id="texto">Monticulos Minimo</span>
             </a>
         </div>
     </main>

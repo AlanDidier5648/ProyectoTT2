@@ -180,3 +180,92 @@ button:hover {
         padding: 10px;
     }
 }
+
+
+.array-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    gap: 5px;
+}
+
+.array-container div {
+    width: 30px;
+    height: 30px;
+    background-color: #fff; /* Fondo blanco */
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    opacity: 0; /* Oculto para animación emergente */
+    transform: scale(0); /* Oculto inicialmente */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para resaltar */
+}
+
+.array-size-input label {
+    font-weight: bold;
+}
+
+
+.array-size-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+.array-indexes {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.array-indexes div {
+    width: 30px;
+    text-align: center;
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    color: #666;
+    opacity: 0; /* Oculto para animación emergente */
+    transform: scale(0); /* Oculto inicialmente */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para resaltar */
+}
+
+.array-size-input label {
+    font-weight: bold;
+}
+
+.array-size-input input {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.array-size-input button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+}
+
+.array-size-input button:hover {
+    background-color: #45a049;
+}
