@@ -192,3 +192,67 @@ function animateNewNode(nodeIndex) {
         .duration(500)
         .attr("opacity", 1);
 }
+
+
+function removeNode() {
+    const removeValueInput = document.getElementById('remove-value');
+    const value = parseInt(removeValueInput.value);
+
+    // Si no se especifica un valor, eliminamos la raíz
+    const index = isNaN(value) ? 1 : arrayValues.indexOf(value);
+
+    if (index === -1 || index >= arrayValues.length) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'El valor no existe en el montículo.',
+        });
+        return;
+    }
+
+    if (arrayValues.length <= 1) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Montículo Vacío',
+            text: 'No hay nodos para eliminar.',
+        });
+        return;
+    }
+
+    // Reemplazar el nodo eliminado con el último nodo
+    const lastValue = arrayValues.pop(); // Quita el último elemento
+    if (index < arrayValues.length) {
+        arrayValues[index] = lastValue; // Coloca el último nodo en el lugar del eliminado
+        heapifyDownMin(arrayValues, index, arrayValues.length - 1); // Reorganiza el montículo
+    }
+
+    drawTree(arrayValues); // Actualizar el árbol visualmente
+
+    Swal.fire({
+        icon: 'success',
+        title: 'Nodo Eliminado',
+        text: `El nodo con el valor ${value || arrayValues[1]} ha sido eliminado.`,
+    });
+
+    removeValueInput.value = ''; // Limpiar el input
+}
+
+
+function heapifyDownMin(array, index, size) {
+    let smallest = index;
+    const leftChild = 2 * index;
+    const rightChild = 2 * index + 1;
+
+    if (leftChild <= size && array[leftChild] < array[smallest]) {
+        smallest = leftChild;
+    }
+
+    if (rightChild <= size && array[rightChild] < array[smallest]) {
+        smallest = rightChild;
+    }
+
+    if (smallest !== index) {
+        [array[index], array[smallest]] = [array[smallest], array[index]];
+        heapifyDownMin(array, smallest, size);
+    }
+}

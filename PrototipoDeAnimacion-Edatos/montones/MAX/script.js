@@ -303,3 +303,59 @@ function animateNewNode(nodeIndex) {
         .duration(500)
         .attr("opacity", 1); // Aparece completamente visible
 }
+
+
+function removeNode(isMinHeap = true) {
+    const removeValueInput = document.getElementById('remove-value');
+    const value = parseInt(removeValueInput.value);
+
+    const index = isNaN(value) ? 1 : arrayValues.indexOf(value);
+
+    if (index === -1 || index >= arrayValues.length) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'El valor no existe en el montículo.',
+        });
+        return;
+    }
+
+    const lastValue = arrayValues.pop();
+    if (index < arrayValues.length) {
+        arrayValues[index] = lastValue;
+        if (isMinHeap) {
+            heapifyDownMin(arrayValues, index, arrayValues.length - 1);
+        } else {
+            heapifyDownMax(arrayValues, index, arrayValues.length - 1);
+        }
+    }
+
+    drawTree(arrayValues);
+    Swal.fire({
+        icon: 'success',
+        title: 'Nodo Eliminado',
+        text: `El nodo con el valor ${value || arrayValues[1]} ha sido eliminado.`,
+    });
+
+    removeValueInput.value = '';
+}
+
+
+function heapifyDownMin(array, index, size) {
+    let smallest = index;
+    const leftChild = 2 * index;
+    const rightChild = 2 * index + 1;
+
+    if (leftChild <= size && array[leftChild] < array[smallest]) {
+        smallest = leftChild;
+    }
+
+    if (rightChild <= size && array[rightChild] < array[smallest]) {
+        smallest = rightChild;
+    }
+
+    if (smallest !== index) {
+        [array[index], array[smallest]] = [array[smallest], array[index]];
+        heapifyDownMin(array, smallest, size);
+    }
+}
