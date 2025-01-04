@@ -269,3 +269,19 @@ button:hover {
 .array-size-input button:hover {
     background-color: #45a049;
 }
+
+
+.tree-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#tree-svg {
+    overflow: visible;
+}

@@ -9,6 +9,8 @@
     <!-- Enlace a Chart.js para generar gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
 
     <!-- Enlace a SweetAlert2 para notificaciones -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -52,7 +54,7 @@
                         <input type="number" id="array-value" placeholder="Ej. 5">
                         <button onclick="addValueToArray()">Agregar Valor</button>
 
-                        
+                        <button id="clear-tree-button" onclick="clearTree()">Limpiar Árbol</button>
                     </div>
 
                     <!-- Representación del Array -->
@@ -65,15 +67,12 @@
             
                     <!-- Representación del Árbol -->
                     <div id="tree-container" class="tree-container">
-                        <!-- Aquí se generará el árbol binario con D3.js -->
+                          <!-- Aquí se dibujará el árbol binario -->
+                          
+                        <svg width="600" height="400" id="tree-svg"></svg>
                     </div>
             
-                    <!-- Botones de Interacción -->
-                    <div class="controls">
-                        <button id="insert-button">Insertar</button>
-                        <button id="remove-button">Eliminar Máximo</button>
-                        <button id="clear-button">Limpiar Montículo</button>
-                    </div>
+              
                 
                 </div>
                 <a href="cuestionario.html" class="btn zoom-slide-delay">Ir al cuestionario</a>
