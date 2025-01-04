@@ -192,7 +192,7 @@ button:hover {
 .array-container div {
     width: 30px;
     height: 30px;
-    background-color: #fff; /* Fondo blanco */
+    background-color: #fff; /* Blanco como color permanente */
     text-align: center;
     line-height: 30px;
     border: 1px solid #ccc;
@@ -200,10 +200,10 @@ button:hover {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
     font-size: 14px;
-    opacity: 0; /* Oculto para animación emergente */
-    transform: scale(0); /* Oculto inicialmente */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para resaltar */
 }
+
+
 
 .array-size-input label {
     font-weight: bold;
@@ -276,12 +276,93 @@ button:hover {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #fff;
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
+    height: 500px; /* Altura extendida */
+}
+
+#tree-svg circle {
+    transition: fill 0.5s ease;
+}
+
+#tree-svg line {
+    transition: stroke 0.5s ease;
+}
+
+
+#tree-svg {
+    width: 100%;
+    height: 100%; /* Asegurar que el SVG use todo el contenedor */
+}
+
+.array-size-input,
+.tree-controls,
+.tree-container {
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
 }
 
 #tree-svg {
-    overflow: visible;
+    max-width: 100%;
+    height: auto;
+}
+
+
+#tree-svg text {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold; /* Negritas para los números */
+    font-size: 12px;
+    fill: white;
+    text-anchor: middle;
+}
+
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .array-size-input {
+        flex-direction: column;
+        gap: 15px; /* Espaciado entre elementos */
+    }
+
+    #tree-svg {
+        width: 100%;
+        height: 300px; /* Reducir la altura del árbol */
+    }
+
+    .array-container div {
+        width: 25px;
+        height: 25px;
+        font-size: 12px; /* Tamaño de texto reducido */
+    }
+}
+
+/* Para pantallas medianas (tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #tree-svg {
+        width: 80%;
+        height: 350px;
+    }
+
+    .array-container div {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+}
+
+/* Para pantallas grandes (escritorios) */
+@media (min-width: 1025px) {
+    #tree-svg {
+        width: 600px;
+        height: 400px; /* Tamaño estándar del árbol */
+    }
+
+    .array-container div {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
 }

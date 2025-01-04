@@ -71,7 +71,7 @@ function addValueToArray() {
         return;
     }
 
-    const emptyBox = Array.from(arrayContainer.children).find((box, index) => index > 0 && box.textContent === '-');
+    const emptyBox = Array.from(arrayContainer.children).find((box) => box.textContent === '-');
 
     if (!emptyBox) {
         Swal.fire({
@@ -87,14 +87,10 @@ function addValueToArray() {
     arrayValues[index] = value;
 
     heapifyUp(arrayValues, index);
-    drawTree(arrayValues); // Actualizar el árbol
+    drawTree(arrayValues); // Redibujar el árbol
 
-    anime({
-        targets: emptyBox,
-        backgroundColor: ['#fff', '#d1ffd8'],
-        duration: 500,
-        easing: 'easeOutQuad',
-    });
+    // Animar el nuevo nodo en el árbol
+    animateNewNode(index);
 
     arrayValueInput.value = '';
 }
@@ -115,48 +111,6 @@ function heapifyUp(array, index) {
     return array;
 }
 
-
-function addValueToArray() {
-    const arrayValueInput = document.getElementById('array-value');
-    const value = parseInt(arrayValueInput.value);
-    const arrayContainer = document.getElementById('array-container');
-
-    if (isNaN(value)) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Por favor, ingresa un número válido.',
-        });
-        return;
-    }
-
-    const emptyBox = Array.from(arrayContainer.children).find(box => box.textContent === '-');
-
-    if (!emptyBox) {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Límite Alcanzado',
-            text: 'Todas las casillas del array están ocupadas.',
-        });
-        return;
-    }
-
-    const index = Array.from(arrayContainer.children).indexOf(emptyBox);
-    emptyBox.textContent = value;
-    arrayValues[index] = value;
-
-    heapifyUp(arrayValues, index);
-    drawTree(arrayValues); // Actualizar el árbol
-
-    anime({
-        targets: emptyBox,
-        backgroundColor: ['#fff', '#d1ffd8'],
-        duration: 500,
-        easing: 'easeOutQuad',
-    });
-
-    arrayValueInput.value = '';
-}
 
 
 
@@ -245,4 +199,107 @@ function clearTree() {
         title: 'Árbol Limpiado',
         text: 'El árbol y el array han sido reiniciados.',
     });
+}
+
+
+function searchInTree() {
+    const searchValueInput = document.getElementById('search-value');
+    const value = parseInt(searchValueInput.value);
+
+    if (isNaN(value)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Por favor, ingresa un número válido.',
+        });
+        return;
+    }
+
+    const index = arrayValues.indexOf(value);
+
+    const svg = d3.select("#tree-svg");
+    const nodes = svg.selectAll("circle");
+    const lines = svg.selectAll("line");
+
+    let currentNode = 1; // Comenzamos en el índice 1 (raíz del montículo)
+    const searchPath = [];
+
+    // Crear el recorrido en el árbol
+    while (currentNode < arrayValues.length && arrayValues[currentNode] !== null) {
+        searchPath.push(currentNode);
+
+        if (arrayValues[currentNode] === value) break;
+
+        const leftChild = currentNode * 2;
+        const rightChild = currentNode * 2 + 1;
+
+        // Decidir hacia dónde ir en la búsqueda
+        currentNode = leftChild < arrayValues.length && arrayValues[leftChild] !== null ? leftChild : rightChild;
+    }
+
+    // Animar el recorrido por el árbol
+    let delay = 0;
+
+    searchPath.forEach((nodeIndex, i) => {
+        const isLast = i === searchPath.length - 1;
+
+        setTimeout(() => {
+            // Resaltar el nodo actual
+            nodes.transition()
+                .duration(500)
+                .attr("fill", (d, idx) => (idx + 1 === nodeIndex ? (isLast && arrayValues[nodeIndex] === value ? "#ffc107" : "#90caf9") : "#4caf50"));
+
+            // Resaltar las conexiones (si no es el último nodo)
+            if (!isLast) {
+                lines.transition()
+                    .duration(500)
+                    .attr("stroke", (d, idx) => (idx === nodeIndex - 1 ? "#90caf9" : "#ccc"));
+            }
+
+            // Al finalizar la búsqueda
+            if (isLast) {
+                setTimeout(() => {
+                    if (arrayValues[nodeIndex] === value) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Valor Encontrado',
+                            text: `El valor ${value} se encuentra en el índice ${nodeIndex}.`,
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'No Encontrado',
+                            text: `El valor ${value} no existe en el montículo.`,
+                        });
+                    }
+                }, 500);
+            }
+        }, delay);
+
+        delay += 1000; // Incrementar el delay para cada paso
+    });
+
+    searchValueInput.value = '';
+}
+
+
+function animateNewNode(nodeIndex) {
+    const svg = d3.select("#tree-svg");
+
+    // Animar el nodo recién agregado
+    svg.selectAll("circle")
+        .filter((d, i) => i + 1 === nodeIndex)
+        .attr("r", 0) // Comienza invisible
+        .transition()
+        .duration(500)
+        .attr("r", 20) // Aparece con el tamaño normal
+        .attr("fill", "#4caf50"); // Verde estándar
+
+    // Animar el texto del nodo
+    svg.selectAll("text")
+        .filter((d, i) => i + 1 === nodeIndex)
+        .attr("opacity", 0) // Comienza invisible
+        .transition()
+        .duration(500)
+        .attr("opacity", 1); // Aparece completamente visible
 }
