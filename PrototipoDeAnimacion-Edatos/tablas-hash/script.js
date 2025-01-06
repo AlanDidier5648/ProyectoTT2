@@ -5,10 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnCerrado = document.getElementById("btn-cerrado");
     const inputKey = document.getElementById("input-key");
     const inputValue = document.getElementById("input-value");
+    const selectorHash = document.getElementById("funcion-hash-selector");
 
     const tamañoTabla = 10; // Tamaño fijo de la tabla hash
     const tabla = new Array(tamañoTabla).fill(null); // Inicializar tabla vacía
     let metodoColision = "abierto"; // Por defecto, hashing abierto
+    let funcionHashSeleccionada = "sumaAscii"; // Función hash por defecto
 
     // Crear tabla visual
     for (let i = 0; i < tamañoTabla; i++) {
@@ -22,12 +24,24 @@ document.addEventListener("DOMContentLoaded", () => {
     // Alternar entre métodos de colisión
     btnAbierto.addEventListener("click", () => {
         metodoColision = "abierto";
-        alert("Hashing Abierto activado.");
+        Swal.fire({
+            icon: 'info',
+            title: 'Método de Colisión',
+            text: 'Hashing Abierto activado.',
+            timer: 2000,
+            showConfirmButton: false,
+        });
     });
 
     btnCerrado.addEventListener("click", () => {
         metodoColision = "cerrado";
-        alert("Hashing Cerrado activado.");
+        Swal.fire({
+            icon: 'info',
+            title: 'Método de Colisión',
+            text: 'Hashing Cerrado activado.',
+            timer: 2000,
+            showConfirmButton: false,
+        });
     });
 
     // Insertar llave-valor en la tabla hash
@@ -36,7 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const valor = inputValue.value.trim();
 
         if (!llave || !valor) {
-            alert("Por favor, ingresa una llave y un valor.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor, ingresa una llave y un valor.',
+                confirmButtonText: 'Entendido',
+            });
             return;
         }
 
@@ -60,6 +79,14 @@ document.addEventListener("DOMContentLoaded", () => {
         tabla[indice].push({ llave, valor }); // Insertar en la lista
         celda.classList.add("ocupada");
         actualizarCeldaAbierto(celda, tabla[indice]);
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Elemento Insertado',
+            text: `Se insertó el par [${llave}, ${valor}] en el índice ${indice}.`,
+            timer: 2500,
+            showConfirmButton: false,
+        });
     }
 
     // Actualizar la visualización de una celda (hashing abierto)
@@ -79,7 +106,12 @@ document.addEventListener("DOMContentLoaded", () => {
         while (tabla[i] !== null) {
             i = (i + 1) % tamañoTabla; // Sondeo lineal
             if (i === indice) {
-                alert("Tabla Hash llena, no se puede insertar.");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Tabla Hash llena, no se puede insertar.',
+                    confirmButtonText: 'Entendido',
+                });
                 return;
             }
         }
@@ -88,6 +120,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const celda = tablaHash.children[i];
         celda.classList.add("ocupada");
         celda.innerHTML = `<span class="llave">${llave}</span><span class="valor">${valor}</span>`;
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Elemento Insertado',
+            text: `Se insertó el par [${llave}, ${valor}] en el índice ${i}.`,
+            timer: 2500,
+            showConfirmButton: false,
+        });
     }
 
     // Función hash basada en suma de valores ASCII
@@ -98,7 +138,69 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         return suma % tamaño; // Retornar índice hash
     }
+
+     // Definir funciones hash
+     const funcionesHash = {
+        sumaAscii: (clave) => {
+            return clave.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0) % tamañoTabla;
+        },
+        multiplicacionAscii: (clave) => {
+            const factor = 31; // Factor de multiplicación
+            return clave.split("").reduce((acc, char) => acc + char.charCodeAt(0) * factor, 0) % tamañoTabla;
+        },
+        hashingPolinomico: (clave) => {
+            const p = 31; // Base
+            const m = 1e9 + 9; // Número primo grande
+            return clave.split("").reduce((acc, char, i) => {
+                return (acc + (char.charCodeAt(0) * Math.pow(p, i))) % m;
+            }, 0) % tamañoTabla;
+        },
+        longitudClave: (clave) => {
+            return clave.length % tamañoTabla;
+        },
+    };
+
+    // Obtener la función hash seleccionada
+    const obtenerFuncionHash = () => {
+        const seleccion = selectorHash.value;
+        return funcionesHash[seleccion] || funcionesHash.sumaAscii;
+    };
+
+    // Insertar en la tabla hash
+    btnInsertar.addEventListener("click", () => {
+        const clave = inputKey.value.trim();
+        const valor = inputValue.value.trim();
+
+        if (!clave || !valor) {
+            Swal.fire("Error", "Por favor ingresa una clave y un valor.", "error");
+            return;
+        }
+
+        const funcionHash = obtenerFuncionHash();
+        const indice = funcionHash(clave);
+
+        if (metodoColision === "abierto") {
+            if (!tabla[indice]) {
+                tabla[indice] = [];
+            }
+            tabla[indice].push({ clave, valor });
+
+            // Actualizar visualización
+            const celda = document.querySelector(`.celda[data-index='${indice}']`);
+            const elemento = document.createElement("div");
+            elemento.classList.add("elemento");
+            elemento.textContent = `(${clave}, ${valor})`;
+            celda.appendChild(elemento);
+
+            Swal.fire("Elemento insertado", `(${clave}, ${valor}) insertado en índice ${indice}.`, "success");
+        } else {
+            Swal.fire("Error", "Hashing cerrado aún no implementado.", "error");
+        }
+    });
 });
+
+
+
 
 
 /*const tableSize = 10;

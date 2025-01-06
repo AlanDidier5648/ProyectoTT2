@@ -46,6 +46,16 @@
                 <button id="btn-cerrado">Hashing Cerrado</button>
             </div>
 
+            <div id="funcion-hash-container">
+                <label for="funcion-hash-selector">Elige la función hash:</label>
+                <select id="funcion-hash-selector">
+                    <option value="sumaAscii">Suma de ASCII</option>
+                    <option value="multiplicacionAscii">Multiplicación de ASCII</option>
+                    <option value="hashingPolinomico">Hashing Polinómico</option>
+                    <option value="longitudClave">Residuo de Longitud</option>
+                </select>
+            </div>
+
             <div id="input-section">
                 <input type="text" id="input-key" placeholder="Ingresa una llave (nombre)">
                 <input type="text" id="input-value" placeholder="Ingresa un valor (teléfono)">
@@ -58,24 +68,7 @@
                 </div>
             </div>
 
-            <!-- <div class="hash-table">
-                <div class="cell" id="cell-0"><span class="index">0</span><div class="values"></div></div>
-                <div class="cell" id="cell-1"><span class="index">1</span><div class="values"></div></div>
-                <div class="cell" id="cell-2"><span class="index">2</span><div class="values"></div></div>
-                <div class="cell" id="cell-3"><span class="index">3</span><div class="values"></div></div>
-                <div class="cell" id="cell-4"><span class="index">4</span><div class="values"></div></div>
-                <div class="cell" id="cell-5"><span class="index">5</span><div class="values"></div></div>
-                <div class="cell" id="cell-6"><span class="index">6</span><div class="values"></div></div>
-                <div class="cell" id="cell-7"><span class="index">7</span><div class="values"></div></div>
-                <div class="cell" id="cell-8"><span class="index">8</span><div class="values"></div></div>
-                <div class="cell" id="cell-9"><span class="index">9</span><div class="values"></div></div>
-            </div>
-            <div class="input-container">
-                <input type="number" id="input-value" placeholder="Ingresa un número">
-                <button onclick="insertToHashTable()">Insertar</button>
-                <button onclick="searchInHashTable()">Buscar</button>
-                <button onclick="deleteFromHashTable()">Eliminar</button>
-            </div>-  -->
+       
         </section>
         
     </div>
